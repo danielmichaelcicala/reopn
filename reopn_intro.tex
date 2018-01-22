@@ -1,27 +1,20 @@
 %
-% Rewriting Open Graphs
+% rewriting open objects
+% introduction
 %
 
-\documentclass{amsart}
-\input{reopn_preamble.tex} 
+\documentclass[reopn_master]{subfiles}
 
-\begin{document} % document
-\begin{abstract} % abstract
-	open graphs, 
-	their rewrites, 
-	and an application
-\end{abstract}	
+\begin{document} 
 
-\title{Rewriting open graphs}
-\author{Daniel Cicala}
-\maketitle
-
-\section{Introduction} % intro
+\section{Introduction}
 
 %_______begin intro
 
-Our goal is to model open networks 
-and their rewrites.  By an \emph{open network},
+The goal of this paper is to present a bicategorical framework in which to study rewriting in open networks.
+
+
+.  By an \emph{open network},
 we mean a network together with a boundary.
 To make this precise, we
 begin with a category of `input and output types' 
@@ -51,7 +44,7 @@ and as arrows, cospans of the form
 \[
 Lc \to d \gets Lc'
 \]
-inside of $ \cat{D} $.
+inside of $ \cat{D} $. 
 
 The second category, denoted
 $ \LopenD $,
@@ -170,8 +163,4 @@ HERES A CHANGE
 
 %_______end intro
 
-\section{Bibliography} % biblio
-\bibliographystyle{abbrvnat}
-\bibliography{reopn_biblio.bib}
-	
 \end{document}

@@ -48,16 +48,23 @@
 
 \newcommand{\Set}{\cat{Set}}
 \newcommand{\Graph}{\cat{Graph}}
+\newcommand{\RGraph}{\cat{RGraph}}
 \newcommand{\Top}{\cat{Top}}
 \newcommand{\Cat}{\cat{Cat}}
+\newcommand{\A}{\cat{A}}
+\newcommand{\B}{\cat{B}}
 \newcommand{\C}{\cat{C}}
-\newcommand{\D}{\cat{D}}
+\newcommand{\X}{\cat{X}}
+\newcommand{\Y}{\cat{Y}}
+\newcommand{\Z}{\cat{Z}}
+\newcommand{\core}[1]{\mathbf{core}(#1)}
 
 \newcommand{\defn}[1]{\textbf{#1}}
 \newcommand{\op}[1]{\operatorname{#1}}
 \newcommand{\cat}[1]{\mathbf{#1}}
 \newcommand{\dblcat}[1]{\mathbb{#1}}
 \renewcommand{\t}[1]{\text{#1}}
+
 
 \newcommand{\from}{\colon}
 \newcommand{\xto}[1]{\xrightarrow{#1}}
@@ -66,24 +73,28 @@
 \newcommand{\tocospan}{\xrightarrow{\mathit{csp}}}
 \newcommand{\diagram}[1]{\raisebox{-0.5\height}{\includegraphics{#1}}}
 
-\newcommand{\bispmap}[1]{\mathbf{Sp(#1)}}
-\newcommand{\dblspmap}[1]{\mathbb{S}\mathbf{p(#1)}}
-\newcommand{\bicspmap}[1]{\mathbf{Csp(#1)}}
-\newcommand{\dblcspmap}[1]{\mathbb{C}\mathbf{sp(#1)}}
-\newcommand{\bispsp}[1]{\mathbf{Sp(Sp(#1))}}
-\newcommand{\dblspsp}[1]{\mathbb{S}\mathbf{p(Sp(#1))}}
-\newcommand{\bicspcsp}[1]{\mathbf{Csp(Csp(#1))}}
-\newcommand{\dblcspcsp}[1]{\mathbb{C}\mathbf{sp(Csp(#1))}}
-\newcommand{\bimonspcsp}[1]{\mathbf{MonicSp(Csp(#1))}}
-\newcommand{\dblmonspcsp}[1]{\mathbb{M}\mathbf{onicSp(Csp(#1))}}
-\newcommand{\biepiccspsp}[1]{\mathbf{EpicCsp(Sp(#1))}}
-\newcommand{\dblepiccspsp}[1]{\mathbb{E}\mathbf{picCsp(Sp(#1))}}
-\newcommand{\spcsp}[1]{\mathbf{Sp(Csp(#1))}}
-\newcommand{\dblspcsp}[1]{\mathbb{S}\mathbf{p(Csp(#1))}}
+\newcommand{\Sp}[1]{\mathbf{Sp}(#1)}
+\newcommand{\MonSp}[1]{\mathbf{MonSp}(#1)}
+\newcommand{\SSp}[1]{\mathbb{S}\mathbf{p}(#1)}
+\newcommand{\Csp}[1]{\mathbf{Csp}(#1)}
+\newcommand{\CCsp}[1]{\mathbb{C}\mathbf{sp}(#1)}
+\newcommand{\SpSp}[1]{\mathbf{Sp}(\mathbf{Sp}(#1))}
+\newcommand{\SSpSp}[1]{\mathbb{S}\mathbf{p(\mathbf{Sp}(#1))}}
+\newcommand{\CspCsp}[1]{\mathbf{Csp}(\mathbf{Csp}(#1))}
+\newcommand{\CCspCsp}[1]{\mathbb{C}\mathbf{sp}(\mathbf{Csp}(#1))}
+\newcommand{\MonSpCsp}[1]{\mathbf{MonicSp}(\mathbf{Csp}(#1))}
+\newcommand{\MMonSpCsp}[1]{\mathbb{M}\mathbf{onicSp}(\mathbf{Csp}(#1))}
+\newcommand{\EpCspSp}[1]{\mathbf{EpicCsp}(\mathbf{Csp}(#1))}
+\newcommand{\EEpCspSp}[1]{\mathbb{E}\mathbf{picCsp}(\mathbf{Sp}(#1))}
+\newcommand{\SpCsp}[1]{\mathbf{Sp}(\mathbf{Csp}(#1))}
+\newcommand{\SSpCsp}[1]{\mathbb{S}\mathbf{p}(\mathbf{Csp}(#1))}
 
-\newcommand{\LspanD}{ L \t{-} \operatorname{Span} ( \mathbf{D} ) }
-\newcommand{\LopenD}{ L \t{-} \operatorname{Open} }
-\newcommand{\LrewriteD}{ L \t{-} \operatorname{Rewrite} }
+\newcommand{\FuncCsp}[1]{ #1 \t{-} \mathbf{Csp}}
+\newcommand{\OpenOb}[1]{ #1 \t{-} \mathbf{Open} }
+\newcommand{\Rewrite}[1]{ #1 \t{-} \mathbf{Rewrite} }
+\newcommand{\RRewrite}[1]{ #1 \t{-} \mathbb{R}\mathbf{ewrite} }
+\newcommand{\MonRewrite}[1]{ #1 \t{-} \mathbf{MonRewrite} }
+\newcommand{\MMonRewrite}[1]{ #1 \t{-} \mathbb{M}\mathbf{on}\mathbb{R}\mathbf{ewrite} }
 
 %
 % math operators

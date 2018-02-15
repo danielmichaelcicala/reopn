@@ -1,5 +1,5 @@
 \documentclass{amsart}
-\include{reopn_preamble}
+\include{file_preamble_reopn}
 \begin{document}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -144,7 +144,7 @@ If we borrow a perspective from Section \ref{sec:Rewriting}, we can think of an 
 Some grooming is necessary before we can get an actual double category.  The primary hurdle is ensuring the interchange law holds.  At this point, our framework branches into two paths.  We look at two categories constructed from the information of $ \Sp{\OpenOb{\partial}} $, each serving as a category of arrows for a double category with $ \FuncCsp{\partial} $ as its category of objects.
 
 \begin{df} \label{df:ArrCatMonRwrt}
-	There is a poset with objects those from $ \Sp{\OpenOb{\partial}} $ and we write $ (\partial a \to x \gets \partial a') \leq (\partial c \to x \gets \partial c') $ if there is an arrow in $ \Sp{\OpenOb{\partial}} $ with form
+	There is a preorder with objects those from $ \Sp{\OpenOb{\partial}} $ and we write $ (\partial a \to x \gets \partial a') \leq (\partial c \to x \gets \partial c') $ if there is an arrow in $ \Sp{\OpenOb{\partial}} $ with form
 	\[
 	\begin{tikzpicture}
 		\node (a) at (-1,1) {$ \partial a $};
@@ -395,6 +395,7 @@ Same adjunction $ \partial \dashv p \from \A \to \X $ between topoi.
 \section{Examples}
 
 {\color{red}\emph{string diagrams for Frobenius monoids // linguistics ex?}}
+
 
 
 \end{document}

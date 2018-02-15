@@ -3,7 +3,6 @@
 %	style
 %	
 
-
 %
 %  packages
 %
@@ -22,6 +21,7 @@
 %	\definecolor{hyperrefcolor}{rgb}{0,0,0.7}
 	\hypersetup{colorlinks,linkcolor={blue},citecolor={blue},urlcolor={blue}}
 \usepackage{graphicx}
+	\graphicspath{ {images/} }
 \usepackage{mathtools}
 \usepackage[numbers]{natbib}
 \usepackage{stmaryrd} 
@@ -132,20 +132,40 @@
 %
 % tikz types
 %
+\tikzset{->-/.style={decoration={%
+			markings,
+			mark=at position .5 with {\arrow{>}}},postaction={decorate}}
+}
+\tikzset{->-pos/.style={decoration={%
+			markings,
+			mark=at position #1 with {\arrow{>}}},postaction={decorate}}
+}
+\tikzset{->-/.style={decoration={%
+			markings,
+			mark=at position .5 with {\arrow{>}}},postaction={decorate}}
+}
+\tikzset{->-pos/.style={decoration={%
+			markings,
+			mark=at position #1 with {\arrow{>}}},postaction={decorate}}
+}
 
-\tikzset{->-/.style={decoration={%
-			markings,
-			mark=at position .5 with {\arrow{>}}},postaction={decorate}}
+%
+% inline diagrams
+%
+\newcommand{\rgraph}[2]{%
+	$\begin{tikzpicture}
+	\node (a) at (0,0) {$ #1 $};
+	\node (b) at (1,0) {$ #2 $};
+	\draw [->] (a.30) to (b.150);
+	\draw [->] (a.-30) to (b.-150);
+	\draw [->] (b) to (a);
+	\end{tikzpicture}$
 }
-\tikzset{->-pos/.style={decoration={%
-			markings,
-			mark=at position #1 with {\arrow{>}}},postaction={decorate}}
-}
-\tikzset{->-/.style={decoration={%
-			markings,
-			mark=at position .5 with {\arrow{>}}},postaction={decorate}}
-}
-\tikzset{->-pos/.style={decoration={%
-			markings,
-			mark=at position #1 with {\arrow{>}}},postaction={decorate}}
+\newcommand{\graph}[2]{%
+	$\begin{tikzpicture}
+	\node (a) at (0,0) {$ #1 $};
+	\node (b) at (1,0) {$ #2 $};
+	\draw [->] (a.30) to (b.150);
+	\draw [->] (a.-30) to (b.-150);
+	\end{tikzpicture}$
 }

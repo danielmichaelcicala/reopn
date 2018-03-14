@@ -1,0 +1,39 @@
+\documentclass[tikz, preview]{standalone}
+\usepackage{amsfonts, amsthm, amssymb, amsmath, stmaryrd, etoolbox}
+\usepackage{tikz}
+\usetikzlibrary{matrix,arrows}
+\newcommand{\id}{\text{id}}
+\begin{document}
+%%%%%%%%%%%%%%%%%	
+%%%%%%%%%%%%%%%%%
+\[
+\begin{tikzpicture}
+%	\draw [help lines, step=0.5, color=blue!10] (-5,-5) grid (5,5); % grid
+	\begin{scope}
+	\node (ul) at (-1.5,1.5) {$ La $};
+	\node (um) at (0,1.5) {$ La $};
+	\node (ur) at (1.5,1.5) {$ La $};
+	\node (ml) at (-1.5,0) {$ La $};
+	\node (mm) at (0,0) {$ Lb $};
+	\node (mr) at (1.5,0) {$ Lb $};
+	\node (bl) at (-1.5,-1.5) {$ La $};
+	\node (bm) at (0,-1.5) {$ Lb $};
+	\node (br) at (1.5,-1.5) {$ Lc $};
+	\draw [->] (ul) to node [above] {\scriptsize $ \id $} (um);
+	\draw [->] (ml) to node [above] {\scriptsize $ Lf $} (mm);
+	\draw [->] (bl) to node [above] {\scriptsize $ Lf $} (bm);
+	\draw [->] (ur) to node [above] {\scriptsize $ \id $} (um);
+	\draw [->] (mr) to node [above] {\scriptsize $ \id $} (mm);
+	\draw [->] (br) to node [above] {\scriptsize $ Lg^{-1} $} (bm);
+	\draw [->] (ml) to node [left] {\scriptsize $ \id $} (ul);
+	\draw [->] (ml) to node [left] {\scriptsize $ \id $} (bl);
+	\draw [->] (mm) to node [left] {\scriptsize $ Lf $} (um);
+	\draw [->] (mm) to node [left] {\scriptsize $\id $} (bm);
+	\draw [->] (mr) to node [left] {\scriptsize $ Lf $} (ur);
+	\draw [->] (mr) to node [left] {\scriptsize $ Lg $} (br);
+	\end{scope}
+\end{tikzpicture}
+\]
+%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%
+\end{document}

@@ -1,0 +1,28 @@
+\documentclass[tikz, preview]{standalone}
+\usepackage{amsfonts, amsthm, amssymb, amsmath, stmaryrd, etoolbox}
+\usepackage{tikz}
+\usetikzlibrary{matrix,arrows}
+\begin{document}
+%%%%%%%%%%%%%%%%%	
+%%%%%%%%%%%%%%%%%
+\[
+\begin{tikzpicture}
+%	\draw [help lines, step=0.2, color=blue!10] (-5,-5) grid (5,5); % grid
+	%
+	\node (a) at (-1,1) {$ a $};
+	\node (b) at (1,1) {$ b $};
+	\node (x) at (-1,-1) {$ x $};
+	\node (y) at (1,-1) {$ y $};
+	%
+	\draw [<-] (b) to (a);
+	\draw [->] (a) to (x);
+	\draw [->] (b) to (y);
+	\draw [<-] (y) to (x);
+	%
+	\draw  (0.6,-0.9) -- (0.6,-0.6);
+	\draw (0.6,-0.6) -- (0.9,-0.6);
+\end{tikzpicture}
+\]
+%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%
+\end{document}

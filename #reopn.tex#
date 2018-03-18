@@ -1,5 +1,4 @@
-\message{ !name(reopn.tex)}\do
-cumentclass[]{amsart}
+\documentclass[]{amsart}
 
 %
 % PACKAGES
@@ -177,9 +176,6 @@ cumentclass[]{amsart}
 }
 
 \begin{document} 
-
-\message{ !name(reopn.tex) !offset(-3) }
- 
 
 \section{Introduction} \label{sec:introduction} 
 
@@ -1037,20 +1033,27 @@ In the following section, we generalize open graphs to `open objects' and constr
 
 % bi MonRewrite SMCC
 \begin{theorem} \label{thm_bi-mon-rewrite-isSMCC}
+
   Let $ (\A, \otimes_{ \A }, I_{ \A }) $ and
   $ (\X, \otimes_{\X}, I_{\X}) $ be symmetric monoidal categories
   where $ \A $ has pullbacks and $ \X $ is a topos. Let
-  $ L \from (\A, \otimes_{ \A }, I_{ \A }) \to (\X, \otimes_{\X}) $ be
-  an adjunction where $ L $ preserves pullbacks.
+  $ L \from (\A, \otimes_{ \A }, I_{ \A }) \to (\X, \otimes_{\X}) $
+  be an adjunction where $ L $ preserves pullbacks.
 	
-	The horizontal edge bicategory
-        $ \MonRewrite{L} \coloneqq \mathcal{H} \left( \MMonRewrite{L}
-        \right) $ in the sense of Shulman is symmetric monoidal.
-        Moreover, if the monoidal products $ \otimes_{\A} $ and
-        $ \otimes_{\X} $ are coproducts, then the symmetric monoidal
-        bicategory $ \MonRewrite{L} $ is compact closed.
+  The horizontal edge bicategory
+  $ \MonRewrite{L} \coloneqq \mathcal{H} \left( \MMonRewrite{L}
+  \right) $ in the sense of Shulman is symmetric monoidal.  Moreover,
+  if the monoidal products $ \otimes_{\A} $ and $ \otimes_{\X} $ are
+  coproducts, then the symmetric monoidal bicategory
+  $ \MonRewrite{L} $ is compact closed.
+  
 \end{theorem}
 
+\begin{proof}
+  
+  This follows from Shulman \cite{shulman-constructing}.
+  
+\end{proof}
 
 % generating a grammar
 \begin{theorem}
@@ -1092,11 +1095,13 @@ In the following section, we generalize open graphs to `open objects' and constr
 \end{theorem}
 
 \begin{theorem}
+  
   Same as above with monics thrown in.
+  
 \end{theorem}
 
-\bibliography{bib_reopn} 
+
+\bibliography{bib_reopn}
 \bibliographystyle{ieeetr}
 
 \end{document}
-\message{ !name(reopn.tex) !offset(-1102) }

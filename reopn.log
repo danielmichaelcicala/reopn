@@ -1,12 +1,10 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.1.19)  16 MAR 2018 18:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.1.19)  17 MAR 2018 19:09
 entering extended mode
  restricted \write18 enabled.
+ file:line:error style messages enabled.
  %&-line parsing enabled.
-**skeleton-bare.tex
-(./skeleton-bare.tex
-LaTeX2e <2016/02/01>
-Babel <3.9q> and hyphenation patterns for 81 language(s) loaded.
-(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsart.cls
+**\input reopn.tex
+(./reopn.tex (/usr/share/texlive/texmf-dist/tex/latex/amscls/amsart.cls
 Document Class: amsart 2015/03/04 v2.20.2
 \linespacing=\dimen102
 \normalparindent=\dimen103
@@ -105,9 +103,6 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 \thm@headsep=\skip50
 \dth@everypar=\toks24
 )
-(./style_reopn.sty
-Package: style_reopn 2018/02/21 Reopn Package
-
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 )
@@ -263,7 +258,38 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 Package: etoolbox 2015/08/02 v2.2a e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count111
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 25.
+(/usr/share/texlive/texmf-dist/tex/latex/stmaryrd/stmaryrd.sty
+Package: stmaryrd 1994/03/03 St Mary's Road symbol package
+\symstmry=\mathgroup6
+LaTeX Font Info:    Overwriting symbol font `stmry' in version `bold'
+(Font)                  U/stmry/m/n --> U/stmry/b/n on input line 89.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+\Gread@gobject=\count112
+)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1341.
+Package xcolor Info: Model `RGB' extended on input line 1353.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1355.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1356.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1357.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/dvipsnam.def
+File: dvipsnam.def 2015/12/30 v3.0k Driver-dependent file (DPC,SPQR)
+))
+Package hyperref Info: Option `colorlinks' set `true' on input line 23.
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
@@ -278,11 +304,7 @@ Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
 )
 Package graphics Info: Driver file: pdftex.def on input line 95.
-
-(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
-File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
-\Gread@gobject=\count112
-))
+)
 \Gin@req@height=\dimen126
 \Gin@req@width=\dimen127
 )
@@ -325,12 +347,6 @@ Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibsep=\skip58
 LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count117
-)
-(/usr/share/texlive/texmf-dist/tex/latex/stmaryrd/stmaryrd.sty
-Package: stmaryrd 1994/03/03 St Mary's Road symbol package
-\symstmry=\mathgroup6
-LaTeX Font Info:    Overwriting symbol font `stmry' in version `bold'
-(Font)                  U/stmry/m/n --> U/stmry/b/n on input line 89.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/caption/subcaption.sty
 Package: subcaption 2016/02/20 v1.1-142 Sub-captions (AR)
@@ -416,23 +432,7 @@ File: pgfsyssoftpath.code.tex 2013/09/09  (rcs-revision 1.9)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.
 tex
 File: pgfsysprotocol.code.tex 2006/10/16  (rcs-revision 1.4)
-)) (/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
-Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
-
-(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/color.cfg
-File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
-)
-Package xcolor Info: Driver file: pdftex.def on input line 225.
-Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
-Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1341.
-Package xcolor Info: Model `RGB' extended on input line 1353.
-Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1355.
-Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1356.
-Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1357.
-Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
-Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
-Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
-)
+))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
 Package: pgfcore 2010/04/11 v3.0.1a (rcs-revision 1.7)
 
@@ -755,42 +755,43 @@ File: tikzlibrarypositioning.code.tex 2008/10/06 v3.0.1a (rcs-revision 1.7)
 )
 \c@@todonotes@numberoftodonotes=\count141
 )
-\c@thm=\count142
-) (./skeleton-bare.aux)
-\openout1 = `skeleton-bare.aux'.
+\c@theorem=\count142
+ (./reopn.aux)
+\openout1 = `reopn.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 3.
-LaTeX Font Info:    ... okay on input line 3.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 3.
-LaTeX Font Info:    ... okay on input line 3.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 3.
-LaTeX Font Info:    ... okay on input line 3.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 3.
-LaTeX Font Info:    ... okay on input line 3.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 3.
-LaTeX Font Info:    ... okay on input line 3.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 3.
-LaTeX Font Info:    ... okay on input line 3.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 3.
-LaTeX Font Info:    ... okay on input line 3.
-LaTeX Font Info:    Try loading font information for U+msa on input line 3.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 179.
+LaTeX Font Info:    ... okay on input line 179.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 179.
+LaTeX Font Info:    ... okay on input line 179.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 179.
+LaTeX Font Info:    ... okay on input line 179.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 179.
+LaTeX Font Info:    ... okay on input line 179.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 179.
+LaTeX Font Info:    ... okay on input line 179.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 179.
+LaTeX Font Info:    ... okay on input line 179.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 179.
+LaTeX Font Info:    ... okay on input line 179.
+LaTeX Font Info:    Try loading font information for U+msa on input line 179.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 3.
+LaTeX Font Info:    Try loading font information for U+msb on input line 179.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+stmry on input line 3.
+LaTeX Font Info:    Try loading font information for U+stmry on input line 179.
+
 
 (/usr/share/texlive/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \AtBeginShipoutBox=\box62
-Package hyperref Info: Link coloring ON on input line 3.
+Package hyperref Info: Link coloring ON on input line 179.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -800,13 +801,13 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count143
 )
-LaTeX Info: Redefining \ref on input line 3.
-LaTeX Info: Redefining \pageref on input line 3.
-LaTeX Info: Redefining \nameref on input line 3.
+LaTeX Info: Redefining \ref on input line 179.
+LaTeX Info: Redefining \pageref on input line 179.
+LaTeX Info: Redefining \nameref on input line 179.
 
-(./skeleton-bare.out) (./skeleton-bare.out)
+(./reopn.out) (./reopn.out)
 \@outlinefile=\write4
-\openout4 = `skeleton-bare.out'.
+\openout4 = `reopn.out'.
 
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
@@ -837,63 +838,446 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-ABD: EveryShipout initializing macros
-Overfull \hbox (1.94939pt too wide) in paragraph at lines 26--27
-[][]\OT1/cmr/bx/n/10 Theorem 1.4. []\OT1/cmr/m/it/10 Let $\OML/cmm/m/it/10 L \O
-MS/cmsy/m/n/10 a \OML/cmm/m/it/10 R [] [] \OT1/cmr/bx/n/10 A \OMS/cmsy/m/n/10 !
- \OT1/cmr/bx/n/10 X$ \OT1/cmr/m/it/10 be an ad-junc-tion be-tween topoi. Then $
-\OML/cmm/m/it/10 L[][]$
+ABD: EveryShipout initializing macros [1{/var/lib/texmf/fonts/map/pdftex/updmap
+/pdftex.map}]
+Package hyperref Info: bookmark level for unknown todo defaults to 0 on input l
+ine 340.
+ [2]
+<img/diag_open-graph-morph_reopn.pdf, id=54, 117.85832pt x 58.52063pt>
+File: img/diag_open-graph-morph_reopn.pdf Graphic file (type pdf)
+
+<use img/diag_open-graph-morph_reopn.pdf>
+Package pdftex.def Info: img/diag_open-graph-morph_reopn.pdf used on input line
+ 402.
+(pdftex.def)             Requested size: 117.85802pt x 58.52048pt.
+
+Overfull \hbox (6.88945pt too wide) in paragraph at lines 406--414
+[]\OT1/cmr/m/n/10 Having two cat-e-gories fea-tur-ing open graphs---one as ar-r
+ows, the other as objects---
  []
 
-[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
 
-LaTeX Warning: Reference `df:ArrCatRwrt' on page 3 undefined on input line 206.
+LaTeX Warning: Marginpar on page 3 moved.
+
+[3 <./img/diag_open-graph-morph_reopn.pdf>]
+<img/diag_rw_pushout-comp.pdf, id=82, 69.06001pt x 70.16815pt>
+File: img/diag_rw_pushout-comp.pdf Graphic file (type pdf)
+
+<use img/diag_rw_pushout-comp.pdf>
+Package pdftex.def Info: img/diag_rw_pushout-comp.pdf used on input line 449.
+(pdftex.def)             Requested size: 69.05983pt x 70.16797pt.
+
+<img/diag_rw_derived-rule.pdf, id=83, 125.87929pt x 70.16815pt>
+File: img/diag_rw_derived-rule.pdf Graphic file (type pdf)
+
+<use img/diag_rw_derived-rule.pdf>
+Package pdftex.def Info: img/diag_rw_derived-rule.pdf used on input line 456.
+(pdftex.def)             Requested size: 125.87897pt x 70.16797pt.
+
+Overfull \hbox (19.48276pt too wide) in paragraph at lines 490--495
+\OT1/cmr/m/it/10 cally carte-sian closed. There is a sym-met-ric monoidal cat-e
+-gory $\OT1/cmr/m/n/10 ([]([](\OT1/cmr/bx/n/10 A\OT1/cmr/m/n/10 ))\OML/cmm/m/it
+/10 ; \OMS/cmsy/m/n/10 
+\OML/cmm/m/it/10 ; I; ^^\\OT1/cmr/m/n/10 )$
+ []
+
+[4 <./img/diag_rw_pushout-comp.pdf> <./img/diag_rw_derived-rule.pdf>]
+
+LaTeX Warning: Reference `lem_IRewrite-obcat' on page 5 undefined on input line
+ 527.
+
+<img/diag_nlr_dbl-rewrite-2cell.pdf, id=104, 144.23587pt x 127.9952pt>
+File: img/diag_nlr_dbl-rewrite-2cell.pdf Graphic file (type pdf)
+
+<use img/diag_nlr_dbl-rewrite-2cell.pdf>
+Package pdftex.def Info: img/diag_nlr_dbl-rewrite-2cell.pdf used on input line 
+537.
+(pdftex.def)             Requested size: 144.2355pt x 127.99487pt.
+
+<img/diag_nlr_dbl-rewrite-tensor.pdf, id=105, 379.96254pt x 73.5799pt>
+File: img/diag_nlr_dbl-rewrite-tensor.pdf Graphic file (type pdf)
+
+<use img/diag_nlr_dbl-rewrite-tensor.pdf>
+Package pdftex.def Info: img/diag_nlr_dbl-rewrite-tensor.pdf used on input line
+ 542.
+(pdftex.def)             Requested size: 379.96161pt x 73.5797pt.
+
+Overfull \hbox (54.73944pt too wide) in paragraph at lines 542--543
+ [] 
+ []
+
+<img/diag_nlr_dbl-rewrite-braiding.pdf, id=106, 352.00209pt x 73.5799pt>
+File: img/diag_nlr_dbl-rewrite-braiding.pdf Graphic file (type pdf)
+
+<use img/diag_nlr_dbl-rewrite-braiding.pdf>
+Package pdftex.def Info: img/diag_nlr_dbl-rewrite-braiding.pdf used on input li
+ne 547.
+(pdftex.def)             Requested size: 352.00122pt x 73.5797pt.
+
+Overfull \hbox (26.77905pt too wide) in paragraph at lines 547--548
+ [] 
+ []
+
+<img/diag_nlr_preorder-interchange.pdf, id=107, 194.01985pt x 156.4475pt>
+File: img/diag_nlr_preorder-interchange.pdf Graphic file (type pdf)
+
+<use img/diag_nlr_preorder-interchange.pdf>
+Package pdftex.def Info: img/diag_nlr_preorder-interchange.pdf used on input li
+ne 556.
+(pdftex.def)             Requested size: 194.01938pt x 156.4471pt.
+
+Underfull \vbox (badness 1681) has occurred while \output is active []
+
+ [5 <./img/diag_nlr_dbl-rewrite-2cell.pdf> <./img/diag_nlr_dbl-rewrite-tensor.p
+df> <./img/diag_nlr_dbl-rewrite-braiding.pdf>]
+<img/diag_nlr_preorder-tensor-compose.pdf, id=154, 302.02638pt x 144.72067pt>
+File: img/diag_nlr_preorder-tensor-compose.pdf Graphic file (type pdf)
+
+<use img/diag_nlr_preorder-tensor-compose.pdf>
+Package pdftex.def Info: img/diag_nlr_preorder-tensor-compose.pdf used on input
+ line 560.
+(pdftex.def)             Requested size: 302.02563pt x 144.7203pt.
+
+<img/diag_nlr_preorder-compose-tensor.pdf, id=155, 294.02649pt x 144.72067pt>
+File: img/diag_nlr_preorder-compose-tensor.pdf Graphic file (type pdf)
+
+<use img/diag_nlr_preorder-compose-tensor.pdf>
+Package pdftex.def Info: img/diag_nlr_preorder-compose-tensor.pdf used on input
+ line 564.
+(pdftex.def)             Requested size: 294.02576pt x 144.7203pt.
+ [6 <./img/diag_nlr_preorder-interchange.pdf> <./img/diag_nlr_preorder-tensor-c
+ompose.pdf> <./img/diag_nlr_preorder-compose-tensor.pdf>]
+Overfull \hbox (14.02853pt too wide) in paragraph at lines 607--611
+[]\OT1/cmr/m/it/10 The dou-ble cat-e-gory $\U/msb/m/n/10 R[][]$ \OT1/cmr/m/it/1
+0 con-sists of the ob-ject cat-e-gory $\U/msb/m/n/10 R[] [][]\OT1/cmr/m/n/10 = 
+[]([](\OT1/cmr/bx/n/10 A\OT1/cmr/m/n/10 ))$\OT1/cmr/m/it/10 ;
+ []
+
+<img/diag_nlr_dbl-rewrite-unit-functor.pdf, id=213, 122.59702pt x 75.38263pt>
+File: img/diag_nlr_dbl-rewrite-unit-functor.pdf Graphic file (type pdf)
+
+<use img/diag_nlr_dbl-rewrite-unit-functor.pdf>
+Package pdftex.def Info: img/diag_nlr_dbl-rewrite-unit-functor.pdf used on inpu
+t line 612.
+(pdftex.def)             Requested size: 122.5967pt x 75.38243pt.
+
+<img/diag_nlr_dbl-rewrite-source-functor.pdf, id=214, 122.59702pt x 71.08958pt>
+File: img/diag_nlr_dbl-rewrite-source-functor.pdf Graphic file (type pdf)
+<use img/diag_nlr_dbl-rewrite-source-functor.pdf>
+Package pdftex.def Info: img/diag_nlr_dbl-rewrite-source-functor.pdf used on in
+put line 616.
+(pdftex.def)             Requested size: 122.5967pt x 71.0894pt.
+
+<img/diag_nlr_dbl-rewrite-target-functor.pdf, id=215, 116.34164pt x 71.08958pt>
+File: img/diag_nlr_dbl-rewrite-target-functor.pdf Graphic file (type pdf)
+<use img/diag_nlr_dbl-rewrite-target-functor.pdf>
+Package pdftex.def Info: img/diag_nlr_dbl-rewrite-target-functor.pdf used on in
+put line 618.
+(pdftex.def)             Requested size: 116.34135pt x 71.0894pt.
+
+<img/diag_nlr_dbl-rewrite-composition-functor.pdf, id=216, 305.84062pt x 72.589
+19pt>
+File: img/diag_nlr_dbl-rewrite-composition-functor.pdf Graphic file (type pdf)
+ <use img/diag_nlr_dbl-rewrite-composition-functor.pdf>
+Package pdftex.def Info: img/diag_nlr_dbl-rewrite-composition-functor.pdf used 
+on input line 622.
+(pdftex.def)             Requested size: 305.83987pt x 72.58899pt.
+File: img/diag_nlr_dbl-rewrite-tensor.pdf Graphic file (type pdf)
+
+<use img/diag_nlr_dbl-rewrite-tensor.pdf>
+Package pdftex.def Info: img/diag_nlr_dbl-rewrite-tensor.pdf used on input line
+ 628.
+(pdftex.def)             Requested size: 379.96161pt x 73.5797pt.
+
+Overfull \hbox (19.96161pt too wide) detected at line 629
+[]
+ []
+
+File: img/diag_nlr_dbl-rewrite-braiding.pdf Graphic file (type pdf)
+<use img/diag_nlr_dbl-rewrite-braiding.pdf>
+Package pdftex.def Info: img/diag_nlr_dbl-rewrite-braiding.pdf used on input li
+ne 636.
+(pdftex.def)             Requested size: 352.00122pt x 73.5797pt.
+
+<img/diag_nlr_dbl-rewrite-deconstructed-composite.pdf, id=217, 220.48172pt x 11
+3.76804pt>
+File: img/diag_nlr_dbl-rewrite-deconstructed-composite.pdf Graphic file (type p
+df)
+ <use img/diag_nlr_dbl-rewrite-deconstructed-composite.pdf>
+Package pdftex.def Info: img/diag_nlr_dbl-rewrite-deconstructed-composite.pdf u
+sed on input line 644.
+(pdftex.def)             Requested size: 220.48117pt x 113.76775pt.
+ [7 <./img/diag_nlr_dbl-rewrite-unit-functor.pdf> <./img/diag_nlr_dbl-rewrite-s
+ource-functor.pdf> <./img/diag_nlr_dbl-rewrite-target-functor.pdf> <./img/diag_
+nlr_dbl-rewrite-composition-functor.pdf>]
+
+LaTeX Warning: Reference `lem_IRewrite-obcat' on page 8 undefined on input line
+ 657.
 
 
-Package hyperref Info: bookmark level for unknown todo defaults to 0 on input l
-ine 244.
-[3] [4]
+LaTeX Warning: Reference `lem_IRewrite-arcat' on page 8 undefined on input line
+ 658.
 
-LaTeX Warning: Reference `df:ArrCatMonRwrt' on page 5 undefined on input line 3
-60.
+<img/diag_nlr_dbl-rewrite-interchange.pdf, id=286, 163.34726pt x 49.56718pt>
+File: img/diag_nlr_dbl-rewrite-interchange.pdf Graphic file (type pdf)
 
-[5]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 376.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 376.
- (./skeleton-bare.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 376.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 376.
-Package rerunfilecheck Info: File `skeleton-bare.out' has not changed.
-(rerunfilecheck)             Checksum: C3BE5C8C9ECB2A9538FEF0D25EDCC47F;247.
+<use img/diag_nlr_dbl-rewrite-interchange.pdf>
+Package pdftex.def Info: img/diag_nlr_dbl-rewrite-interchange.pdf used on input
+ line 665.
+(pdftex.def)             Requested size: 163.34685pt x 49.56706pt.
+LaTeX Font Info:    Try loading font information for U+euf on input line 667.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/ueuf.fd
+File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
+)
+<img/diag_nlr_dbl-rewrite-interchange-2cell.pdf, id=287, 273.51283pt x 116.7873
+1pt>
+File: img/diag_nlr_dbl-rewrite-interchange-2cell.pdf Graphic file (type pdf)
+ <use img/diag_nlr_dbl-rewrite-interchange-2cell.pdf>
+Package pdftex.def Info: img/diag_nlr_dbl-rewrite-interchange-2cell.pdf used on
+ input line 669.
+(pdftex.def)             Requested size: 273.51216pt x 116.78702pt.
+
+<img/diag_nlr_dbl-rewrite-tensor-compose.pdf, id=290, 276.10051pt x 116.77829pt
+>
+File: img/diag_nlr_dbl-rewrite-tensor-compose.pdf Graphic file (type pdf)
+ <use img/diag_nlr_dbl-rewrite-tensor-compose.pdf>
+Package pdftex.def Info: img/diag_nlr_dbl-rewrite-tensor-compose.pdf used on in
+put line 681.
+(pdftex.def)             Requested size: 276.09982pt x 116.778pt.
+
+Underfull \vbox (badness 1448) has occurred while \output is active []
+
+ [8 <./img/diag_nlr_dbl-rewrite-deconstructed-composite.pdf> <./img/diag_nlr_db
+l-rewrite-interchange.pdf> <./img/diag_nlr_dbl-rewrite-interchange-2cell.pdf>]
+<img/diag_nlr_dbl-rewrite-compose-tensor.pdf, id=340, 276.10051pt x 116.25934pt
+>
+File: img/diag_nlr_dbl-rewrite-compose-tensor.pdf Graphic file (type pdf)
+ <use img/diag_nlr_dbl-rewrite-compose-tensor.pdf>
+Package pdftex.def Info: img/diag_nlr_dbl-rewrite-compose-tensor.pdf used on in
+put line 685.
+(pdftex.def)             Requested size: 276.09982pt x 116.25905pt.
+
+<img/diag_nlr_dbl-rewrite-pushout-competetor.pdf, id=342, 294.15796pt x 107.713
+41pt>
+File: img/diag_nlr_dbl-rewrite-pushout-competetor.pdf Graphic file (type pdf)
+ <use img/diag_nlr_dbl-rewrite-pushout-competetor.pdf>
+Package pdftex.def Info: img/diag_nlr_dbl-rewrite-pushout-competetor.pdf used o
+n input line 691.
+(pdftex.def)             Requested size: 294.15724pt x 107.71313pt.
+
+
+LaTeX Warning: Reference `lem_IRewrite-arcat-isSym' on page 9 undefined on inpu
+t line 700.
+
+
+LaTeX Warning: Reference `lem_IRewrite-arcat-isSym' on page 9 undefined on inpu
+t line 707.
+
+
+<img/diag_nlr_dbl-rewrite-unit-functor-2cell.pdf, id=345, 213.76563pt x 73.5718
+5pt>
+File: img/diag_nlr_dbl-rewrite-unit-functor-2cell.pdf Graphic file (type pdf)
+ <use img/diag_nlr_dbl-rewrite-unit-functor-2cell.pdf>
+Package pdftex.def Info: img/diag_nlr_dbl-rewrite-unit-functor-2cell.pdf used o
+n input line 710.
+(pdftex.def)             Requested size: 213.76509pt x 73.57166pt.
+ [9 <./img/diag_nlr_dbl-rewrite-tensor-compose.pdf> <./img/diag_nlr_dbl-rewrite
+-compose-tensor.pdf> <./img/diag_nlr_dbl-rewrite-pushout-competetor.pdf> <./img
+/diag_nlr_dbl-rewrite-unit-functor-2cell.pdf>]
+<img/diag_nlr_dbl-rewrite-companion1.pdf, id=418, 111.2938pt x 106.68558pt>
+File: img/diag_nlr_dbl-rewrite-companion1.pdf Graphic file (type pdf)
+
+<use img/diag_nlr_dbl-rewrite-companion1.pdf>
+Package pdftex.def Info: img/diag_nlr_dbl-rewrite-companion1.pdf used on input 
+line 728.
+(pdftex.def)             Requested size: 111.29352pt x 106.68532pt.
+
+<img/diag_nlr_dbl-rewrite-companion2.pdf, id=419, 108.28354pt x 103.89014pt>
+File: img/diag_nlr_dbl-rewrite-companion2.pdf Graphic file (type pdf)
+
+<use img/diag_nlr_dbl-rewrite-companion2.pdf>
+Package pdftex.def Info: img/diag_nlr_dbl-rewrite-companion2.pdf used on input 
+line 729.
+(pdftex.def)             Requested size: 108.28326pt x 103.88986pt.
+
+
+LaTeX Warning: Reference `thm_Rewrite_isSMC ' on page 10 undefined on input lin
+e 786.
+
+[10 <./img/diag_nlr_dbl-rewrite-companion1.pdf> <./img/diag_nlr_dbl-rewrite-com
+panion2.pdf>]
+
+LaTeX Warning: Reference `lem_Rewrite_ArrowsAreAdjoint' on page 11 undefined on
+ input line 808.
+
+
+Overfull \hbox (5.2785pt too wide) in paragraph at lines 806--809
+[]\OT1/cmr/m/n/10 From that co-com-mu-ta-tive comonoid struc-ture, we ob-tain t
+he com-mu-ta-tive monoid
+ []
+
+<img/diag_nlr_bi-rewrite-frobenius.pdf, id=463, 157.85374pt x 70.40503pt>
+File: img/diag_nlr_bi-rewrite-frobenius.pdf Graphic file (type pdf)
+
+<use img/diag_nlr_bi-rewrite-frobenius.pdf>
+Package pdftex.def Info: img/diag_nlr_bi-rewrite-frobenius.pdf used on input li
+ne 812.
+(pdftex.def)             Requested size: 157.85335pt x 70.40485pt.
+
+<img/diag_nlr_bi-rewrite-lax-comul.pdf, id=464, 172.67009pt x 71.2522pt>
+File: img/diag_nlr_bi-rewrite-lax-comul.pdf Graphic file (type pdf)
+
+<use img/diag_nlr_bi-rewrite-lax-comul.pdf>
+Package pdftex.def Info: img/diag_nlr_bi-rewrite-lax-comul.pdf used on input li
+ne 818.
+(pdftex.def)             Requested size: 172.66965pt x 71.25201pt.
+
+<img/diag_nlr_bi-rewrite-lax-counit.pdf, id=465, 75.52014pt x 69.14131pt>
+File: img/diag_nlr_bi-rewrite-lax-counit.pdf Graphic file (type pdf)
+
+<use img/diag_nlr_bi-rewrite-lax-counit.pdf>
+Package pdftex.def Info: img/diag_nlr_bi-rewrite-lax-counit.pdf used on input l
+ine 824.
+(pdftex.def)             Requested size: 75.51994pt x 69.14113pt.
+ [11 <./img/diag_nlr_bi-rewrite-frobenius.pdf> <./img/diag_nlr_bi-rewrite-lax-c
+omul.pdf> <./img/diag_nlr_bi-rewrite-lax-counit.pdf>]
+
+LaTeX Warning: Marginpar on page 12 moved.
+
+
+LaTeX Warning: Reference `lem_IRewrite-obcat' on page 12 undefined on input lin
+e 869.
+
+
+Overfull \hbox (9.84512pt too wide) in paragraph at lines 865--870
+[][]\OT1/cmr/bx/n/10 Definition 5.1. []\OT1/cmr/m/n/10 Con-sider, again, a co-c
+arte-sian cat-e-gory with pull-backs $(\OT1/cmr/bx/n/10 A\OML/cmm/m/it/10 ; \OT
+1/cmr/m/n/10 +\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 0[]\OML/cmm/m/it/10 ; ^^\[]\OT
+1/cmr/m/n/10 )$
+ []
+
+<img/diag_lr_dbl-mon-rewrite-2cell.pdf, id=511, 155.90446pt x 127.9952pt>
+File: img/diag_lr_dbl-mon-rewrite-2cell.pdf Graphic file (type pdf)
+
+<use img/diag_lr_dbl-mon-rewrite-2cell.pdf>
+Package pdftex.def Info: img/diag_lr_dbl-mon-rewrite-2cell.pdf used on input li
+ne 889.
+(pdftex.def)             Requested size: 155.90407pt x 127.99487pt.
+
+<img/diag_lr_dbl-rewrite-tensor.pdf, id=512, 342.97333pt x 73.5799pt>
+File: img/diag_lr_dbl-rewrite-tensor.pdf Graphic file (type pdf)
+
+<use img/diag_lr_dbl-rewrite-tensor.pdf>
+Package pdftex.def Info: img/diag_lr_dbl-rewrite-tensor.pdf used on input line 
+895.
+(pdftex.def)             Requested size: 342.97249pt x 73.5797pt.
+
+Overfull \hbox (17.75032pt too wide) in paragraph at lines 895--896
+ [] 
+ []
+
+<img/diag_lr_dbl-rewrite-braiding.pdf, id=513, 352.00209pt x 73.5799pt>
+File: img/diag_lr_dbl-rewrite-braiding.pdf Graphic file (type pdf)
+
+<use img/diag_lr_dbl-rewrite-braiding.pdf>
+Package pdftex.def Info: img/diag_lr_dbl-rewrite-braiding.pdf used on input lin
+e 900.
+(pdftex.def)             Requested size: 352.00122pt x 73.5797pt.
+
+Overfull \hbox (26.77905pt too wide) in paragraph at lines 900--901
+ [] 
+ []
+
+[12 <./img/diag_lr_dbl-mon-rewrite-2cell.pdf> <./img/diag_lr_dbl-rewrite-tensor
+.pdf> <./img/diag_lr_dbl-rewrite-braiding.pdf>]
+<img/diag_lr_dbl-mon-rewrite-unit-functor.pdf, id=559, 122.59702pt x 75.38263pt
+>
+File: img/diag_lr_dbl-mon-rewrite-unit-functor.pdf Graphic file (type pdf)
+ <use img/diag_lr_dbl-mon-rewrite-unit-functor.pdf>
+Package pdftex.def Info: img/diag_lr_dbl-mon-rewrite-unit-functor.pdf used on i
+nput line 939.
+(pdftex.def)             Requested size: 122.5967pt x 75.38243pt.
+
+<img/diag_lr_dbl-mon-rewrite-source-functor.pdf, id=560, 122.59702pt x 71.08958
+pt>
+File: img/diag_lr_dbl-mon-rewrite-source-functor.pdf Graphic file (type pdf)
+ <use img/diag_lr_dbl-mon-rewrite-source-functor.pdf>
+Package pdftex.def Info: img/diag_lr_dbl-mon-rewrite-source-functor.pdf used on
+ input line 944.
+(pdftex.def)             Requested size: 122.5967pt x 71.0894pt.
+
+<img/diag_lr_dbl-mon-rewrite-target-functor.pdf, id=561, 116.34164pt x 71.08958
+pt>
+File: img/diag_lr_dbl-mon-rewrite-target-functor.pdf Graphic file (type pdf)
+ <use img/diag_lr_dbl-mon-rewrite-target-functor.pdf>
+Package pdftex.def Info: img/diag_lr_dbl-mon-rewrite-target-functor.pdf used on
+ input line 946.
+(pdftex.def)             Requested size: 116.34135pt x 71.0894pt.
+
+<img/diag_lr_dbl-mon-rewrite-composition-functor.pdf, id=562, 305.84062pt x 72.
+58919pt>
+File: img/diag_lr_dbl-mon-rewrite-composition-functor.pdf Graphic file (type pd
+f)
+ <use img/diag_lr_dbl-mon-rewrite-composition-functor.pdf>
+Package pdftex.def Info: img/diag_lr_dbl-mon-rewrite-composition-functor.pdf us
+ed on input line 952.
+(pdftex.def)             Requested size: 305.83987pt x 72.58899pt.
+
+
+LaTeX Warning: Reference `thm_rewrite-isofibrant' on page 13 undefined on input
+ line 970.
+
+[13 <./img/diag_lr_dbl-mon-rewrite-unit-functor.pdf> <./img/diag_lr_dbl-mon-rew
+rite-source-functor.pdf> <./img/diag_lr_dbl-mon-rewrite-target-functor.pdf> <./
+img/diag_lr_dbl-mon-rewrite-composition-functor.pdf>]
+
+LaTeX Warning: Reference `df:ArrCatMonRwrt' on page 14 undefined on input line 
+1025.
+
+(./reopn.bbl) [14]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1037.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1037.
+ (./reopn.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1037.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1037.
+
+Package rerunfilecheck Info: File `reopn.out' has not changed.
+(rerunfilecheck)             Checksum: 0A2C3B43309614F8B920F9894AFDF15A;329.
 
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 376.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1037.
  ) 
 Here is how much of TeX's memory you used:
- 22602 strings out of 493029
- 444872 string characters out of 6136234
- 538290 words of memory out of 5000000
- 25542 multiletter control sequences out of 15000+600000
- 11731 words of font info for 46 fonts, out of 8000000 for 9000
+ 23061 strings out of 493029
+ 457150 string characters out of 6136234
+ 541853 words of memory out of 5000000
+ 25935 multiletter control sequences out of 15000+600000
+ 12439 words of font info for 49 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
- 62i,11n,76p,934b,743s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,12n,76p,914b,872s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texl
 ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
-ts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/symbols/msbm10.pfb>
-Output written on skeleton-bare.pdf (5 pages, 136720 bytes).
+xmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cms
+y5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
+Output written on reopn.pdf (14 pages, 287454 bytes).
 PDF statistics:
- 134 PDF objects out of 1000 (max. 8388607)
- 114 compressed objects within 2 object streams
- 38 named destinations out of 1000 (max. 500000)
- 45 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 701 PDF objects out of 1000 (max. 8388607)
+ 629 compressed objects within 7 object streams
+ 61 named destinations out of 1000 (max. 500000)
+ 221 words of extra memory for PDF output out of 10000 (max. 10000000)
 

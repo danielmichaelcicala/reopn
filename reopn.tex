@@ -1,5 +1,4 @@
-\message{ !name(reopn.tex)}\do
-cumentclass[]{amsart}
+\documentclass[]{amsart}
 
 %
 % PACKAGES
@@ -10,6 +9,7 @@ cumentclass[]{amsart}
 \usepackage{amsthm} 
 \usepackage{amsmath} 
 \usepackage{caption}
+%\usepackage{natbib}
 \usepackage[inline]{enumitem}
 	\setlist{itemsep=0em, topsep=0em, parsep=0em}
 	\setlist[enumerate]{label=(\alph*)}
@@ -177,9 +177,6 @@ cumentclass[]{amsart}
 }
 
 \begin{document} 
-
-\message{ !name(reopn.tex) !offset(-3) }
- 
 
 \section{Introduction} \label{sec:introduction} 
 
@@ -489,7 +486,6 @@ In the following section, we generalize open graphs to `open objects' and constr
   rewriting. subgoals: define object // arrow categories }
 
 % object category of doulbe Rewrite
-
 \begin{lemma} \label{thm_dbl-rewr-obcat}
 
   Let $ (\A , + , 0_\A , \tau_\A ) $ be a cocartesian category with
@@ -528,7 +524,6 @@ In the following section, we generalize open graphs to `open objects' and constr
 \end{proof}
 
 % arrow category of double Rewrite
-
 \begin{lemma} \label{thm:dlb-rewr-arrcat}
   
   Let $ (\A , + , 0_\A , \tau_\A ) $ be as in Lemma
@@ -558,7 +553,6 @@ In the following section, we generalize open graphs to `open objects' and constr
     \end{itemize}
     
 \end{lemma}
-  
 \begin{proof}
   
   The only non-trivial thing to check is that the tensor and
@@ -580,13 +574,11 @@ In the following section, we generalize open graphs to `open objects' and constr
 \end{proof}
 
 % arrow cat preorder is symmetric
-
 \begin{lemma} \label{thm:preord-symm}
   
   The preorder$ \P $ is symmetric.
   
 \end{lemma}
-
 \begin{proof}
   
   Any arrow $ ( La \to x \gets La' ) \leq ( Lc \to z \gets Lc' ) $ in
@@ -597,7 +589,6 @@ In the following section, we generalize open graphs to `open objects' and constr
 \end{proof}
 
 % casual description of double cat Rewrite
-
 \begin{comment} % casual description of IRewrite_L
 
   There is a symmetric monoidal double category $ \RRewrite_{L} $ with
@@ -612,7 +603,6 @@ In the following section, we generalize open graphs to `open objects' and constr
 \end{comment}
 
 % double cat Rewrite is SMC
-
 \begin{theorem} \label{thm:dbl-rewr-smc}
 
   Let $ (\A , + , 0_\A , \tau_\A ) $ and
@@ -654,7 +644,6 @@ In the following section, we generalize open graphs to `open objects' and constr
   \]
          
 \end{theorem}
-
 \begin{proof}
   
   Composition is functorial because $ \RR_1 $ is a preorder. It is
@@ -685,7 +674,7 @@ In the following section, we generalize open graphs to `open objects' and constr
   \]
   we construct an invertible 2-cell (denoted $ \mathfrak{X} $ by
   Shulman) of form
-  \begin{equation} \label{eq:dlb-rewr-intchng-2cell}
+  \begin{equation}\label{eq:dlb-rewr-intchng-2cell}
     \diagram{diag_nlr_dbl-rewrite-interchange-2cell}
   \end{equation}
   The cospans along the top and bottom of
@@ -732,7 +721,6 @@ In the following section, we generalize open graphs to `open objects' and constr
 \end{proof}
 
 % double cat Rewrite is fibrant
-
 \begin{theorem} \label{thm:dbl-rewr-fibrant}
 
   The double category $ \RRewrite_L $ is fibrant.
@@ -811,7 +799,7 @@ In the following section, we generalize open graphs to `open objects' and constr
 
 % bicat Rewrite is bicat of rels
 
-\begin{theorem} \label{thm:bicat-rewr-bicat-rel}
+ \begin{theorem} \label{thm:bicat-rewr-bicat-rel}
 
    Let $ (\A , + , 0_\A , \tau_\A ) $ and
    $ (\X , + , 0_\X , \tau_\X ) $ be categories that are cocartesian
@@ -1020,10 +1008,17 @@ In the following section, we generalize open graphs to `open objects' and constr
 \end{lemma}
 
 \begin{proof}
+  
+  To show that $\MMonRewrite_L$ is a double category follows closely
+  to the argument from \ref{thm:dbl-rewr-smc}. An exception is the
+  portion showing that composition is functorial, which follows from
+  previous work \cite[Lemma 4.4]{sp-csp-top}. It remains to show that
+  $\MMonRewrite_L$ is symmetric monoidal.
 
-  This double category is equivalent to the symmetric monoidal double
-  category $\MMonSpCsp{T}$ introduced in Lemma 4.4 of
-  \cite{sp-csp-top}.
+  Lemmas \ref{def:mon-rewrite-obcat} and \ref{thm:mon-rewrite-arrcat}
+  show that the object and arrow categories are symmetric monoidal. To
+  see that the composition functor interchanges with tensoring   
+  
   
 \end{proof}
 
@@ -1032,7 +1027,10 @@ In the following section, we generalize open graphs to `open objects' and constr
   The double category $ \MMonRewrite{L} $ is isofibrant.
 \end{theorem}
 \begin{proof}
-  See Lemma 4.5 of \cite{sp-csp-top}
+  A companion for the vertical 1-cell $ a \xto{f} b \xgets{g} c $ is
+  the same as used in Theorem \ref{thm_rewrite-isofibrant}.
+	
+	\edit{remains to show the equations hold}
 \end{proof}
 
 % bi MonRewrite SMCC
@@ -1050,7 +1048,6 @@ In the following section, we generalize open graphs to `open objects' and constr
         $ \otimes_{\X} $ are coproducts, then the symmetric monoidal
         bicategory $ \MonRewrite{L} $ is compact closed.
 \end{theorem}
-
 
 % generating a grammar
 \begin{theorem}
@@ -1099,4 +1096,3 @@ In the following section, we generalize open graphs to `open objects' and constr
 \bibliographystyle{ieeetr}
 
 \end{document}
-\message{ !name(reopn.tex) !offset(-1102) }

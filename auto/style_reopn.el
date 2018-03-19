@@ -3,12 +3,12 @@
  (lambda ()
    (TeX-add-to-alist 'LaTeX-provided-package-options
                      '(("enumitem" "inline") ("xcolor" "dvipsnames") ("natbib" "numbers")))
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperref")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperimage")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperbaseurl")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "nolinkurl")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "url")
    (add-to-list 'LaTeX-verbatim-macros-with-braces-local "path")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "url")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "nolinkurl")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperbaseurl")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperimage")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperref")
    (add-to-list 'LaTeX-verbatim-macros-with-delims-local "path")
    (TeX-run-style-hooks
     "amsfonts"
@@ -83,7 +83,18 @@
     "Rewrite"
     "RRewrite"
     "MonRewrite"
-    "MMonRewrite")
+    "MMonRewrite"
+    "Hom"
+    "id"
+    "ob"
+    "arr"
+    "im"
+    "Aut"
+    "Bij"
+    "Sub"
+    "colim")
+   (LaTeX-add-environments
+    '("exposition" 1))
    (LaTeX-add-amsthm-newtheorems
     "theorem"
     "lemma"

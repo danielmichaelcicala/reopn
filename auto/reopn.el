@@ -86,20 +86,34 @@
     "Rewrite"
     "RRewrite"
     "MonRewrite"
-    "MMonRewrite")
+    "MMonRewrite"
+    "Hom"
+    "id"
+    "ob"
+    "arr"
+    "im"
+    "Aut"
+    "Bij"
+    "Sub"
+    "colim")
    (LaTeX-add-labels
     "sec:introduction"
     "sec:motivating-example"
     "df:OpenGraph"
+    "sec:open-objects"
+    "df:struct-cospan"
+    "df:open-objects"
+    "thm:open-obj-ptwise-limits"
+    "thm:OpenObTopos"
     "sec:double-push-rewr"
-    "df_rw_adhesive-category"
-    "thm_rw_topoi-adhesive"
-    "thm_rw_category-StrCsp-adhsv"
-    "df_rw_rewrite-rule"
+    "df:dpo_adhesive-category"
+    "thm:dpo_topoi-adhesive"
+    "thm:dpo_category-StrCsp-adhsv"
+    "df:dpo_rewrite-rule"
     "df_rw_pushout-complement"
-    "df_rw_derived-rewrite-rule"
-    "df_rw_grammar-and-language"
-    "thm_rw_open-objects-language"
+    "df:dpo_derived-rewrite-rule"
+    "df:dpo_grammar-and-language"
+    "thm:dpo_open-objects-language"
     "sec:non-linear-rewriting"
     "thm_dbl-rewr-obcat"
     "thm:dlb-rewr-arrcat"
@@ -114,12 +128,18 @@
     "thm:bit-rewr-comp-closed"
     "thm:bicat-rewr-freyds-modular"
     "thm:bicat-rewr-function-compl"
+    "df:nl_gramr-gen-dblcat"
+    "thm:nl_rewr-iff-2cell"
     "sec:linear-rewriting"
     "def:mon-rewrite-obcat"
     "thm:mon-rewrite-arrcat"
     "thm:dbl-mon-rewr-smc"
-    "thm_dbl-mon-rewrite_isIsofib"
-    "thm_bi-mon-rewrite-isSMCC")
+    "thm:dbl-mon-rewrite_isofibrant"
+    "thm:bi-mon-rewrite-scmm"
+    "df:gramr-gen-dbl-cat"
+    "sec:postable")
+   (LaTeX-add-environments
+    '("exposition" 1))
    (LaTeX-add-bibliographies
     "bib_reopn")
    (LaTeX-add-amsthm-newtheorems

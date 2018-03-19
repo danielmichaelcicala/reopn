@@ -1,0 +1,54 @@
+%
+% rewriting open objects
+% open objects
+%
+
+% --- comment out when compiling ---
+%\input{file_preamble_reopn} % input preamble
+%\bibliography{} % input bibliograph	
+
+\documentclass[master]{subfiles}
+\begin{document}
+
+\section{Open objects} \label{sec:OpenObjects}
+
+Our definition of an open graph is ripe for generalization.  In the present section, we start by presenting \emph{structured cospans} as defined by Courser. 
+	\todo{cite}
+We then use structured cospans to generalize open graphs to \emph{open objects}.  The main result of this section is that the category of open objects and their morphisms form a topos.  
+
+\begin{df} \label{df:OpenObject}
+	Fix a functor $ L \from \A \to \X $ where $ \X $ has pushouts. An \textbf{$ L $-structured cospan} is a cospan of the form $ L a \to x \gets L b $.   These form the horizontal arrows $ a \to b $ of a double category $ \Cospan_L $ whose objects and vertical arrows are those of $ \A $,  and 2-arrows are commuting diagrams
+	\[
+		\diagram{diag_structured-cospan-arrow}
+	\]
+\end{df}
+
+\todo{put useful stuff from kenny here}
+
+Structured cospans are just a bit too general for our needs.  Our goals are to abstract the 
+
+We will refer to $ \A $ as the category of \emph{boundary types} and to $ \X $ as the category of \emph{object types}.
+
+\begin{remark}
+	It is not yet apparent why we ask to pushout object types. This will play an important role in connecting open objects together, as we did with open graphs.
+\end{remark}
+
+\begin{remark}
+	It may not seem that this construction warrants a definition, as we are merely renaming a cospan.  A fairer portrayal is not that we are renaming a cospan, but that we are reframing a cospan. Calling such a thing an ``open object'' places us into a network theory context, whereas ``cospan'' lacks such connotative powers.  There is a precedence for this in category theory, particularly in naming functors of a certain sort.  For example, a topological quantum field theory is defined to be a functor of a certain sort.  
+\end{remark}
+
+The idea behind an structured cospan $ L a \to x \gets L a' $ is that $ x $ is the ``closed'' object which we open to interaction with other open objects via its \emph{inputs} $ L a $ and \emph{outputs} $ L a' $.  Specifically, the way in which a pair of open objects can interact is by fusing together to form a new open object.  This is modeled by setting open objects as arrows in a category.  The fusion of two open objects into one is then composition.  But composing cospans requires pushouts, so we now only 
+
+\begin{df} 
+	Let $ \X $ be a category with chosen pushouts and $ L \from \A \to \X $ a functor. Denote by $ \Cospan_{L} $ the category whose objects are those of $ \A $ and whose arrows $ a \to b $ are cospans $ L a \to x \gets L b $.
+\end{df}
+
+Chosen pushouts allow us to compose in $ \Cospan_{L} $:
+\todo{input diagram D3-dCsp composition}
+Compare this to composition in the category, mentioned above, whose morphisms are open graphs.
+
+\begin{ex}
+	Let $ L \from \Set \to \RGraph $ be the discrete graph functor. A $ L $-open object is exactly an open graph.  Also, we mentioned $ \Cospan_{L} $ in Section \ref{sec_motivex} as the category whose arrows are open graphs.  
+\end{ex}
+
+\end{document}

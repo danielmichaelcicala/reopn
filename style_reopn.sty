@@ -125,18 +125,20 @@
 % ENVIRONMENTS & COUNTERS
 %
 
+\newenvironment{exposition}[1]{}{}
+
 \newtheorem{theorem}{Theorem}[section]
-\newtheorem{lemma}[thm]{Lemma}
-\newtheorem{proposition}[thm]{Proposition}
-\newtheorem{corollary}[thm]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
 
 \theoremstyle{remark}
-	\newtheorem{remark}[thm]{Remark}
-	\newtheorem{notation}[thm]{Notation}
+	\newtheorem{remark}[theorem]{Remark}
+	\newtheorem{notation}[theorem]{Notation}
 
 \theoremstyle{definition}
-	\newtheorem{example}[thm]{Example} 
-	\newtheorem{definition}[thm]{Definition}
+	\newtheorem{example}[theorem]{Example} 
+	\newtheorem{definition}[theorem]{Definition}
           
 % \setcounter{tocdepth}{1} % Sets depth for table of contents. 
 

@@ -3,12 +3,12 @@
  (lambda ()
    (TeX-add-to-alist 'LaTeX-provided-package-options
                      '(("enumitem" "inline") ("xcolor" "dvipsnames") ("natbib" "numbers")))
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "path")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "url")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "nolinkurl")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperbaseurl")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperimage")
    (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperref")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperimage")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperbaseurl")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "nolinkurl")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "url")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "path")
    (add-to-list 'LaTeX-verbatim-macros-with-delims-local "path")
    (TeX-run-style-hooks
     "latex2e"
@@ -63,6 +63,7 @@
     "CC"
     "DD"
     "MM"
+    "LL"
     "Set"
     "Graph"
     "RGraph"
@@ -113,7 +114,6 @@
     "df_rw_pushout-complement"
     "df:dpo_derived-rewrite-rule"
     "df:dpo_grammar-and-language"
-    "thm:dpo_open-objects-language"
     "sec:non-linear-rewriting"
     "thm_dbl-rewr-obcat"
     "thm:dlb-rewr-arrcat"
@@ -128,6 +128,7 @@
     "thm:bit-rewr-comp-closed"
     "thm:bicat-rewr-freyds-modular"
     "thm:bicat-rewr-function-compl"
+    "thm:nlr_open-objects-language"
     "df:nl_gramr-gen-dblcat"
     "thm:nl_rewr-iff-2cell"
     "sec:linear-rewriting"
@@ -136,6 +137,8 @@
     "thm:dbl-mon-rewr-smc"
     "thm:dbl-mon-rewrite_isofibrant"
     "thm:bi-mon-rewrite-scmm"
+    "thm:lr_open-objects-language"
+    "thm:der-rewr-rule-dbl-monic"
     "df:gramr-gen-dbl-cat"
     "sec:postable")
    (LaTeX-add-environments

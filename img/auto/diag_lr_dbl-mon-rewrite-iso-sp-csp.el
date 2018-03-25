@@ -1,4 +1,4 @@
-(TeX-add-style-hook
+p(TeX-add-style-hook
  "diag_lr_dbl-mon-rewrite-iso-sp-csp"
  (lambda ()
    (TeX-add-to-alist 'LaTeX-provided-class-options

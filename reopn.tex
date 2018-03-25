@@ -1,13 +1,10 @@
-\documentclass{amsart}
-
-
 %
-%	rewriting open objects
-%	style
-%	
+% This is the source file for the paper ``rewriting open
+% objects''. Here all categories A and X are topoi, as required for
+% Oben Objects to form a topos.
+%
 
-\NeedsTeXFormat{LaTeX2e}[1994/06/01]
-\ProvidesPackage{style_reopn}[2018/02/21 Reopn Package]
+\documentclass{amsart}          
 
 %
 % PACKAGES
@@ -52,6 +49,7 @@
 \newcommand{\CC}{\mathbb{C}}
 \newcommand{\DD}{\mathbb{D}}
 \newcommand{\MM}{\mathbb{M}}
+\newcommand{\LL}{\mathbb{L}}
 \renewcommand{\epsilon}{\varepsilon}
 
 % categories
@@ -429,19 +427,45 @@ functor of this double category takes advantage of the fact that open
 graphs are also arrows of a category.  \todo{include D4 composition
   diagram} Later, we prove that this actually forms a double category.
 
-
-
-
 In fact, we do this in Section BLAH. 
 	\todo{input appropriate section}
 In the following section, we generalize open graphs to `open objects' and construct a pair of categories, one with open objects as arrows and the other with open objects as objects.  
 
-%%%%%%%%%%%%%%%%% SECTION:
-%%%%%%%%%%%%%%%%%  DPO
-%%%%%%%%%%%%%%%%%   REWRITING
+%%%%%%%%%%%%%%%%% *END SECTION*
+%%%%%%%%%%%%%%%%%  MOTIVATING
+%%%%%%%%%%%%%%%%%   EXAMPLE
 
-\section{Open objects} \label{sec:open-objects}
+\section{Open objects and structured cospans}
+  \label{sec:open-objects}
 
+%%%%%%%%%%%%%%%%%%%%%%% *BEGIN SECTION*
+%%%%%%%%%%%%%%%%%%%%%%%   OPEN OBJECTS AND
+%%%%%%%%%%%%%%%%%%%%%%%     STRUCTURED COSPANS
+
+% SET UP NOTATION____________________________________________
+\begin{exposition}
+
+  For good, we set a cocartesian geometric morphism between
+  (elementary) topoi
+  \[
+    \diagram{diag_oo_geometric-morphism}
+  \]
+  Although many of the definitions and theorems work with slightly
+  greater levels of generality, we content ourselves with this
+  restriction. For one, it is really not much of a constraint at
+  all. Second, it greatly simplifies the statements of various
+  definitions and theorems.  
+  
+  Additionally, we will write a cospan
+  \[
+    x \to y \gets z
+  \]
+  as a triple \( (x,y,z) \) when our work does not require us to name
+  the arrows.
+  
+\end{exposition}
+  
+  
 % INTRO THE SECTION EXPOSIT___________________________________
 \begin{exposition}{}
   
@@ -457,7 +481,7 @@ In the following section, we generalize open graphs to `open objects' and constr
   between sets and reflexive graphs where $ L $ gives the
   discrete graph on the nodes of a set and $ R $ returns the points of
   a graph.  An \defn{open graph} is a cospan
-  $ La \to g \gets Lb $.  Think of this data as a
+  $ ( La , g , Lb ) $.  Think of this data as a
   graph $ g $ with inputs $ La $ and outputs $ Lb $.
   The reason for choosing reflexive graphs instead of directed graphs
   is primarily aesthetic.  For one, we like to think of the nodes of a
@@ -477,10 +501,10 @@ In the following section, we generalize open graphs to `open objects' and constr
 \begin{definition}
   \label{df:struct-cospan}
 
-  Given a functor \( L \from \A \to \X \), we denote by
-  by \( \Cospan_L \) the category with objects from \( \A \)
-  and whose arrows of type \( a \to  b \) are cospans \( La \to x \gets Lb
-  \) in \( \X \). We call these arrows \defn{ \( L \) -structured cospans}.
+  Denote by \( \Cospan_L \) the category with objects from \( \A \)
+  and whose arrows of type \( a \to b \) are cospans
+  \( La \to x \gets Lb \) in \( \X \). We call these arrows \defn{
+    \( L \) -structured cospans}.
   
 \end{definition}
 
@@ -508,12 +532,19 @@ In the following section, we generalize open graphs to `open objects' and constr
 \begin{definition}
   \label{df:open-objects}
   
-  Denote by $ \OpenOb{ L } $ the category whose objects are \( L \)
+  Denote by $ \OpenOb $ the category whose objects are \( L \)
   -structured cospans and arrows are commuting diagrams
   \[
     \diagram{diag_openob_openob-arrow}.
   \]
- 
+  
+  Even though \( \OpenOb \) depends on \( L \), we can safely reject
+  \( L \) from our notation because we have no cause to consider open
+  objects with respect to a differently named functor.
+
+  \edit{ Is OpenOb functorial? If so, we'll need to include the
+    functor name in the notation, at least until we prove it's functorial.}
+
         
 \end{definition}
 
@@ -521,8 +552,8 @@ In the following section, we generalize open graphs to `open objects' and constr
 \begin{remark}
   \label{thm:open-obj-ptwise-limits}
 
-  Limits and colimits in \( \OpenOb{L} \) are computed pointwise. This
-  follows from the fact that \( \OpenOb{L} \) is a subcategory of \(
+  Limits and colimits in \( \OpenOb \) are computed pointwise. This
+  follows from the fact that \( \OpenOb \) is a subcategory of \(
   \left[ \bullet \to \bullet \gets \bullet , \X \).   
   
 \end{remark}
@@ -530,13 +561,12 @@ In the following section, we generalize open graphs to `open objects' and constr
 % EXPOSIT_________________________________
 
 \begin{exposition}{}
-
-  Having both $ \Cospan_L $ and $ \OpenOb{L} $ around
-  allow us to view $ L $-open objects, respectively, as
-  connectible components via composition or as a more topological
-  entity with morphisms between them. The latter perspective is
-  substantiated by the following theorem, which brings us closer to
-  our motivating example.
+  
+  Having both $ \Cospan_L $ and $ \OpenOb $ around
+  allow us to view open objects with two different perspectives.
+  The perspective \( \Cospan_L \) provides a compositional one. And \(
+  \OpenOb \) sees an open object as a space. The latter perspective is
+  substantiated by the following theorem.
   
 \end{exposition}
 
@@ -544,9 +574,7 @@ In the following section, we generalize open graphs to `open objects' and constr
 \begin{thm}
   \label{thm:OpenObTopos}
 
-  Let $ L \dashv R \from \A \to \X $ be an adjunction
-  (geometric morphism?) between topoi.  Then $ \OpenOb{L} $ is
-  a topos.
+  Then $ \OpenOb $ is a topos.
   
 \end{thm}
 
@@ -557,17 +585,23 @@ In the following section, we generalize open graphs to `open objects' and constr
 
 \begin{exposition}{}
 
-  Because $ \OpenOb{L} $ is a topos, it admits a double
+  Because $ \OpenOb $ is a topos, it admits a double
   pushout rewriting system, the topic of our next section.
 
 \end{exposition}
 
-%%%%%%%%%%%%%%%%%%%%%%% END OF SECTION:
+%%%%%%%%%%%%%%%%%%%%%%% *END SECTION*
 %%%%%%%%%%%%%%%%%%%%%%%   OPEN OBJECTS AND
 %%%%%%%%%%%%%%%%%%%%%%%     STRUCTURED COSPANS
 
-\section{Double pushout rewriting} \label{sec:double-push-rewr} 
+\section{Double pushout rewriting}
+\label{sec:double-push-rewr}
 
+%%%%%%%%%%%%%%%%%%%%%%% *BEGIN SECTION*
+%%%%%%%%%%%%%%%%%%%%%%%   DOUBLE
+%%%%%%%%%%%%%%%%%%%%%%%    PUSHOUT
+%%%%%%%%%%%%%%%%%%%%%%%     REWRITING
+  
 % DEFINITION OF ADHESIVE CATEGORY_________________________________
 \begin{definition}
 \label{df:dpo_adhesive-category} 
@@ -590,17 +624,16 @@ In the following section, we generalize open graphs to `open objects' and constr
 \begin{corollary}
 \label{thm:dpo_category-StrCsp-adhsv}
  	
-  Let $ L \dashv R \from \A \to \X $ be an adjunction between topoi.
-  The category $ StrCsp{L} $ is adhesive.
+  The category $ \OpenOb $ is adhesive.
  	
 \end{corollary}
 
 % TOPOI, NO ADHESIVE ONWARD__________________________________________
 \begin{remark}
 
-  moving formward, we only work with topoi with the understanding that
+  Moving forward, we only work with topoi with the understanding that
   they are adhesive, hence suitable hosting double pushout rewriting.
-  however, much of what we uncover is generalizable to the broader
+  However, much of what we uncover is generalizable to the broader
   world of adhesive categories.
   
 \end{remark}
@@ -627,6 +660,7 @@ In the following section, we generalize open graphs to `open objects' and constr
   \[
     \diagram{diag_rw_pushout-comp}
   \]
+  Pushout complements are unique up to isomorphism.
   
 \end{definition}
 
@@ -634,48 +668,54 @@ In the following section, we generalize open graphs to `open objects' and constr
 \begin{definition}
 \label{df:dpo_derived-rewrite-rule} 
 	
-  Given a \( \cat{T} \) -rewrite rule \( a \gets b \to c \) and a
+  Fix a \( \cat{T} \) -rewrite rule \( a \gets b \to c \) and a
   $ \cat{T} $-arrow $ a \to x $ such that $ b \to a \to x $ has a 
-  pushout complement, a \defn{derived (linear) rewrite rule} is the
+  pushout complement. A \defn{derived (linear) rewrite rule} is the
   bottom row of the induced double pushout diagram 
   \[ 
     \diagram{diag_rw_derived-rule}
   \]
+  Because pushouts and pushout complements are unique up to
+  isomorphism, the derived rewrite rule given by the above data is
+  unique up to isomorphism.
  
 \end{definition}
 
-% DEFINITION OF GRAMMAR___________________________________________
+% DEFINITION OF GRAMMAR & LANGUAGE________________________________
 \begin{definition}
   \label{df:dpo_grammar-and-language}
 
   A \defn{(linear) grammar} consists of a topos \( \cat{T} \) and a
   set of (linear) \( \cat{T} \) -rewrite rules.  Observe that
   \( \cat{T} \) -rewrite rules are actually arrows in
-  $ \Span (\cat{T}) $.  Given a grammar $ \Gamma $, the subcategory
-  $ \mathcal{L} ( \Gamma ) $ of $ \Span ( \cat{T} ) $ generated by the
-  set of rewrites derived from $ \Gamma $ is called a\defn{language}.
+  $ \Span (\cat{T}) $. The language $ \mathcal{L} ( \Gamma ) $ of
+  $ \Gamma $ is the subcategory of $ \Span ( \cat{T} ) $ generated by
+  arrows \( r' \gets s' \to t' \) such that there exists a
+  \( \Gamma \) -derived rewrite rule \( r \gets s \to t \) fitting
+  into a double pushout diagram
+  \[
+    \diagram{diag_rw_language-generators}
+  \]
+
+  If we make \( \cat{T} \) a cocartesian monoidal category, then
+  \( \Span (T) \) can be made into a symmetric monoidal category with
+  pointwise coproduct and identities on the initial object. It follows
+  that we can consider \( \mathcal{L} ( \Gamma ) \) as a symmetric
+  monoidal category generated as above.
   
 \end{definition}
 
-% GRAMMAR GENERATED LANGUAGE______________________________________
-\begin{lemma}
-  \label{thm:dpo_open-objects-language}
-	
-  Let $ (\A , \otimes_{\A} , I_{\A}) $ be a symmetric monoidal
-  category with pullbacks and $ (\X , \otimes_{\X} , I_{\X}) $ be a
-  symmetric monoidal topos.  Let $ L \dashv R \from \A \to \X $ be an
-  adjunction where $ L $ preserves pullbacks.
-	
-  Fix a grammar $ \Gamma $ in the topos $ StrCsp{L} $.  The generated
-  language $ \mathcal{L}(\Gamma) $ is a sub-bicategory of
-  $ \Span StrCsp {L} $.
-  
-\end{lemma}
-
-%%%%%%%%%%%%%%%%% END OF SECTION:
-%%%%%%%%%%%%%%%%%   DOUBLE PUSHOUT REWRITING
+%%%%%%%%%%%%%%%%% *END SECTION*
+%%%%%%%%%%%%%%%%%   DOUBLE
+%%%%%%%%%%%%%%%%%     PUSHOUT
+%%%%%%%%%%%%%%%%%        REWRITING
 
 \section{Non-linear rewriting} \label{sec:non-linear-rewriting}
+
+%%%%%%%%%%%%%%%%% *BEGIN SECTION*
+%%%%%%%%%%%%%%%%%   NON-LINEAR
+%%%%%%%%%%%%%%%%%     REWRITING
+
 
 \edit{Current goal : define double category non-linear
   rewriting. subgoals: define object // arrow categories }
@@ -683,10 +723,8 @@ In the following section, we generalize open graphs to `open objects' and constr
 % OBJECT CATEGORY OF DOULBE REWRITE__________________________
 \begin{lemma} \label{thm_dbl-rewr-obcat}
 
-  Let $ (\A , + , 0_\A , \tau_\A ) $ be a cocartesian category with
-  pullbacks that is locally cartesian closed. There is a symmetric
-  monoidal category $ ( \core (\Span (\A)) , \otimes , I , \tau ) $
-  defined as follows:
+  There is a symmetric monoidal category
+  $ ( \core (\Span (\A)) , \otimes , I , \tau ) $ defined as follows:
 
   \begin{itemize}
     \item $ \core (\Span (\A)) $ is the subcategory of $ \Span (\A) $
@@ -719,33 +757,30 @@ In the following section, we generalize open graphs to `open objects' and constr
 \end{proof}
 
 % ARROW CATEGORY OF DOUBLE REWRITE______________________________
-\begin{lemma} \label{thm:dlb-rewr-arrcat}
-  
-  Let $ (\A , + , 0_\A , \tau_\A ) $ be as in Lemma
-  \ref{thm_dbl-rewr-obcat} $. Let (\X , + , 0_\X , \tau_\X ) $ be a
-  cocartesian category with pushouts that is locally cartesian
-  closed. Let $ L \from \A \to \X $ be a cocartesian functor that
-  preserves pullbacks. There is a symmetric monoidal preorder
+\begin{lemma}
+  \label{thm:dlb-rewr-arrcat}
+
+  There is a symmetric monoidal preorder
   $ (\P , \otimes , I , \tau ) $ defined as follows:
   
   \begin{itemize}
-  \item $ \P $ has $ L $-structured cospans as objects and an arrow
-    $ (L a \to x \gets L a') \leq (L c \to x \gets L c') $ whenever
+  \item $ \P $ has $ L $-open objects and an arrow
+    $ ( La , x , La') \leq ( Lc , x , Lc') $ whenever
     there is commuting diagram with form
-      \[
-        \diagram{diag_nlr_dbl-rewrite-2cell}
-      \]
-      where $ f $, $ f' $, $ g $, and $ g' $ are isomorphisms in $ \A $
-    \item $ \otimes $ is given by
+    \[
+      \diagram{diag_nlr_dbl-rewrite-2cell}
+    \]
+    where $ f $, $ f' $, $ g $, and $ g' $ are isomorphisms in $ \A $
+   \item $ \otimes $ is given by
        \[
          \diagram{diag_nlr_dbl-rewrite-tensor}
        \]
-    \item $ I $ is given by a pair of identities on $ L0_{\A} $
-    \item $ \tau $ is given by
-      \begin{center}
+   \item $ I $ is given by a pair of identities on $ L0_{\A} $
+   \item $ \tau $ is given by
+     \[
 	\diagram{diag_nlr_dbl-rewrite-braiding}
-      \end{center}
-    \end{itemize}
+     \]
+   \end{itemize}
     
 \end{lemma}
   
@@ -770,7 +805,8 @@ In the following section, we generalize open graphs to `open objects' and constr
 \end{proof}
 
 % ARROW CAT PREORDER IS SYMMETRIC____________________________
-\begin{lemma} \label{thm:preord-symm}
+\begin{lemma}
+  \label{thm:preord-symm}
   
   The preorder$ \P $ is symmetric.
   
@@ -778,9 +814,9 @@ In the following section, we generalize open graphs to `open objects' and constr
 
 \begin{proof}
   
-  Any arrow $ ( La \to x \gets La' ) \leq ( Lc \to z \gets Lc' ) $ in
+  Any arrow $ ( La , x , La' ) \leq ( Lc , z , Lc' ) $ in
   $ \P $ gives an arrow
-  $ ( Lc \to z \gets Lc' ) \leq ( La \to x \gets La' ) $ by taking the
+  $ ( Lc , z , Lc' ) \leq ( La , x , La' ) $ by taking the
   dual span of $ L $-structured cospans.
   
 \end{proof}
@@ -800,60 +836,58 @@ In the following section, we generalize open graphs to `open objects' and constr
 \end{comment}
 
 % DOUBLE CAT REWRITE IS SMC________________________________________
-\begin{theorem} \label{thm:dbl-rewr-smc}
+\begin{theorem}
+  \label{thm:dbl-rewr-smc}
 
-  Let $ (\A , + , 0_\A , \tau_\A ) $ and
-  $ (\X , + , 0_\X , \tau_\X ) $ be categories that are cocartesian
-  and locally cartesian closed. Also, suppose that $ \X $ has
-  pushouts. Let $ L \from \A \to \X $ be a cocartesian functor that
-  preserves pullbacks. Then there is a symmetric monoidal double
-  category $ ( \RRewrite_{L} , \otimes , I, \tau ) $.
-
-  The double category $ \RRewrite_{L} $ consists of the object
-  category $ \RR_0 \coloneqq \core ( \Span (\A) ) $; arrow category
-  $ \RR_1 \coloneqq \P $; unit functor $ U \from \RR_0 \to \RR_1 $
-  defined by
-  \[
-    \diagram{diag_nlr_dbl-rewrite-unit-functor}
-  \]
-  source and target functors $ S , T \from \RR_1 \to \RR_0 $
-  respectively defined by
-  \[
-    \diagram{diag_nlr_dbl-rewrite-source-functor} \quad \text{and}
-    \quad \diagram{diag_nlr_dbl-rewrite-target-functor}
-  \]
-  and composition functor
-  $ \odot \from \RR_1 \times_{\RR_0} \RR_1 \to \RR_1 $ defined by
-  \[
-    \diagram{diag_nlr_dbl-rewrite-composition-functor}
-  \]
-  which uses pushouts in $ \X $ and their universal properties.
-	 
-  The tensor $ \otimes $ is given by
-  \[ \diagram{diag_nlr_dbl-rewrite-tensor} \]
-  a monoidal unit $ I $ defined by
-  \[
-    I \coloneqq ( L I_{\A} \to L I_{\A} \gets L I_{\A} )
-  \]
-  and braiding $ \tau $ defined by
-  \[
-    \diagram{diag_nlr_dbl-rewrite-braiding}
-  \]
-         
+  There is a symmetric monoidal double category
+  $ ( \RRewrite_{L} , \otimes , I, \tau ) $ consisting of the
+  following data 
+  \begin{enumerate}
+    \item object category $ \RR_0 \coloneqq \core ( \Span (\A) ) $;
+    \item arrow category $ \RR_1 \coloneqq \P $;
+    \item unit functor $ U \from \RR_0 \to \RR_1 $ defined by
+      \[
+        \diagram{diag_nlr_dbl-rewrite-unit-functor}
+      \]
+    \item source and target functors $ S , T \from \RR_1 \to \RR_0 $
+      respectively defined by
+      \[
+        \diagram{diag_nlr_dbl-rewrite-source-functor}
+        \quad \text{and} \quad
+        \diagram{diag_nlr_dbl-rewrite-target-functor}
+      \]
+    \item composition functor
+      $ \odot \from \RR_1 \times_{\RR_0} \RR_1 \to \RR_1 $ defined by
+      \[
+        \diagram{diag_nlr_dbl-rewrite-composition-functor}
+      \]
+      which uses pushouts in $ \X $ and their universal properties
+    \item The tensor $ \otimes $ is given by
+      \[
+        \diagram{diag_nlr_dbl-rewrite-tensor}
+      \]
+    \item a monoidal unit $ I $ defined by
+      \[
+        I \coloneqq ( L I_{\A} \to L I_{\A} \gets L I_{\A} )
+      \]
+   \item and braiding $ \tau $ defined by
+     \[
+       \diagram{diag_nlr_dbl-rewrite-braiding}
+     \]
+   \end{enumerate}
+   
 \end{theorem}
 
 \begin{proof}
   
   Composition is functorial because $ \RR_1 $ is a preorder. It is
-  straightforward to check that $ S;U = \id = T;U$ as well as applying
+  straightforward to check that $ S;U = \id = T;U$ and that applying
   $ S $ and $ T $ to
   \[
     \diagram{diag_nlr_dbl-rewrite-deconstructed-composite}
   \]
-  respectively returns
-  \[
-    La \to Lb \gets Lc \quad \text{and} \quad La'' \to Lb'' \gets Lc''
-  \]
+  respectively returns \( ( La , Lb , Lc ) \) and \( ( La'' , Lb'' , Lc'' ) \). 
+  
   The associator, plus left and right unitors are defined using
   universal properties. Therefore, $ \RRewrite_L $ is a double
   category.
@@ -919,7 +953,8 @@ In the following section, we generalize open graphs to `open objects' and constr
 \end{proof}
 
 % DOUBLE CAT REWRITE IS FIBRANT___________________________________
-\begin{theorem} \label{thm:dbl-rewr-fibrant}
+\begin{theorem}
+  \label{thm:dbl-rewr-fibrant}
 
   The double category $ \RRewrite_L $ is fibrant.
 
@@ -931,7 +966,8 @@ In the following section, we generalize open graphs to `open objects' and constr
   consists of the horizontal 1-cell
   $ La \xto{Lf^{-1}} Lb \xgets{Lg^{-1}} Lc $ together with the 2-cells
   \[
-    \diagram{diag_nlr_dbl-rewrite-companion1} \quad \text{and} \quad
+    \diagram{diag_nlr_dbl-rewrite-companion1}
+    \quad \text{and} \quad
     \diagram{diag_nlr_dbl-rewrite-companion2}
   \]
   The equations hold because $ \RRewrite_L $ is locally posetal.
@@ -945,7 +981,8 @@ In the following section, we generalize open graphs to `open objects' and constr
 \end{proof}	
 
 % HORIZONTAL EDGE BICAT REWRITE IS SMC___________________________
-\begin{corollary} \label{thm:bicat-rewr-smc}
+\begin{corollary}
+  \label{thm:bicat-rewr-smc}
 
   The horizontal edge bicategory
   $ \Rewrite_{L} \coloneqq \mathcal{H} \left( \RRewrite_{L} \right) $
@@ -960,22 +997,23 @@ In the following section, we generalize open graphs to `open objects' and constr
 \end{proof} 
 
 % EVERY ARROW IN BICAT REWRITE HAS ADJOINT________________________
-\begin{lemma} \label{thm:bicat-rewr-arrows-dual}
+\begin{lemma}
+  \label{thm:bicat-rewr-arrows-dual}
   
-  Every 1-arrow of$ \Rewrite $ is a left and right adjoint.
+  Every 1-arrow of $ \Rewrite $ is a left and right adjoint.
   
 \end{lemma}
 
 \begin{proof}
   
-  It is straightforward to check that the left and right adjoint of a
-  1-arrow $ La \to x \gets Lb $ is obtained by turning the cospan
-  around $ Lb \to x \gets La $.
+  It is straightforward to check that $ ( La , x , Lb ) $ is both the
+  left and right adjoint of $ ( Lb , x , La ) $.
   
 \end{proof}
 
 % BICAT OF RELATIONS_______________________________________________
-\begin{definition}\edit{cite carb \& walts}] \label{def:bicat-rels}
+\begin{definition}\edit{cite carb \& walts}]
+  \label{def:bicat-rels}
 
   Let $ \cat{B} $ be a bicategory whose hom-categories are posets. A
   \defn{Cartesian structure} on $ \cat{B} $ consists of a tensor
@@ -993,14 +1031,9 @@ In the following section, we generalize open graphs to `open objects' and constr
  \end{definition}
 
 % BICAT REWRITE IS BICAT OF RELS____________________________________
-\begin{theorem} \label{thm:bicat-rewr-bicat-rel}
+\begin{theorem}
+   \label{thm:bicat-rewr-bicat-rel}
 
-   Let $ (\A , + , 0_\A , \tau_\A ) $ and
-   $ (\X , + , 0_\X , \tau_\X ) $ be categories that are cocartesian
-   and locally cartesian closed. Also, suppose that $ \X $ has
-   pushouts. Let $ L \from \A \to \X $ be a cocartesian functor that
-   preserves pullbacks.
- 	
    The bicategory $ \Rewrite_{L} $ is a bicategory of relations in the
    sense of Carboni and Walters.
    
@@ -1024,9 +1057,8 @@ In the following section, we generalize open graphs to `open objects' and constr
   \]
   and use the initial map to define the counit
   $ \epsilon_a \from a \to 0_a $ as the cospan
-  \[
-    La \to La \gets L0_a.
-  \]
+  \( (La \to La \gets L0_a) \).
+  
   The associativity and unity 2-arrows appear canonically, as does
   cocommutativity.
 	
@@ -1081,7 +1113,8 @@ In the following section, we generalize open graphs to `open objects' and constr
 \end{corollary} 
 
 % THE BICAT REWRITE IS FUNCTIONALLY COMPLETE_____________
-\begin{corollary} \label{thm:bicat-rewr-function-compl}
+\begin{corollary}
+  \label{thm:bicat-rewr-function-compl}
 
   Is it functionally complete? i.e. for each arrow
   $ r \from x \to I $, there is a map $ i \from x_r \to x $ such that
@@ -1091,8 +1124,49 @@ In the following section, we generalize open graphs to `open objects' and constr
   
 \end{corollary}
 
+% GRAMMAR EDIT COMMENT_______________________________________
+
+\edit{ the below material on grammars was copied directly from the
+  linear case and needs to be non-linearized. }
+
+% GRAMMAR GENERATED LANGUAGE______________________________________
+\begin{lemma}
+  \label{thm:nlr_open-objects-language}
+
+  Given a grammar $ \Gamma $ from the topos $ \Cospan_L $, the
+  language $ \mathcal{L}(\Gamma) $ is a sub-bicategory of
+  $ \Span ( \Cospan_{L} ) $.
+  
+\end{lemma}
+
+\begin{exposition}
+  
+  Let us unpack this lemma.  A rewrite rule inside \( \Cospan_L \) is
+  a span of structured cospans, hence a commuting diagram of form
+  \[
+    \diagram{diag_lr_rewr-struct-cospans}
+  \]
+  This rule rewrites \( La , x , Lb \)
+  into \( Le , z , Lf \).  Take an arrow
+  \[
+    ( x from La \tocospan Lb ) \to (w \from La' \tocospan Lb')
+  \]
+  of structured cospans such that the composite formed with
+  \[
+    ( Lc , y , Ld ) \to ( La , x , Lb )
+  \]
+  has a pushout complement. A derived rewrite rule is the bottom
+  face of the commuting diagram
+  \[
+    \diagram{diag_lr_-derived-rewrite-rule}
+  \]
+  
+\end{exposition}
+
+
 % GENERATING A GRAMMAR_________________________________
-\begin{definition} \label{df:nl_gramr-gen-dblcat}
+\begin{definition}
+  \label{df:nl_gramr-gen-dblcat}
 	
   Suppose each element from a grammar $ \Gamma $ in $ \Cospan_{L} $ is
   of the form
@@ -1107,7 +1181,8 @@ In the following section, we generalize open graphs to `open objects' and constr
 \end{definition}
 
 % LANGUAGE REWRITE IFF 2CELL_______________________________
-\begin{theorem} \label{thm:nl_rewr-iff-2cell}
+\begin{theorem}
+  \label{thm:nl_rewr-iff-2cell}
   
   Given two open objects in a language, one can be rewritten into the
   other if and only if there is a 2-cell between the corresponding
@@ -1116,11 +1191,16 @@ In the following section, we generalize open graphs to `open objects' and constr
 \end{theorem}
 
 
-%%%%%%%%%%%%%%%%% END SECTION:
+%%%%%%%%%%%%%%%%% *END SECTION*
 %%%%%%%%%%%%%%%%%   NON-LINEAR
 %%%%%%%%%%%%%%%%%     REWRITING
 
 \section{Linear rewriting} \label{sec:linear-rewriting}
+
+%%%%%%%%%%%%%%%%% *BEGIN SECTION*
+%%%%%%%%%%%%%%%%%   LINEAR
+%%%%%%%%%%%%%%%%%     REWRITING
+
 
 \todo{X shd b topos for intrchng}
 \todo{remind linear meaning}
@@ -1129,7 +1209,7 @@ In the following section, we generalize open graphs to `open objects' and constr
 \begin{definition}
   \label{def:mon-rewrite-obcat}
  
-   Consider, again, a cocartesian category with pullbacks
+  Consider, again, a cocartesian category with pullbacks
   $ (\A , + , 0_{\A} , \tau_\A ) $
   that is locally cartesian closed and a monoidal category
   $ ( \core ( \Span ( \A )) , \otimes , I , \tau )$
@@ -1141,13 +1221,7 @@ In the following section, we generalize open graphs to `open objects' and constr
 \begin{lemma}
   \label{thm:mon-rewrite-arrcat}
   
-  Let $ (\A , + , 0_\A , \tau_\A ) $ be as in Lemma
-  \ref{df_dbl-mon-rewrite-obcat}. Let $ (\X , + , 0_\X , \tau_\X ) $
-  be a topos that is symmetric monoidal with respect to the
-  coproduct. Let $ L \from \A \to \X $ be a cocartesian functor that
-  preserves pullbacks.
-	
-  There is a symmetric monoidal category
+   There is a symmetric monoidal category
   $ ( \C , \otimes , I , \tau ) $ defined as follows:
   \begin{itemize}
    \item $ \C $ has $ L $-structured cospans \edit{open objects?}
@@ -1173,7 +1247,7 @@ In the following section, we generalize open graphs to `open objects' and constr
 \begin{proof}
   
   Composition preserves monics because pullbacks do. Tensoring
-  preserves monics because we pushouts in adhesive categories preserve
+  preserves monics because pushouts in adhesive categories preserve
   monics. Interchange holds between tensor and composition because
   pullback functors are left adjoints, thus preserve pushout. The
   remainder of the proof is a routine checking of axioms which we
@@ -1183,22 +1257,22 @@ In the following section, we generalize open graphs to `open objects' and constr
 
 % CASUAL DESCRIPTION OF DOUBLE MONREWRITE ___________________________
 \begin{comment} 
+
   Denote by $ \MMonRewrite_{L} $ the double category with
   $ \A $-objects as 0-cells, spans in $ \A $ with invertible legs as
   vertical 1-cells, $ L $-structured cospans as horizontal 1-cells,
   and commuting diagrams in $ \X $ of form
-  \begin{center}
+  \[
     \diagram{diag_lr_dbl-mon-rewrite-2cell}
-  \end{center}
+  \]
+  
 \end{comment}
 
 % SMC DOUBLE CATEGORY MONREWRITE_____________________________________
-\begin{lemma} \label{thm:dbl-mon-rewr-smc} 
-  Let $ (\A , + , 0_\A , \tau_\A ) $ be as in Lemma
-  \ref{df_dbl-mon-rewrite-obcat}. Let $ (\X , + , 0_\X , \tau_\X ) $
-  be a topos that is symmetric monoidal with respect to the
-  coproduct. Let $ L \from \A \to \X $ be a cocartesian functor that
-  preserves pullbacks.  There is a symmetric monoidal double category
+\begin{lemma}
+  \label{thm:dbl-mon-rewr-smc} 
+
+  There is a symmetric monoidal double category
   $ (\MMonRewrite_{L} , \otimes , I , \tau) $. The double category
   $ \MMonRewrite_{L} $ consists of the object category
   $ \MM_0 \coloneqq \core (\Span (\A)) $; arrow category
@@ -1210,8 +1284,8 @@ In the following section, we generalize open graphs to `open objects' and constr
   source and target functors $ S , T \from \MM_1 \to \MM_0 $
   respectively defined by
   \[
-    \diagram{diag_lr_dbl-mon-rewrite-source-functor} \quad
-    \text{and} \quad
+    \diagram{diag_lr_dbl-mon-rewrite-source-functor}
+    \quad \text{and} \quad
     \diagram{diag_lr_dbl-mon-rewrite-target-functor}
   \]
   and composition functor
@@ -1247,14 +1321,9 @@ In the following section, we generalize open graphs to `open objects' and constr
 \end{proof}
 
 % BI MONREWRITE SMCC_________________________________________________
-\begin{theorem} \label{thm:bi-mon-rewrite-scmm}
+\begin{theorem}
+  \label{thm:bi-mon-rewrite-scmm}
 
-  Let $ (\A, \otimes_{ \A }, I_{ \A }) $ and
-  $ (\X, \otimes_{\X}, I_{\X}) $ be symmetric monoidal categories
-  where $ \A $ has pullbacks and $ \X $ is a topos. Let
-  $ L \from (\A, \otimes_{ \A }, I_{ \A }) \to (\X, \otimes_{\X}) $
-  be an adjunction where $ L $ preserves pullbacks.
-	
   The horizontal edge bicategory
   $ \MonRewrite{L} \coloneqq \mathcal{H} \left( \MMonRewrite{L}
   \right) $ in the sense of Shulman is symmetric monoidal.  Moreover,
@@ -1270,24 +1339,88 @@ In the following section, we generalize open graphs to `open objects' and constr
   
 \end{proof}
 
-% GENERATING A GRAMMAR_______________________________________________
+% GRAMMAR GENERATED LANGUAGE______________________________________
+\begin{lemma}
+  \label{thm:lr_open-objects-language}
+
+  Given a grammar $ \Gamma $ from the topos $ \Cospan_L $, the
+  language $ \mathcal{L}(\Gamma) $ is a sub-bicategory of
+  $ \Span ( \Cospan_{L} ) $.
+  
+\end{lemma}
+
+\begin{exposition}
+
+  Let us unpack this lemma.  A rewrite rule inside \( \Cospan_L \) is
+  a span of structured cospans, hence a commuting diagram of form
+  \[
+    \diagram{diag_lr_rewr-struct-cospans}
+  \]
+  This rule rewrites \( ( La , x , Lb ) \)
+  into \( (  Le , z , Lf ) \). Take an arrow 
+  \[
+    ( La , x , Lb ) \to ( La' , w , Lb' )
+  \]
+  of structured cospans such that the composite formed with
+  \[
+    ( Lc , y , Ld) \to ( La , x , Lb)
+  \]
+  has a pushout complement. A derived rewrite rule is the bottom
+  face of the commuting diagram
+  \[
+    \diagram{diag_lr_-derived-rewrite-rule}
+  \]
+  
+\end{exposition}
+
+% DERIVED RULES ARE DOUBLY MONIC__________________________________
+\begin{lemma}
+  \label{thm:der-rewr-rule-dbl-monic}
+
+  Any rewrite rule derived from 
+  \[
+    \diagram{diag_lr-grammar-2cell}
+  \]
+  has the same form. If all elements of a grammar \( \Gamma \) have
+  this form, so do the arrows of the language
+  \( \mathcal{L} (\Gamma) \).  In particular, \( \mathcal{L} (\Gamma)
+  \) is a subcategory of \( \C \) from \ref{thm:mon-rewrite-arrcat}.
+
+  \edit{make this mor precise}
+  
+\end{lemma}
+
+\begin{proof}
+
+  In a topos, pushouts preserve monics and isomorphisms.
+  
+\end{proof}
+
+
+% GENERATING GRAMMAR_______________________________________________
 \begin{definition} \label{df:gramr-gen-dbl-cat}
 	
- 	Suppose each element from a grammar $ \Gamma $ in $ \Cospan_{L} $ is
-  	of the form
-	\[
-		\diagram{diag_lr-grammar-2cell}
-	\]
-	Denote by $ \langle \Gamma \rangle $ the symmetric monoidal
-	double subcategory of $ \MMonRewrite_{L} $ generated by the 
-	object category and the language $ \mathcal{L} ( \Gamma ) $ 
-	which is a subcategory of the arrow category $ \C $.  
+  Suppose each element from a grammar $ \Gamma $ in $ \Cospan_{L} $ is
+  of the form
+  \[
+    \diagram{diag_lr-grammar-2cell}
+  \]
+  Denote by $ \LL ( \Gamma ) $ the symmetric monoidal double
+  subcategory of $ \MMonRewrite_{L} $ whose object category is
+  \( \core ( \Span ( \A ) ) \) and arrow category is the language
+  $ \mathcal{L} ( \Gamma ) $.
         
 \end{definition}
 
+
 \begin{theorem}
   
-  Given two open objects in a language, one can be rewritten into the other if and only if there is a 2-cell between the corresponding horizontal 1-cells in the generated double category
+  For any a pair of structured cospans \( (La,x,Lb) \) and
+  \( (La',x',Lb' \) in a language \( \mathcal{L} (\Gamma) \), there
+  are corresponding horizonal 1-cells in \( \LL (\Gamma) \). Then
+  \( (La,x,Lb) \) can be written into \( (La',x',Lb') \) in
+  \( \mathcal{L} (\Gamma) \) if and only if there is a 2-cell between
+  the corresponding horizontal 1-cells in \( \LL (\Gamma) \).
   
 \end{theorem}
 
@@ -1296,6 +1429,14 @@ In the following section, we generalize open graphs to `open objects' and constr
 %%%%%%%%%%%%%%%%%%%%%%%%%%      REWRITING
 
 \section{Postamble} \label{sec:postable}
+
+
+\begin{remark}
+  Is \( \Span \from \cat{Topos} \to \cat{SMC}
+  \) given by sending \( T \) to \( (\Span (T),+) \) where \( + \) is
+  taken pointwise a functor?  How about \( \Cospan \) ?
+\end{remark}
+
 
 \bibliography{bib_reopn}
 \bibliographystyle{ieeetr}

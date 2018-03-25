@@ -1,0 +1,74 @@
+\documentclass[tikz, preview]{standalone}
+\usepackage{amsfonts, amsthm, amssymb, amsmath, stmaryrd, etoolbox}
+\usepackage{tikz}
+\usetikzlibrary{matrix,arrows}
+\tikzset{->-/.style={decoration={markings, mark=at position .5 with {\arrow{>}}},postaction={decorate}}}
+\tikzset{->-pos/.style={decoration={markings, mark=at position #1 with {\arrow{>}}},postaction={decorate}}}
+\tikzset{->-/.style={decoration={markings,mark=at position .5 with {\arrow{>}}},postaction={decorate}}}
+\tikzset{->-pos/.style={decoration={markings,mark=at position #1 with {\arrow{>}}},postaction={decorate}}}
+
+\begin{document}
+%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%% 
+\[
+  \begin{tikzpicture}
+    \draw [help lines, step=0.2, color=blue!10] (-5,-5) grid (5,5); % grid
+    % 
+    % \node (t1) at () {$ Lb $};
+    % \node (t2) at () {$ x $};
+    % \node (t3) at () {$ La $};
+    \node (t4) at (0.5,1.5) {$ Ld $};
+    \node (t5) at (0,1) {$ y $};
+    \node (t6) at (-0.5,0.5) {$ Lc $};
+    % \node (t7) at () {$ Lf $};
+    % \node (t8) at () {$ z $};
+    % \node (t9) at () {$ Le $};
+    % \node (b1) at () {$ Lb' $};
+    % \node (b2) at () {$ x' $};
+    % \node (b3) at () {$ La' $};
+    % \node (b4) at () {$ Ld' $};
+    % \node (b5) at () {$ y' $};
+    % \node (b6) at () {$ Lc' $};
+    % \node (b7) at () {$ Lf' $};
+    % \node (b8) at () {$ z' $};
+    % \node (b9) at () {$ Le' $};
+    % 
+    % \draw [->] () to node [] {$  $} ();
+    % \draw [->] () to node [] {$  $} ();
+    % \draw [->] () to node [] {$  $} ();
+    % \draw [->] () to node [] {$  $} ();
+    % \draw [->] () to node [] {$  $} ();
+    % \draw [->] () to node [] {$  $} ();
+    % \draw [->] () to node [] {$  $} ();
+    % \draw [->] () to node [] {$  $} ();
+    % \draw [->] () to node [] {$  $} ();
+    % \draw [->] () to node [] {$  $} ();
+    % \draw [->] () to node [] {$  $} ();
+    % \draw [->] () to node [] {$  $} ();
+    % \draw [->] () to node [] {$  $} ();
+    % \draw [->] () to node [] {$  $} ();
+    % \draw [->] () to node [] {$  $} ();
+    % \draw [->] () to node [] {$  $} ();
+    % \draw [->] () to node [] {$  $} ();
+    % \draw [->] () to node [] {$  $} ();
+    % \draw [->] () to node [] {$  $} ();
+    % \draw [->] () to node [] {$  $} ();
+    % \draw [->] () to node [] {$  $} ();
+    % \draw [->] () to node [] {$  $} ();
+    % \draw [->] () to node [] {$  $} ();
+    % \draw [->] () to node [] {$  $} ();
+    % \draw [->] () to node [] {$  $} ();
+    % \draw [->] () to node [] {$  $} ();
+    % \draw [->] () to node [] {$  $} ();
+    % \draw [->] () to node [] {$  $} ();
+    % \draw [->] () to node [] {$  $} ();
+    % \draw [->] () to node [] {$  $} ();
+    % \draw [->] () to node [] {$  $} ();
+    % \draw [->] () to node [] {$  $} ();
+    % \draw [->] () to node [] {$  $} ();
+    % \draw [->] () to node [] {$  $} ();
+  \end{tikzpicture}
+\]
+%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%% 
+\end{document}

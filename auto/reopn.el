@@ -3,12 +3,12 @@
  (lambda ()
    (TeX-add-to-alist 'LaTeX-provided-package-options
                      '(("enumitem" "inline") ("xcolor" "dvipsnames") ("natbib" "numbers")))
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperref")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperimage")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperbaseurl")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "nolinkurl")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "url")
    (add-to-list 'LaTeX-verbatim-macros-with-braces-local "path")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "url")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "nolinkurl")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperbaseurl")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperimage")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperref")
    (add-to-list 'LaTeX-verbatim-macros-with-delims-local "path")
    (TeX-run-style-hooks
     "latex2e"
@@ -87,16 +87,7 @@
     "Rewrite"
     "RRewrite"
     "MonRewrite"
-    "MMonRewrite"
-    "Hom"
-    "id"
-    "ob"
-    "arr"
-    "im"
-    "Aut"
-    "Bij"
-    "Sub"
-    "colim")
+    "MMonRewrite")
    (LaTeX-add-labels
     "sec:introduction"
     "sec:motivating-example"
@@ -115,12 +106,14 @@
     "df:dpo_derived-rewrite-rule"
     "df:dpo_grammar-and-language"
     "sec:non-linear-rewriting"
+    "sec:dbl-cat-nonlinr-rewr"
     "thm_dbl-rewr-obcat"
     "thm:dlb-rewr-arrcat"
     "thm:preord-symm"
     "thm:dbl-rewr-smc"
     "eq:dlb-rewr-intchng-2cell"
     "thm:dbl-rewr-fibrant"
+    "sec:bicat-nonlinr-rewr"
     "thm:bicat-rewr-smc"
     "thm:bicat-rewr-arrows-dual"
     "def:bicat-rels"
@@ -128,15 +121,18 @@
     "thm:bit-rewr-comp-closed"
     "thm:bicat-rewr-freyds-modular"
     "thm:bicat-rewr-function-compl"
+    "sec:dblcats-nonlinr-gramrs"
     "thm:nlr_open-objects-language"
     "df:nl_gramr-gen-dblcat"
     "thm:nl_rewr-iff-2cell"
     "sec:linear-rewriting"
+    "sec:dble-cat-linr-rewr"
     "def:mon-rewrite-obcat"
     "thm:mon-rewrite-arrcat"
     "thm:dbl-mon-rewr-smc"
     "thm:dbl-mon-rewrite_isofibrant"
     "thm:bi-mon-rewrite-scmm"
+    "sec:dblcats-linr-gramrs"
     "thm:lr_open-objects-language"
     "thm:der-rewr-rule-dbl-monic"
     "df:gramr-gen-dbl-cat"

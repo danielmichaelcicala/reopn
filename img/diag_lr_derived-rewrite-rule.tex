@@ -11,8 +11,8 @@
 %%%%%%%%%%%%%%%%% 
 %%%%%%%%%%%%%%%%% 
 \[
-  \begin{tikzpicture}
-    % \draw [help lines, step=0.5, color=blue!10] (-5,-5) grid (5,5); % grid
+  \begin{tikzpicture}[descr/.style={fill=white},text height=1ex, text depth=0.25ex]
+    % \draw [help lines, step=0.25, color=blue!10] (-5,-5) grid (5,5); % grid
     % 
     \node (t1) at (-2,2) {$ Lb $};
     \node (t2) at (-3,1) {$ x $};
@@ -36,10 +36,10 @@
     \draw [->] (t1) to node [] {$  $} (b1);
     \draw [->] (t4) to node [] {$  $} (b4);
     \draw [->] (t7) to node [] {$  $} (b7);
-    \draw [->] (t4) to node [] {$  $} (t1);
-    \draw [->] (t4) to node [] {$  $} (t7);
-    \draw [->] (b4) to node [] {$  $} (b1);
-    \draw [->] (b4) to node [] {$  $} (b7);
+    \draw [->] (t4) to node [descr] {\scriptsize $ L \alpha $} (t1);
+    \draw [->] (t4) to node [descr] {\scriptsize $ L \beta $} (t7);
+    \draw [->] (b4) to node [descr] {\scriptsize $ L \gamma $} (b1);
+    \draw [->] (b4) to node [descr] {\scriptsize $ L \delta $} (b7);
     \draw [->] (t1) to node [] {$  $} (t2);
     \draw [->] (t4) to node [] {$  $} (t5);
     \draw [->] (t7) to node [] {$  $} (t8);
@@ -52,11 +52,11 @@
     \draw [line width=4.0pt,color=white] (t8) -- node [] {$  $} (b8);
     \draw [->] (t8) to node [] {$  $} (b8);
     \draw [line width=4.0pt,color=white] (t5) -- node [] {$  $} (t2);
-    \draw [->] (t5) to node [] {$  $} (t2);
+    \draw [>->] (t5) to node [] {$  $} (t2);
     \draw [line width=4.0pt,color=white] (t5) to node [] {$  $} (t8);
-    \draw [->] (t5) to node [] {$  $} (t8);
-    \draw [->] (b5) to node [] {$  $} (b2);
-    \draw [->] (b5) to node [] {$  $} (b8);
+    \draw [>->] (t5) to node [] {$  $} (t8);
+    \draw [>->] (b5) to node [] {$  $} (b2);
+    \draw [>->] (b5) to node [] {$  $} (b8);
     \draw [->] (t3) to node [] {$  $} (t2);
     \draw [->] (t6) to node [] {$  $} (t5);
     \draw [->] (t9) to node [] {$  $} (t8);
@@ -64,17 +64,31 @@
     \draw [->] (b6) to node [] {$  $} (b5);
     \draw [->] (b9) to node [] {$  $} (b8);
     \draw [line width=4.0pt,color=white] (t6) -- node [] {$  $} (t3);
-    \draw [->] (t6) to node [] {$  $} (t3);
+    \draw [->] (t6) to node [descr] {\scriptsize $ L \alpha' $} (t3);
     \draw [line width=4.0pt,color=white] (t6) --  node [] {$  $} (t9);
-    \draw [->] (t6) to node [] {$  $} (t9); 
-    \draw [->] (b6) to node [] {$  $} (b3);
-    \draw [->] (b6) to node [] {$  $} (b9);
+    \draw [->] (t6) to node [descr] {\scriptsize $ L \beta' $} (t9); 
+    \draw [->] (b6) to node [descr] {\scriptsize $ L \gamma' $} (b3);
+    \draw [->] (b6) to node [descr] {\scriptsize $ L \delta' $} (b9);
     \draw [line width=4.0pt,color=white] (t3) -- node [] {$  $} (b3);
     \draw [->] (t3) to node [] {$  $} (b3);
     \draw [line width=4.0pt,color=white] (t6) -- node [] {$  $} (b6);
     \draw [->] (t6) to node [] {$  $} (b6);
     \draw [line width=4.0pt,color=white] (t9) -- node [] {$  $} (b9);
     \draw [->] (t9) to node [] {$  $} (b9);
+    %
+    \draw [line width=4.0pt,color=white] (-3.75,-3) -- (-3.5,-3) -- (-3.5,-3.25);
+    \draw (-3.875,-3) -- (-3.5,-3) -- (-3.5,-3.375);
+    \draw [line width=4.0pt,color=white] (-2.875,-2) -- (-2.5,-2) -- (-2.5,-2.375);
+    \draw (-2.875,-2) -- (-2.5,-2) -- (-2.5,-2.375);
+    \draw [line width=4.0pt,color=white] (-1.875,-1) -- (-1.5,-1) -- (-1.5,-1.375);
+    \draw (-1.875,-1) -- (-1.5,-1) -- (-1.5,-1.375);
+    \draw [line width=4.0pt,color=white] (1.875,-3) -- (1.5,-3) -- (1.5,-3.375);
+    \draw (1.875,-3) -- (1.5,-3) -- (1.5,-3.375);
+    \draw [line width=4.0pt,color=white] (2.875,-2) -- (2.5,-2) -- (2.5,-2.375);
+    \draw (2.875,-2) -- (2.5,-2) -- (2.5,-2.375);
+    \draw [line width=4.0pt,color=white] (3.875,-1) -- (3.5,-1) -- (3.5,-1.375);
+    \draw (3.875,-1) -- (3.5,-1) -- (3.5,-1.375);
+    
   \end{tikzpicture}
 \]
 %%%%%%%%%%%%%%%%% 

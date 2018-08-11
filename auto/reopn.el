@@ -3,12 +3,12 @@
  (lambda ()
    (TeX-add-to-alist 'LaTeX-provided-package-options
                      '(("enumitem" "inline") ("xcolor" "dvipsnames") ("natbib" "numbers")))
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "path")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "url")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "nolinkurl")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperbaseurl")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperimage")
    (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperref")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperimage")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperbaseurl")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "nolinkurl")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "url")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "path")
    (add-to-list 'LaTeX-verbatim-macros-with-delims-local "path")
    (TeX-run-style-hooks
     "latex2e"
@@ -34,115 +34,104 @@
     "todonotes"
     "url")
    (TeX-add-symbols
+    '("adjunction" 4)
+    '("horarrow" 2)
+    '("opento" 2)
     '("graph" 2)
     '("rgraph" 2)
-    '("edit" 1)
-    '("FuncCsp" 1)
-    '("SSpCsp" 1)
-    '("SpCsp" 1)
-    '("EEpCspSp" 1)
-    '("EpCspSp" 1)
-    '("MMonSpCsp" 1)
-    '("MonSpCsp" 1)
-    '("CCspCsp" 1)
-    '("CspCsp" 1)
-    '("SSpSp" 1)
-    '("SpSp" 1)
-    '("MonicSpan" 1)
     '("diagram" 1)
+    '("csp" 3)
+    '("spn" 3)
     '("xgets" 1)
     '("xto" 1)
+    '("edit" 1)
+    '("type" 1)
     '("dblcat" 1)
+    '("bicat" 1)
     '("cat" 1)
-    '("op" 1)
     '("defn" 1)
-    "RR"
-    "ZZ"
-    "NN"
-    "QQ"
+    '("Csp" 1)
+    '("Span" 1)
+    "op"
+    "ob"
+    "arr"
+    "lin"
+    "iso"
+    "A"
+    "B"
+    "C"
+    "D"
+    "X"
+    "Y"
+    "Z"
+    "BB"
     "CC"
-    "DD"
-    "MM"
-    "LL"
+    "PP"
+    "XX"
+    "YY"
+    "ZZ"
+    "AAA"
+    "BBB"
+    "CCC"
+    "PPP"
+    "XXX"
+    "YYY"
+    "ZZZ"
     "Set"
     "Graph"
     "RGraph"
     "Top"
     "Cat"
-    "A"
-    "B"
-    "C"
-    "NonLinArrCat"
-    "LinArrCat"
-    "X"
-    "Y"
-    "Z"
-    "core"
-    "from"
-    "tospan"
-    "tocospan"
-    "Span"
-    "SSpan"
-    "Cospan"
-    "CCospan"
-    "OpenOb"
+    "Bicat"
+    "DblCat"
+    "Topos"
+    "Gram"
+    "StrCspGram"
+    "StrCsp"
+    "SStrCsp"
+    "SSStrCsp"
     "Rewrite"
     "RRewrite"
+    "RRRewrite"
     "MonRewrite"
-    "MMonRewrite")
+    "MMonRewrite"
+    "MMMonRewrite"
+    "core"
+    "Lang"
+    "from"
+    "rel"
+    "tospan"
+    "tocospan"
+    "Hom"
+    "id"
+    "im"
+    "Aut"
+    "Bij"
+    "Sub"
+    "colim")
    (LaTeX-add-labels
-    "sec:introduction"
-    "sec:motivating-example"
-    "df:OpenGraph"
-    "sec:open-objects"
-    "df:struct-cospan"
-    "df:open-objects"
-    "thm:open-obj-ptwise-limits"
-    "thm:OpenObTopos"
-    "sec:double-push-rewr"
-    "df:dpo_adhesive-category"
+    "sec:intro"
+    "sec:cat-of-strcsp"
+    "sec:strcsp-as-object"
+    "df:strcsp"
+    "df:morph-of-strcsp"
+    "ex:open-graphs"
+    "thm:strcsp-istopos"
+    "thm:strcsp-isfunctorial"
+    "sec:strcsp-as-arrows"
+    "def:strcsp-arr"
+    "ex:open-graph-as-arrow"
+    "sec:bicat-strcsp"
+    "sec:rewriting-strcsp"
+    "dfn:adhesive-category"
     "thm:dpo_topoi-adhesive"
     "thm:dpo_category-StrCsp-adhsv"
-    "df:dpo_rewrite-rule"
-    "df_dpo_pushout-complement"
-    "df:dpo_derived-rewrite-rule"
-    "df:dpo_grammar"
-    "sec:non-linear-rewriting"
-    "eq:nlr-2cell-form"
-    "sec:dbl-cat-nonlinr-rewr"
-    "thm_dbl-rewr-obcat"
-    "thm:dlb-rewr-arrcat"
-    "thm:preord-symm"
-    "thm:dbl-rewr-smc"
-    "eq:dlb-rewr-intchng-2cell"
-    "thm:dbl-rewr-fibrant"
-    "sec:bicat-nonlinr-rewr"
-    "thm:bicat-rewr-smc"
-    "thm:bicat-rewr-arrows-dual"
-    "def:bicat-rels"
-    "thm:bicat-rewr-bicat-rel"
-    "thm:bit-rewr-comp-closed"
-    "thm:bicat-rewr-freyds-modular"
-    "thm:bicat-rewr-function-compl"
-    "sec:dblcats-nonlinr-gramrs"
-    "thm:lr_open-objects-language"
-    "df:gramr-gen-dbl-cat"
-    "sec:linear-rewriting"
-    "eq:ln-2cell-form"
-    "sec:dble-cat-linr-rewr"
-    "def:mon-rewrite-obcat"
-    "thm:mon-rewrite-arrcat"
-    "thm:dbl-mon-rewr-smc"
-    "thm:dbl-mon-rewrite_isofibrant"
-    "thm:bi-mon-rewrite-scmm"
-    "sec:dblcats-linr-gramrs"
-    "thm:der-rewr-rule-dbl-monic"
-    "eq:derived-opnob-rewrite"
-    "sec:postable")
-   (LaTeX-add-environments
-    '("exposition" 1))
-   (LaTeX-add-bibliographies
-    "bib_reopn")
+    "sec:lang-linear-grammars"
+    "def:linear-grammar"
+    "thm:po-respect-monics"
+    "thm:s-lin-functor"
+    "thm:horbicat-MMonRewrite"
+    "sec:lang-left-linear-grammars")
    (LaTeX-add-amsthm-newtheorems
     "theorem"
     "lemma"

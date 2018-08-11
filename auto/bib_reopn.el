@@ -2,13 +2,16 @@
  "bib_reopn"
  (lambda ()
    (LaTeX-add-bibitems
-    "sp-csp"
-    "grph-trans"
-    "open-graphs"
-    "grph-trans-revisit"
+    "spcsp"
+    "spcsptop"
+    "graphtrans"
+    "opengraphs"
+    "graphtrans-revisited"
     "sheaves"
     "survey-grph-langs"
     "shulman-constructing"
-    "cc-bicats"))
+    "cc-bicats"
+    "artin-glue"
+    "networks"))
  :bibtex)
 

@@ -3,6 +3,13 @@
  (lambda ()
    (TeX-add-to-alist 'LaTeX-provided-package-options
                      '(("enumitem" "inline") ("xcolor" "dvipsnames") ("natbib" "numbers")))
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperref")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperimage")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperbaseurl")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "nolinkurl")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "url")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "path")
+   (add-to-list 'LaTeX-verbatim-macros-with-delims-local "path")
    (TeX-run-style-hooks
     "latex2e"
     "amsart"
@@ -27,73 +34,77 @@
     "todonotes"
     "url")
    (TeX-add-symbols
+    '("horarrow" 2)
+    '("opento" 2)
     '("graph" 2)
     '("rgraph" 2)
-    '("edit" 1)
-    '("FuncCsp" 1)
-    '("SSpCsp" 1)
-    '("SpCsp" 1)
-    '("EEpCspSp" 1)
-    '("EpCspSp" 1)
-    '("MMonSpCsp" 1)
-    '("MonSpCsp" 1)
-    '("CCspCsp" 1)
-    '("CspCsp" 1)
-    '("SSpSp" 1)
-    '("SpSp" 1)
-    '("MonicSpan" 1)
     '("diagram" 1)
+    '("cospan" 3)
+    '("span" 3)
     '("xgets" 1)
     '("xto" 1)
+    '("edit" 1)
+    '("type" 1)
     '("dblcat" 1)
+    '("bicat" 1)
     '("cat" 1)
-    '("op" 1)
     '("defn" 1)
-    "RR"
-    "ZZ"
-    "NN"
-    "QQ"
+    '("Csp" 1)
+    '("Span" 1)
+    "op"
+    "ob"
+    "arr"
+    "lin"
+    "iso"
+    "A"
+    "B"
+    "C"
+    "D"
+    "X"
+    "Y"
+    "Z"
+    "BB"
     "CC"
-    "DD"
-    "MM"
-    "LL"
+    "XX"
+    "YY"
+    "ZZ"
+    "AAA"
+    "BBB"
+    "CCC"
+    "XXX"
+    "YYY"
+    "ZZZ"
     "Set"
     "Graph"
     "RGraph"
     "Top"
     "Cat"
-    "A"
-    "B"
-    "C"
-    "NonLinArrCat"
-    "LinArrCat"
-    "X"
-    "Y"
-    "Z"
-    "core"
-    "from"
-    "tospan"
-    "tocospan"
-    "Span"
-    "SSpan"
-    "Cospan"
-    "CCospan"
-    "OpenOb"
+    "Bicat"
+    "Topos"
+    "Gram"
+    "StrCspGram"
+    "StrCsp"
+    "SStrCsp"
+    "SSStrCsp"
     "Rewrite"
     "RRewrite"
+    "RRRewrite"
     "MonRewrite"
     "MMonRewrite"
+    "core"
+    "Lang"
+    "from"
+    "rel"
+    "tospan"
+    "tocospan"
     "Hom"
     "id"
-    "ob"
-    "arr"
     "im"
     "Aut"
     "Bij"
     "Sub"
     "colim")
-   (LaTeX-add-environments
-    '("exposition" 1)
+   (LaTeX-add-amsthm-newtheorems
     "theorem"
     "lemma"
     "proposition"
@@ -101,6 +112,9 @@
     "remark"
     "notation"
     "example"
-    "definition"))
+    "definition")
+   (LaTeX-add-xcolor-definecolors
+    "editcolour"
+    "hrefcolour"))
  :latex)
 

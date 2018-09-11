@@ -35,11 +35,9 @@
     "url")
    (TeX-add-symbols
     '("adjunction" 4)
-    '("horarrow" 2)
     '("opento" 2)
     '("graph" 2)
     '("rgraph" 2)
-    '("diagram" 1)
     '("csp" 3)
     '("spn" 3)
     '("xgets" 1)
@@ -50,8 +48,6 @@
     '("bicat" 1)
     '("cat" 1)
     '("defn" 1)
-    '("Csp" 1)
-    '("Span" 1)
     "op"
     "ob"
     "arr"
@@ -74,6 +70,8 @@
     "BBB"
     "CCC"
     "PPP"
+    "QQQ"
+    "MMM"
     "XXX"
     "YYY"
     "ZZZ"
@@ -86,7 +84,10 @@
     "DblCat"
     "Topos"
     "Gram"
-    "StrCspGram"
+    "LinGram"
+    "LeftLinGram"
+    "Span"
+    "Csp"
     "StrCsp"
     "SStrCsp"
     "SSStrCsp"
@@ -98,17 +99,22 @@
     "MMMonRewrite"
     "core"
     "Lang"
+    "LinLang"
+    "LeftLinLang"
     "from"
     "rel"
     "tospan"
     "tocospan"
+    "monicgets"
+    "monicto"
     "Hom"
     "id"
     "im"
     "Aut"
     "Bij"
     "Sub"
-    "colim")
+    "colim"
+    "horarrow")
    (LaTeX-add-labels
     "sec:intro"
     "sec:cat-of-strcsp"
@@ -127,12 +133,13 @@
     "thm:dpo_topoi-adhesive"
     "thm:dpo_category-StrCsp-adhsv"
     "sec:lang-linear-grammars"
-    "def:linear-grammar"
+    "def:linear-grammars"
     "thm:po-respect-monics"
-    "thm:s-lin-functor"
-    "thm:horbicat-MMonRewrite"
-    "sec:lang-left-linear-grammars")
-   (LaTeX-add-amsthm-newtheorems
+    "thm:Slin-functorial"
+    "sec:lang-left-linear-grammars"
+    "sec:Slin-functor"
+    "sec:InductiveRewriting")
+   (LaTeX-add-environments
     "theorem"
     "lemma"
     "proposition"
@@ -141,8 +148,7 @@
     "notation"
     "example"
     "definition")
-   (LaTeX-add-xcolor-definecolors
-    "editcolour"
-    "hrefcolour"))
+   (LaTeX-add-lengths
+    "mylen"))
  :latex)
 

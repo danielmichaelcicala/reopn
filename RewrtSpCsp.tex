@@ -1,0 +1,1542 @@
+\documentclass{amsart}          
+
+% PACKAGES ~~~~~~~~~~~~~~~~~~~~
+
+\usepackage{amsfonts}
+\usepackage{amssymb}  
+\usepackage{amsthm} 
+\usepackage{amsmath} 
+\usepackage{caption}
+\usepackage[inline]{enumitem}
+\setlist{itemsep=0em, topsep=0em, parsep=0em}
+\setlist[enumerate]{label=(\alph*)}
+\usepackage{etoolbox}
+\usepackage{stmaryrd} 
+\usepackage[dvipsnames]{xcolor}
+\definecolor{editcolour}{rgb}{0.7,0.1,0}
+\definecolor{hrefcolour}{rgb}{0,0,0.7}
+
+\usepackage[]{hyperref}
+\hypersetup{colorlinks,linkcolor={hrefcolour},citecolor={hrefcolour},urlcolor={hrefcolour}}
+\usepackage{graphicx}
+\graphicspath{ {img/} }
+\usepackage{mathtools}
+
+\usepackage{tikz}
+\usetikzlibrary{matrix,arrows,shapes,decorations.markings,decorations.pathreplacing}
+\usepackage{todonotes}
+
+% NEW COMMANDS ~~~~~~~~~~~~~~~~~~
+
+% mathbb
+% \newcommand{\RR}{\mathbb{R}}
+% \newcommand{\ZZ}{\mathbb{Z}}
+% \newcommand{\NN}{\mathbb{N}}
+% \newcommand{\QQ}{\mathbb{Q}}
+% \newcommand{\CC}{\mathbb{C}}
+% \newcommand{\FF}{\mathbb{D}}
+
+% symbols
+\renewcommand{\epsilon}{\varepsilon}
+\newcommand{\op}{^{\scriptsize{ \textrm{op} } }}
+\newcommand{\iso}{\cong}
+\renewcommand{\equiv}{\simeq}
+
+% categories
+\newcommand{\A}{\cat{A}}
+\newcommand{\B}{\cat{B}}
+\newcommand{\C}{\cat{C}}
+\newcommand{\D}{\cat{D}}
+\newcommand{\E}{\cat{E}}
+\renewcommand{\P}{\cat{P}}
+\newcommand{\Q}{\cat{Q}}
+\newcommand{\R}{\cat{R}}
+\newcommand{\S}{\cat{S}}
+\newcommand{\T}{\cat{T}}
+\newcommand{\U}{\cat{U}}
+\newcommand{\V}{\cat{V}}
+\newcommand{\W}{\cat{W}}
+\newcommand{\X}{\cat{X}}
+\newcommand{\Y}{\cat{Y}}
+\newcommand{\Z}{\cat{Z}}
+\renewcommand{\AA}{\bicat{A}}
+\newcommand{\BB}{\bicat{B}}
+\newcommand{\CC}{\bicat{C}}
+\newcommand{\DD}{\bicat{D}}
+\newcommand{\EE}{\bicat{E}}
+\newcommand{\PP}{\bicat{P}}
+\newcommand{\QQ}{\bicat{Q}}
+\newcommand{\RR}{\bicat{R}}
+\newcommand{\SS}{\bicat{S}}
+\newcommand{\TT}{\bicat{T}}
+\newcommand{\UU}{\bicat{U}}
+\newcommand{\VV}{\bicat{V}}
+\newcommand{\WW}{\bicat{W}}
+\newcommand{\XX}{\bicat{X}}
+\newcommand{\YY}{\bicat{Y}}
+\newcommand{\ZZ}{\bicat{Z}}
+\newcommand{\AAA}{\dblcat{A}}
+\newcommand{\BBB}{\dblcat{B}}
+\newcommand{\CCC}{\dblcat{C}}
+\newcommand{\DDD}{\dblcat{D}}
+\newcommand{\EEE}{\dblcat{E}}
+\newcommand{\PPP}{\dblcat{P}}
+\newcommand{\QQQ}{\dblcat{Q}}
+\newcommand{\RRR}{\dblcat{R}}
+\newcommand{\SSS}{\dblcat{S}}
+\newcommand{\TTT}{\dblcat{T}}
+\newcommand{\UUU}{\dblcat{U}}
+\newcommand{\VVV}{\dblcat{V}}
+\newcommand{\WWW}{\dblcat{W}}
+\newcommand{\XXX}{\dblcat{X}}
+\newcommand{\YYY}{\dblcat{Y}}
+\newcommand{\ZZZ}{\dblcat{Z}}
+
+\newcommand{\Set}{\cat{Set}}
+\newcommand{\Graph}{\cat{Graph}}
+\newcommand{\RGraph}{\cat{RGraph}}
+\newcommand{\Top}{\cat{Top}}
+\newcommand{\Cat}{\cat{Cat}}
+\newcommand{\Bicat}{\cat{Bicat}}
+\newcommand{\DblCat}{\cat{DblCat}}
+\newcommand{\Topos}{\cat{Topos}}
+\newcommand{\Gram}{\cat{Gram}}
+\newcommand{\Span}{\cat{Span}}
+\newcommand{\Cospan}{\cat{Cospan}}
+
+% text formatting
+\newcommand{\defn}[1]{\textbf{#1}}
+\newcommand{\cat}[1]{\mathrm{#1}}
+\newcommand{\bicat}[1]{\mathbf{#1}}
+\newcommand{\dblcat}[1]{\mathbb{#1}}
+\newcommand{\type}[1]{\mathtt{#1}}
+\newcommand{\edit}[1]{\textcolor{editcolour}{(#1)}}
+
+% arrows
+\newcommand{\from}{\colon}
+\newcommand{\rel}{\nrightarrow}
+\newcommand{\To}{\Rightarrow}
+\newcommand{\xto}[1]{\xrightarrow{#1}}
+\newcommand{\squigto}{\rightsquigarrow}
+\newcommand{\xgets}[1]{\xleftarrow{#1}}
+\newcommand{\tospan}{\xrightarrow{\mathit{sp}}}
+\newcommand{\spn}[3]{#2 \to #1 \times #3}
+\newcommand{\csp}[3]{#1 + #3 \to #2}
+\newcommand{\tocospan}{\xrightarrow{\mathit{csp}}}
+
+% OPERATORS ~~~~~~~~~~~~~~~~~~
+
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\Sub}{Sub}
+\DeclareMathOperator{\colim}{colim}
+
+% ENVIRONMENTS & COUNTERS ~~~~~~~~~~~
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{notation}[theorem]{Notation}
+
+\theoremstyle{definition}
+\newtheorem{example}[theorem]{Example} 
+\newtheorem{definition}[theorem]{Definition}
+
+\setcounter{tocdepth}{1} % Sets depth for table of contents. 
+
+% TIKZ TYPES ~~~~~~~~~~~~~~~~~~~~~
+
+% arrow head in middle of edge
+\tikzset{->-/.style={decoration={%
+      markings,
+      mark=at position .5 with {\arrow{>}}},postaction={decorate}}
+}
+
+% arrow head user-positioned
+\tikzset{->-pos/.style={decoration={%
+      markings,
+      mark=at position #1 with {\arrow{>}}},postaction={decorate}}
+}
+
+% arrow head in middle of edge
+\tikzset{-|->/.style={decoration={%
+      markings,
+      mark=at position .5 with {\arrow{|}},mark=at position 1 with {\arrow{>}}},postaction={decorate}}
+}
+
+% INLINE DIAGRAMS ~~~~~~~~~~~~~~~
+
+% walking reflexive graph
+\newcommand{\rgraph}[2]{%
+  \begin{tikzpicture}[scale=0.75,baseline=-3pt]
+    \node (a) at (0,0) {$ #1 $};
+    \node (b) at (1,0) {$ #2 $};
+    \draw [->]
+    ([yshift= 4pt]a.east) to ([yshift= 4pt]b.west);
+    \draw [->]
+    ([yshift=-4pt]a.east) to ([yshift=-4pt]b.west);
+    \draw [->]
+    (b.west) to (a.east);
+  \end{tikzpicture}
+}
+
+% walking graph
+\newcommand{\graph}[2]{%
+  \begin{tikzpicture}[scale=0.75,baseline=-3pt]
+    \node (a) at (0,0) {$ #1 $};
+    \node (b) at (1,0) {$ #2 $};
+    \draw [->]
+    ([yshift=4pt]a.east) to ([yshift=4pt]b.west);
+    \draw [->]
+    ([yshift=-4pt]a.east) to ([yshift=-4pt]b.west);
+  \end{tikzpicture}
+}
+
+% open tipped arrow
+\newcommand{\opento}[2]{%
+  \begin{tikzpicture}[scale=0.75,baseline=-3pt]
+    \node (a) at (0,0) {$ #1 $};
+    \node (b) at (1,0) {$ #2 $};
+    \draw [->, open triangle 60]
+    (a.east) to (b.west);
+  \end{tikzpicture}
+}
+
+% inline horizontal arrow
+\newlength\mylen
+\settowidth\mylen{$\to$}
+
+\newcommand{\horarrow}{%
+  \to\kern-0.55\mylen\vline height 1.2ex depth
+  -0.4pt\kern0.55\mylen}
+
+% adjunction
+\newcommand{\adjunction}[4]{%
+  \begin{tikzpicture}[baseline=-3pt]
+    \node (1) at (0,0) {( #1 )};
+    \node (2) at (2,0) {( #4 )};
+    \draw [->]
+    ([yshift= 4pt]2.west) to
+    node [above] {\scriptsize{ $ #2 $ }}
+    ([yshift= 4pt]1.east);
+    \draw [->]
+    ([yshift= -4pt]1.east) to
+    node [below] {\scriptsize{ $ #3 $ }}
+    node [above,yshift= -1.5pt] {\scriptsize{$ \perp $}}
+    ([yshift= -4pt]2.west);
+  \end{tikzpicture}
+  % 
+}
+
+\author{Daniel Cicala}
+\title{Rewriting Structured Cospans}
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% 
+% ~~~~~~~~~~~ begin document~~~~~~~~~~~~~~
+% 
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+\begin{document}
+\maketitle{}
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% ~~~~~~~~~~~ introduction ~~~~~~~~~~~~~~~
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+\section{Introduction}
+\label{sec-1}
+\subsection{Using structured cospans to introduce inductive rewriting on certain topoi}
+\label{sec-1-1}
+\subsection{generalizing gadducci.}
+\label{sec-1-2}
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% ~~~~~~~~~~~ structured cospans~~~~~~~~~~
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+\section{Structured Cospans}
+\label{sec:StrCsp}
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+\subsection{Introduce the section}
+\label{sec-2-1}
+
+%____________________________________________________
+\subsubsection{Background on structured cospans}
+\label{sec-2-1-1}
+\begin{enumerate}
+\item decorated cospans
+\label{sec-2-1-1-1}
+\item structured cospans
+\label{sec-2-1-1-2}
+\end{enumerate}
+
+Structured cospans were introduced to model compositional systems. In
+fact, they were the second approach to model compositional systems
+using cospans. Fong invented \emph{decorated cospans},
+%
+\todo{cite decorated cospans}
+%
+the first approach.  Structure cospans are
+introduced here as well as by Baez and Courser.
+%
+\todo{cite baez-courser strcsp}
+%
+The latter has work two aims: maximize the
+generality of the structured cospan construction using double
+categories and also to compare decorated and structured cospans. Our
+present interests are focused on introducing rewriting on structured
+cospans, hence we will make a number of restrictions that Baez and
+Courser do not.  These restriction are harmless, however, as most
+cases of interest fall within the our parameters.
+
+In this section, we will make explicit two perspectives on structured
+cospans, both through the language of category theory.  The first is
+looking at structured cospans as an object with morphisms between
+them. The second is as a morphism between ``interfaces''.  It is the
+latter perspective that encodes the compositional structure.  
+
+\subsubsection{introduce some notation here}
+\label{sec-2-1-2}
+\begin{enumerate}
+\item spans are x --> y \texttimes{} z and cospans too
+\label{sec-2-1-2-1}
+\end{enumerate}
+\subsubsection{minimum assumptions at this point: working with a geom. morphism}
+\label{sec-2-1-3}
+
+For this section, fix an arbitrary geometric morphism
+$ L \dashv R \from \X \to \A $. This is an adjunction
+%
+\[
+  \adjunction{\X}{L}{R}{\A}
+\]
+%
+between (elementary) topoi with $ L $ left exact. Because spans and
+cospans factor heavily into this work, we use the notation
+%
+\(
+ (f,g) \from \spn{x}{y}{z}
+\)
+% 
+for a span
+%
+\[
+  x \xgets{f} y \xto{g} z
+\]
+%
+and
+%
+\(
+  (f,g) \from \csp{x}{y}{z}
+\)
+% 
+for a cospan
+%
+\[
+  x \xto{f} y \xgets{g} z.
+\]
+% 
+Because all of the
+categories in this paper will have products and coproducts, this
+notation is sensible.
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~
+% ~~~~~~~~~~~~~~~~~~~~~~~~
+
+\subsection{Structured cospans as objects}
+\label{sec:StrCspAsObject}
+
+\subsubsection{define the category StrCsp(L) of structured cospans as objects}
+\label{sec-2-2-1}
+
+\begin{definition}\label{df:strcsp}
+
+  A \defn{ structured cospan } is a cospan of the form
+  $ La \to x \gets Lb $.
+  
+\end{definition}
+
+There is no novelty in a simple cospan, but we present this as a new
+definition to place ourselves into the context of systems
+modelling. Also, the reason for restricting ourselves to a geometric
+morphism at this point is elusive. Especially so because the other
+introducory work on structured cospans by Baez and Courser did not ask
+for this. Let us say that this requirement arises from practical and
+aesthetic considerations. For one, a nicer theory develops, but also
+it is a sufficiently strong condition to introduce rewriting of
+structured cospans.
+
+\subsubsection{analogy to open systems and the role each part of the geom. morphism plays}
+\label{sec-2-2-2}
+
+Our motivations being the modeling of open systems, beginning
+the story by fixing a geometric morphism might signal the abstract
+nature of this work and obfuscate the connection between structured
+cospans and open systems. So that we do not drift too far from our
+concrete motivations, we will draw analogies between our construction
+and open systems throughout.  
+
+Here is the first such analogy. One should view the topos $ \A $ as
+consisting of closed systems and their morphisms. By a \emph{closed
+  system}, we mean a system that cannot interact with the outside
+world. The topos $ \X $ should be thought to contain possible
+interfaces for the closed systems. Equipping a closed system with an
+interface provides an avenue for the system to now interact with
+compatible elements of the outside world. The interface dictates
+compatibility as we explore below.  Such a system is no longer closed,
+and so we call it an \emph{open system}. The left adjoint $ L $ sends
+these interfaces into $ \X $ so that they might interact with the
+closed systems. The right adjoint $ R $ can be though of as returning
+a closed system's largest possible interface. A word of caution: this
+is an informal analogy and should only be used to gain an intuition
+for the nature of structured cospans. Now, let us turn to the first of
+two perspectives on structured cospans.
+
+Through this perspective, a structured cospan consists of a closed
+system $ x $ with an interface identified by the arrows from $ La $
+and $ Lb $. Ignoring questions of causality, it is safe to consider
+$ La $ as the input to $ x $ and $ Lb $ as the output. The sum total
+of the closed system $ x $ equipped with interface $ La + Lb $ is our
+open system. As expected, a morphism of open system ought to respect
+these components.
+
+\begin{definition} \label{df:morph-of-strcsp}
+
+  A morphism from one structured cospan
+  %
+  \(
+    \csp{La}{x}{Lb}
+  \)
+  %
+  to another
+  %
+  \(
+    \csp{Lc}{y}{Ld}
+  \)
+  % 
+  is a triple of arrows $ ( f,g,h ) $ that fit into the commuting
+  diagram
+  \[
+    \begin{tikzpicture}
+      \node (1) at (-2,1) {\( La \)};
+      \node (2) at (0,1) {\( x \)};
+      \node (3) at (2,1) {\( Lb \)};
+      \node (4) at (-2,0) {\( Lc \)};
+      \node (5) at (0,0) {\( y \)};
+      \node (6) at (2,0) {\( Ld \)};
+      \draw [->] (1) to node [above] {\scriptsize{\(  \)}} (2);
+      \draw [->] (3) to node [above] {\scriptsize{\(  \)}} (2);
+      \draw [->] (4) to node [below] {\scriptsize{\(  \)}} (5);
+      \draw [->] (6) to node [below] {\scriptsize{\(  \)}} (5);
+      \draw [->] (1) to node [left] {\scriptsize{\( Lf \)}} (4);
+      \draw [->] (2) to node [left] {\scriptsize{\( g \)}} (5);
+      \draw [->] (3) to node [left] {\scriptsize{\( Lh \)}} (6);
+    \end{tikzpicture}
+  \]
+\end{definition}
+
+It is a simple exercise to show that structured cospans and their
+morphisms form a category.  Denote this category by $ \StrCsp_L
+$. 
+
+\subsubsection{start running example: open/ranked graphs}
+\label{sec-2-2-3}
+
+\begin{enumerate}
+\item mention gaducci and kissinger stuff here
+\label{sec-2-2-3-1}
+\end{enumerate}
+
+\begin{example}[Open graphs] \label{ex:open-graphs}
+
+  The field of network theory is intimately tied with graph theory
+  \cite{networks}. A natural example of a structured cospan is an
+  \emph{open graph}. While this notion is not new,
+  %
+  \todo{cite DuncanKiss and Gadd}
+  %
+  our infrastructure generalizes it.
+
+  Let
+  %
+  \[
+    \RGraph \coloneqq [ \rgraph{\bullet}{\bullet} , \Set ]
+  \]
+  % 
+  be the category of (directed reflexive multi) graphs. There is an
+  adjunction
+  %
+  \[
+    \adjunction{\RGraph}{L}{R}{\Set}
+  \]
+  % 
+  where $ Rx $ is the node set of graph $ x $ and $ La $ is the
+  edgeless graph with node set $ a $. An \defn{open graph} is a cospan
+  %
+  \(
+      \csp{La}{x}{Lb}
+  \)
+  % 
+  for sets $ a $, $ b $, and graph $ x $. An illustrated example, with
+  the reflexive loops suppressed, is
+  %
+  \[
+    \begin{tikzpicture}
+      %
+      \begin{scope} % left graph
+      \node (1) at (0,1) { \( \bullet \) };
+      \node (2) at (0,0) { \( \bullet \) };
+      \draw [rounded corners] (-0.5,-0.5) rectangle (0.5,1.5);
+      \end{scope}
+      %
+      \begin{scope}[shift={(2,0)}] % center graph
+      \node (1) at (0,1) {\( \bullet \)};
+      \node (2) at (0,0) {\( \bullet \)};
+      \node (3) at (1,0.5) {\( \bullet  \)};
+      \node (4) at (2,0.5) {\( \bullet  \)};
+      \draw [->-] (1) to (3);
+      \draw [->-] (2) to (3);
+      \draw [->-] (3) to (4);
+      \draw [rounded corners] (-0.5,-0.5) rectangle (2.5,1.5);
+      \end{scope}
+      %
+      \begin{scope}[shift={(6,0)}] % right graph
+      \node (1) at (0,0.5) {\( \bullet \)};
+      \draw [rounded corners] (-0.5,-0.5) rectangle (0.5,1.5);
+      \end{scope}
+      %
+      \begin{scope} % graph morphisms
+        \node (1) at (0.5,0.5) {};
+        \node (2) at (1.5,0.5) {};
+        \node (3) at (4.5,0.5) {};
+        \node (4) at (5.5,0.5) {};
+        \draw [->] (1) to (2);
+        \draw [->] (4) to (3);
+      \end{scope}
+    \end{tikzpicture}
+  \]
+  % 
+  The boxed items are graphs and the arrows between boxes are graph
+  morphims defined as suggested by the illustration.  In total, the
+  three graphs and two graph morphisms make up a single open graph.   
+    
+\end{example}
+
+% what good is the open bit?
+
+Having seen this example, it becomes more apparent about how open
+systems can ``connect'' together. Given another open graph whose inputs
+coincide with the outputs of the graph above, we can connect
+the inputs and outputs together to create a new open graph. By passing
+from graphs to open graphs, we are introducing
+\emph{compositionality}. The category $ \StrCsp_{L} $ does not encode
+the compositional structure, but we introduce a new category
+$ \Csp_L $ in Section \ref{sec:strcsp-as-arrows} for this purpose
+and delay further discussion along these lines until then. At present,
+we concern ourselves with showing that $ \StrCsp_L $ is a topos in a
+functorial way.  While interesting in itself, this fact allows us to
+introduce rewriting systems to structured cospans.
+
+\subsubsection{prove that StrCsp : [ * --> * , Topos ] --> Topos is functor}
+\label{sec-2-2-4}
+\begin{enumerate}
+\item requires proving that StrCsp(L) is a topos using Artin gluing
+\label{sec-2-2-4-1}
+\end{enumerate}
+
+\begin{theorem} \label{thm:strcsp-istopos}
+
+  The category $ \StrCsp_L $ is a topos.
+  
+\end{theorem}
+
+\begin{proof}
+
+  The category $ \StrCsp_L $ constructed using the adjunction
+  $ L \dashv R \from \X \to \A $ is equivalent to the category
+  whose objects are cospans of form
+  %
+  \(
+      \csp{a}{Rx}{b}
+  \)
+  % 
+  and morphisms are triples $ ( f,g,h ) $ fitting into the commuting
+  diagram
+  %
+  \[
+    \begin{tikzpicture}
+      \node (1) at (-2,1) {\( w \)};
+      \node (2) at (0,1) {\( Ra \)};
+      \node (3) at (2,1) {\( x \)};
+      \node (4) at (-2,0) {\( y \)};
+      \node (5) at (0,0) {\( Rb \)};
+      \node (6) at (2,0) {\( z \)};
+      \draw [->] (1) to  node [] {\scriptsize{\(  \)}} (2);
+      \draw [->] (3) to node [] {\scriptsize{\(  \)}} (2);
+      \draw [->] (4) to node [] {\scriptsize{\(  \)}} (5);
+      \draw [->] (6) to node [] {\scriptsize{\(  \)}} (5);
+      \draw [->] (1) to node [left] {\scriptsize{\( f \)}} (4);
+      \draw [->] (2) to node [left] {\scriptsize{\( Rg \)}} (5);
+      \draw [->] (3) to node [left] {\scriptsize{\( h \)}} (6); 
+    \end{tikzpicture}
+  \]
+  % 
+  This, in turn, is equivalent to the comma category
+  $ ( \A \times \A \downarrow \Delta R ) $, where
+  $ \Delta \from \A \to \A \times \A $ is the diagonal functor. But
+  the diagonal functor is right adjoint to taking binary
+  coproducts. That means $ \Delta R $ is also a right adjoint and,
+  furthermore, that $ ( \A \times \A \downarrow \Delta R ) $ is an
+  instance of Artin glueing,
+  %
+  \todo{CITE ARTIN GLUEING}
+  hence a topos.
+%
+\end{proof}
+
+Until now, the topos $ \StrCsp_L $ depended on an adjunction fixed at
+the beginning of the section.  By letting the adjunction vary, we see
+that $ \StrCsp_{(-)} $ is actually functorial. For the following theorem, denote by $ \Topos $ the category of
+elementary topoi and geometric morphisms.
+
+\begin{theorem} \label{thm:strcsp-isfunctorial}
+
+  There is a functor
+  %
+  \[
+    \StrCsp_{(-)} \from
+    [ \bullet \to \bullet , \Topos ]
+    \to
+    \Topos
+  \]
+  % 
+  defined by  
+  \[
+    \begin{tikzpicture}
+      \begin{scope}
+      \node (1) at (-1,1) {\( \X \)};
+      \node (2) at (-1,-1) {\( \X' \)};
+      \node (3) at (1,1) {\( \A \)};
+      \node (4) at (1,-1) {\( \A' \)};
+      \draw [->] (1.-60) to node [right] {\scriptsize{\( G \)}} (2.60);
+      \draw [<-] (1.-120) to node [left] {\scriptsize{\( F \)}} (2.120);
+      \draw [<-] (1.30) to node [above] {\scriptsize{\( L \)}} (3.150);  
+      \draw [->] (1.-30) to node [below] {\scriptsize{\( R \)}} (3.-150);
+      \draw [->] (2.30) to node [above] {\scriptsize{\( R' \)}} (4.150);
+      \draw [<-] (2.-30) to node [below] {\scriptsize{\( L' \)}} (4.-150);      
+      \draw [<-] (3.-60) to node [right] {\scriptsize{\( F' \)}} (4.60);
+      \draw [->] (3.-120) to node [left] {\scriptsize{\( G' \)}}
+      (4.120);
+      \node (5) at (0,-1) {\scriptsize{\( \top \)}};
+      \node (6) at (0,1) {\scriptsize{\( \perp \)}};
+      \node (7) at (-1,0) {\scriptsize{\( \dashv \)}};
+      \node (8) at (1,0) {\scriptsize{\( \vdash \)}};
+      \end{scope}
+     % 
+      \begin{scope}[shift={(3,0)}]
+      \node (1) at (0,0) { $\xmapsto{ \StrCsp_{(-)} }$ };
+      \end{scope}
+      %
+      \begin{scope}[shift={(5.5,0)}]
+      \node (1) [inner sep=0.1cm] at (0,0) {\( \StrCsp_{L} \)};
+      \node (2) [inner sep=0.15cm] at (4,0) {\( \StrCsp_{L'} \)};
+      \node (3) at (2,0) {\scriptsize{ \( \perp \) }};
+      \draw [->]
+        ([yshift= 4pt]1.east) to
+        node [above] {\scriptsize{ \( \Theta \) }}
+        ([yshift= 4pt]2.west);
+      \draw [->]
+        ([yshift= -4pt]2.west) to
+        node [below] {\scriptsize{ \( \Theta' \) } }
+        ([yshift= -4pt]1.east);  
+      \end{scope}
+    \end{tikzpicture}
+  \]
+  % 
+  which is in turn given by
+  %
+  \[
+    \begin{tikzpicture}
+      \begin{scope}
+      \node (1) at (-2,1) {\( La \)};
+      \node (2) at (0,1) {\( x \)};
+      \node (3) at (2,1) {\( Lb \)};
+      \node (4) at (-2,0) {\( Lc \)};
+      \node (5) at (0,0) {\( y \)};
+      \node (6) at (2,0) {\( Ld \)};
+      \draw [->] (1) to node [above] {\scriptsize{\( m \)}} (2);
+      \draw [->] (3) to node [above] {\scriptsize{\( n \)}} (2);
+      \draw [->] (4) to node [above] {\scriptsize{\( o \)}} (5);
+      \draw [->] (6) to node [above] {\scriptsize{\( p \)}} (5);
+      \draw [->] (1) to node [left] {\scriptsize{\( Lf \)}} (4);
+      \draw [->] (2) to node [left] {\scriptsize{\( g \)}} (5);
+      \draw [->] (3) to node [left] {\scriptsize{\( Lh \)}} (6);
+      \end{scope}
+      %
+      \begin{scope}[shift={(3,0)}]
+      \node (1) at (0,0.5) { $ \xmapsto{ \Theta } $ };
+      \end{scope}
+      %
+      \begin{scope}[shift={(6.5,0)}]
+      \node (1) at (-2,1) {\( L'G'a \)};
+      \node (2) at (0,1) {\( Gx \)};
+      \node (3) at (2,1) {\( L'G'b \)};
+      \node (4) at (-2,0) {\( L'G'c \)};
+      \node (5) at (0,0) {\( Gy \)};
+      \node (6) at (2,0) {\( L'G'd \)};
+      \draw [->] (1) to node [above] {\scriptsize{\( Gm \)}} (2);
+      \draw [->] (3) to node [above] {\scriptsize{\( Gn \)}} (2);
+      \draw [->] (4) to node [above] {\scriptsize{\( Go \)}} (5);
+      \draw [->] (6) to node [above] {\scriptsize{\( Gp \)}} (5);
+      \draw [->] (1) to node [left] {\scriptsize{\( L'G'f \)}} (4);
+      \draw [->] (2) to node [left] {\scriptsize{\( Gg \)}} (5);
+      \draw [->] (3) to node [left] {\scriptsize{\( L'G'h \)}} (6);  
+      \end{scope}
+    \end{tikzpicture}
+  \]
+  %
+  and
+  %
+  \[
+    \begin{tikzpicture}
+      \begin{scope}
+      \node (1) at (-2,1) {\( L'a' \)};
+      \node (2) at (0,1) {\( x' \)};
+      \node (3) at (2,1) {\( L'b' \)};
+      \node (4) at (-2,0) {\( L'c' \)};
+      \node (5) at (0,0) {\( y' \)};
+      \node (6) at (2,0) {\( L'd' \)};
+      \draw [->] (1) to node [above] {\scriptsize{\( m' \)}} (2);
+      \draw [->] (3) to node [above] {\scriptsize{\( n' \)}} (2);
+      \draw [->] (4) to node [above] {\scriptsize{\( o' \)}} (5);
+      \draw [->] (6) to node [above] {\scriptsize{\( p' \)}} (5);
+      \draw [->] (1) to node [left] {\scriptsize{\( L'f' \)}} (4);
+      \draw [->] (2) to node [left] {\scriptsize{\( g' \)}} (5);
+      \draw [->] (3) to node [left] {\scriptsize{\( L'h' \)}} (6);
+      \end{scope}
+      %
+      \begin{scope}[shift={(3,0)}]
+      \node (1) at (0,0.5) { $ \xmapsto{ \Theta' } $ };
+      \end{scope}
+      %
+      \begin{scope}[shift={(6.5,0)}]
+      \node (1) at (-2,1) {\( LF'a' \)};
+      \node (2) at (0,1) {\( Fx' \)};
+      \node (3) at (2,1) {\( LF'b' \)};
+      \node (4) at (-2,0) {\( LF'c' \)};
+      \node (5) at (0,0) {\( Fy' \)};
+      \node (6) at (2,0) {\( LF'd' \)};
+      \draw [->] (1) to node [above] {\scriptsize{\( Fm' \)}} (2);
+      \draw [->] (3) to node [above] {\scriptsize{\( Fn' \)}} (2);
+      \draw [->] (4) to node [above] {\scriptsize{\( Fo' \)}} (5);
+      \draw [->] (6) to node [above] {\scriptsize{\( Fp' \)}} (5);
+      \draw [->] (1) to node [left] {\scriptsize{\( LF'f' \)}} (4);
+      \draw [->] (2) to node [left] {\scriptsize{\( Fg' \)}} (5);
+      \draw [->] (3) to node [left] {\scriptsize{\( LF'h' \)}} (6);  
+      \end{scope}
+    \end{tikzpicture}
+  \]  
+\end{theorem}
+
+\begin{proof}
+
+  In light of Lemma \ref{thm:strcsp-istopos}, it suffices to show that
+  $ \Theta \dashv \Theta' $ gives a geometric morphism.
+
+  Denote the structured cospans
+  %
+  \[
+    La \xto{m} x \xgets{n} Lb
+  \]
+  % 
+  in $ \StrCsp_{ L } $ by $ \ell $ and  
+  %
+  \[
+    L'a' \xto{ m'} x' \xgets{ n'} L'b'
+  \]
+  % 
+  in $ \StrCsp_{ L' } $ by $ \ell' $,
+  respectively. Also, denote the unit and counit for $F \dashv G$ by
+  $ \eta $, $ \varepsilon $ and for $ F' \dashv G' $ by $ \eta' $, $
+  \varepsilon' $.  The assignments
+  %
+  \begin{align}
+    \left(
+      ( f,g,h ) \from \ell \to \Theta' \ell'
+      \right)
+    & \mapsto
+    \left(
+      ( \varepsilon' \circ F'f , \varepsilon \circ Fg , \varepsilon'
+      \circ F'h )
+      \from \Theta \ell \to \ell'
+      \right) \\
+      %
+      \left(
+      ( f',g',h' ) \from \Theta \ell \to \ell'
+      \right)
+    & \mapsto
+      \left(
+      ( G'f' \circ \eta', Gg' \circ \eta , G'h' \circ \eta' )
+      \from \ell \to \Theta' \ell'
+      \right) \\
+  \end{align}
+  %
+  give a bijection $ \hom ( \Theta \ell , \ell' ) \simeq \hom ( \ell ,
+  \Theta' \ell' ) $. Moreover, it is natural in $ \ell $ and $ \ell'
+  $. This rests on the natural maps $ \eta $, $ \varepsilon $, $ \eta'
+  $, and $ \varepsilon' $. The left adjoint $ \Theta' $ preserves
+  finite limits because they are taken pointwise and $ L $, $ F $, and
+  $ F' $ all preserve finite limits.
+
+\end{proof}
+
+\subsubsection{the category of structured cospan categories is a functor category so the functors should be certain natural transformations. Does the current definition of a structured cospan functor do this?}
+\label{sec-2-2-5}
+
+Even though a structured cospan category is actually a topos, and its
+information is drawn from a geometric morphism of topoi, the morphims
+between structured cospan categories that we are interested in do not
+involve geometric morphisms. Given a pair of geometric morphisms from
+%
+\[
+  \adjunction{\X}{L}{R}{\A}
+  \quad
+  \t{ and }
+  \quad
+  \adjunction{\X}{L'}{R'}{\A'}
+\]
+% 
+a \defn{structured cospan functor}
+%
+\[
+  \StrCsp_{L} \to \StrCsp_{L'}
+\]
+% 
+consists of a a pair of finitely continuous and cocontinuous functors
+%
+\todo{we actually only need F preserves monics, p.o.'s and p.b.'s and
+  G p.b.'s}
+%
+$ F \from \X \to \X' $ and $ G \from \A \to \A' $ such that
+$ FL=L'F $ and $ GR = R'F $.  While structured cospan categories and
+their morphisms form a category, we leave it unnamed.
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~
+% ~~~~~~~~~~~~~~~~~~~~~~~~
+
+\subsection{Structured cospans as arrows}
+\label{sec-2-3}
+
+\subsubsection{this intros compositionality to structured cospans}
+\label{sec-2-3-1}
+\subsubsection{define the composition of structured cospans via pushout}
+\label{sec-2-3-2}
+
+We now turn to capturing the compositional structure that
+truly motivates the invention of structured cospans.  To do this, we
+shift perspectives of structured cospans as objects in $ \StrCsp_{L} $
+to structured cospans as morphisms, which of course, are composable. 
+
+\begin{definition} \label{def:strcsp-arr}
+  
+  Denote by $ \Csp_{L} $ the category that has the same objects as
+  $ \A $ and structured cospans $ \csp{La}{x}{Lb} $ as arrows of
+  type $ a \to b $.
+  
+\end{definition}
+
+Note that composition is defined by pushout:
+%
+\[
+  \begin{tikzpicture}
+    \begin{scope}
+    \node (1) at (0,0) {\( La \)};
+    \node (2) at (1,0.5) {\( x \)};
+    \node (3) at (2,0) {\( Lb \)};
+    \node (4) at (3,0) {\( Lb \)};
+    \node (5) at (4,0.5) {\( y \)};
+    \node (6) at (5,0) {\( Lc \)};
+    \node (7) at (2.5,0.25) {\( ; \)};
+    \draw [->] (1) to node [] {\scriptsize{\(  \)}} (2);
+    \draw [->] (3) to node [] {\scriptsize{\(  \)}} (2);
+    \draw [->] (4) to node [] {\scriptsize{\(  \)}} (5);
+    \draw [->] (6) to node [] {\scriptsize{\(  \)}} (5);
+    \end{scope}
+    %
+    \begin{scope}[shift={(6,0)}]
+    \node (1) at (0,0.25) {\( \xmapsto{\circ} \)};
+    \end{scope}
+    %
+    \begin{scope}[shift={(7,0)}]
+    \node (1) at (0,0) {\( La \)};
+    \node (2) at (1.5,0.5) {\( x +_{Lb} y \)};
+    \node (3) at (3,0) {\( Lc \)};
+     \draw [->] (1) to node [] {\scriptsize{\(  \)}} (2);
+    \draw [->] (3) to node [] {\scriptsize{\(  \)}} (2); 
+    \end{scope}
+  \end{tikzpicture}
+\]
+% 
+
+Pushouts, in a sense, are a way of glueing things
+together. Hence using pushouts as composition is a sensible way to model
+system connection. Given two systems
+%
+\[
+  \csp{La}{x}{Lb}
+  \quad
+  \t{ and }
+  \quad
+  \csp{Lb}{y}{Lc}
+\]
+% 
+sharing a common interface $ Lb $, their composition is like
+connecting at $ Lb $. To illustrate how the structured cospan
+formalism allows us to connect systems together, we return to the open
+graphs example.
+
+\subsubsection{illustrate with open graphs}
+\label{sec-2-3-3}
+
+\begin{example} \label{ex:open-graph-as-arrow}
+
+  The open graph
+  % 
+  \[
+    \begin{tikzpicture}
+       %
+      \begin{scope} % left graph
+      \node (1) at (0,1) { \( \bullet \) };
+      \node (2) at (0,0) { \( \bullet \) };
+      \draw [rounded corners] (-0.5,-0.5) rectangle (0.5,1.5);
+      \end{scope}
+      %
+      \begin{scope}[shift={(2,0)}] % center graph
+      \node (1) at (0,1) {\( \bullet \)};
+      \node (2) at (0,0) {\( \bullet \)};
+      \node (3) at (1,0.5) {\( \bullet  \)};
+      \node (4) at (2,0.5) {\( {}_{j} \bullet  \)};
+      \draw [->-] (1) to (3);
+      \draw [->-] (2) to (3);
+      \draw [->-] (3) to (4);
+      \draw [rounded corners] (-0.5,-0.5) rectangle (2.5,1.5);
+      \end{scope}
+      %
+      \begin{scope}[shift={(6,0)}] % right graph
+      \node (1) at (0,0.5) {\( \bullet_{j} \)};
+      \draw [rounded corners] (-0.5,-0.5) rectangle (0.5,1.5);
+      \end{scope}
+      %
+      \begin{scope} % graph morphisms
+      \node (1) at (0.5,0.5) {};
+      \node (2) at (1.5,0.5) {};
+      \node (3) at (4.5,0.5) {};
+      \node (4) at (5.5,0.5) {};
+      \draw [->] (1) to (2);
+      \draw [->] (4) to (3);
+      \end{scope}
+      %
+    \end{tikzpicture}
+  \]
+  % 
+  can be composed with the open graph
+   %
+  \[
+    \begin{tikzpicture}
+       %
+      \begin{scope} % left graph
+      \node (1) at (0,0.5) { \( {}_{j} \bullet \) };
+      \draw [rounded corners] (-0.5,-0.5) rectangle (0.5,1.5);
+      \end{scope}
+      %
+      \begin{scope}[shift={(2,0)}] % center graph
+      \node (1) at (0,0.5) {\( {}_{j} \bullet \)};
+      \node (2) at (2,0) {\( \bullet \)};
+      \node (3) at (2,0.5) {\( \bullet  \)};
+      \node (4) at (2,1) {\( \bullet  \)};
+      \draw [->-] (1) to (2);
+      \draw [->-] (1) to (3);
+      \draw [->-] (1) to (4);
+      \draw [rounded corners] (-0.5,-0.5) rectangle (2.5,1.5);
+      \end{scope}
+      %
+      \begin{scope}[shift={(6,0)}] % right graph
+      \node (2) at (0,0) {\( \bullet \)};
+      \node (3) at (0,0.5) {\( \bullet  \)};
+      \node (4) at (0,1) {\( \bullet  \)};
+      \draw [rounded corners] (-0.5,-0.5) rectangle (0.5,1.5);
+      \end{scope}
+      %
+      \begin{scope} % graph morphisms
+      \node (1) at (0.5,0.5) {};
+      \node (2) at (1.5,0.5) {};
+      \node (3) at (4.5,0.5) {};
+      \node (4) at (5.5,0.5) {};
+      \draw [->] (1) to (2);
+      \draw [->] (4) to (3);
+      \end{scope}
+      %
+    \end{tikzpicture}
+  \]
+  %
+  to obtain
+  %
+  \[
+    \begin{tikzpicture}
+       %
+      \begin{scope} % left graph
+      \node (1) at (0,1) { \( \bullet \) };
+      \node (2) at (0,0) { \( \bullet \) };
+      \draw [rounded corners] (-0.5,-0.5) rectangle (0.5,1.5);
+      \end{scope}
+      %
+      \begin{scope}[shift={(2,0)}] % center graph
+      \node (1) at (0,1) {\( \bullet \)};
+      \node (2) at (0,0) {\( \bullet \)};
+      \node (3) at (1,0.5) {\( \bullet  \)};
+      \node (4) at (2,0.5) {\( {}^{j} \bullet  \)};
+      \node (5) at (3,0) {\( \bullet \)};
+      \node (6) at (3,0.5) {\( \bullet  \)};
+      \node (7) at (3,1) {\( \bullet  \)};
+      \draw [->-] (1) to (3);
+      \draw [->-] (2) to (3);
+      \draw [->-] (3) to (4);
+      \draw [->-] (4) to (5);
+      \draw [->-] (4) to (6);
+      \draw [->-] (4) to (7);
+      \draw [rounded corners] (-0.5,-0.5) rectangle (3.5,1.5);
+      \end{scope}
+      %
+      \begin{scope}[shift={(7,0)}] % right graph
+      \node (2) at (0,0) {\( \bullet \)};
+      \node (3) at (0,0.5) {\( \bullet  \)};
+      \node (4) at (0,1) {\( \bullet  \)};
+      \draw [rounded corners] (-0.5,-0.5) rectangle (0.5,1.5);
+      \end{scope}
+      %
+      \begin{scope} % graph morphisms
+      \node (1) at (0.5,0.5) {};
+      \node (2) at (1.5,0.5) {};
+      \node (3) at (5.5,0.5) {};
+      \node (4) at (6.5,0.5) {};
+      \draw [->] (1) to (2);
+      \draw [->] (4) to (3);
+      \end{scope}
+      %
+    \end{tikzpicture}
+  \]
+  %
+  This composition glued the two open graphs together along the node $
+  j $.
+  
+\end{example}
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~
+% ~~~~~~~~~~~~~~~~~~~~~~~~
+
+\subsection{A double category of structured cospans}
+\label{sec:DblCatOfStrCsp}
+
+Using double categories allows us to combine into a single instrument the
+competing perspectives of structured cospans as objects and as
+morphisms. In this section, we build two double categories: one to
+combine our two perspectives on structured cospans and the other---
+which comes in two flavors---anticipates the rewriting contained in
+Section \ref{sec:rewriting-strcsp}. 
+
+\subsubsection{hand wavey definition of double category. Point to shulman for definition}
+\label{sec-2-4-1}
+
+Because the ingredients for our constructions come from a geometric
+morphism, there is an implicit cocartesian structure on the topoi
+involved. This cocartesianness can be lifted up to the double
+categories. For a precise definition of a symmetric monoidal double
+category, we point to Shulman,
+%
+\todo{cite{shulman-constructing}}
+%
+though for the sake of completeness, we provide the key pieces. A
+double category $ \CCC $ consists of a pair of categories
+$ ( \C_0 , \C_1 ) $ with some additional data that binds them
+together. The categories $ \C_0 $ and $ \C_1 $ are assemble together
+into a double category as follows:
+%
+\begin{itemize}
+\item the $ \CCC $-\emph{objects} are exactly $ \C_0 $-the objects,
+\item the $ \CCC $-\emph{vertical arrows} $ c \to d $ between $ \C
+  $-objects are exactly the $ \C_0 $ arrows, 
+\item the $ \CCC $-\emph{horizontal arrows} $ c \horarrow d $
+  between $ \CCC $-objects are the $ \C_1 $-objects together with some
+  structure maps assigning the domain and codomain, and
+\item the \emph{squares} of $ \CCC $ are
+\[
+  \begin{tikzpicture}
+    \node (1) at (0,2) {\( c \)};
+    \node (2) at (2,2) {\( d \)};
+    \node (3) at (0,0) {\( c' \)};
+    \node (4) at (2,0) {\( d' \)};
+    \draw [-|->] (1) to node [above] {\scriptsize{\( m \)}} (2);
+    \draw [->] (1) to node [left] {\scriptsize{\( f \)}} (3);
+    \draw [->] (2) to node [right] {\scriptsize{\( g \)}} (4);
+    \draw [-|->] (3) to node [below] {\scriptsize{\( n \)}} (4);
+    \node (5) at (6,2) {\( c,c',d,d' \in \operatorname{ob} ( \C_0 ) \)};
+    \node (6) at (6,1.33) {\( f,g \in \operatorname{arr} ( \C_0 ) \)};
+    \node (7) at (6,.66) {\( m,n \in \operatorname{ob} ( \C_1 ) \)};
+    \node (8) at (1,1) {\( \Downarrow \) \scriptsize{ \( \theta \)}};
+    \node (9) at (6,0) {\( \theta \in \operatorname{arr} ( \C_1 ) \)};
+  \end{tikzpicture}
+\]
+are the arrows of $ \C_1 $ together with structure maps attaching the
+surrounding vertical arrows. 
+\end{itemize}
+%
+The vertical arrows compose as they do in $ \C_0 $ and there is a
+structure map for composing horizontal arrows. The $ 2 $-arrows can
+compose both horizontally and vertically.
+
+Observe that the horizontal arrows play a two role, as
+objects in their origin category and arrows in the double
+category. This reflects the content of the categories $ \StrCsp_{L} $
+and $ \Csp_{L} $.
+
+\subsubsection{Define double category SStrCsp:=[ob(A), A-arrows, StrCsps, StrCsp-arrows]}
+\label{sec-2-4-3}
+
+The first double category that we define is discussed in the
+related work by Baez and Courser.
+%
+\todo{CITE COR 3.9 BAEZ COURSER STRCSP}
+%
+There, they prove that it actually is a double category, so we content
+ourselves to simply provide the definition.
+
+\begin{definition}
+
+  There is a cocartesian double category
+  $ \SSStrCsp \coloneqq ( \A , \StrCsp_{L} ) $ :
+  \begin{itemize}
+  \item the objects are all $ \A $-objects
+  \item the vertical arrows $ a \to b $ all $ \A $-arrows, 
+  \item the horizontal arrows $ \horarrow{a}{b} $ are
+    $ \StrCsp\ob $-objects, that is cospans $ \csp{La}{x}{Lb} $, and
+  \item the squares are commuting diagrams
+    %
+    \[
+    \begin{tikzpicture}
+    \node (1) at (0,1) {\( La \)};
+    \node (2) at (1,1) {\( x \)};
+    \node (3) at (2,1) {\( Lb \)};
+    \node (4) at (0,0) {\( Lc \)};
+    \node (5) at (1,0) {\( y \)};
+    \node (6) at (2,0) {\( Ld \)};
+    \draw [->] (1) to node [] {\scriptsize{\(   \)}} (2);
+    \draw [->] (3) to node [] {\scriptsize{\(  \)}} (2);
+    \draw [->] (4) to node [] {\scriptsize{\(  \)}} (5);
+    \draw [->] (6) to node [] {\scriptsize{\(  \)}} (5);
+    \draw [->] (1) to node [left] {\scriptsize{\( Lf \)}} (4);
+    \draw [->] (2) to node [left] {\scriptsize{\( g \)}} (5);
+    \draw [->] (3) to node [left] {\scriptsize{\( Lh \)}} (6);
+    \end{tikzpicture}
+  \]
+  %
+ \end{itemize}
+
+  The tensor is pointwise application of the coproduct
+  %
+  \[
+    \begin{tikzpicture}[scale=0.75]
+      %
+      \begin{scope}
+      \node (1) at (0,1) {\( La \)};
+      \node (2) at (1,1) {\( x \)};
+      \node (3) at (2,1) {\( Lb \)};
+      \node (4) at (0,0) {\( Lc \)};
+      \node (5) at (1,0) {\( y \)};
+      \node (6) at (2,0) {\( Ld \)};
+      \draw [->] (1) to node [above] {\scriptsize{\(   \)}} (2);
+      \draw [->] (3) to node [left] {\scriptsize{\(  \)}} (2);
+      \draw [->] (4) to node [right] {\scriptsize{\(  \)}} (5);
+      \draw [->] (6) to node [below] {\scriptsize{\(  \)}} (5);
+      \draw [->] (1) to node [below] {\scriptsize{\(  \)}} (4);
+      \draw [->] (2) to node [below] {\scriptsize{\(  \)}} (5);
+      \draw [->] (3) to node [below] {\scriptsize{\(  \)}} (6);   
+      \end{scope}
+      %
+      \begin{scope}[shift={(3,0)}]
+      \node (1) at (0,0.5) {$ + $};  
+      \end{scope}
+      %
+      \begin{scope}[shift={(4,0)}]
+      \node (1) at (0,1) {\( Lw' \)};
+      \node (2) at (1,1) {\( a' \)};
+      \node (3) at (2,1) {\( Lx' \)};
+      \node (4) at (0,0) {\( Ly' \)};
+      \node (5) at (1,0) {\( b' \)};
+      \node (6) at (2,0) {\( Lz' \)};
+      \draw [->] (1) to node [above] {\scriptsize{\(   \)}} (2);
+      \draw [->] (3) to node [left] {\scriptsize{\(  \)}} (2);
+      \draw [->] (4) to node [right] {\scriptsize{\(  \)}} (5);
+      \draw [->] (6) to node [below] {\scriptsize{\(  \)}} (5);
+      \draw [->] (1) to node [below] {\scriptsize{\(  \)}} (4);
+      \draw [->] (2) to node [below] {\scriptsize{\(  \)}} (5);
+      \draw [->] (3) to node [below] {\scriptsize{\(  \)}} (6);   
+      \end{scope}
+      %
+      \begin{scope}[shift={(7,0)}]
+      \node (1) at (0,0.5) {$ \coloneqq $};  
+      \end{scope}
+      %
+      \begin{scope}[shift={(8,0)}]]
+      \node (1) at (0,1) {\( L ( w + w' ) \)};
+      \node (2) at (2,1) {\( a + a' \)};
+      \node (3) at (4,1) {\( L ( x + x' ) \)};
+      \node (4) at (0,0) {\( L ( y + y' ) \)};
+      \node (5) at (2,0) {\( b + b' \)};
+      \node (6) at (4,0) {\( L ( z + z' ) \)};
+      \draw [->] (1) to node [above] {\scriptsize{\(   \)}} (2);
+      \draw [->] (3) to node [left] {\scriptsize{\(  \)}} (2);
+      \draw [->] (4) to node [right] {\scriptsize{\(  \)}} (5);
+      \draw [->] (6) to node [below] {\scriptsize{\(  \)}} (5);
+      \draw [->] (1) to node [below] {\scriptsize{\(  \)}} (4);
+      \draw [->] (2) to node [below] {\scriptsize{\(  \)}} (5);
+      \draw [->] (3) to node [below] {\scriptsize{\(  \)}} (6);   
+      \end{scope}
+    \end{tikzpicture}
+  \]  
+\end{definition}
+
+\subsubsection{This is the most natural structure to capture structured cospans. Bicategories are an alternative, but having the vertical arrows there is nice.}
+\label{sec-2-4-2}
+
+Double categories are a nice way of capturing both the object-ness and
+arrow-ness of structured cospans.  An alternative would be to use
+bicategories, but this doesn't reflect the nature of structured
+cospans as faithfully as does double categories.
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% ~~~~~~~~~~~ rewriting ~~~~~~~~~~~~~~~~~~
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+\section{Inductive Rewriting of Structured Cospans}
+\label{sec-3}
+
+\subsubsection{Introduce the section}
+\label{sec-3-1}
+
+\subsubsection{extra conditions on geom. morphism:}
+\label{sec-3-1-1}
+\begin{enumerate}
+\item counit is monic
+\label{sec-3-1-1-1}
+\item in suboject algebra, (k=>LRk) U k = d
+\label{sec-3-1-1-2}
+\end{enumerate}
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~
+% ~~~~~~~~~~~~~~~~~~~~~~~~
+
+\subsection{Graph rewriting}
+\label{sec-3-2}
+
+\subsubsection{production of graphs}
+\label{sec-3-2-1}
+\subsubsection{graph grammars}
+\label{sec-3-2-2}
+\subsubsection{injective matching only}
+\label{sec-3-2-3}
+\subsubsection{pushout complement}
+\label{sec-3-2-4}
+\subsubsection{rewrite relation}
+\label{sec-3-2-5}
+\subsubsection{discrete rewrite relation = rewrite relation}
+\label{sec-3-2-6}
+\subsubsection{Gaducci's contrution and result}
+\label{sec-3-2-7}
+
+Graph rewriting is a well-studied field with many suitable references.
+%
+\todo{cite some shit}
+%
+To be self-contained, we present enough of the topic to facilitate a
+connection with our main result.  
+
+We start with the notion of a \emph{production}: a
+span of graphs
+%
+\[
+  \ell \monicgets k \monicto r
+\]
+%
+with monic legs. This production, or ``rule'', states that whenever
+we identify a copy of $ \ell $ in a graph $ g $, we can remove
+that copy and replace it with $ r $.  By ``identifying a copy of $
+\ell $ in $ g $'', we mean precisely that there is a mono $ m \from
+\ell \to g $ called a \emph{matching morphism}.  The removal of $ \ell
+$ from $ g $ is given by the \emph{pushout complelement} which is a
+graph $ d $ that fits into a pushout diagram
+%
+\[
+  \begin{tikzpicture}
+    \node (1) at (0,1) {$ \ell $};
+    \node (2) at (1,1) {$ k $};
+    \node (3) at (0,0) {$ g $};
+    \node (4) at (1,0) {$ d $};
+    \draw [->] (1) to node [] {\scriptsize{$  $}} (2);
+    \draw [->] (1) to node [left] {\scriptsize{$ m $}} (3);
+    \draw [->] (3) to node [] {\scriptsize{$  $}} (4);
+    \draw [->] (2) to node [] {\scriptsize{$  $}} (4);
+  \end{tikzpicture}
+\]
+% 
+It should be said that $ d $ need not exist, but when it does and
+$ k \to \ell $ is monic, then $ d $ is unique up to isomorphism.
+
+If $ P $ is a set of productions, often called a \emph{graph grammar},
+there is an induced relation $ \squigto $ on the objects of the category
+$ \RGraph $. This is defined by $ g \squigto h $ whenever there is a
+production $ k \to \ell \times r $ in $ P $, a match $ \ell \to g $,
+and a pushout complement $ d $ that fit into the double pushout
+diagram
+%
+\[
+  \begin{tikzpicture}
+    \node (1) at (0,1) {$ \ell $};
+    \node (2) at (1,1) {$ k $};
+    \node (3) at (2,1) {$ r $};
+    \node (4) at (0,0) {$ g $};
+    \node (5) at (1,0) {$ d $};
+    \node (6) at (2,0) {$ h $};
+    \draw [->] (2) to node [] {\scriptsize{$  $}} (1);
+    \draw [->] (2) to node [] {\scriptsize{$  $}} (3);
+    \draw [->] (5) to node [] {\scriptsize{$  $}} (4);
+    \draw [->] (5) to node [] {\scriptsize{$  $}} (6);
+    \draw [->] (1) to node [] {\scriptsize{$  $}} (4);
+    \draw [->] (2) to node [] {\scriptsize{$  $}} (5);
+    \draw [->] (3) to node [] {\scriptsize{$  $}} (6);
+    \node () at (0.5,0.5) {\scriptsize{p.o.}};
+    \node () at (1.5,0.5) {\scriptsize{p.o.}};
+  \end{tikzpicture}
+\]
+%
+This content of the diagram is that we have identified a subgraph of
+shape $ \ell $ inside of $ g $, removed this subgraph and replaced it
+in a coherent way with $ r $, resulting in the graph $ h $. If
+$ g \squigto h $, we say that $ h $ is a \emph{direct derivation} of
+$ g $. The term ``direct'' refers to the derivation happening in a
+single step.  In general, $ \squigto $ is not transitive, meaning that
+this relation does not tell us about multi-step derivations. It is
+also not reflexive, which is preferable for a nicer theory.
+Therefore, it is customary to work with the so-called \emph{rewrite
+  relation}, that is the reflexive and transitive closure
+$ \squigto^\ast $. Indeed, each graph grammar $ P $ induces a unique
+rewrite relation.
+
+In term rewriting, there are two different viewpoints. The
+\emph{operational} viewpoint can be concisely described as performing
+substition. That is, we rewrite a term by substituting subterms with
+other terms according to a rule. This is the viewpoint of the graph
+rewriting discussed above.  On the other hand, the \emph{inductive}
+viewpoint consists of building a class of rewritings from a collection
+of basic ones.  This is the viewpoint that Gadducci and Heckel first
+brought to graph rewriting in
+%
+\todo{cite gadd/heckle inductive}
+%
+and we introduce to adhesive rewriting in .
+%
+\todo{reference main theorme}
+%
+
+In proving their result, Gadducci and Heckel made use of the following
+well-known fact: the graph grammars
+%
+$ { k_\alpha \to \ell_\alpha \times r_\alpha } $
+%
+and
+%
+$ { ( k_\alpha )_{\textup{disc.}  \to \ell_\alpha \times r_\alpha } $,
+% 
+where $ ( k_\alpha )_{\textup{disc.} $ is the discrete graph underlying $ k_\alpha $, induce the same rewrite relation.
+%
+\todo{cite erhig here}
+%
+Lemma
+%
+\todo{refence generalization lemma}
+%
+generalizes this result into our context.  They leveraged this fact to
+construct a computad associate to a graph grammar $ P $. This computad
+has underlying category $ \Csp_L $ where $ L $ is taken from Example \ref{ex:open-graphs}. We additionally add a 2-cell
+%
+\[
+  \begin{tikzpicture}
+    \node (1) at (0,0) {$ L \emptyset $};
+    \node (2) at (2,0) {$ Lk $};
+    \node (3) at (1,0) {\scriptsize{$ \Downarrow \gamma $}};
+    \draw [->, bend left] (1.45) to node [] {\scriptsize{$ \hat{\ell} $}} (2.135);
+     \draw [->, bend right] (1.-45) to node [] {\scriptsize{$ \hat{r} $}} (2.-135);
+  \end{tikzpicture}
+\]
+% 
+into the computad for every production $ k \to \ell \time r $ in $ P
+$. By $ \hat{\ell} $, we mean the open graph
+%
+\(
+  L \emptyset + Lk \to \ell
+\)
+% 
+and the analogous open graph for $ \hat{r} $.  Note the use of the
+discrete graph underlying $ k $.  Here, we translated Gadducci and
+Heckel's work into the language of structured cospans.  This computad
+then freely generates a 2-category which we call $ \cat{G} $, the
+1-arrows of which are open graphs. Now, the hom-category
+$ \cat{G}( L \emptyset , L \emptyset ) $ has objects the usual graphs
+having no inputs or outputs. This hom-category captures the rewriting
+relation as we state here.
+%
+\todo{cite gadd/heck induct thm 23 on the thm}
+%
+
+\begin{theorem}
+  Let $ P $ be a graph grammar. Then $ g \squigto^\ast h $ if and only
+  if there is a 2-arrow from
+  %
+  \(
+    L \emptyset + L \emptyset \to g 
+  \)
+  % 
+  to
+  %
+  \(
+   L \emptyset + L \emptyset \to h
+  \)
+  % 
+  in $ \cat{G} ( L \emptyset , L \emptyset ) $.  
+\end{theorem}
+
+Having shared a viewpoint on inductive graph rewriting, we now turn
+to apply these ideas to inductive adhesive rewriting using structured cospans.
+
+
+
+
+
+
+
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~
+% ~~~~~~~~~~~~~~~~~~~~~~~~
+
+\subsection{Adhesive rewriting}
+\label{sec-3-3}
+
+\subsubsection{adhesive categories}
+\label{sec-3-3-1}
+\begin{enumerate}
+\item Van Kampen condition
+\label{sec-3-3-1-1}
+\end{enumerate}
+\subsubsection{productions}
+\label{sec-3-3-2}
+\subsubsection{adhesive grammars}
+\label{sec-3-3-3}
+\begin{enumerate}
+\item category Gram
+\label{sec-3-3-3-1}
+\end{enumerate}
+\subsubsection{injective matching}
+\label{sec-3-3-4}
+\subsubsection{pushout complement}
+\label{sec-3-3-5}
+\subsubsection{Derivations is functorial Gram --> Gram}
+\label{sec-3-3-6}
+\begin{enumerate}
+\item idempotent
+\label{sec-3-3-6-1}
+\item identity on Gram is subfunctor of derivation
+\label{sec-3-3-6-2}
+\end{enumerate}
+\subsubsection{Rewrite relation in terms of derivation functor}
+\label{sec-3-3-7}
+\subsubsection{The language functor and its relation to the rewrite relation}
+\label{sec-3-3-8}
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~
+% ~~~~~~~~~~~~~~~~~~~~~~~~
+
+\subsection{Rewriting structured cospans}
+\label{sec-3-4}
+
+\subsubsection{StrCsp(L) < topoi < adhesive to can do rewriting}
+\label{sec-3-4-1}
+\subsubsection{Define the subcategory of Gram of Structured Cospans Grammars StrGram.}
+\label{sec-3-4-2}
+\subsubsection{Define Structured Cospan Language functor StrGram --> DblCat}
+\label{sec-3-4-3}
+\begin{enumerate}
+\item Uses the double category MonRewrite in which to generate sub-double cats.
+\label{sec-3-4-3-1}
+\end{enumerate}
+\subsubsection{thm: production and discrete production have same rewrite relation}
+\label{sec-3-4-4}
+\subsubsection{thm: rewrite relation same as squares from 0 to 0.}
+\label{sec-3-4-5}
+
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~
+% ~~~~~~~~ examples ~~~~~~
+% ~~~~~~~~~~~~~~~~~~~~~~~~
+
+\subsection{Examples}
+\label{sec-3-5}
+\subsubsection{Encoding petri nets into dpo rewrites (see bib folder for Graph Rewriting w Petri Nets)}
+\label{sec-3-5-1}
+
+
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% 
+% ~~~~~~~~~~~ bibliography ~~~~~~~~~~~~~~~
+% 
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+\begin{thebibliography}{99}
+  % use APA style
+  % \bibitem{1st-citation}
+  
+\bibitem{Cic_SpCsp}
+D.$\backslash$ Cicala. Spans of cospans. \emph{Theory Appl.\ Categ.\} 33, Paper No.$\backslash$ 6, 131--147. 2018.
+
+\bibitem{CicCour_SpCspTopos}
+D.$\backslash$ Cicala and K.$\backslash$ Courser. Spans of cospans in a topos. \emph{Theory Appl.\ Categ.} 33, Paper No.$\backslash$ 1, 1--22. 2018.
+
+\bibitem{DixKiss_OpenGraphs}
+L.$\backslash$ Dixon, and A.$\backslash$ Kissinger. Open-graphs and monoidal theories. \emph{Math.\ Structures Comput.\ Sci.\}, \textbf{23}, no.$\backslash$ 2, 308--359. 2013.
+
+\bibitem{Ehrig_GraphGram}
+H.$\backslash$ Ehrig, M.$\backslash$ Pfender, and H.J.$\backslash$ Schneider. Graph-grammars: An algebraic approach. In \emph{Switching and Automata Theory, 1973. SWAT'08. IEEE Conference Record of 14th Annual Symposium on}, 167--180. IEEE. 1973.
+
+\bibitem{Fong_DecorCsp}
+B.$\backslash$ Fong. Decorated cospans. \emph{Theory Appl.\ Categ.\} 30, Paper No.$\backslash$ 33, 1096--1120. 2015.
+          
+\bibitem{Gadd_IndGraphTrans}
+F.$\backslash$ Gadducci, R.$\backslash$  Heckel. An inductive view of graph transformation. \emph{Recent trends in algebraic development techniques}, 223--237, Lecture Notes in Comput. Sci., 1376, Springer, Berlin. 1998.
+
+\bibitem{LackSobo_Adhesive}
+S.$\backslash$ Lack, and P.$\backslash$ Soboci$\backslash$'\{n\}ski. Adhesive categories. In \emph{International Conference on Foundations of Software Science and Computation Structures}, 273--288. Springer, Berlin, Heidelberg. 2004.
+
+\bibitem{Wraith_ArtinGlue}
+G.$\backslash$ Wraith. Artin glueing. \emph{J.\ Pure Appl.\ Algebra} \textbf{4}, 345--348. 1974.
+
+\end{thebibliography}
+
+\end{document}

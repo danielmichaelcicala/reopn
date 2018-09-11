@@ -41,10 +41,10 @@
 
 % symbols
 \renewcommand{\epsilon}{\varepsilon}
-\newcommand{\op}{^{ \text{op} }}
-\newcommand{\ob}{_{ \text{ob} }}
+\newcommand{\op}{^{ \textrm{op} }}
+\newcommand{\ob}{_{ \textrm{ob} }}
 \newcommand{\arr}{_{ \text{arr} }}
-\newcommand{\lin}{_{\t{lin}}}
+\newcommand{\lin}{_{\textrm{lin}}}
 \newcommand{\iso}{\cong}
 \renewcommand{\equiv}{\simeq}
 
@@ -68,6 +68,8 @@
 \newcommand{\BBB}{\dblcat{B}}
 \newcommand{\CCC}{\dblcat{C}}
 \newcommand{\PPP}{\dblcat{P}}
+\newcommand{\QQQ}{\dblcat{Q}}
+\newcommand{\MMM}{\dblcat{M}}
 \newcommand{\XXX}{\dblcat{X}}
 \newcommand{\YYY}{\dblcat{Y}}
 \newcommand{\ZZZ}{\dblcat{Z}}
@@ -81,12 +83,13 @@
 \newcommand{\DblCat}{\cat{DblCat}}
 \newcommand{\Topos}{\cat{Topos}}
 \newcommand{\Gram}{\cat{Gram}}
-\newcommand{\StrCspGram}{\cat{StrCspGram}}
-\newcommand{\Span}[1]{\cat{Span}(#1)}
-\newcommand{\Csp}[1]{\cat{Csp}(#1)}
+\newcommand{\LinGram}{\cat{LinGram}}
+\newcommand{\LeftLinGram}{\cat{LeftLinGram}}
+\newcommand{\Span}{\cat{Span}}
+\newcommand{\Csp}{\cat{Csp}}
 \newcommand{\StrCsp}{\cat{StrCsp}}
 \newcommand{\SStrCsp}{\bicat{StrCsp}}
-\newcommand{\SSStrCsp}{\mathbb{S}\cat{stCsp}}
+\newcommand{\SSStrCsp}{\mathbb{S}\cat{trCsp}}
 \newcommand{\Rewrite}{\cat{Rewrite}}
 \newcommand{\RRewrite}{\bicat{Rewrite}}
 \newcommand{\RRRewrite}{\mathbb{R}\mathbf{ewrite}}
@@ -96,7 +99,9 @@
 
 % functors
 \newcommand{\core}{\mathbf{core}}
-\newcommand{\Lang}{\mathcal{L}}
+\newcommand{\Lang}{\mathrm{Lang}}
+\newcommand{\LinLang}{\mathrm{LinLan}}
+\newcommand{\LeftLinLang}{\mathrm{LeftLinLan}}
 
 % text formatting
 \newcommand{\defn}[1]{\textbf{#1}}
@@ -113,13 +118,14 @@
 \newcommand{\xto}[1]{\xrightarrow{#1}}
 \newcommand{\xgets}[1]{\xleftarrow{#1}}
 \newcommand{\tospan}{\xrightarrow{\mathit{sp}}}
-\newcommand{\spn}[3]{#1 + #3 \to #2}
-\newcommand{\csp}[3]{#2 \to #1 \times #3}
+\newcommand{\spn}[3]{#2 \to #1 \times #3}
+\newcommand{\csp}[3]{#1 + #3 \to #2}
 \newcommand{\tocospan}{\xrightarrow{\mathit{csp}}}
-\newcommand{\diagram}[1]{\raisebox{-0.5\height}{\includegraphics{#1}}}
+\newcommand{\monicgets}{\leftarrowtail}
+\newcommand{\monicto}{\rightarrowtail}
 
 
-% MATH OPERATORS ~~~~~~~~~~~~~~~~~~
+% OPERATORS ~~~~~~~~~~~~~~~~~~
 
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\id}{id}
@@ -170,51 +176,61 @@
 
 % walking reflexive graph
 \newcommand{\rgraph}[2]{%
-  $\begin{tikzpicture}
+  \begin{tikzpicture}[scale=0.75,baseline=-3pt]
     \node (a) at (0,0) {$ #1 $};
     \node (b) at (1,0) {$ #2 $};
-    \draw [->] (a.30) to (b.150);
-    \draw [->] (a.-30) to (b.-150);
-    \draw [->] (b) to (a);
-  \end{tikzpicture}$
+    \draw [->]
+      ([yshift= 4pt]a.east) to ([yshift= 4pt]b.west);
+    \draw [->]
+      ([yshift=-4pt]a.east) to ([yshift=-4pt]b.west);
+    \draw [->]
+      (b.west) to (a.east);
+  \end{tikzpicture}
 }
 
 % walking graph
 \newcommand{\graph}[2]{%
-  $\begin{tikzpicture}
+  \begin{tikzpicture}[scale=0.75,baseline=-3pt]
     \node (a) at (0,0) {$ #1 $};
     \node (b) at (1,0) {$ #2 $};
-    \draw [->] (a.15) to (b.165);
-    \draw [->] (a.-15) to (b.-165);
-  \end{tikzpicture}$
+    \draw [->]
+      ([yshift=4pt]a.east) to ([yshift=4pt]b.west);
+    \draw [->]
+      ([yshift=-4pt]a.east) to ([yshift=-4pt]b.west);
+  \end{tikzpicture}
 }
 
 % open tipped arrow
 \newcommand{\opento}[2]{%
-  \begin{tikzpicture}
+  \begin{tikzpicture}[scale=0.75,baseline=-3pt]
   \node (a) at (0,0) {$ #1 $};
   \node (b) at (1,0) {$ #2 $};
-  \draw [->, open triangle 60] (a) to (b);
+  \draw [->, open triangle 60]
+    (a.east) to (b.west);
   \end{tikzpicture}
 }
 
 % inline horizontal arrow
-\newcommand{\horarrow}[2]{%
-  \begin{tikzpicture}
-    \node (a) at (0,0) {$ #1 $};
-    \node (b) at (1,0) {$ #2 $};
-    \draw [-|->] (a) to (b);
-  \end{tikzpicture}
-}
+\newlength\mylen
+\settowidth\mylen{$\to$}
+\newcommand\horarrow{%
+  \to\kern-0.55\mylen\vline height 1.2ex depth
+  -0.4pt\kern0.55\mylen}
 
 % adjunction
 \newcommand{\adjunction}[4]{%
-  \begin{tikzpicture}
+  \begin{tikzpicture}[baseline=-3pt]
     \node (1) at (0,0) {\( #1 \)};
     \node (2) at (2,0) {\( #4 \)};
-    \node (3) at (1,0) {\scriptsize{\( \perp \)}};
-    \draw [->] (2.135) to node [above] {\scriptsize{ $ #2 $ }} (1.45);
-    \draw [->] (1.-45) to node [below] {\scriptsize{ $ #3 $ }} (2.-135);
+    \draw [->]
+      ([yshift= 4pt]2.west) to
+      node [above] {\scriptsize{ $ #2 $ }}
+      ([yshift= 4pt]1.east);
+    \draw [->]
+      ([yshift= -4pt]1.east) to
+      node [below] {\scriptsize{ $ #3 $ }}
+      node [above,yshift= -1.5pt] {\scriptsize{$ \perp $}}
+      ([yshift= -4pt]2.west);
   \end{tikzpicture}
 %
 }
@@ -246,11 +262,11 @@
 
 Structured cospans were introduced to model compositional systems. In
 fact, they were the second approach to model compositional systems
-using cospans.  Fong invented \emph{decorated cospans}
+using cospans. Fong invented \emph{decorated cospans},
 %
 \todo{cite decorated cospans}
 %
-, the first approach.  Structure cospans are
+the first approach.  Structure cospans are
 introduced here as well as by Baez and Courser.
 %
 \todo{cite baez-courser strcsp}
@@ -275,13 +291,7 @@ For good, we fix a geometric morphism $ L \dashv R \from \X \to \A
 $. This is an adjunction
 %
 \[
-  \begin{tikzpicture}
-    \node (1) at (0,0) {\( \X \)};
-    \node (2) at (2,0) {\( \A \)};
-    \node (3) at (1,0) {\scriptsize{\( \perp \)}};
-    \draw [<-] (1.45) to node [above] {\scriptsize{\(  L \)}} (2.135);
-    \draw [<-] (2.-135) to node [below] {\scriptsize{ $ R $ } } (1.-45);
-  \end{tikzpicture}
+  \adjunction{\X}{L}{R}{\A}
 \]
 %
 between (elementary) topoi with $ L $ left exact.
@@ -309,6 +319,9 @@ is an informal analogy and should only be used to gain an intuition
 for the nature of structured cospans. Now, let us turn to the first of
 two perspectives on structured cospans.
 
+% ~~~~~~~~~~~~~~~~~~~~~~~~
+% ~~~~~~~~~~~~~~~~~~~~~~~~
+
 \subsection{Structure cospans as objects}
 \label{sec:strcsp-as-object}
 
@@ -325,7 +338,7 @@ corresponding category is a topos in a functorial way.
   
 \end{definition}
 
-To typeset cospans inline, we will writing them as $
+To typeset cospans inline, we will write them as $
 \csp{x}{y}{z} $ and spans as $ \spn{x}{y}{z} $. Because all of the
 categories in this paper will have products and coproducts, this
 notation is sensible.  
@@ -335,9 +348,10 @@ definition to place ourselves into the context of systems
 modelling. Also, the reason for restricting ourselves to a geometric
 morphism at this point is elusive. Especially so because the other
 introducory work on structured cospans by Baez and Courser did not ask
-for this. Let us say that this requirement arises from practical and aesthetic
-considerations. For one, a nicer theory develops, but also it is a
-sufficiently strong condition to introduce rewriting of structured cospans.
+for this. Let us say that this requirement arises from practical and
+aesthetic considerations. For one, a nicer theory develops, but also
+it is a sufficiently strong condition to introduce rewriting of
+structured cospans.
 
 Returning briefly to the systems analogy, a structured cospan consists
 of a closed system $ x $ with an interface identified by the arrows
@@ -352,7 +366,7 @@ ought to respect these components.
   A morphism from one structured cospan
   %
   \(
-  \csp{La}{x}{Lb}
+    \csp{La}{x}{Lb}
   \)
   %
   to another
@@ -383,13 +397,12 @@ ought to respect these components.
 \end{definition}
 
 It is a simple exercise to show that structured cospans and their
-morphisms form a category.  Denote this category by $ \StrCsp\ob
-$. This subscript reminds us that structured cospans are objects in
-this category. In fact, we willl refer to the objects of this category
-as a \defn{structured cospan category}. While this category does
-depend on additional data, minimally $ L $, we suppress this from the
-notation and rely on context. When wanting to be explicit, we will
-write $ \StrCsp\ob ( L ) $.
+morphisms form a category.  Denote this category by $ \StrCsp_L
+$. 
+
+%
+\todo{ mention open graphs used by gaducci and kissenger }
+% 
 
 % examples of open networks
 
@@ -403,19 +416,19 @@ write $ \StrCsp\ob ( L ) $.
   %
   our infrastructure generalizes it.
 
-  Let $ \Graph \coloneqq [ \graph{\bullet}{\bullet} , \Set ] $ be
-  the category of (directed multi) graphs. There is an adjunction
+  Let
   %
   \[
-    \begin{tikzpicture}
-      \node (1) at (0,0) {\( \Graph \)};
-      \node (2) at (4,0) {\( \Set \)};
-      \node (3) at (2,0) {\scriptsize{ \( \perp \) }};
-      \draw [->] (2.160) to node [above] {\scriptsize{ \( L \) }} (1.12);
-      \draw [->] (1.-12) to node [below] {\scriptsize{ \( R \) } } (2.-160);
-    \end{tikzpicture}
+    \RGraph \coloneqq [ \rgraph{\bullet}{\bullet} , \Set ]
   \]
-  %   
+  % 
+  be the category of (directed reflexive multi) graphs. There is an
+  adjunction
+  %
+  \[
+    \adjunction{\RGraph}{L}{R}{\Set}
+  \]
+  % 
   where $ Rx $ is the node set of graph $ x $ and $ La $ is the
   edgeless graph with node set $ a $. An \defn{open graph} is a cospan
   %
@@ -423,7 +436,8 @@ write $ \StrCsp\ob ( L ) $.
       \csp{La}{x}{Lb}
   \)
   % 
-  for sets $ a $, $ b $, and graph $ x $. An illustrated example is
+  for sets $ a $, $ b $, and graph $ x $. An illustrated example, with
+  the reflexive loops suppressed, is
   %
   \[
     \begin{tikzpicture}
@@ -474,11 +488,11 @@ systems can ``connect'' together. Given another open graph whose inputs
 coincide with the outputs of the graph above, we can connect
 the inputs and outputs together to create a new open graph. By passing
 from graphs to open graphs, we are introducing
-\emph{compositionality}. The category $ \StrCsp\ob $ does not encode
+\emph{compositionality}. The category $ \StrCsp_{L} $ does not encode
 the compositional structure, but we introduce a new category
-$ \StrCsp\arr $ in Section \ref{sec:strcsp-as-arrows} for this purpose
+$ \Csp_L $ in Section \ref{sec:strcsp-as-arrows} for this purpose
 and delay further discussion along these lines until then. At present,
-we concern ourselves with showing that $ \StrCsp\ob $ is a topos in a
+we concern ourselves with showing that $ \StrCsp_L $ is a topos in a
 functorial way.  While interesting in itself, this fact allows us to
 introduce rewriting systems to structured cospans.
 
@@ -486,14 +500,14 @@ introduce rewriting systems to structured cospans.
 
 \begin{theorem} \label{thm:strcsp-istopos}
 
-  The category $ \StrCsp\ob $ is a topos.
+  The category $ \StrCsp_L $ is a topos.
   
 \end{theorem}
 
 \begin{proof}
 
-  The category $ \StrCsp\ob $ constructed using the adjunction
-  $ L \dashv R \from \A \to \X $ is equivalent to the category
+  The category $ \StrCsp_L $ constructed using the adjunction
+  $ L \dashv R \from \X \to \A $ is equivalent to the category
   whose objects are cospans of form
   %
   \(
@@ -522,23 +536,21 @@ introduce rewriting systems to structured cospans.
   \]
   % 
   This, in turn, is equivalent to the comma category
-  $ ( \X \downarrow \Delta R ) $, where
-  $ \Delta \from \X \to \X \times \X $ is the diagonal functor. But
+  $ ( \A \times \A \downarrow \Delta R ) $, where
+  $ \Delta \from \A \to \A \times \A $ is the diagonal functor. But
   the diagonal functor is right adjoint to taking binary
-  products. That means $ \Delta R $ is also a right adjoint and,
-  furthermore that $ ( X \downarrow \Delta X ) $ is an instance of
-  Artin glueing,
+  coproducts. That means $ \Delta R $ is also a right adjoint and,
+  furthermore, that $ ( \A \times \A \downarrow \Delta R ) $ is an
+  instance of Artin glueing,
   %
   \todo{CITE ARTIN GLUEING}
-   hence a topos.
-
+  hence a topos.
+%
 \end{proof}
 
-Until now, the topos $ \StrCsp\ob $ depended on an adjunction fixed at
+Until now, the topos $ \StrCsp_L $ depended on an adjunction fixed at
 the beginning of the section.  By letting the adjunction vary, we see
-that $ \StrCsp\ob $ is actually functorial.
-
-For the following theorem, denote by $ \Topos $ the category of
+that $ \StrCsp_{(-)} $ is actually functorial. For the following theorem, denote by $ \Topos $ the category of
 elementary topoi and geometric morphisms.
 
 \begin{theorem} \label{thm:strcsp-isfunctorial}
@@ -546,7 +558,7 @@ elementary topoi and geometric morphisms.
   There is a functor
   %
   \[
-    \StrCsp\ob \from
+    \StrCsp_{(-)} \from
     [ \bullet \to \bullet , \Topos ]
     \to
     \Topos
@@ -576,15 +588,21 @@ elementary topoi and geometric morphisms.
       \end{scope}
      % 
       \begin{scope}[shift={(3,0)}]
-      \node (1) at (0,0) { $\xmapsto{ \StrCsp\ob }$ };
+      \node (1) at (0,0) { $\xmapsto{ \StrCsp_{(-)} }$ };
       \end{scope}
       %
       \begin{scope}[shift={(5.5,0)}]
-      \node (1) [inner sep=0.1cm] at (0,0) {\( \StrCsp\ob (L) \)};
-      \node (2) [inner sep=0.15cm] at (4,0) {\( \StrCsp\ob (L') \)};
+      \node (1) [inner sep=0.1cm] at (0,0) {\( \StrCsp_{L} \)};
+      \node (2) [inner sep=0.15cm] at (4,0) {\( \StrCsp_{L'} \)};
       \node (3) at (2,0) {\scriptsize{ \( \perp \) }};
-      \draw [->] (1.10) to node [above] {\scriptsize{ \( \Theta \) }} (2.170);
-      \draw [->] (2.-170) to node [below] {\scriptsize{ \( \Theta' \) } } (1.-10);  
+      \draw [->]
+        ([yshift= 4pt]1.east) to
+        node [above] {\scriptsize{ \( \Theta \) }}
+        ([yshift= 4pt]2.west);
+      \draw [->]
+        ([yshift= -4pt]2.west) to
+        node [below] {\scriptsize{ \( \Theta' \) } }
+        ([yshift= -4pt]1.east);  
       \end{scope}
     \end{tikzpicture}
   \]
@@ -632,6 +650,7 @@ elementary topoi and geometric morphisms.
   \]
   %
   and
+  %
   \[
     \begin{tikzpicture}
       \begin{scope}
@@ -684,13 +703,13 @@ elementary topoi and geometric morphisms.
     La \xto{m} x \xgets{n} Lb
   \]
   % 
-  in $ \StrCsp\ob ( L ) $ by   
+  in $ \StrCsp_{ L } $ by $ \ell $ and  
   %
   \[
-    L'a' \xto{m'} x' \xgets{n'} L'b'
+    L'a' \xto{ m'} x' \xgets{ n'} L'b'
   \]
   % 
-  in $ \StrCsp\ob ( L' ) $ by $ \ell $ and $ \ell' $,
+  in $ \StrCsp_{ L' } $ by $ \ell' $,
   respectively. Also, denote the unit and counit for $F \dashv G$ by
   $ \eta $, $ \varepsilon $ and for $ F' \dashv G' $ by $ \eta' $, $
   \varepsilon' $.  The assignments
@@ -715,34 +734,20 @@ elementary topoi and geometric morphisms.
       \from \ell \to \Theta' \ell'
       \right) \\
   \end{align}
+  %
   give a bijection $ \hom ( \Theta \ell , \ell' ) \simeq \hom ( \ell ,
   \Theta' \ell' ) $. Moreover, it is natural in $ \ell $ and $ \ell'
   $. This rests on the natural maps $ \eta $, $ \varepsilon $, $ \eta'
   $, and $ \varepsilon' $. The left adjoint $ \Theta' $ preserves
   finite limits because they are taken pointwise and $ L $, $ F $, and
   $ F' $ all preserve finite limits.
+
 \end{proof}
-
-Despite $ \StrCsp\ob $ being a functor, we will often let it refer
-to some arbitrary image of the functor. Our meaning should be clear
-from the context.
-
-\edit{%
-  I need notational fixes in this section.  (1) I have StrCsp
-  meaning three different things, a category, a functor,
-  and...ooops. (2) I also need to define the category of structured
-  cospan categories. I don't want to make this a 2-category if I can
-  help it.  The maps between structured cospan cats should be pairs of
-  functors strictly commuting with the boundary and interior of the
-  structured cospans.  Also, even though the category of structured
-  cospans is a subcat of Topos, I don't actually want the functors to
-  be geometric morphisms.  Where should I define this category?
-}
 
 Even though a structured cospan category is actually a topos, and its
 information is drawn from a geometric morphism of topoi, the morphims
 between structured cospan categories that we are interested in do not
-involve geometric morphisms at all. Given a pair of geometric morphisms from
+involve geometric morphisms. Given a pair of geometric morphisms from
 %
 \[
   \adjunction{\X}{L}{R}{\A}
@@ -755,13 +760,17 @@ involve geometric morphisms at all. Given a pair of geometric morphisms from
 a \defn{structured cospan functor}
 %
 \[
-  \StrCsp\ob (L) \to \StrCsp\ob (L')
+  \StrCsp_{L} \to \StrCsp_{L'}
 \]
 % 
-consists of a a pair of functors $ F \from \X \to \X' $ and $ G \from
-\A \to \A' $ such that $ FL=L'F $ and $ GR = R'F $.  Of course,
-structured cospan categories and their morphisms form a category, but
-we leave it unnamed.
+consists of a a pair of finitely continuous and cocontinuous functors
+%
+\todo{we actually only need F preserves monics, p.o.'s and p.b.'s and
+  G p.b.'s}
+%
+$ F \from \X \to \X' $ and $ G \from \A \to \A' $ such that
+$ FL=L'F $ and $ GR = R'F $.  While structured cospan categories and
+their morphisms form a category, we leave it unnamed.
 
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -773,15 +782,12 @@ we leave it unnamed.
 
 We now turn to capturing the compositional structure that
 truly motivates the invention of structured cospans.  To do this, we
-shift perspectives of structured cospans as objects in $ \StrCsp\ob $
+shift perspectives of structured cospans as objects in $ \StrCsp_{L} $
 to structured cospans as morphisms, which of course, are composable. 
-
-Continue to fix a geometric morphism $ L \dashv R \from
-\X \to \A $.
 
 \begin{definition} \label{def:strcsp-arr}
   
-  Denote by $ \StrCsp\arr $ the category that has the same objects as
+  Denote by $ \Csp_{L} $ the category that has the same objects as
   $ \A $ and structured cospans $ \csp{La}{x}{Lb} $ as arrows of
   type $ a \to b $.
   
@@ -798,7 +804,7 @@ Note that composition is defined by pushout:
     \node (4) at (3,0) {\( Lb \)};
     \node (5) at (4,0.5) {\( y \)};
     \node (6) at (5,0) {\( Lc \)};
-    \node (7) at (2.5,0) {\( ; \)};
+    \node (7) at (2.5,0.25) {\( ; \)};
     \draw [->] (1) to node [] {\scriptsize{\(  \)}} (2);
     \draw [->] (3) to node [] {\scriptsize{\(  \)}} (2);
     \draw [->] (4) to node [] {\scriptsize{\(  \)}} (5);
@@ -806,33 +812,36 @@ Note that composition is defined by pushout:
     \end{scope}
     %
     \begin{scope}[shift={(6,0)}]
-    \node (1) at (0,0) {\( \xmapsto{\circ} \)};
+    \node (1) at (0,0.25) {\( \xmapsto{\circ} \)};
     \end{scope}
     %
     \begin{scope}[shift={(7,0)}]
     \node (1) at (0,0) {\( La \)};
-    \node (2) at (1,0.5) {\( x +_{Lb} y \)};
-    \node (3) at (2,0) {\( Lc \)};
+    \node (2) at (1.5,0.5) {\( x +_{Lb} y \)};
+    \node (3) at (3,0) {\( Lc \)};
      \draw [->] (1) to node [] {\scriptsize{\(  \)}} (2);
-    \draw [->] (2) to node [] {\scriptsize{\(  \)}} (3); 
+    \draw [->] (3) to node [] {\scriptsize{\(  \)}} (2); 
     \end{scope}
   \end{tikzpicture}
 \]
 % 
 
 Pushouts, in a sense, are a way of glueing things
-together. Composition as using pushouts is sensible to model
-system connection; we have two systems
+together. Hence using pushouts as composition is a sensible way to model
+system connection. Given two systems
 %
 \[
   \csp{La}{x}{Lb}
-  \t{ and}
+  \quad
+  \t{ and }
+  \quad
   \csp{Lb}{y}{Lc}
 \]
 % 
-whose composition is like connecting them along the common interface
-$ Lb $. To illustrate how the structured cospan formalism allows us to connect
-systems together, we return to the open graphs example.
+sharing a common interface $ Lb $, their composition is like
+connecting at $ Lb $. To illustrate how the structured cospan
+formalism allows us to connect systems together, we return to the open
+graphs example.
 
 \begin{example} \label{ex:open-graph-as-arrow}
 
@@ -916,7 +925,7 @@ systems together, we return to the open graphs example.
   \]
   %
   to obtain
-   %
+  %
   \[
     \begin{tikzpicture}
        %
@@ -970,51 +979,35 @@ systems together, we return to the open graphs example.
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-\subsection{A bicategory of structured cospans}
+\subsection{A double category of structured cospans}
 \label{sec:bicat-strcsp}
 
-Using bicategories allows us to combine into a single instrument the
+Using double categories allows us to combine into a single instrument the
 competing perspectives of structured cospans as objects and as
-morphisms. In this section, we build two bicategories: one to combine
-our two perspectives on structured cospans and the other, which comes
-in two flavors, anticipates the rewriting contained in Section
-\ref{sec:rewriting-strcsp}. Many of the details of these
-constructions are already contained in other work, so we will focus
-on the ideas and point to the proofs as needed.
+morphisms. In this section, we build two double categories: one to
+combine our two perspectives on structured cospans and the other---
+which comes in two flavors---anticipates the rewriting contained in
+Section \ref{sec:rewriting-strcsp}. 
 
-Because we the ingredients for our constructions come from a geometric
+Because the ingredients for our constructions come from a geometric
 morphism, there is an implicit cocartesian structure on the topoi
-involved. This cocartesianness can be lifted up to the bicategories,
-but checking all of the axiom is a tedious process. Instead, we will
-rely on a result of Shulman
+involved. This cocartesianness can be lifted up to the double
+categories. For a precise definition of a symmetric monoidal double
+category, we point to Shulman,
 %
 \todo{cite{shulman-constructing}}
 %
-and build
-cocartesian double categories instead of bicategories. The relevant
-axioms are much easier to check. Shulman's result then allows us to
-chisel the cocartesian double category down to a cocartesian
-bicategory. The reason that we prefer bicategories to double
-categories is that they are more familar objects with which to work
-and the information lost in passing from double to bicategory, in our
-case, is minimal.
-
-For a precise definition of a symmetric monoidal double category, we
-point to Shulman,
-%
-\todo{cite{shulman-constructing}}
-%
-though for the sake of completeness, here are the key ingredients. A
+though for the sake of completeness, we provide the key pieces. A
 double category $ \CCC $ consists of a pair of categories
 $ ( \C_0 , \C_1 ) $ with some additional data that binds them
-together, which we ignore. The pieces of the two categories become the
-following in the double category:
+together. The categories $ \C_0 $ and $ \C_1 $ are assemble together
+into a double category as follows:
 %
 \begin{itemize}
 \item the $ \CCC $-\emph{objects} are exactly $ \C_0 $-the objects,
 \item the $ \CCC $-\emph{vertical arrows} $ c \to d $ between $ \C
   $-objects are exactly the $ \C_0 $ arrows, 
-\item the $ \CCC $-\emph{horizontal arrows} $ c \nrightarrow d $
+\item the $ \CCC $-\emph{horizontal arrows} $ c \horarrow d $
   between $ \CCC $-objects are the $ \C_1 $-objects together with some
   structure maps assigning the domain and codomain, and
 \item the \emph{squares} of $ \CCC $ are
@@ -1039,35 +1032,27 @@ are the arrows of $ \C_1 $ together with structure maps attaching the
 surrounding vertical arrows. 
 \end{itemize}
 %
-The vertical arrows compose as they do in $ \C_0 $ and there are
-structure maps that introduce a composition for the horizontal
-arrows. The $ 2 $-arrows can compose horizontally and vertically.
+The vertical arrows compose as they do in $ \C_0 $ and there is a
+structure map for composing horizontal arrows. The $ 2 $-arrows can
+compose both horizontally and vertically.
 
-We say that a $ 2 $-arrow between identity vertical arrows is
-\defn{globular}.  Inside every double category $ \CCC $ is a bicategory
-$ H ( \CCC ) $ comprised of the objects, horizontal arrows, and
-globular $ 2 $-arrows of $ \CCC $. 
-
-Observe that the horizontal arrows play a dual role, as
+Observe that the horizontal arrows play a two role, as
 objects in their origin category and arrows in the double
-category. This reflects the dual perspective on structured cospans.
+category. This reflects the content of the categories $ \StrCsp_{L} $
+and $ \Csp_{L} $.
 
-Now, let us define the first cocartesian bicategory, via a cocartesian
-double category.
-
-The first double category that we define is also contained in the
-related work by Baez and Courser
+The first double category that we define is discussed in the
+related work by Baez and Courser.
 %
 \todo{CITE COR 3.9 BAEZ COURSER STRCSP}
 %
-. There, they prove that it actually is
-a double category, so we content ourselves to simply provide the
-definition.
+There, they prove that it actually is a double category, so we content
+ourselves to simply provide the definition.
 
 \begin{definition}
 
   There is a cocartesian double category
-  $ \SSStrCsp \coloneqq ( \A , \StrCsp\ob ) $ :
+  $ \SSStrCsp \coloneqq ( \A , \StrCsp_{L} ) $ :
   \begin{itemize}
   \item the objects are all $ \A $-objects
   \item the vertical arrows $ a \to b $ all $ \A $-arrows, 
@@ -1159,26 +1144,6 @@ definition.
   \]  
 \end{definition}
 
-As mentioned above, we prefer to work with symmetric monoidal bicategories and use double
-categories as a convenient way to arrive there.  Courser
-%
-\todo{CITE COURSER STR-CSP, COR 3.10}
-%
-has already proved that the \emph{horizontal bicategory} of $ \SSStrCsp
-$ exists, and so we simply describe it.
-
-\begin{definition}
-
-  There is a symmetric monoidal bicategory $ \SStrCsp $ consisting of
-  \begin{itemize}
-  \item $ \A $-objects for objects,
-  \item structured cospans $ \csp{La}{x}{Lb} $ as arrows of type $ a
-    \to b $, and
-  \item maps of cospans as 2-arrows.    
-  \end{itemize}
-  
-\end{definition}
-
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1187,20 +1152,19 @@ $ exists, and so we simply describe it.
 \section{Rewriting structured cospans}
 \label{sec:rewriting-strcsp}
 
-At this point, we have discussed structured cospans enough to begin
-the transition to rewriting structured cospans. This and the next
-subsection introduce the bicategories that will serve as the ambient
-bicategories in which rewriting occurs.  The appropriate style of
-rewriting that we on structured cospans is called double pushout (DPO)
+At this point, we have discussed structured cospans enough to
+transition to rewriting structured cospans. This and the next
+subsection introduce the double categories that will serve as an
+ambience in which rewriting occurs.  The appropriate style of
+rewriting for structured cospans is called double pushout (DPO)
 rewriting. In this section, we will briefly cover the basics of DPO
 rewriting and see how this translates to structured cospans.
 
 A \defn{rewriting system}, in its most general form, is a set $ S $
-together with a binary relation $ \rel $. The idea is that
-if $ s \rel r$, then $ s $ can be ``replaced'' by $ r
-$. This is such a simple framework that, naturally, it has occured in
-diverse areas of study and has many different manifestations.  After
-Ehrig, et. al.
+together with a binary relation $ \rel $. The idea is that if
+$ s \rel r$, then $ s $ can be ``replaced'' by $ r $. This is such a
+simple framework that, naturally, it has occured in diverse areas of
+study and and has many variants.  After Ehrig, et. al.
 %
 \todo{CITE ERHIG GRAPH TRANSFORM}
 %
@@ -1263,9 +1227,9 @@ concurrency.
 %
 \todo{cite lack/sobo}
 %
-While the set component of a rewrite system will come from the objects
-of an adhesive category, the binary relation will be given by
-\emph{productions}.
+If we were to relate this to a rewrite system as mentioned above, the
+set would come from the objects of an adhesive category and the binary
+relation from \emph{productions}.
 
 \begin{definition}
 
@@ -1276,7 +1240,7 @@ of an adhesive category, the binary relation will be given by
   \]
   % 
   with monic legs.  A \defn{left-linear production} is a span whose
-  left leg is monic. In cases where a disinction is unimportant, we
+  left leg is monic. In cases where the disinction is unimportant, we
   simply write ``production''. 
   
 \end{definition}
@@ -1301,12 +1265,17 @@ grammar is really the seed of a rich language.
   \end{itemize}
 \end{definition}
 
+In Sections \ref{sec:lang-linear-grammars} and
+\ref{sec:lang-left-linear-grammars}, we consider several variations of
+$ \Gram $, the so called linear and left-linear grammars, but we have
+no need for them yet. For now, we continue with grammars in general.
+
 \begin{definition}
 
   Given a grammar $ G \coloneqq ( \C , P ) $ and a production
   $ p \coloneqq ( \ell \gets k \to r ) $ in $ P $, we say that the
   production $ \spn{\ell'}{k'}{r'} $ is \defn{derived} from $ p $ if
-  there is a $ \C $-arrow $ m \from \ell \to D\ell $ fitting into a
+  there is a $ \C $-arrow $ m \from \ell \to \ell' $ fitting into a
   \emph{double pushout} diagram %
   \[
     \begin{tikzpicture}
@@ -1380,8 +1349,9 @@ is monic, then the pushout complement is unique up to isomorphism.
 %
 \todo{cite lack/sobo}
 %
-This ensures that a linear or left-linear production together with a
-match determine a derived production up to isomorphism. 
+This ensures that, given a linear or left-linear production together
+with a match, if a pushout complement exists, the resulting derived
+production is unique up to isomorphism.
 
 This next lemma justifies us naming $ D $ the \defn{derivation
   functor}.
@@ -1443,15 +1413,20 @@ This next lemma justifies us naming $ D $ the \defn{derivation
   
 \end{proof}
 
-Another important functor for us generates a category from a grammar.
-
-\begin{definition} 
-
-  Define a functor $ S \from \Gram \to \Cat $ as follows:
-  \begin{itemize}
+In classical rewriting theory, that is when working with a set
+together with a binary relation, one is typically more interested in
+the transitive and reflexive closure of the relation. This relation
+gives for each element of your set, all the possible elements that one
+can obtain by successivly applying production rules.  This is in
+opposition to the given binary relation which simply gives what one
+can obtain by a single application of a production rule.  In our
+context, the analogue of this is the functor $ S \from \Gram \to \Cat
+$, defined as follows:
+%
+\begin{itemize}
   \item for a grammar $ G \coloneqq ( \C , P ) $, let $ SG $ be the
-    subcategory of $ \Span{ \C } $ generated by the productions in $ P
-    $, and
+    subcategory of $ \Span ( \C ) $ generated by the productions in
+    $ P $, and
   \item for an arrow of grammars
     $ F \from ( \C , P ) \to ( \D , Q ) $, let $ SF $ be the functor
     given by $ SFc = Fc $ and
@@ -1463,17 +1438,7 @@ Another important functor for us generates a category from a grammar.
     \]
     % 
   \end{itemize}
-
-\end{definition}
-
-In classical rewriting theory, that is when working with a set
-together with a binary relation, one is typically more interested in
-the transitive and reflexive closure of the relation. This relation
-gives for each element of your set, all the possible elements that one
-can obtain by successivly applying production rules.  This is in
-opposition to the given binary relation which simply gives what one
-can obtain by a single application of a production rule.  The functor
-$ S \from \Gram \to \Cat $ is the analog of this in our context. 
+%
 
 \begin{theorem}
 
@@ -1482,7 +1447,7 @@ $ S \from \Gram \to \Cat $ is the analog of this in our context.
   %
   \todo{define this set somewhere and find better notation}
   %
-  by $ \ell \rel r $ whenever there is a cospan
+  by $ \ell \rel r $ whenever there is a span
   $ \ell \gets k \to r $ in $ P $. Denote by $ \rel^\ast $ the
   transitive and reflexive closure of $ \nrightarrow $. Then $ \ell
   \rel^\ast r $ if and only if there is an arrow $ \ell \to r
@@ -1522,30 +1487,15 @@ following theorem.
 \end{theorem}
 
 \begin{corollary} \label{thm:dpo_category-StrCsp-adhsv}
-  The category $ \StrCsp\ob $ is adhesive.
+  The category $ \StrCsp_{L} $ is adhesive.
 \end{corollary}
 
 This corollary ensures that we are working within reasonable
 constraints to define rewriting of structured cospans. That is, we can
 equip a structured cospan category with a set of productions and study
-the resulting grammar.
-
-\begin{definition}
-
-  Denote by $ \StrCspGram $ the full subcategry of $ \Gram $
-  consisting of grammars $ ( \C , P ) $ such that $ \C $ is a
-  structured cospan category.
-  
-\end{definition}
-
-Restricting $ \Lang $ along the inclusion of $ \StrCspGram $ into
-$ \Gram $, we see that assigning the language to a grammar is
-functorial even if that grammar is from a structured cospan
-category.
-
-To be clear, the language of a grammar of structured cospans
-$ \Lang ( \StrCsp\ob (L) , P ) $ is a subcategory of
-$ \Span{\StrCsp\ob (L)} $ generated by commuting diagrams of form
+the resulting grammar. The language $ \Lang ( \StrCsp_{L} , P ) $ of a
+grammar of such a grammar is a subcategory of $ \Span \StrCsp_{L}) $
+generated by commuting diagrams of form
 %
 \[
   \begin{tikzpicture}
@@ -1574,78 +1524,51 @@ $ \Span{\StrCsp\ob (L)} $ generated by commuting diagrams of form
 \]
 % 
 This arrow from $ \csp{La}{x}{La'}$ to $ \csp{Lc}{z}{Lc'} $ is a
-composite of spans from $ DP $.
-
-We restrict our attention to structured cospan grammars whose
-productions have the form 
-\[
-  \begin{tikzpicture}
-    \node (1) at (0,2) {\( \bullet \)};
-    \node (2) at (1,2) {\( \bullet \)};
-    \node (3) at (2,2) {\( \bullet \)};
-    \node (4) at (0,1) {\( \bullet \)};
-    \node (5) at (1,1) {\( \bullet \)};
-    \node (6) at (2,1) {\( \bullet \)};
-    \node (7) at (0,0) {\( \bullet \)};
-    \node (8) at (1,0) {\( \bullet \)};
-    \node (9) at (2,0) {\( \bullet \)};
-    \draw [->] (1) to node [] {\scriptsize{\(  \)}} (2);
-    \draw [->] (3) to node [] {\scriptsize{\(  \)}} (2);
-    \draw [->] (4) to node [] {\scriptsize{\(  \)}} (5);
-    \draw [->] (6) to node [] {\scriptsize{\(  \)}} (5);
-    \draw [->] (7) to node [] {\scriptsize{\(  \)}} (8);
-    \draw [->] (9) to node [] {\scriptsize{\(  \)}} (8);
-    \draw [->] (4) to node [left] {\scriptsize{\( =  \)}} (1);
-    \draw [->] (4) to node [left] {\scriptsize{\( = \)}} (7);
-    \draw [->] (5) to node [left] {\scriptsize{\( =  \)}} (2);
-    \draw [->] (5) to node [left] {\scriptsize{\( = \)}} (8);
-    \draw [->] (6) to node [left] {\scriptsize{\( = \)}} (3);
-    \draw [->] (6) to node [left] {\scriptsize{\( = \)}} (9); 
-  \end{tikzpicture}
-\]
-% 
-The pragmatic reason is that when rewriting open systems, which we are
-formalizing with structured cospans, such productions will ensure that
-all morphisms in the language will fix the inputs and
-outputs. Another reason is that we actually get a richer structure
-when making this restriction: the language is a bicategory, not just a
-category.
-
-So far, we have discussed productions without distinguishing between
-linear and left-linear productions.  Here is the point where this
+composite of spans from $ DP $. However, this framework does not model
+the composition of structured cospans.  In the systems analogy, we
+cannot connect our systems together. To do this, we categorify our
+construction $ S $ up to the level of a double category.  Double
+categories support two different compositional structures, which is
+exactly what we need. To do this, we need to make some minor
+restrictions on the productions considered.  Here is the point where this
 distinction becomes important, as the theory of languages for \emph{
   linear grammars} diverges from the theory of \emph{left-linear
-  grammars}.
+  grammars}. 
 
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-\section{Languages for linear grammars}
+\subsection{Languages for linear grammars}
 \label{sec:lang-linear-grammars}
 
 In this section, we pick up by studying languages for linear grammars,
 defined below. In Section \ref{sec:dpo-rewriting}, we showed that the
-language of a grammar is the free category generated by arrows coming
-from a set of productions. Here we show that the language of a linear
-grammar can be structurally richer, depending on the nature of the set
-of productions. We begin by constructing a double category valued
-language functor. Then we we show that we can actually get a language
-that is a symmetric monoidal double category, symmetric monoidal
-bicategory, or compact closed bicategory by placing the right
-conditions on the grammars.
+language of a grammar is a certain subcategory generated by arrows in
+selected by a set of productions. Here we show that the language of a
+linear grammar can be structurally richer. We begin by associating a
+symmetric monoidal double category to each linear grammar. We show
+that this is a categorified version of the appropriate restriction of
+the language functor. The benefit of this categorification is that it
+contains the rewriting information, whereas the langauge functor as
+defined in Section \ref{sec:rewriting-strcsp} only retains the
+behavior of the rewriting system.
 
-\begin{definition} \label{def:linear-grammar}
+We begin by defining a linear grammar. Note that, here, the qualifier
+``linear'' means more than a span with monic legs. This is to
+accomodate the double category structures the grammars generate, which
+we discuss a bit later.
 
-  We say that a grammar $ ( \C , P ) $ is \emph{linear} if
-  $ \C \coloneqq \StrCsp ( L ) $ is a structured cospan category and
-  the productions in $ P $ are of the form
+\begin{definition} \label{def:linear-grammars}
   %
-    \[
-      \begin{tikzpicture}
-        \begin{scope}
-        \node (1) at (0,4) {\( La  \)};
+  The category of \emph{linear grammars} $ \LinGram $ is
+  the subcategory of $ \Gram $ on the objects
+  $ ( \StrCsp_{L} , P ) $ where $ P $ consists of productions of
+  the form
+  %
+  \[
+    \begin{tikzpicture}
+      \begin{scope}
+        \node (1) at (0,4) {\( La \)};
         \node (2) at (2,4) {\( x \)};
         \node (3) at (4,4) {\( La' \)};
         \node (4) at (0,2) {\( Lb \)};
@@ -1654,47 +1577,59 @@ conditions on the grammars.
         \node (7) at (0,0) {\( Lc \)};
         \node (8) at (2,0) {\( z \)};
         \node (9) at (4,0) {\( Lc' \)};
-        \draw [->] (1) to node [] {\scriptsize{\(  \)}} (2);
-        \draw [->] (3) to node [] {\scriptsize{\(  \)}} (2);
-        \draw [->] (4) to node [] {\scriptsize{\(  \)}} (5);
-        \draw [->] (6) to node [] {\scriptsize{\(  \)}} (5);
-        \draw [->] (7) to node [] {\scriptsize{\(  \)}} (8);
-        \draw [->] (9) to node [] {\scriptsize{\(  \)}} (8);
-        \draw [->] (4) to node [left] {\scriptsize{\( \iso \)}} (1);
-        \draw [->] (4) to node [left] {\scriptsize{\( \iso \)}} (7);
-        \draw [>->] (5) to node [] {\scriptsize{\(  \)}} (2);
-        \draw [>->] (5) to node [] {\scriptsize{\(  \)}} (8);
-        \draw [->] (6) to node [right] {\scriptsize{\( \iso \)}} (3);
-        \draw [->] (6) to node [right] {\scriptsize{\( \iso \)}} (9);
-        \end{scope}
-      \end{tikzpicture}
-    \]
-    %
-    Denote by $ \Gram\lin $ the full subcategory of $ \Gram $ on the
-    linear grammars.
-  
+        \draw [->] (1) to node []
+          {\scriptsize{\( \)}} (2);
+        \draw [->] (3) to node []
+          {\scriptsize{\( \)}} (2);
+        \draw [->] (4) to node []
+          {\scriptsize{\( \)}} (5);
+        \draw [->] (6) to node []
+          {\scriptsize{\( \)}} (5);
+        \draw [->] (7) to node []
+          {\scriptsize{\( \)}} (8);
+        \draw [->] (9) to node []
+          {\scriptsize{\( \)}} (8);
+        \draw [->] (4) to node [left]
+          {\scriptsize{\( \iso \)}} (1);
+        \draw [->] (4) to node [left]
+          {\scriptsize{\( \iso \)}} (7);
+        \draw [>->] (5) to node []
+          {\scriptsize{\( \)}} (2);
+        \draw [>->] (5) to node []
+          {\scriptsize{\( \)}} (8);
+        \draw [->] (6) to node [right]
+          {\scriptsize{\( \iso \)}} (3);
+        \draw [->] (6) to node [right]
+          {\scriptsize{\( \iso \)}} (9);
+      \end{scope}
+    \end{tikzpicture}
+  \]
+  %
+  and the morphisms are the structured cospan functors that are stable
+  under the productions.
+  % 
 \end{definition}
 
-There is a reasonable objection to calling such a grammar ``linear''
-because we are restricting the adhesive category and the productions
-beyond simply linear productions. However, for our purposes,
-``linear'' serves as an adequate qualifier.
-
-To avoid a proliferation of large diagrams, we will refer denote a
-structured cospan by a single letter as opposed to drawing the
+Another note: to avoid proliferating large diagrams, we will often
+denote a structured cospan by a single letter instead of drawing the
 cospan.  This allows us to draw the diagram in Definition
-\ref{def:linear-grammar} as a span $ r \gets s \to t $ for structured
-cospans $ r $, $ s $, and $ t $. 
-
-Fix a structured cospan category $ \StrCsp\ob (L) $. This is adhesive
+\ref{def:linear-grammar} as a diagram
+%
+\(
+  r \gets s \to t, 
+\)
+%
+which we will understand to mean a linear production, for structured cospans $ r $, $ s $, and $ t $.
+  
+Fix a structured cospan category $ \StrCsp_{L} $. This is adhesive
 and so to choose a set of linear productions $ P $ of these structured
 cospans is to give a linear grammar
 %
 \(
-  G \coloneqq ( \StrCsp\ob (L) , P ).
+  G \coloneqq ( \StrCsp_{L} , P ).
 \)
 % 
-In the previous section, we defined the language functor
+In the previous section, we defined a language functor
 %
 \(
   \Lang \from \Gram \to \Cat 
@@ -1702,12 +1637,18 @@ In the previous section, we defined the language functor
 % 
 that returns the language associated to a grammar. By restricting
 grammars to linear grammars we obtain a linear language functor
-$ \Lang\lin \from \Gram\lin \to \DblCat $ valued in double categories.
-The following lemma ensures that $ \Gram\lin $ is a valid codomain for
-this functor.
+$ \LinLang \from \LinGram \to \DblCat $, where $ \DblCat $ is the
+category of double categories and double functors.  We now commence
+to constructing this functor.
+
+Recall in the previous section that the first step to construct the
+language functor was to find the derived grammar $ D \from \Gram
+\to \Gram $. The following lemma
 %
 \todo{cite lack-sobo}
 %
+ensures that we can restrict this
+functor to the linear grammar $ D\lin \from \LinGram \to \LinGram $.
 
 \begin{lemma} \label{thm:po-respect-monics}
   
@@ -1715,9 +1656,9 @@ this functor.
 
 \end{lemma}
 
-This lemma, together with the fact that topoi are regular categories, ensure that the restriction of the derivation functor to $
-\Gram\lin $ returns a linear grammar. Indeed, double pushout diagram
-in $ \StrCsp (L) $ looks like
+This lemma together with the fact that topoi are regular
+categories, ensure that $ D $ is stable under production linearity.
+Observe: a double pushout diagram in $ \StrCsp_{L} $ looks like
 %
 \[
   \begin{tikzpicture}
@@ -1826,15 +1767,11 @@ in $ \StrCsp (L) $ looks like
     \draw (4.9,2.2) -- (4.9,1.8);
     \draw (4.3,1.3) -- (4.1,1);
     \draw (4.3,1.3) -- (4.3,1);
-
   \end{tikzpicture}
 \]
 % 
-
-Hence, given a linear production of structured cospans, Lemma
-\ref{thm:po-respect-monics} ensures that any derived production is
-also linear.
-
+Hence, Lemma \ref{thm:po-respect-monics} ensures that a derived linear
+production is linear.
 
 To build the language, after the derivation comes generating a
 category, which we did in Section \ref{sec:yrewriting-strcsp} with a
@@ -1843,26 +1780,35 @@ functor
 \(
   S \from \Gram \to \Cat.
 \)
-% 
-In this section, we define a similar functor
+%
+The situation with linear grammars is more interesting. The
+compositionality inherent in linear grammars endows the language with a
+richer structure. We capture this by defining a functor
 %
 \(
-  S\lin \from \Gram\lin \to \DblCat.
+  S\lin \from \LinGram \to \DblCat,
 \)
 % 
-Before we show how $ S\lin $ works, we recall a few important
-concepts.
+though this take some preparation. We begin by introducing a class of
+double categories that will serve as ambience in which we generate
+sub-double categories.
 
 \begin{lemma}
 
-  Given a topos $ \cat{T} $, there is a symmetric monoidal double
-  category $ \MMMonRewrite (\cat{T}) $ whose
+  Let $ \L \dashv R \from \X \to \A $ be a geometric morphism.  There
+  is a double category
+  %
+  \(
+    \MMMonRewrite ( \StrCsp_L ) \coloneqq ( \MMM_0 , \MMM_1 )
+  \)
+  %
+  comprised of the categories
   \begin{itemize}
-  \item objects are the $ \cat{T} $-objects,
-  \item vertical arrows are isomorphism classes of spans with
-    invertible legs in $ \cat{T} $,
-  \item horizontal arrows are cospans in $ T $, and
-  \item squares are commuting diagrams of the form
+  \item $ \MMM_0 $ with objects from $ \A $ and arrows are spans in $
+    \A $ with invertible legs, and
+  \item $ \MMM_1 $ with objects $ \L $-structured cospans and arrows
+    isoclasses of linear productions, that is commuting diagrams of
+    form
     %
     \[
       \begin{tikzpicture}
@@ -1889,127 +1835,175 @@ concepts.
         \draw [->] (6) to node [right] {\scriptsize{\( \iso \)}} (9);
       \end{tikzpicture}
     \]
-    % 
-  in $ \cat{T} $
+    
   \end{itemize}
-
-  The symmetric monoidal operation is defined pointwise.
   %
-  \todo{cite spcsptopos}
-  %
+  \todo{have i defined linear productions as morphisms?}
 
+  \edit{include compositions, structure maps, proof,relation to
+    baez-courser thm 3.1}
+  
 \end{lemma}
 
-The compositions in this category follow as they do in
+
+
+% COMMENT: this is the MonRewrite double category description
 %
-\(
-  \Span{\StrCsp\ob (L)}
-\)
+% \begin{lemma}
+%   Given a topos $ \cat{T} $, there is a symmetric monoidal double
+%   category $ \MMMonRewrite (\cat{T}) $ whose
+%   \begin{itemize}
+%   \item objects are the $ \cat{T} $-objects,
+%   \item vertical arrows are isomorphism classes of spans with
+%     invertible legs in $ \cat{T} $,
+%   \item horizontal arrows are cospans in $ T $, and
+%   \item squares are commuting diagrams of the form
+%     %
+%     \[
+%       \begin{tikzpicture}
+%         \node (1) at (0,2) {\( \bullet \)};
+%         \node (2) at (1,2) {\( \bullet \)};
+%         \node (3) at (2,2) {\( \bullet \)};
+%         \node (4) at (0,1) {\( \bullet \)};
+%         \node (5) at (1,1) {\( \bullet \)};
+%         \node (6) at (2,1) {\( \bullet \)};
+%         \node (7) at (0,0) {\( \bullet \)};
+%         \node (8) at (1,0) {\( \bullet \)};
+%         \node (9) at (2,0) {\( \bullet \)};
+%         \draw [->] (1) to node [] {\scriptsize{\(  \)}} (2);
+%         \draw [->] (3) to node [] {\scriptsize{\(  \)}} (2);
+%         \draw [->] (4) to node [] {\scriptsize{\(  \)}} (5);
+%         \draw [->] (6) to node [] {\scriptsize{\(  \)}} (5);
+%         \draw [->] (7) to node [] {\scriptsize{\(  \)}} (8);
+%         \draw [->] (9) to node [] {\scriptsize{\(  \)}} (8);
+%         \draw [->] (4) to node [left] {\scriptsize{\( \iso \)}} (1);
+%         \draw [->] (4) to node [left] {\scriptsize{\( \iso \)}} (7);
+%         \draw [>->] (5) to node [] {\scriptsize{\(  \)}} (2);
+%         \draw [>->] (5) to node [] {\scriptsize{\(  \)}} (8);
+%         \draw [->] (6) to node [right] {\scriptsize{\( \iso \)}} (3);
+%         \draw [->] (6) to node [right] {\scriptsize{\( \iso \)}} (9);
+%       \end{tikzpicture}
+%     \]
+%     % 
+%   in $ \cat{T} $
+%   \end{itemize}
+
+%   The symmetric monoidal operation is defined pointwise.
+%   %
+%   \todo{cite spcsptopos}
+%   %
+
+% \end{lemma}
+
+On objects, $ S\lin $ sends a grammar $ ( \StrCsp_L , P ) $ to the
+sub-double category $ \PPP \coloneqq ( \PPP_0 , \PPP_1 ) $ of $
+\MMMonRewrite ( \StrCsp_L ) $ where $ \PPP_0 $ is generated by
+\begin{itemize}
+\item objects, those of $ \A $ that occupy a corner of some linear
+  production in $ P $;
+\item arrows, those spans in $ \A $ that occupy a vertical
+  edge of some linear production in $ P $;
+\end{itemize}
+and $ \PPP_1 $ is the replete category generated
+\begin{itemize}
+\item by horizontal arrows, those $ L $-structured cospans that
+  occupy a horizonal edge of some linear production in $ P $; and
+\item by squares, the productions in $ P $
+\end{itemize}
+
+Fix geometric morphisms $ L \dashv R \from \X \to \A $ and
+$ L' \dashv R' \from \X' \to \A' $.  The image of an arrow
+%
+\[
+  ( F \from \X \to \X' , G \from \A \to \A' ) \from
+  ( \StrCsp_L , P ) \to ( \StrCsp_{L'} , Q )
+\]
 % 
-and
-%
-\(
-  \StrCsp\arr (L).
-\)
-
-Note that a linear production taken from a structured cospan category
-$ \StrCsp\ob (L) $ with invertible maps for legs has the correct form to
-be a square in
-%
-\(
-  \MMMonRewrite ( \X )
-\)
-% 
-where $ \X $ is the domain of $ L $.  Thus a linear grammar
-$ ( \StrCsp\ob (L) , P ) $ generates a sub-double category $ \PPP $ of
-%
-\(
-  \MMMonRewrite ( \X ).
-\)
-%
-In fact, we can do so functorially.
-
-\begin{theorem} \label{thm:s-lin-functor}
-
-  There is a functor $ S\lin \from \Gram\lin \to \DblCat $ given by
-  \begin{itemize}
-  \item $ ( \StrCsp\ob (L) , P ) \mapsto \PPP $,
-  \item
-    %
-    \(
-      F \from
-      ( \StrCsp\ob (L) , P ) \to ( \StrCsp\ob (L') , P' ) 
-    \)
-    % 
-    is sent to the double functor $ \PPP \to \PPP' $ defined on
-    squares by
-    %
-    % \[
-    %   \begin{tikzpicture}
-    %     \node (1) at () {\(  \)};
-    %     \node (2) at () {\(  \)};
-    %     \node (3) at () {\(  \)};
-    %     \node (4) at () {\(  \)};
-    %     \node (5) at () {\(  \)};
-    %     \node (6) at () {\(  \)};
-    %     \node (7) at () {\(  \)};
-    %     \node (8) at () {\(  \)};
-    %     \draw [->] () to node [] {\scriptsize{\(  \)}} ();
-    %     \draw [->] () to node [] {\scriptsize{\(  \)}} ();
-    %     \draw [->] () to node [] {\scriptsize{\(  \)}} ();
-    %     \draw [->] () to node [] {\scriptsize{\(  \)}} ();
-    %     \draw [->] () to node [] {\scriptsize{\(  \)}} ();
-    %     \draw [->] () to node [] {\scriptsize{\(  \)}} ();
-    %     \draw [->] () to node [] {\scriptsize{\(  \)}} ();
-    %     \draw [->] () to node [] {\scriptsize{\(  \)}} (); 
-    %   \end{tikzpicture}
-    % \]
-    % % 
-
-
-    %
+under $ S\lin $ is the double functor $ \PPP \to \QQQ $ given
+\begin{itemize}
+\item on objects by $ a \mapsto Ga $
+\item on vertical arrows by
+  %
+  \[
+    ( La \xgets{Lf} Lb \xto{Lg} Lc ) \mapsto
+    ( L'Ga \xgets{L'Gf} L'Gb \xto{L'Gg} L'Gc )
+  \]
+  %
+\item on horizontal arrows by
+  %
+  \[
+    ( La \xgets{h} x \xto{k} Lb ) \mapsto
+    ( L'Ga \xgets{Fh} Fx \xto{Fk} L'Gb )
+  \]
+  %
+\item on squares by
+  %
     \[
       \begin{tikzpicture}
         \begin{scope}
-        \node (1) at (0,4) {\( La  \)};
-        \node (2) at (2,4) {\( x \)};
-        \node (3) at (4,4) {\( La' \)};
-        \node (4) at (0,2) {\( Lb \)};
-        \node (5) at (2,2) {\( y \)};
-        \node (6) at (4,2) {\( Lb' \)};
+        \node (1) at (0,2) {\( La \)};
+        \node (2) at (1,2) {\( x \)};
+        \node (3) at (2,2) {\( La' \)};
+        \node (4) at (0,1) {\( Lb \)};
+        \node (5) at (1,1) {\( y \)};
+        \node (6) at (2,1) {\( Lb' \)};
         \node (7) at (0,0) {\( Lc \)};
-        \node (8) at (2,0) {\( z \)};
-        \node (9) at (4,0) {\( Lc' \)};
+        \node (8) at (1,0) {\( z \)};
+        \node (9) at (2,0) {\( Lc' \)};
         \draw [->] (1) to node [] {\scriptsize{\(  \)}} (2);
         \draw [->] (3) to node [] {\scriptsize{\(  \)}} (2);
         \draw [->] (4) to node [] {\scriptsize{\(  \)}} (5);
         \draw [->] (6) to node [] {\scriptsize{\(  \)}} (5);
         \draw [->] (7) to node [] {\scriptsize{\(  \)}} (8);
         \draw [->] (9) to node [] {\scriptsize{\(  \)}} (8);
-        \draw [->] (4) to node [] {\scriptsize{\(  \)}} (1);
-        \draw [->] (4) to node [] {\scriptsize{\(  \)}} (7);
-        \draw [->] (5) to node [] {\scriptsize{\(  \)}} (2);
-        \draw [->] (5) to node [] {\scriptsize{\(  \)}} (8);
-        \draw [->] (6) to node [] {\scriptsize{\(  \)}} (3);
-        \draw [->] (6) to node [] {\scriptsize{\(  \)}} (9);
-        \end{scope}
+        \draw [->] (4) to node [left] {\scriptsize{\( \iso \)}} (1);
+        \draw [->] (4) to node [left] {\scriptsize{\( \iso \)}} (7);
+        \draw [>->] (5) to node [] {\scriptsize{\(  \)}} (2);
+        \draw [>->] (5) to node [] {\scriptsize{\(  \)}} (8);
+        \draw [->] (6) to node [right] {\scriptsize{\( \iso \)}} (3);
+        \draw [->] (6) to node [right] {\scriptsize{\( \iso \)}} (9);
+      \end{scope}
+      %
+      \begin{scope}[shift={(4,0)}]
+        \node (1) at (0,2) {\( L'Ga \)};
+        \node (2) at (2,2) {\( Fx \)};
+        \node (3) at (4,2) {\( L'Ga' \)};
+        \node (4) at (0,1) {\( L'Gb \)};
+        \node (5) at (2,1) {\( Fy \)};
+        \node (6) at (4,1) {\( L'Gb' \)};
+        \node (7) at (0,0) {\( L'Gc \)};
+        \node (8) at (2,0) {\( Fz \)};
+        \node (9) at (4,0) {\( L'Gc' \)};
+        \draw [->] (1) to node [] {\scriptsize{\(  \)}} (2);
+        \draw [->] (3) to node [] {\scriptsize{\(  \)}} (2);
+        \draw [->] (4) to node [] {\scriptsize{\(  \)}} (5);
+        \draw [->] (6) to node [] {\scriptsize{\(  \)}} (5);
+        \draw [->] (7) to node [] {\scriptsize{\(  \)}} (8);
+        \draw [->] (9) to node [] {\scriptsize{\(  \)}} (8);
+        \draw [->] (4) to node [left] {\scriptsize{\( \iso \)}} (1);
+        \draw [->] (4) to node [left] {\scriptsize{\( \iso \)}} (7);
+        \draw [>->] (5) to node [] {\scriptsize{\(  \)}} (2);
+        \draw [>->] (5) to node [] {\scriptsize{\(  \)}} (8);
+        \draw [->] (6) to node [right] {\scriptsize{\( \iso \)}} (3);
+        \draw [->] (6) to node [right] {\scriptsize{\( \iso \)}} (9);
+      \end{scope}
+      %
+      \node () at (3,1) {$ \mapsto $};
       \end{tikzpicture}
     \]
-    % 
+\end{itemize}
+%
+That this actually defines a double functor requires checking a number
+of axioms, which we place in an appendix.
 
-  \end{itemize}
-  
+\begin{theorem} \label{thm:Slin-functorial}
+  There is a functor $ \Lang\lin \from \LinGram \to \DblCat $ given by
+  $ \Lang\lin \coloneqq \S\lin D $.  
 \end{theorem}
 
-\begin{lemma} \label{thm:horbicat-MMonRewrite}
+We call the essential image of a linear grammar under $ \Lang\lin $
+the \defn{(linear) language} of the grammar.
 
-  The horizontal bicategry $ \MMonRewrite ( \cat{T} ) $ of
-  $ \MMMonRewrite ( \cat{T} ) $ is compact closed.
-  %
-  \todo{cite spcsptopos}
-  %
-  
-\end{lemma}
 
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -2019,12 +2013,831 @@ In fact, we can do so functorially.
 \section{Languages for left-linear grammars}
 \label{sec:lang-left-linear-grammars}
 
+% DEFINITION FOR LEFT LINEAR GRAMMARS
+
+The category of \emph{left linear grammars} $ \LeftLinGram $ is the
+  full subcategory of $ \Gram $ on objects of the form
+  $ ( \StrCsp_L , P) $ where $ P $ consists of only left linear
+  grammars
+%
+  \[
+    \begin{tikzpicture}
+      \begin{scope}
+        \node (1) at (0,4) {\( La \)}; \node (2) at (2,4) {\( x \)};
+        \node (3) at (4,4) {\( La' \)}; \node (4) at (0,2) {\( Lb \)};
+        \node (5) at (2,2) {\( y \)}; \node (6) at (4,2) {\( Lb' \)};
+        \node (7) at (0,0) {\( Lc \)}; \node (8) at (2,0) {\( z \)};
+        \node (9) at (4,0) {\( Lc' \)}; \draw [->] (1) to node []
+        {\scriptsize{\( \)}} (2); \draw [->] (3) to node []
+        {\scriptsize{\( \)}} (2); \draw [->] (4) to node []
+        {\scriptsize{\( \)}} (5); \draw [->] (6) to node []
+        {\scriptsize{\( \)}} (5); \draw [->] (7) to node []
+        {\scriptsize{\( \)}} (8); \draw [->] (9) to node []
+        {\scriptsize{\( \)}} (8); \draw [->] (4) to node [left]
+        {\scriptsize{\( \iso \)}} (1); \draw [->] (4) to node [left]
+        {\scriptsize{\( \iso \)}} (7); \draw [>->] (5) to node []
+        {\scriptsize{\( \)}} (2); \draw [->] (5) to node []
+        {\scriptsize{\( \)}} (8); \draw [->] (6) to node [right]
+        {\scriptsize{\( \iso \)}} (3); \draw [->] (6) to node [right]
+        {\scriptsize{\( \iso \)}} (9);
+      \end{scope}
+    \end{tikzpicture}
+  \]
+%
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+\appendix
+  
+\section{$ S\lin $ is functorial}
+\label{sec:Slin-functor}
+
+Fix a pair of adjunctions
+%
+\[
+  \adjunction{\A}{L}{R}{\X}
+  \quad \text{ and } \quad
+  \adjunction{\B}{L'}{R'}{\Y}.
+\]
+% 
+To show that $ S\lin \from \LinGram \to \DblCat $ is a functor, we
+first generate from a linear grammar arrow
+%
+\(
+  ( F,G ) \from ( \StrCsp (L) , P ) \to ( \StrCsp (L') , Q )
+\)
+% 
+a double functor $ S\lin ( F,G ) \from \PPP \to \QQQ $
+%
+\todo{these were defined above, right?}
+%
+that we denote by $ S $ for short. To show that $ S $ is a double
+funtor, we use the definition presented in
+%
+\todo{cite shulman double whatever derived double functors}
+%
+which lists the following requirements:
+\begin{enumerate}
+\item Functions from the objects
+  %
+  \[
+    a \mapsto Fa,
+  \]
+  % 
+  vertical arrows
+  %
+  \[
+    ( a \xgets{f} b \xto{g} c ) \mapsto
+    ( Ga \xgets{Ff} Gb \xto{Fg} Gc ),
+  \]
+  % 
+  horizontal arrows
+  %
+  \[
+    ( La \xto{k} x \xgets{h} Lb ) \mapsto
+    ( FLa \xto{Fk} Fx \xgets{Fh} FLb ) =
+    ( L'Ga \xto{Fk} Fx \xgets{Fh} L'Gb ),
+  \]
+  % 
+  and squares
+  %
+  \[
+    \begin{tikzpicture}
+      \begin{scope}
+        \node (1) at (0,2) {\( La \)};
+        \node (2) at (2,2) {\( x \)};
+        \node (3) at (4,2) {\( La' \)};
+        \node (4) at (0,1) {\( Lb \)};
+        \node (5) at (2,1) {\( y \)};
+        \node (6) at (4,1) {\( Lb' \)};
+        \node (7) at (0,0) {\( Lc \)};
+        \node (8) at (2,0) {\( z \)};
+        \node (9) at (4,0) {\( Lc' \)};
+        \draw [->] (1) to
+          node [above] {\scriptsize{\( f'' \)}} (2);
+        \draw [->] (3) to
+          node [above] {\scriptsize{\( g'' \)}} (2);
+        \draw [->] (4) to
+          node [above] {\scriptsize{\( f' \)}} (5);
+        \draw [->] (6) to 
+          node [above] {\scriptsize{\( g' \)}} (5);
+        \draw [->] (7) to 
+          node [above] {\scriptsize{\( f \)}} (8);
+        \draw [->] (9) to 
+          node [above] {\scriptsize{\( g \)}} (8);
+        \draw [->] (4) to
+          node [left] {\scriptsize{\( \iso \)}}
+          node [right] {\scriptsize{\( Lh \)}} (1);
+        \draw [->] (4) to
+          node [left] {\scriptsize{\( \iso \)}}
+          node [right] {\scriptsize{\( Lk \)}} (7);
+        \draw [>->] (5) to 
+          node [right] {\scriptsize{\( h' \)}} (2);
+        \draw [>->] (5) to 
+          node [right] {\scriptsize{\( k' \)}} (8);
+        \draw [->] (6) to 
+          node [right] {\scriptsize{\( \iso \)}} 
+          node [left] {\scriptsize{\( Lh'' \)}} (3);
+        \draw [->] (6) to 
+          node [right] {\scriptsize{\( \iso \)}}
+          node [left] {\scriptsize{\( Lk'' \)}} (9);          
+        \end{scope}
+        %
+        \begin{scope}[shift={(6,0)}]
+        \node (1) at (0,2) {\( L'Ga \)};
+        \node (2) at (2,2) {\( Fx \)};
+        \node (3) at (4,2) {\( L'Ga' \)};
+        \node (4) at (0,1) {\( L'Gb \)};
+        \node (5) at (2,1) {\( Fy \)};
+        \node (6) at (4,1) {\( L'Gb' \)};
+        \node (7) at (0,0) {\( L'Gc \)};
+        \node (8) at (2,0) {\( Fz \)};
+        \node (9) at (4,0) {\( L'Gc' \)};
+        \draw [->] (1) to 
+          node [above] {\scriptsize{\( Ff'' \)}} (2);
+        \draw [->] (3) to 
+          node [above] {\scriptsize{\( Fg'' \)}} (2);
+        \draw [->] (4) to 
+          node [above] {\scriptsize{\( Ff' \)}} (5);
+        \draw [->] (6) to 
+          node [above] {\scriptsize{\( Fg' \)}} (5);
+        \draw [->] (7) to 
+          node [above] {\scriptsize{\( Ff \)}} (8);
+        \draw [->] (9) to 
+          node [above] {\scriptsize{\( Fg\)}} (8);
+        \draw [->] (4) to 
+          node [left] {\scriptsize{\( \iso \)}}
+          node [right] {\scriptsize{\( L'Gh \)}} (1);
+        \draw [->] (4) to 
+          node [left] {\scriptsize{\( \iso \)}} 
+          node [right] {\scriptsize{\( Fk \)}} (7);
+        \draw [>->] (5) to 
+          node [right] {\scriptsize{\( Fh' \)}} (2);
+        \draw [>->] (5) to 
+          node [right] {\scriptsize{\( Fk' \)}} (8);
+        \draw [->] (6) to 
+          node [right] {\scriptsize{\( \iso \)}} 
+          node [left] {\scriptsize{\( L'Gh'' \)}} (3);
+        \draw [->] (6) to 
+          node [right] {\scriptsize{\( \iso \)}} 
+          node [left] {\scriptsize{\( L'Gk'' \)}} (9);
+        \end{scope}
+        %
+        \node () at (5,1) {$ \mapsto $};
+    \end{tikzpicture}
+  \]
+  % 
+\item For each object $ a $ of $ \PPP $, a pair of squares
+  %
+  \[
+    \begin{tikzpicture}
+      \begin{scope}
+      \node (1) at (0,2) {\( Sa  \)};
+      \node (2) at (2,2) {\( Sa \)};
+      \node (3) at (0,0) {\( Sa \)};
+      \node (4) at (2,0) {\( Sa \)};
+      \node (5) at (1,1) {\scriptsize{$ \Downarrow S_a $}};
+      \draw [-|->] (1) to node [above] {\scriptsize{\( S \id \)}} (2);
+      \draw [->] (1) to node [left] {\scriptsize{\( \id \)}} (3);
+      \draw [->] (2) to node [right] {\scriptsize{\( \id \)}} (4);
+      \draw [-|->] (3) to node [below] {\scriptsize{\( \id \)}} (4);
+      \end{scope}
+      %
+      \begin{scope}[shift={(4,0)}]
+      \node (1) at (0,2) {\( Sa \)};
+      \node (2) at (2,2) {\( Sa \)};
+      \node (3) at (0,0) {\( Sa \)};
+      \node (4) at (2,0) {$ Sa $};
+      \node (5) at (1,1) {\scriptsize{$ \Downarrow S^a $}};
+      \draw [-|->] (1) to node [above] {\scriptsize{$ \id $}} (2);
+      \draw [->] (1) to node [left] {\scriptsize{$ \id $}} (3);
+      \draw [->] (2) to node [right] {\scriptsize{$ S \id $}} (4);
+      \draw [-|->] (3) to node [below] {\scriptsize{$ \id $}} (4);  
+      \end{scope}
+      %
+      \node () at (3,1) {and};
+    \end{tikzpicture}
+  \]
+  %
+  in $ \QQQ $ both of which are
+  %
+  \[
+    \begin{tikzpicture}
+      \node (1) at (0,2) {$ L'Ga $};
+      \node (2) at (2,2) {$ L'Ga $};
+      \node (3) at (4,2) {$ L'Ga $};
+      \node (4) at (0,1) {$ L'Ga $};
+      \node (5) at (2,1) {$ L'Ga $};
+      \node (6) at (4,1) {$ L'Ga $};
+      \node (7) at (0,0) {$ L'Ga $};
+      \node (8) at (2,0) {$ L'Ga $};
+      \node (9) at (4,0) {$ L'Ga $};
+      \draw [->] (1) to node [] {\scriptsize{$  $}} (2);
+      \draw [->] (3) to node [] {\scriptsize{$  $}} (2);
+      \draw [->] (4) to node [] {\scriptsize{$  $}} (5);
+      \draw [->] (6) to node [] {\scriptsize{$  $}} (5);
+      \draw [->] (7) to node [] {\scriptsize{$  $}} (8);
+      \draw [->] (9) to node [] {\scriptsize{$  $}} (8);
+      \draw [->] (4) to node [] {\scriptsize{$  $}} (1);
+      \draw [->] (4) to node [] {\scriptsize{$  $}} (7);
+      \draw [->] (5) to node [] {\scriptsize{$  $}} (2);
+      \draw [->] (5) to node [] {\scriptsize{$  $}} (8);
+      \draw [->] (6) to node [] {\scriptsize{$  $}} (3);
+      \draw [->] (6) to node [] {\scriptsize{$  $}} (9);
+    \end{tikzpicture}
+  \]
+  % 
+  filled with identity arrows. 
+\item For each composable pair
+  %
+  \[
+    f \from \spn{a}{b}{c}
+    \quad \text{ and }
+    g \from \spn{c}{d}{e}
+  \]
+  % 
+  of vertical arrows in $ \PPP $, an invertible square
+  %
+  \[
+    \begin{tikzpicture}
+      \begin{scope}
+      \node (1) at (0,2) {$ Sa $};
+      \node (2) at (2,2) {$ Sa $};
+      \node (3) at (0,1) {$ Sb $};
+      \node (4) at (0,0) {$ Sc $};
+      \node (5) at (2,0) {$ Sc $};
+      \node (6) at (1,1) {\scriptsize{$ \Downarrow S^{gf} $}};
+      \draw [-|->] (1) to node [above] {\scriptsize{$ \id $}} (2);
+      \draw [->] (1) to node [left] {\scriptsize{$ Sf $}} (3);
+      \draw [->] (3) to node [left] {\scriptsize{$ Sg $}} (4);
+      \draw [->] (2) to node [right] {\scriptsize{$ Sgf $}} (5);
+      \draw [-|->] (4) to node [below] {\scriptsize{$ \id $}} (5);  
+    \end{scope}
+    %
+    \begin{scope}[shift={(5,0)}]
+      \node (1) at (0,2) {$ L'Ga $};
+      \node (2) at (3,2) {$ L'Ga $};
+      \node (3) at (6,2) {$ L'Ga $};
+      \node (4) at (0,1) {$ L' ( Gb +_{Gc} Gd ) $};
+      \node (5) at (3,1) {$ L'Gb +_{L'Gc} L'Gd $};
+      \node (6) at (6,1) {$ L'G ( b +_c d ) $};
+      \node (7) at (0,0) {$ L'Ge $};
+      \node (8) at (3,0) {$ L'Ge $};
+      \node (9) at (6,0) {$ L'Ge $};
+      \draw [->] (1) to node [above] {\scriptsize{$  $}} (2);
+      \draw [->] (3) to node [above] {\scriptsize{$  $}} (2);
+      \draw [->] (4) to node [] {\scriptsize{$  $}} (5);
+      \draw [->] (6) to node [] {\scriptsize{$  $}} (5);
+      \draw [->] (7) to node [] {\scriptsize{$  $}} (8);
+      \draw [->] (9) to node [] {\scriptsize{$  $}} (8);
+      \draw [->] (4) to node [] {\scriptsize{$  $}} (1);
+      \draw [->] (4) to node [] {\scriptsize{$  $}} (7);
+      \draw [->] (5) to node [] {\scriptsize{$  $}} (2);
+      \draw [->] (5) to node [] {\scriptsize{$  $}} (8);
+      \draw [->] (6) to node [] {\scriptsize{$  $}} (3);
+      \draw [->] (6) to node [] {\scriptsize{$  $}} (9);
+    \end{scope}
+    %
+    \node () at (3,1) {$ \coloneqq $};
+    \end{tikzpicture}
+  \]
+  %
+  in $ \QQQ $. The arrows to the pushout in the center of the diagram
+  are the isomorphisms that arise from $ L' $ and $ G $ both
+  preserving pushouts.  
+\item For each composable pair
+  %
+  \[
+    h \from \csp{La}{x}{Lb}
+    \quad \text{ and } \quad
+    k \from \csp{Lb}{y}{Lc}
+  \]
+  %
+  of horizontal arrows in $ \PPP $, an invertible square
+  %
+  \[
+    \begin{tikzpicture}
+      \begin{scope}
+      \node (1) at (0,2) {$ Sa $};
+      \node (2) at (2,2) {$ Sc $};
+      \node (3) at (0,0) {$ Sa $};
+      \node (4) at (1,0) {$ Sb $};
+      \node (5) at (2,0) {$ Sc $};
+      \node (6) at (1,1) {\scriptsize{$ \Downarrow S_{kh} $}};
+      \draw [->] (1) to node [above] {\scriptsize{$ Skh $}} (2);
+      \draw [->] (1) to node [left] {\scriptsize{$ \id $}} (3);
+      \draw [->] (3) to node [below] {\scriptsize{$ Sh $}} (4);
+      \draw [->] (4) to node [below] {\scriptsize{$ Sk $}} (5);
+      \draw [->] (2) to node [right] {\scriptsize{$ \id $}} (5);
+      \end{scope}
+      %
+      \begin{scope}[shift={(4,0)}]
+        \node (1) at (0,2) {$ L'Ga $};
+        \node (2) at (2,2) {$ F ( x \times_{Lb} y ) $};
+        \node (3) at (4,2) {$ L'Gc $};
+        \node (4) at (0,1) {$ L'Ga $};
+        \node (5) at (2,1) {$ Fx \times_{FLb} Fy $};
+        \node (6) at (4,1) {$ L'Gc $};
+        \node (7) at (0,0) {$ L'Ga $};
+        \node (8) at (2,0) {$ Fx \times_{L'Gb} Fy $};
+        \node (9) at (4,0) {$ L'Gc $};
+        \draw [->] (1) to node [] {\scriptsize{$  $}} (2);
+        \draw [->] (3) to node [] {\scriptsize{$  $}} (2);
+        \draw [->] (4) to node [] {\scriptsize{$  $}} (5);
+        \draw [->] (6) to node [] {\scriptsize{$  $}} (5);
+        \draw [->] (7) to node [] {\scriptsize{$  $}} (8);
+        \draw [->] (9) to node [] {\scriptsize{$  $}} (8);
+        \draw [->] (4) to node [] {\scriptsize{$  $}} (1);
+        \draw [->] (4) to node [] {\scriptsize{$  $}} (7);
+        \draw [->] (5) to node [] {\scriptsize{$  $}} (2);
+        \draw [->] (5) to node [] {\scriptsize{$  $}} (8);
+        \draw [->] (6) to node [] {\scriptsize{$  $}} (3);
+        \draw [->] (6) to node [] {\scriptsize{$  $}} (9);
+      \end{scope}
+      %
+      \node () at (3,1) {$ \coloneqq $};
+    \end{tikzpicture}
+  \]
+  %
+  where the arrows from the pullback in center of the diagram are the
+  canoncial isomorphisms that follow from the properties that $ F $
+  preserves pullbacks and $ FL = L'G $.
+\item The following coherence axioms hold for vertical arrows $ f
+  \from a \to b $, $ g \from b \to c $, and $ h \from c \to d $ in $
+  \PPP $
+  %
+  \[
+    \begin{tikzpicture}
+      \begin{scope}
+      \node (1) at (0,3) {$ Sa $};
+      \node (2) at (1,3) {$ Sa $};
+      \node (3) at (2,3) {$ Sa $};
+      \node (4) at (0,2) {$ Sb $};
+      \node (5) at (0,1) {$ Sc $};
+      \node (6) at (1,1) {$ Sc $};
+      \node (7) at (0,0) {$ Sd $};
+      \node (8) at (1,0) {$ Sd $};
+      \node (9) at (2,0) {$ Sd $};
+      \draw [->] (1) to node [above] {\scriptsize{$ \id $}} (2);
+      \draw [->] (2) to node [above] {\scriptsize{$ \id $}} (3);
+      \draw [->] (5) to node [above] {\scriptsize{$ \id $}} (6);
+      \draw [->] (7) to node [below] {\scriptsize{$ \id $}} (8);
+      \draw [->] (8) to node [below] {\scriptsize{$ \id $}} (9);
+      \draw [->] (1) to node [left] {\scriptsize{$ Sf $}} (4);
+      \draw [->] (4) to node [left] {\scriptsize{$ Sf $}} (5);
+      \draw [->] (2) to node [right] {\scriptsize{$ Sgf $}} (6);
+      \draw [->] (5) to node [left] {\scriptsize{$ Sh $}} (7);
+      \draw [->] (6) to node [right] {\scriptsize{$ Sh $}} (8);
+      \draw [->] (3) to node [right] {\scriptsize{$ Shgf $}} (9);
+      \node (a) at (0.5,2) {\scriptsize{$ \Downarrow_{S^{gf}} $}};
+      \node (b) at (0.5,0.5) {\scriptsize{$ \Downarrow_{\id} $}};
+      \node (c) at (1.5,1.5) {\scriptsize{$ \Downarrow_{S^{h(gf)}} $}};
+    \end{scope}
+    %
+    \begin{scope}[shift={(4,0)}]
+      \node (1) at (0,3) {$ Sa $};
+      \node (2) at (1,3) {$ Sa $};
+      \node (3) at (2,3) {$ Sa $};
+      \node (4) at (0,2) {$ Sb $};
+      \node (5) at (0,1) {$ Sc $};
+      \node (6) at (1,2) {$ Sb $};
+      \node (7) at (0,0) {$ Sd $};
+      \node (8) at (1,0) {$ Sd $};
+      \node (9) at (2,0) {$ Sd $};
+      \draw [->] (1) to node [above] {\scriptsize{$ \id $}} (2);
+      \draw [->] (2) to node [above] {\scriptsize{$ \id $}} (3);
+      \draw [->] (4) to node [above] {\scriptsize{$ \id $}} (6);
+      \draw [->] (7) to node [below] {\scriptsize{$ \id $}} (8);
+      \draw [->] (8) to node [below] {\scriptsize{$ \id $}} (9);
+      \draw [->] (1) to node [left] {\scriptsize{$ Sf $}} (4);
+      \draw [->] (4) to node [left] {\scriptsize{$ Sf $}} (5);
+      \draw [->] (2) to node [right] {\scriptsize{$ Sgf $}} (6);
+      \draw [->] (5) to node [left] {\scriptsize{$ Sh $}} (7);
+      \draw [->] (6) to node [right] {\scriptsize{$ Sh $}} (8);
+      \draw [->] (3) to node [right] {\scriptsize{$ Shgf $}} (9);
+      \node (a) at (0.5,1) {\scriptsize{$ \Downarrow_{S^{gf}} $}};
+      \node (b) at (0.5,2.5) {\scriptsize{$ \Downarrow_{\id} $}};
+      \node (c) at (1.5,1.5) {\scriptsize{$ \Downarrow_{S^{h(gf)}} $}};
+    \end{scope}
+    %
+    \node () at (3,1.5) {$ = $};
+    \end{tikzpicture}
+  \]
+  %
+  %
+  \[
+    \begin{tikzpicture}
+      \begin{scope}
+      \node (1) at (0,2) {$ Sa $};
+      \node (2) at (1,2) {$ Sa $};
+      \node (3) at (0,1) {$ Sb $};
+      \node (4) at (1,1) {$ Sb $};
+      \node (5) at (0,0) {$ Sb $};
+      \node (6) at (1,0) {$ Sb $};
+      \draw [->] (1) to node [above] {\scriptsize{$ \id $}} (2);
+      \draw [->] (3) to node [above] {\scriptsize{$ \id $}} (4);
+      \draw [->] (5) to node [below] {\scriptsize{$ \id $}} (6);
+      \draw [->] (1) to node [left] {\scriptsize{$ Sf $}} (3);
+      \draw [->] (2) to node [right] {\scriptsize{$ Sf $}} (4);
+      \draw [->] (3) to node [left] {\scriptsize{$ \id $}} (5);
+      \draw [->] (4) to node [right] {\scriptsize{$ S \id $}} (6);
+      \node () at (0.5,1.5) {\scriptsize{$ \Downarrow_{\id} $}};
+      \node () at (0.5,0.5) {\scriptsize{$ \Downarrow_{S^b} $}};
+    \end{scope}
+    %
+    \begin{scope}[shift={(3,0)}]
+      \node (1) at (0,2) {$ Sa $};
+      \node (2) at (1,2) {$ Sa $};
+      \node (3) at (0,1) {$ Sb $};
+      \node (5) at (0,0) {$ Sb $};
+      \node (6) at (1,0) {$ Sb $};
+      \draw [->] (1) to node [above] {\scriptsize{$ \id $}} (2);
+      \draw [->] (5) to node [below] {\scriptsize{$ \id $}} (6);
+      \draw [->] (1) to node [left] {\scriptsize{$ Sf $}} (3);
+      \draw [->] (2) to node [right] {\scriptsize{$ Sf $}} (6);
+      \draw [->] (3) to node [left] {\scriptsize{$ S \id $}} (5);
+      \node () at (0.5,1.5) {\scriptsize{$ \Downarrow_{S^{\id f}} $}};
+    \end{scope}
+    %
+    \node () at (2,1) {$ = $};
+  \end{tikzpicture}
+  %
+  \quad \quad \quad \quad
+  %
+  \begin{tikzpicture}
+      \begin{scope}
+      \node (1) at (0,2) {$ Sa $};
+      \node (2) at (1,2) {$ Sa $};
+      \node (3) at (0,1) {$ Sa $};
+      \node (4) at (1,1) {$ Sa $};
+      \node (5) at (0,0) {$ Sb $};
+      \node (6) at (1,0) {$ Sb $};
+      \draw [->] (1) to node [above] {\scriptsize{$ \id $}} (2);
+      \draw [->] (3) to node [above] {\scriptsize{$ \id $}} (4);
+      \draw [->] (5) to node [below] {\scriptsize{$ \id $}} (6);
+      \draw [->] (1) to node [left] {\scriptsize{$ \id $}} (3);
+      \draw [->] (2) to node [right] {\scriptsize{$ S \id $}} (4);
+      \draw [->] (3) to node [left] {\scriptsize{$ Sf $}} (5);
+      \draw [->] (4) to node [right] {\scriptsize{$ Sf $}} (6);
+      \node () at (0.5,0.5) {\scriptsize{$ \Downarrow_{\id} $}};
+      \node () at (0.5,1.5) {\scriptsize{$ \Downarrow_{S^a} $}};
+    \end{scope}
+    %
+    \begin{scope}[shift={(3,0)}]
+      \node (1) at (0,2) {$ Sa $};
+      \node (2) at (1,2) {$ Sa $};
+      \node (3) at (0,1) {$ Sa $};
+      \node (5) at (0,0) {$ Sb $};
+      \node (6) at (1,0) {$ Sb $};
+      \draw [->] (1) to node [above] {\scriptsize{$ \id $}} (2);
+      \draw [->] (5) to node [below] {\scriptsize{$ \id $}} (6);
+      \draw [->] (1) to node [left] {\scriptsize{$ S \id $}} (3);
+      \draw [->] (2) to node [right] {\scriptsize{$ Sf $}} (6);
+      \draw [->] (3) to node [left] {\scriptsize{$ S f $}} (5);
+      \node () at (0.5,1.5) {\scriptsize{$ \Downarrow_{S^{f \id}} $}};
+    \end{scope}
+    %
+    \node () at (2,1) {$ = $};
+  \end{tikzpicture}
+  \]
+  % 
+\item For horizonal arrows $ f \from a \to b $, $ g \from b \to c $,
+  and $ h \from c \to d $, the following coherence conditions
+  %
+  \[
+    \begin{tikzpicture}
+      \begin{scope}
+        \node (1) at (0,2) {$ Sa $};
+        \node (2) at (0,1) {$ Sa $};
+        \node (3) at (0,0) {$ Sa $};
+        \node (4) at (1,0) {$ Sb $};
+        \node (5) at (2,1) {$ Sc $};
+        \node (6) at (2,0) {$ Sc $};
+        \node (7) at (3,2) {$ Sd $};
+        \node (8) at (3,1) {$ Sd $};
+        \node (9) at (3,0) {$ Sd $};
+        \draw [->] (1) to node [above] {\scriptsize{$ Shgf $}} (7);
+        \draw [->] (2) to node [above] {\scriptsize{$ Sgf $}} (5);
+        \draw [->] (5) to node [above] {\scriptsize{$ Sh $}} (8);
+        \draw [->] (3) to node [below] {\scriptsize{$ Sf $}} (4);
+        \draw [->] (4) to node [below] {\scriptsize{$ Sg $}} (6);
+        \draw [->] (6) to node [below] {\scriptsize{$ Sh $}} (9);
+        \draw [->] (1) to node [left] {\scriptsize{$ \id $}} (2);
+        \draw [->] (7) to node [right] {\scriptsize{$ \id $}} (8);
+        \draw [->] (2) to node [left] {\scriptsize{$ \id $}} (3);
+        \draw [->] (5) to node [left] {\scriptsize{$ \id $}} (6);
+        \draw [->] (8) to node [right] {\scriptsize{$ \id $}} (9);
+        \node () at (1.5,1.5) {\scriptsize{$ \Downarrow_{S_{h(gh)}} $}};
+        \node () at (1,0.5) {\scriptsize{$ \Downarrow_{S_{gf}} $}};
+        \node () at (2.5,0.5) {\scriptsize{$ \Downarrow_{\id} $}};
+      \end{scope}
+      %
+      \begin{scope}[shift={(5,0)}]
+        \node (1) at (0,2) {$ Sa $};
+        \node (2) at (0,1) {$ Sa $};
+        \node (3) at (0,0) {$ Sa $};
+        \node (4) at (1,1) {$ Sb $};
+        \node (5) at (1,0) {$ Sb $};
+        \node (6) at (3,2) {$ Sc $};
+        \node (7) at (3,1) {$ Sd $};
+        \node (8) at (3,0) {$ Sd $};
+        \draw [->] (1) to node [above] {\scriptsize{$ Shgf $}} (6);
+        \draw [->] (2) to node [above] {\scriptsize{$ Sf $}} (4);
+        \draw [->] (4) to node [above] {\scriptsize{$ Shg $}} (7);
+        \draw [->] (3) to node [below] {\scriptsize{$ Sf $}} (5);
+        \draw [->] (5) to node [below] {\scriptsize{$ Sg $}} (8);
+        \draw [->] (1) to node [left] {\scriptsize{$ \id $}} (2);
+        \draw [->] (6) to node [right] {\scriptsize{$ \id $}} (7);
+        \draw [->] (7) to node [right] {\scriptsize{$ \id $}} (8);
+        \draw [->] (2) to node [left] {\scriptsize{$ \id $}} (3);
+        \draw [->] (4) to node [left] {\scriptsize{$ \id $}} (5);
+        \node () at (1,1.5) {\scriptsize{$ \Downarrow_{S_{ (hg)f }} $}};
+        \node () at (0.5,0.5) {\scriptsize{$ \Downarrow_{\id} $}};
+        \node () at (2,0.5) {\scriptsize{$ \Downarrow_{S_{hg}} $}};
+      \end{scope}
+      %
+      \node () at (4,1) {$ = $};
+    \end{tikzpicture}
+  \]
+  \[
+    \begin{tikzpicture}
+      \begin{scope}
+      \node (1) at (0,1) {$ Sa $};
+      \node (2) at (1,1) {$ Sa $};
+      \node (3) at (2,1) {$ Sb $};
+      \node (4) at (0,0) {$ Sa $};
+      \node (5) at (1,0) {$ Sa $};
+      \node (6) at (2,0) {$ Sb $};
+      \draw [->] (1) to node [above] {\scriptsize{$ S \id $}} (2);
+      \draw [->] (2) to node [above] {\scriptsize{$ Sf $}} (3);
+      \draw [->] (4) to node [below] {\scriptsize{$ \id $}} (5);
+      \draw [->] (5) to node [below] {\scriptsize{$ Sf $}} (6);
+      \draw [->] (1) to node [left] {\scriptsize{$ \id $}} (4);
+      \draw [->] (2) to node [left] {\scriptsize{$ \id $}} (5);
+      \draw [->] (3) to node [right] {\scriptsize{$ \id $}} (6);
+      \node () at (0.5,0.5) {\scriptsize{$ \Downarrow_{S_a} $}};
+      \node () at (1.5,0.5) {\scriptsize{$ \Downarrow_{\id} $}};
+    \end{scope}
+    %
+    \begin{scope}[shift={(4,0)}]
+      \node (1) at (0,1) {$ Sa $};
+      \node (3) at (2,1) {$ Sb $};
+      \node (4) at (0,0) {$ Sa $};
+      \node (5) at (1,0) {$ Sa $};
+      \node (6) at (2,0) {$ Sb $};
+      \draw [->] (1) to node [above] {\scriptsize{$ Sf \id $}} (3);
+      \draw [->] (4) to node [below] {\scriptsize{$ \id $}} (5);
+      \draw [->] (5) to node [below] {\scriptsize{$ Sf $}} (6);
+      \draw [->] (1) to node [left] {\scriptsize{$ \id $}} (4);
+      \draw [->] (3) to node [right] {\scriptsize{$ \id $}} (6);
+      \node () at (1,0.5) {\scriptsize{$ \Downarrow_{S_{f \id}} $}};
+    \end{scope}
+    %
+    \node () at (3,0.5) {$ = $};
+  \end{tikzpicture}
+  %
+  %
+  \quad \quad
+  %
+  %
+  \begin{tikzpicture}
+  \begin{scope}
+      \node (1) at (0,1) {$ Sa $};
+      \node (2) at (1,1) {$ Sb $};
+      \node (3) at (2,1) {$ Sb $};
+      \node (4) at (0,0) {$ Sa $};
+      \node (5) at (1,0) {$ Sb $};
+      \node (6) at (2,0) {$ Sb $};
+      \draw [->] (1) to node [above] {\scriptsize{$ Sf $}} (2);
+      \draw [->] (2) to node [above] {\scriptsize{$ S \id $}} (3);
+      \draw [->] (4) to node [below] {\scriptsize{$ Sf $}} (5);
+      \draw [->] (5) to node [below] {\scriptsize{$ \id $}} (6);
+      \draw [->] (1) to node [left] {\scriptsize{$ \id $}} (4);
+      \draw [->] (2) to node [left] {\scriptsize{$ \id $}} (5);
+      \draw [->] (3) to node [right] {\scriptsize{$ \id $}} (6);
+      \node () at (0.5,0.5) {\scriptsize{$ \Downarrow_{\id} $}};
+      \node () at (1.5,0.5) {\scriptsize{$ \Downarrow_b $}};
+    \end{scope}
+    %
+    \begin{scope}[shift={(4,0)}]
+      \node (1) at (0,1) {$ Sa $};
+      \node (3) at (2,1) {$ Sb $};
+      \node (4) at (0,0) {$ Sa $};
+      \node (5) at (1,0) {$ Sb $};
+      \node (6) at (2,0) {$ Sb $};
+      \draw [->] (1) to node [above] {\scriptsize{$ S \id f $}} (3);
+      \draw [->] (4) to node [below] {\scriptsize{$ Sf $}} (5);
+      \draw [->] (5) to node [below] {\scriptsize{$ \id $}} (6);
+      \draw [->] (1) to node [left] {\scriptsize{$ \id $}} (4);
+      \draw [->] (3) to node [right] {\scriptsize{$ \id $}} (6);
+      \node () at (1,0.5) {\scriptsize{$ S_{\id f} $}};
+    \end{scope}
+    %
+    \node () at (3,0.5) {$ = $};
+    \end{tikzpicture}
+  \]
+  % 
+\item The double naturality equations
+  %
+  \[
+    \begin{tikzpicture}
+    \begin{scope}
+      \node (1) at (0,2) {$ Sa $};
+      \node (2) at (4,2) {$ Sc $};
+      \node (3) at (0,1) {$ Sa $};
+      \node (4) at (2,1) {$ Sb $};
+      \node (5) at (4,1) {$ Sc $};
+      \node (6) at (0,0) {$ Sa' $};
+      \node (7) at (2,0) {$ Sb' $};
+      \node (8) at (4,0) {$ Sc' $};
+      \draw [->] (1) to node [above] {\scriptsize{$ Skh $}} (2);
+      \draw [->] (3) to node [above] {\scriptsize{$ Sh $}} (4);
+      \draw [->] (4) to node [above] {\scriptsize{$ Sk $}} (5);
+      \draw [->] (6) to node [below] {\scriptsize{$ Sh' $}} (7);
+      \draw [->] (7) to node [below] {\scriptsize{$ Sk' $}} (8);
+      \draw [->] (1) to node [] {\scriptsize{$  $}} (3);
+      \draw [->] (2) to node [] {\scriptsize{$  $}} (5);
+      \draw [->] (3) to node [left] {\scriptsize{$ Su $}} (6);
+      \draw [->] (4) to node [left] {\scriptsize{$ Sv $}} (7);
+      \draw [->] (5) to node [right] {\scriptsize{$ Sw $}} (8);
+      \node () at (2,1.5) {\scriptsize{ $ \Downarrow_{S_{kh}} $ }};
+      \node () at (1,0.5) {\scriptsize{ $ \Downarrow_{S \alpha} $
+        }};
+      \node () at (3,0.5) {\scriptsize{ $ \Downarrow_{S \beta} $ }};
+    \end{scope}
+    %
+    \begin{scope}[shift={(6,0)}]
+      \node (1) at (0,2) {$ Sa $};
+      \node (2) at (2,2) {$ Sc $};
+      \node (3) at (0,1) {$ Sa' $};
+      \node (4) at (2,1) {$ Sc' $};
+      \node (5) at (0,0) {$ Sa' $};
+      \node (6) at (1,0) {$ Sb' $};
+      \node (7) at (2,0) {$ Sc' $};
+      \draw [->] (1) to node [above] {\scriptsize{$ Skh $}} (2);
+      \draw [->] (3) to node [above] {\scriptsize{$ Sk'h' $}} (4);
+      \draw [->] (5) to node [below] {\scriptsize{$ Sh' $}} (6);
+      \draw [->] (6) to node [below] {\scriptsize{$ Sk' $}} (7);
+      \draw [->] (1) to node [left] {\scriptsize{$ Su $}} (3);
+      \draw [->] (2) to node [right] {\scriptsize{$ Sw $}} (4);
+      \draw [->] (3) to node [] {\scriptsize{$  $}} (5);
+      \draw [->] (4) to node [] {\scriptsize{$  $}} (7);
+      \node () at (1,1.5) {\scriptsize{$ \Downarrow_{S \alpha \beta}
+          $}};
+      \node () at (1,0.5) {\scriptsize{$ \Downarrow_{S_{k'h'}} $}};
+    \end{scope}
+    %
+    \node () at (5,1) {$ = $};
+    \end{tikzpicture}
+  \]
+  %
+  %
+  \[
+    \begin{tikzpicture}
+    \begin{scope}
+      \node (1) at (0,3) {$ Sa $};
+      \node (2) at (1,3) {$ Sa $};
+      \node (3) at (0,2) {$ Sa $};
+      \node (4) at (1,2) {$ Sa $};
+      \node (5) at (0,1) {$ Sa $};
+      \node (6) at (1,1) {$ Sa $};
+      \node (7) at (0,0) {$ Sa $};
+      \node (8) at (1,0) {$ Sa $};
+      \draw [->] (1) to node [] {\scriptsize{$  $}} (2);
+      \draw [->] (3) to node [] {\scriptsize{$  $}} (4);
+      \draw [->] (5) to node [] {\scriptsize{$  $}} (6);
+      \draw [->] (7) to node [] {\scriptsize{$  $}} (8);
+      \draw [->] (1) to node [] {\scriptsize{$  $}} (3);
+      \draw [->] (2) to node [] {\scriptsize{$  $}} (4);
+      \draw [->] (3) to node [left] {\scriptsize{$ Sf $}} (5);
+      \draw [->] (4) to node [right] {\scriptsize{$ Sf $}} (6);
+      \draw [->] (5) to node [] {\scriptsize{$  $}} (7);
+      \draw [->] (6) to node [] {\scriptsize{$  $}} (8);
+      \node () at (0.5,2.5) {\scriptsize{$ \Downarrow_{Sa}^{-1} $}};
+      \node () at (0.5,1.5) {\scriptsize{$ \Downarrow_{S \id} $}};
+      \node () at (0.5,0.5) {\scriptsize{$ \Downarrow_{S_a} $}};
+    \end{scope}
+    %
+    \begin{scope}[shift={(3,1)}]
+      \node (1) at (0,1) {$ Sa $};
+      \node (2) at (1,1) {$ Sa $};
+      \node (3) at (0,0) {$ Sa $};
+      \node (4) at (1,0) {$ Sa $};
+      \draw [->] (1) to node [] {\scriptsize{$  $}} (2);
+      \draw [->] (3) to node [] {\scriptsize{$  $}} (4);
+      \draw [->] (1) to node [left] {\scriptsize{$ Sf $}} (3);
+      \draw [->] (2) to node [right] {\scriptsize{$ Sf $}} (4);
+      \node () at (0.5,0.5) {\scriptsize{$ \Downarrow_{\id^{Sf}} $}};
+    \end{scope}
+    %
+    \node () at (2,1.5) {$ = $};
+    \end{tikzpicture}
+  \]
+  % 
+  hold for horizontal arrows and the transposes for vertical arrows. 
+\end{enumerate}
+
+\section{Inductive rewriting}
+\label{sec:InductiveRewriting}
+
+\begin{lemma}
+  Fix a geometric morphism $ L \dashv R \from \X \to \A $ and a
+  grammar $ ( \X , P ) $.  Denote by $ ( \X , dP ) $ the
+  \emph{discrete grammar underlying} $ ( \X , P ) $, where $ dP $
+  consists of a production
+  %
+  \(
+  \langle f,g \rangle \epsilon
+  \from LRk \to \ell \times r
+  \)
+  %
+  for each production
+  %
+  \(
+  \langle f,g \rangle
+  \from k \to \ell \times r
+  \)
+  % 
+  in $ P $.  The rewrite relation $ \Rightarrow^\ast $ induced by $ (
+  \X , P ) $ is equal to the rewrite relation $ \Rightarrow_d^\ast $
+  induced by $ ( \X , dP ) $.
+\end{lemma}
+
+\todo{define rewrite relation}
+\todo{get better notation for the rewrite relation}
+
+\begin{definition}
+  Denote by $ \langle ( \X , dP ) $ the sub-double category of
+  \todo{what the name of this double category?}
+  \todo{is this double category the language?}
+  that is full on the objects, vertical arrows, horizontal arrows, and
+  has squares generated by
+  %
+  \[
+    \begin{tikzpicture}
+      \node (1) at (0,2) {$ LR \emptyset $};
+      \node (2) at (1,2) {$ \ell $};
+      \node (3) at (2,2) {$ LR k  $};
+      \node (4) at (0,1) {$ LR \emptyset $};
+      \node (5) at (1,1) {$ LR k $};
+      \node (6) at (2,1) {$ LR k $};
+      \node (7) at (0,0) {$ LR \emptyset $};
+      \node (8) at (1,0) {$ r $};
+      \node (9) at (2,0) {$ LR k $};
+      \draw [<-] (2) to node [] {\scriptsize{$  $}} (1);
+      \draw [<-] (2) to node [] {\scriptsize{$  $}} (3);
+      \draw [<-] (5) to node [] {\scriptsize{$  $}} (4);
+      \draw [<-] (5) to node [] {\scriptsize{$  $}} (6);
+      \draw [<-] (8) to node [] {\scriptsize{$  $}} (7);
+      \draw [<-] (8) to node [] {\scriptsize{$  $}} (9);
+      \draw [->] (4) to node [] {\scriptsize{$  $}} (1);
+      \draw [->] (4) to node [] {\scriptsize{$  $}} (7);
+      \draw [->] (5) to node [] {\scriptsize{$  $}} (2);
+      \draw [->] (5) to node [] {\scriptsize{$  $}} (8);
+      \draw [->] (6) to node [] {\scriptsize{$  $}} (3);
+      \draw [->] (6) to node [] {\scriptsize{$  $}} (9);
+    \end{tikzpicture}
+  \]
+  %
+  for every production $ LRk \from \ell \times r $ in $ ( \X , dp ) $.
+\end{definition}
 
 
-
-
-
-
+\begin{theorem}
+  Let $ ( \X , dP ) $ be a discrete grammar. There exists a derivation
+  $ g \Rightarrow^\ast h $ if and only if there is a square
+  %
+  \[
+    \begin{tikzpicture}
+      \node (1) at (0,2) {$ LR \emptyset $};
+      \node (2) at (1,2) {$ g $};
+      \node (3) at (2,2) {$ LR \emptyset  $};
+      \node (4) at (0,1) {$ LR \emptyset $};
+      \node (5) at (1,1) {$ d $};
+      \node (6) at (2,1) {$ LR \emptyset $};
+      \node (7) at (0,0) {$ LR \emptyset $};
+      \node (8) at (1,0) {$ h $};
+      \node (9) at (2,0) {$ LR \emptyset $};
+      \draw [<-] (2) to node [] {\scriptsize{$  $}} (1);
+      \draw [<-] (2) to node [] {\scriptsize{$  $}} (3);
+      \draw [<-] (5) to node [] {\scriptsize{$  $}} (4);
+      \draw [<-] (5) to node [] {\scriptsize{$  $}} (6);
+      \draw [<-] (8) to node [] {\scriptsize{$  $}} (7);
+      \draw [<-] (8) to node [] {\scriptsize{$  $}} (9);
+      \draw [->] (4) to node [] {\scriptsize{$  $}} (1);
+      \draw [->] (4) to node [] {\scriptsize{$  $}} (7);
+      \draw [->] (5) to node [] {\scriptsize{$  $}} (2);
+      \draw [->] (5) to node [] {\scriptsize{$  $}} (8);
+      \draw [->] (6) to node [] {\scriptsize{$  $}} (3);
+      \draw [->] (6) to node [] {\scriptsize{$  $}} (9);
+    \end{tikzpicture}
+  \]
+  % 
+  in $ \langle ( \X , dP ) \rangle $.  
+\end{theorem}
 
 
 
@@ -2175,19 +2988,8 @@ In fact, we can do so functorially.
 % % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 % % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-% \section{Examples}
-% \label{sec:examples}
-
-% % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-% % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-% % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-% % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-% %\bibliography{C:/Dropbox/templates/biblio.bib} 
-% %\bibliographystyle{ieeetr}
-
-% %\begin{thebibliography}{99}
-% %\end{thebibliography}
+\begin{thebibliography}{99}
+\end{thebibliography}
 
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 % 

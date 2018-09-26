@@ -107,6 +107,8 @@
     "tocospan"
     "monicgets"
     "monicto"
+<<<<<<< HEAD
+=======
     "Hom"
     "id"
     "im"
@@ -114,6 +116,7 @@
     "Bij"
     "Sub"
     "colim"
+>>>>>>> b8bdcd7b84bba3774c15d3a798113637aff9f6b6
     "horarrow")
    (LaTeX-add-labels
     "sec:intro"
@@ -139,7 +142,13 @@
     "sec:lang-left-linear-grammars"
     "sec:Slin-functor"
     "sec:InductiveRewriting")
+<<<<<<< HEAD
+   (LaTeX-add-lengths
+    "mylen")
+   (LaTeX-add-amsthm-newtheorems
+=======
    (LaTeX-add-environments
+>>>>>>> b8bdcd7b84bba3774c15d3a798113637aff9f6b6
     "theorem"
     "lemma"
     "proposition"

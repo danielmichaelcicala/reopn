@@ -1,7 +1,0 @@
-## TO DO ##
-
-* change instance of \partial to L
-
-* don't use the term open objects, only structured cospans.  Can use open(x) when x is a specific network, as in Open(Petri)
-
-* don't ƒ use category name L-Open.  Actually, maybe in my case, we can use that since the structured cospans areobjects in that categoryf 

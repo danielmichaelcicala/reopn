@@ -2,7 +2,7 @@
  "reopn"
  (lambda ()
    (TeX-add-to-alist 'LaTeX-provided-package-options
-                     '(("enumitem" "inline") ("xcolor" "dvipsnames") ("natbib" "numbers")))
+                     '(("enumitem" "inline") ("xcolor" "dvipsnames")))
    (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperref")
    (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperimage")
    (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperbaseurl")
@@ -20,19 +20,14 @@
     "amsmath"
     "caption"
     "enumitem"
-    "doi"
     "etoolbox"
     "stmaryrd"
     "xcolor"
     "hyperref"
     "graphicx"
     "mathtools"
-    "natbib"
-    "subcaption"
-    "subfiles"
     "tikz"
-    "todonotes"
-    "url")
+    "todonotes")
    (TeX-add-symbols
     '("adjunction" 4)
     '("opento" 2)
@@ -41,6 +36,8 @@
     '("csp" 3)
     '("spn" 3)
     '("xgets" 1)
+    '("deriv" 2)
+    '("dderiv" 2)
     '("xto" 1)
     '("edit" 1)
     '("type" 1)
@@ -49,29 +46,49 @@
     '("cat" 1)
     '("defn" 1)
     "op"
-    "ob"
-    "arr"
-    "lin"
     "iso"
     "A"
     "B"
     "C"
     "D"
+    "E"
+    "Q"
+    "R"
+    "T"
+    "U"
+    "V"
+    "W"
     "X"
     "Y"
     "Z"
     "BB"
     "CC"
+    "DD"
+    "EE"
     "PP"
+    "QQ"
+    "RR"
+    "TT"
+    "UU"
+    "VV"
+    "WW"
     "XX"
     "YY"
     "ZZ"
     "AAA"
     "BBB"
     "CCC"
+    "DDD"
+    "EEE"
+    "MMM"
     "PPP"
     "QQQ"
-    "MMM"
+    "RRR"
+    "SSS"
+    "TTT"
+    "UUU"
+    "VVV"
+    "WWW"
     "XXX"
     "YYY"
     "ZZZ"
@@ -83,72 +100,69 @@
     "Bicat"
     "DblCat"
     "Topos"
-    "Gram"
-    "LinGram"
-    "LeftLinGram"
     "Span"
     "Csp"
+    "Gram"
     "StrCsp"
-    "SStrCsp"
     "SSStrCsp"
-    "Rewrite"
-    "RRewrite"
-    "RRRewrite"
-    "MonRewrite"
-    "MMonRewrite"
-    "MMMonRewrite"
+    "StrCspGram"
+    "MonSpCsp"
     "core"
     "Lang"
-    "LinLang"
-    "LeftLinLang"
     "from"
     "rel"
+    "To"
+    "monicto"
+    "monicgets"
     "tospan"
     "tocospan"
-    "monicgets"
-    "monicto"
-<<<<<<< HEAD
-=======
-    "Hom"
-    "id"
-    "im"
-    "Aut"
-    "Bij"
-    "Sub"
-    "colim"
->>>>>>> b8bdcd7b84bba3774c15d3a798113637aff9f6b6
     "horarrow")
    (LaTeX-add-labels
-    "sec:intro"
-    "sec:cat-of-strcsp"
-    "sec:strcsp-as-object"
+    "sec:Introduction"
+    "eq:StrCsp-arrows"
+    "sec:StrCsp"
+    "sec:StrCspAsObject"
     "df:strcsp"
     "df:morph-of-strcsp"
     "ex:open-graphs"
     "thm:strcsp-istopos"
     "thm:strcsp-isfunctorial"
-    "sec:strcsp-as-arrows"
+    "sec:StrCsp-as-Arrows"
     "def:strcsp-arr"
     "ex:open-graph-as-arrow"
-    "sec:bicat-strcsp"
-    "sec:rewriting-strcsp"
+    "sec:DblCatOfStrCsp"
+    "sec:inductive-rewriting-structured-cospans"
+    "sec:Graph-Rewriting"
+    "sec:Adhesive-Rewriting"
     "dfn:adhesive-category"
-    "thm:dpo_topoi-adhesive"
+    "thm:rewrite-rel-is-additive"
+    "sec:Rewriting-StrCsp"
     "thm:dpo_category-StrCsp-adhsv"
-    "sec:lang-linear-grammars"
     "def:linear-grammars"
-    "thm:po-respect-monics"
-    "thm:Slin-functorial"
-    "sec:lang-left-linear-grammars"
-    "sec:Slin-functor"
-    "sec:InductiveRewriting")
-<<<<<<< HEAD
+    "lem:production-same-rewrite-relation-as-discrete"
+    "thm:inductive-rewriting")
+   (LaTeX-add-bibitems
+    "StrCsp"
+    "NetMods"
+    "PassiveNets"
+    "MrkvProc"
+    "RxNets"
+    "OpenPetri"
+    "Chomsky"
+    "Cic_SpCsp"
+    "CicCour_SpCspTopos"
+    "DixKiss_OpenGraphs"
+    "Ehrig_GraphGram"
+    "DecorCsp"
+    "Gadd_IndGraphTrans"
+    "DblPushoutRevis"
+    "LackSobo_Adhesive"
+    "LackSobo_ToposIsAdh"
+    "ShulDblCat"
+    "Wraith_ArtinGlue")
    (LaTeX-add-lengths
     "mylen")
    (LaTeX-add-amsthm-newtheorems
-=======
-   (LaTeX-add-environments
->>>>>>> b8bdcd7b84bba3774c15d3a798113637aff9f6b6
     "theorem"
     "lemma"
     "proposition"
@@ -157,7 +171,8 @@
     "notation"
     "example"
     "definition")
-   (LaTeX-add-lengths
-    "mylen"))
+   (LaTeX-add-xcolor-definecolors
+    "editcolour"
+    "hrefcolour"))
  :latex)
 

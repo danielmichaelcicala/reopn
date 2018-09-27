@@ -28,17 +28,6 @@
 
 % NEW COMMANDS ~~~~~~~~~~~~~~~~~~
 
-<<<<<<< HEAD
-=======
-% mathbb
-% \newcommand{\RR}{\mathbb{R}}
-% \newcommand{\ZZ}{\mathbb{Z}}
-% \newcommand{\NN}{\mathbb{N}}
-% \newcommand{\QQ}{\mathbb{Q}}
-% \newcommand{\CC}{\mathbb{C}}
-% \newcommand{\FF}{\mathbb{D}}
-
->>>>>>> b8bdcd7b84bba3774c15d3a798113637aff9f6b6
 % symbols
 \renewcommand{\epsilon}{\varepsilon}
 \newcommand{\op}{^{\scriptsize{ \textrm{op} } }}
@@ -54,10 +43,6 @@
 \renewcommand{\P}{\cat{P}}
 \newcommand{\Q}{\cat{Q}}
 \newcommand{\R}{\cat{R}}
-<<<<<<< HEAD
-=======
-\newcommand{\S}{\cat{S}}
->>>>>>> b8bdcd7b84bba3774c15d3a798113637aff9f6b6
 \newcommand{\T}{\cat{T}}
 \newcommand{\U}{\cat{U}}
 \newcommand{\V}{\cat{V}}
@@ -73,10 +58,6 @@
 \newcommand{\PP}{\bicat{P}}
 \newcommand{\QQ}{\bicat{Q}}
 \newcommand{\RR}{\bicat{R}}
-<<<<<<< HEAD
-=======
-\newcommand{\SS}{\bicat{S}}
->>>>>>> b8bdcd7b84bba3774c15d3a798113637aff9f6b6
 \newcommand{\TT}{\bicat{T}}
 \newcommand{\UU}{\bicat{U}}
 \newcommand{\VV}{\bicat{V}}
@@ -89,10 +70,7 @@
 \newcommand{\CCC}{\dblcat{C}}
 \newcommand{\DDD}{\dblcat{D}}
 \newcommand{\EEE}{\dblcat{E}}
-<<<<<<< HEAD
 \newcommand{\MMM}{\dblecat{M}}
-=======
->>>>>>> b8bdcd7b84bba3774c15d3a798113637aff9f6b6
 \newcommand{\PPP}{\dblcat{P}}
 \newcommand{\QQQ}{\dblcat{Q}}
 \newcommand{\RRR}{\dblcat{R}}
@@ -113,7 +91,6 @@
 \newcommand{\Bicat}{\cat{Bicat}}
 \newcommand{\DblCat}{\cat{DblCat}}
 \newcommand{\Topos}{\cat{Topos}}
-<<<<<<< HEAD
 \newcommand{\Span}{\cat{Span}}
 \newcommand{\Csp}{\cat{Cospan}}
 \newcommand{\Gram}{\cat{Gram}}
@@ -125,11 +102,6 @@
 % functors
 \newcommand{\core}{\mathbf{core}}
 \newcommand{\Lang}{\mathrm{Lang}}
-=======
-\newcommand{\Gram}{\cat{Gram}}
-\newcommand{\Span}{\cat{Span}}
-\newcommand{\Cospan}{\cat{Cospan}}
->>>>>>> b8bdcd7b84bba3774c15d3a798113637aff9f6b6
 
 % text formatting
 \newcommand{\defn}[1]{\textbf{#1}}
@@ -144,7 +116,6 @@
 \newcommand{\rel}{\nrightarrow}
 \newcommand{\To}{\Rightarrow}
 \newcommand{\xto}[1]{\xrightarrow{#1}}
-<<<<<<< HEAD
 \newcommand{\monicto}{\rightarrowtail}
 \newcommand{\dderiv}[2]{#1 \rightsquigarrow #2}
 \newcommand{\deriv}[2]{#1 \rightsquigarrow^\ast #2}
@@ -153,12 +124,6 @@
 \newcommand{\xgets}[1]{\xleftarrow{#1}}
 \newcommand{\spn}[3]{#2 \to #1 \times #3}
 \newcommand{\tospan}{\xrightarrow{\mathit{sp}}}
-=======
-\newcommand{\squigto}{\rightsquigarrow}
-\newcommand{\xgets}[1]{\xleftarrow{#1}}
-\newcommand{\tospan}{\xrightarrow{\mathit{sp}}}
-\newcommand{\spn}[3]{#2 \to #1 \times #3}
->>>>>>> b8bdcd7b84bba3774c15d3a798113637aff9f6b6
 \newcommand{\csp}[3]{#1 + #3 \to #2}
 \newcommand{\tocospan}{\xrightarrow{\mathit{csp}}}
 
@@ -256,13 +221,8 @@
 % adjunction
 \newcommand{\adjunction}[4]{%
   \begin{tikzpicture}[baseline=-3pt]
-<<<<<<< HEAD
     \node (1) at (0,0) {\( #1 \)};
     \node (2) at (2,0) {\( #4 \)};
-=======
-    \node (1) at (0,0) {( #1 )};
-    \node (2) at (2,0) {( #4 )};
->>>>>>> b8bdcd7b84bba3774c15d3a798113637aff9f6b6
     \draw [->]
     ([yshift= 4pt]2.west) to
     node [above] {\scriptsize{ $ #2 $ }}
@@ -293,7 +253,6 @@
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 \section{Introduction}
-<<<<<<< HEAD
 \label{sec:Introduction}
 
 Rewriting has a fairly remarkable history. Beginning in the confines
@@ -567,13 +526,6 @@ them back together.
 
 The author would like to thank John Baez and Fabio Gadducci for
 helpful conversations.
-=======
-\label{sec-1}
-\subsection{Using structured cospans to introduce inductive rewriting on certain topoi}
-\label{sec-1-1}
-\subsection{generalizing gadducci.}
-\label{sec-1-2}
->>>>>>> b8bdcd7b84bba3774c15d3a798113637aff9f6b6
 
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 % ~~~~~~~~~~~ structured cospans~~~~~~~~~~
@@ -582,7 +534,6 @@ helpful conversations.
 \section{Structured Cospans}
 \label{sec:StrCsp}
 
-<<<<<<< HEAD
 Structured cospans are introduced here, as well as by Baez and Courser
 \cite{StrCsp}. Their purpose is to provide syntax for compositional
 systems. Baez and Courser's work has two aims: maximize the generality
@@ -599,57 +550,6 @@ category with appropriate morphisms between them. The second
 perspective takes structured cospans to be morphisms between
 ``interfaces''.  The latter perspective encode the compositional
 structure.
-=======
-% ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-% ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-\subsection{Introduce the section}
-\label{sec-2-1}
-
-%____________________________________________________
-\subsubsection{Background on structured cospans}
-\label{sec-2-1-1}
-\begin{enumerate}
-\item decorated cospans
-\label{sec-2-1-1-1}
-\item structured cospans
-\label{sec-2-1-1-2}
-\end{enumerate}
-
-Structured cospans were introduced to model compositional systems. In
-fact, they were the second approach to model compositional systems
-using cospans. Fong invented \emph{decorated cospans},
-%
-\todo{cite decorated cospans}
-%
-the first approach.  Structure cospans are
-introduced here as well as by Baez and Courser.
-%
-\todo{cite baez-courser strcsp}
-%
-The latter has work two aims: maximize the
-generality of the structured cospan construction using double
-categories and also to compare decorated and structured cospans. Our
-present interests are focused on introducing rewriting on structured
-cospans, hence we will make a number of restrictions that Baez and
-Courser do not.  These restriction are harmless, however, as most
-cases of interest fall within the our parameters.
-
-In this section, we will make explicit two perspectives on structured
-cospans, both through the language of category theory.  The first is
-looking at structured cospans as an object with morphisms between
-them. The second is as a morphism between ``interfaces''.  It is the
-latter perspective that encodes the compositional structure.  
-
-\subsubsection{introduce some notation here}
-\label{sec-2-1-2}
-\begin{enumerate}
-\item spans are x --> y \texttimes{} z and cospans too
-\label{sec-2-1-2-1}
-\end{enumerate}
-\subsubsection{minimum assumptions at this point: working with a geom. morphism}
-\label{sec-2-1-3}
->>>>>>> b8bdcd7b84bba3774c15d3a798113637aff9f6b6
 
 For this section, fix an arbitrary geometric morphism
 $ L \dashv R \from \X \to \A $. This is an adjunction
@@ -683,14 +583,8 @@ for a cospan
   x \xto{f} y \xgets{g} z.
 \]
 % 
-<<<<<<< HEAD
 Because all of the categories in this paper have products and
 coproducts, this notation is sensible.
-=======
-Because all of the
-categories in this paper will have products and coproducts, this
-notation is sensible.
->>>>>>> b8bdcd7b84bba3774c15d3a798113637aff9f6b6
 
 % ~~~~~~~~~~~~~~~~~~~~~~~~
 % ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -698,7 +592,6 @@ notation is sensible.
 \subsection{Structured cospans as objects}
 \label{sec:StrCspAsObject}
 
-<<<<<<< HEAD
 \begin{definition}\label{df:strcsp}
   A \defn{ structured cospan } is a cospan of the form
   $ La \to x \gets Lb $. 
@@ -723,49 +616,9 @@ consisting of closed systems and their morphisms. By a \emph{closed
   system}, we mean a system that cannot interact with the outside
 world. The topos $ \A $ should be thought to contain possible
 interfaces for the closed systems. Equipping a closed system with an
-interface provides the system a way to interact with
-compatible elements of the outside world. Such a system is no longer closed,
-=======
-\subsubsection{define the category StrCsp(L) of structured cospans as objects}
-\label{sec-2-2-1}
-
-\begin{definition}\label{df:strcsp}
-
-  A \defn{ structured cospan } is a cospan of the form
-  $ La \to x \gets Lb $.
-  
-\end{definition}
-
-There is no novelty in a simple cospan, but we present this as a new
-definition to place ourselves into the context of systems
-modelling. Also, the reason for restricting ourselves to a geometric
-morphism at this point is elusive. Especially so because the other
-introducory work on structured cospans by Baez and Courser did not ask
-for this. Let us say that this requirement arises from practical and
-aesthetic considerations. For one, a nicer theory develops, but also
-it is a sufficiently strong condition to introduce rewriting of
-structured cospans.
-
-\subsubsection{analogy to open systems and the role each part of the geom. morphism plays}
-\label{sec-2-2-2}
-
-Our motivations being the modeling of open systems, beginning
-the story by fixing a geometric morphism might signal the abstract
-nature of this work and obfuscate the connection between structured
-cospans and open systems. So that we do not drift too far from our
-concrete motivations, we will draw analogies between our construction
-and open systems throughout.  
-
-Here is the first such analogy. One should view the topos $ \A $ as
-consisting of closed systems and their morphisms. By a \emph{closed
-  system}, we mean a system that cannot interact with the outside
-world. The topos $ \X $ should be thought to contain possible
-interfaces for the closed systems. Equipping a closed system with an
-interface provides an avenue for the system to now interact with
-compatible elements of the outside world. The interface dictates
-compatibility as we explore below.  Such a system is no longer closed,
->>>>>>> b8bdcd7b84bba3774c15d3a798113637aff9f6b6
-and so we call it an \emph{open system}. The left adjoint $ L $ sends
+interface provides the system a way to interact with compatible
+elements of the outside world. Such a system is no longer closed, and
+so we call it an \emph{open system}. The left adjoint $ L $ sends
 these interfaces into $ \X $ so that they might interact with the
 closed systems. The right adjoint $ R $ can be though of as returning
 a closed system's largest possible interface. A word of caution: this
@@ -775,19 +628,11 @@ two perspectives on structured cospans.
 
 Through this perspective, a structured cospan consists of a closed
 system $ x $ with an interface identified by the arrows from $ La $
-<<<<<<< HEAD
 and $ Lb $. By ignoring questions of causality, we may safely consider
 $ La $ as the input to $ x $ and $ Lb $ as the output. Our open system
 consists of the closed system $ x $ equipped with interface
 $ La + Lb $. As expected, a morphism of open system
 ought to respect these components.
-=======
-and $ Lb $. Ignoring questions of causality, it is safe to consider
-$ La $ as the input to $ x $ and $ Lb $ as the output. The sum total
-of the closed system $ x $ equipped with interface $ La + Lb $ is our
-open system. As expected, a morphism of open system ought to respect
-these components.
->>>>>>> b8bdcd7b84bba3774c15d3a798113637aff9f6b6
 
 \begin{definition} \label{df:morph-of-strcsp}
 
@@ -828,32 +673,12 @@ It is a simple exercise to show that structured cospans and their
 morphisms form a category.  Denote this category by $ \StrCsp_L
 $. 
 
-<<<<<<< HEAD
 \begin{example}[Open graphs] \label{ex:open-graphs}
 
   Systems theory is intimately tied with graph theory.  A natural
   example of a structured cospan is an \emph{open graph}. While this
   notion is not new \cite{DixKiss_OpenGraphs,Gadd_IndGraphTrans}, our
   infrastructure generalizes it.
-=======
-\subsubsection{start running example: open/ranked graphs}
-\label{sec-2-2-3}
-
-\begin{enumerate}
-\item mention gaducci and kissinger stuff here
-\label{sec-2-2-3-1}
-\end{enumerate}
-
-\begin{example}[Open graphs] \label{ex:open-graphs}
-
-  The field of network theory is intimately tied with graph theory
-  \cite{networks}. A natural example of a structured cospan is an
-  \emph{open graph}. While this notion is not new,
-  %
-  \todo{cite DuncanKiss and Gadd}
-  %
-  our infrastructure generalizes it.
->>>>>>> b8bdcd7b84bba3774c15d3a798113637aff9f6b6
 
   Let
   %
@@ -861,11 +686,7 @@ $.
     \RGraph \coloneqq [ \rgraph{\bullet}{\bullet} , \Set ]
   \]
   % 
-<<<<<<< HEAD
   be the category of (directed reflexive multi-)graphs. There is an
-=======
-  be the category of (directed reflexive multi) graphs. There is an
->>>>>>> b8bdcd7b84bba3774c15d3a798113637aff9f6b6
   adjunction
   %
   \[
@@ -919,30 +740,20 @@ $.
   \]
   % 
   The boxed items are graphs and the arrows between boxes are graph
-<<<<<<< HEAD
   morphisms defined as suggested by the illustration.  In total, the
-=======
-  morphims defined as suggested by the illustration.  In total, the
->>>>>>> b8bdcd7b84bba3774c15d3a798113637aff9f6b6
-  three graphs and two graph morphisms make up a single open graph.   
+  three graphs and two graph morphisms make up a single open graph.
     
 \end{example}
 
 % what good is the open bit?
 
 Having seen this example, it becomes more apparent about how open
-<<<<<<< HEAD
 systems can ``connect'' together. Given another open graph whose
 inputs coincide with the outputs of the graph above, we can connect
-=======
-systems can ``connect'' together. Given another open graph whose inputs
-coincide with the outputs of the graph above, we can connect
->>>>>>> b8bdcd7b84bba3774c15d3a798113637aff9f6b6
 the inputs and outputs together to create a new open graph. By passing
 from graphs to open graphs, we are introducing
 \emph{compositionality}. The category $ \StrCsp_{L} $ does not encode
 the compositional structure, but we introduce a new category
-<<<<<<< HEAD
 $ \Csp_L $ in Section \ref{sec:strcsp-as-arrows}. Now, we show that
 $ \StrCsp_L $ is a topos in a functorial way.  While interesting in
 itself, this fact allows us to introduce rewriting systems to
@@ -954,39 +765,12 @@ structured cospans.
 \end{theorem}
 
 \begin{proof}
-=======
-$ \Csp_L $ in Section \ref{sec:strcsp-as-arrows} for this purpose
-and delay further discussion along these lines until then. At present,
-we concern ourselves with showing that $ \StrCsp_L $ is a topos in a
-functorial way.  While interesting in itself, this fact allows us to
-introduce rewriting systems to structured cospans.
-
-\subsubsection{prove that StrCsp : [ * --> * , Topos ] --> Topos is functor}
-\label{sec-2-2-4}
-\begin{enumerate}
-\item requires proving that StrCsp(L) is a topos using Artin gluing
-\label{sec-2-2-4-1}
-\end{enumerate}
-
-\begin{theorem} \label{thm:strcsp-istopos}
-
-  The category $ \StrCsp_L $ is a topos.
-  
-\end{theorem}
-
-\begin{proof}
-
->>>>>>> b8bdcd7b84bba3774c15d3a798113637aff9f6b6
   The category $ \StrCsp_L $ constructed using the adjunction
   $ L \dashv R \from \X \to \A $ is equivalent to the category
   whose objects are cospans of form
   %
   \(
-<<<<<<< HEAD
     \csp{a}{Rx}{b}
-=======
-      \csp{a}{Rx}{b}
->>>>>>> b8bdcd7b84bba3774c15d3a798113637aff9f6b6
   \)
   % 
   and morphisms are triples $ ( f,g,h ) $ fitting into the commuting
@@ -1016,26 +800,12 @@ introduce rewriting systems to structured cospans.
   the diagonal functor is right adjoint to taking binary
   coproducts. That means $ \Delta R $ is also a right adjoint and,
   furthermore, that $ ( \A \times \A \downarrow \Delta R ) $ is an
-<<<<<<< HEAD
   instance of Artin gluing \cite{Wraith_ArtinGlue}, hence a topos.
 \end{proof}
 
 Better yet, the construction $ \StrCsp_{(-)} $ is actually
 functorial. For the following theorem, denote by $ \Topos $ the
 category of elementary topoi and geometric morphisms.
-=======
-  instance of Artin glueing,
-  %
-  \todo{CITE ARTIN GLUEING}
-  hence a topos.
-%
-\end{proof}
-
-Until now, the topos $ \StrCsp_L $ depended on an adjunction fixed at
-the beginning of the section.  By letting the adjunction vary, we see
-that $ \StrCsp_{(-)} $ is actually functorial. For the following theorem, denote by $ \Topos $ the category of
-elementary topoi and geometric morphisms.
->>>>>>> b8bdcd7b84bba3774c15d3a798113637aff9f6b6
 
 \begin{theorem} \label{thm:strcsp-isfunctorial}
 
@@ -1177,42 +947,24 @@ elementary topoi and geometric morphisms.
 \end{theorem}
 
 \begin{proof}
-<<<<<<< HEAD
-=======
-
->>>>>>> b8bdcd7b84bba3774c15d3a798113637aff9f6b6
   In light of Lemma \ref{thm:strcsp-istopos}, it suffices to show that
   $ \Theta \dashv \Theta' $ gives a geometric morphism.
 
   Denote the structured cospans
   %
   \[
-<<<<<<< HEAD
     (m,n) \colon \csp{La}{x}{Lb}
-=======
-    La \xto{m} x \xgets{n} Lb
->>>>>>> b8bdcd7b84bba3774c15d3a798113637aff9f6b6
   \]
   % 
   in $ \StrCsp_{ L } $ by $ \ell $ and  
   %
   \[
-<<<<<<< HEAD
     (m',n') \colon \csp{L'a'}{x'}{L'b'}
   \]
   % 
   in $ \StrCsp_{ L' } $ by $ \ell' $. Also, denote the unit and counit
   for $F \dashv G$ by $ \eta $, $ \varepsilon $ and for
   $ F' \dashv G' $ by $ \eta' $, $ \varepsilon' $.  The assignments
-=======
-    L'a' \xto{ m'} x' \xgets{ n'} L'b'
-  \]
-  % 
-  in $ \StrCsp_{ L' } $ by $ \ell' $,
-  respectively. Also, denote the unit and counit for $F \dashv G$ by
-  $ \eta $, $ \varepsilon $ and for $ F' \dashv G' $ by $ \eta' $, $
-  \varepsilon' $.  The assignments
->>>>>>> b8bdcd7b84bba3774c15d3a798113637aff9f6b6
   %
   \begin{align}
     \left(
@@ -1232,11 +984,7 @@ elementary topoi and geometric morphisms.
       \left(
       ( G'f' \circ \eta', Gg' \circ \eta , G'h' \circ \eta' )
       \from \ell \to \Theta' \ell'
-<<<<<<< HEAD
       \right) 
-=======
-      \right) \\
->>>>>>> b8bdcd7b84bba3774c15d3a798113637aff9f6b6
   \end{align}
   %
   give a bijection $ \hom ( \Theta \ell , \ell' ) \simeq \hom ( \ell ,
@@ -1245,7 +993,6 @@ elementary topoi and geometric morphisms.
   $, and $ \varepsilon' $. The left adjoint $ \Theta' $ preserves
   finite limits because they are taken pointwise and $ L $, $ F $, and
   $ F' $ all preserve finite limits.
-<<<<<<< HEAD
 \end{proof}
 
 Even though $ \StrCsp_L $ is actually a topos in our context, the
@@ -1256,61 +1003,16 @@ geometric morphisms. Instead, we define a \defn{structured cospan
 functors $ F \from \X \to \X' $ and $ G \from \A \to \A' $ such that
 $ FL=L'F $ and $ GR = R'F $.  Structured cospan categories and their
 morphisms form a category, but we leave it unnamed.
-=======
-
-\end{proof}
-
-\subsubsection{the category of structured cospan categories is a functor category so the functors should be certain natural transformations. Does the current definition of a structured cospan functor do this?}
-\label{sec-2-2-5}
-
-Even though a structured cospan category is actually a topos, and its
-information is drawn from a geometric morphism of topoi, the morphims
-between structured cospan categories that we are interested in do not
-involve geometric morphisms. Given a pair of geometric morphisms from
-%
-\[
-  \adjunction{\X}{L}{R}{\A}
-  \quad
-  \t{ and }
-  \quad
-  \adjunction{\X}{L'}{R'}{\A'}
-\]
-% 
-a \defn{structured cospan functor}
-%
-\[
-  \StrCsp_{L} \to \StrCsp_{L'}
-\]
-% 
-consists of a a pair of finitely continuous and cocontinuous functors
-%
-\todo{we actually only need F preserves monics, p.o.'s and p.b.'s and
-  G p.b.'s}
-%
-$ F \from \X \to \X' $ and $ G \from \A \to \A' $ such that
-$ FL=L'F $ and $ GR = R'F $.  While structured cospan categories and
-their morphisms form a category, we leave it unnamed.
->>>>>>> b8bdcd7b84bba3774c15d3a798113637aff9f6b6
 
 % ~~~~~~~~~~~~~~~~~~~~~~~~
 % ~~~~~~~~~~~~~~~~~~~~~~~~
 
 \subsection{Structured cospans as arrows}
-<<<<<<< HEAD
 \label{sec:StrCsp-as-Arrows}
-=======
-\label{sec-2-3}
-
-\subsubsection{this intros compositionality to structured cospans}
-\label{sec-2-3-1}
-\subsubsection{define the composition of structured cospans via pushout}
-\label{sec-2-3-2}
->>>>>>> b8bdcd7b84bba3774c15d3a798113637aff9f6b6
 
 We now turn to capturing the compositional structure that
 truly motivates the invention of structured cospans.  To do this, we
 shift perspectives of structured cospans as objects in $ \StrCsp_{L} $
-<<<<<<< HEAD
 to structured cospans as morphisms. 
 
 \begin{definition}
@@ -1318,16 +1020,6 @@ to structured cospans as morphisms.
   Denote by $ \Csp_{L} $ the category that has the same objects as
   $ \A $ and structured cospans $ \csp{La}{x}{Lb} $ as arrows of
   type $ a \to b $.
-=======
-to structured cospans as morphisms, which of course, are composable. 
-
-\begin{definition} \label{def:strcsp-arr}
-  
-  Denote by $ \Csp_{L} $ the category that has the same objects as
-  $ \A $ and structured cospans $ \csp{La}{x}{Lb} $ as arrows of
-  type $ a \to b $.
-  
->>>>>>> b8bdcd7b84bba3774c15d3a798113637aff9f6b6
 \end{definition}
 
 Note that composition is defined by pushout:
@@ -1363,44 +1055,25 @@ Note that composition is defined by pushout:
 \]
 % 
 
-<<<<<<< HEAD
-Pushouts, in a sense, are a way of gluing things
-=======
-Pushouts, in a sense, are a way of glueing things
->>>>>>> b8bdcd7b84bba3774c15d3a798113637aff9f6b6
-together. Hence using pushouts as composition is a sensible way to model
-system connection. Given two systems
+Pushouts, in a sense, are a way of gluing things together. Hence using
+pushouts as composition is a sensible way to model system
+connection. Given two systems
 %
 \[
   \csp{La}{x}{Lb}
   \quad
-<<<<<<< HEAD
   \text{ and }
-=======
-  \t{ and }
->>>>>>> b8bdcd7b84bba3774c15d3a798113637aff9f6b6
   \quad
   \csp{Lb}{y}{Lc}
 \]
 % 
 sharing a common interface $ Lb $, their composition is like
 connecting at $ Lb $. To illustrate how the structured cospan
-<<<<<<< HEAD
 formalism allows us to connect together systems, we return to the open
 graphs example.
 
 \begin{example}
 \label{ex:open-graph-as-arrow}
-=======
-formalism allows us to connect systems together, we return to the open
-graphs example.
-
-\subsubsection{illustrate with open graphs}
-\label{sec-2-3-3}
-
-\begin{example} \label{ex:open-graph-as-arrow}
-
->>>>>>> b8bdcd7b84bba3774c15d3a798113637aff9f6b6
   The open graph
   % 
   \[
@@ -1538,7 +1211,6 @@ graphs example.
 \subsection{A double category of structured cospans}
 \label{sec:DblCatOfStrCsp}
 
-<<<<<<< HEAD
 Using double categories allows us to combine into a single instrument
 the competing perspectives of structured cospans as objects and as
 morphisms. For a precise definition of a symmetric monoidal double
@@ -1556,40 +1228,6 @@ $ \C_1 $ are assemble together into a double category as follows:
   between $ \CCC $-objects are the $ \C_1 $-objects together with some
   structure maps assigning the domain and codomain, and
 \item the squares of $ \CCC $ are
-=======
-Using double categories allows us to combine into a single instrument the
-competing perspectives of structured cospans as objects and as
-morphisms. In this section, we build two double categories: one to
-combine our two perspectives on structured cospans and the other---
-which comes in two flavors---anticipates the rewriting contained in
-Section \ref{sec:rewriting-strcsp}. 
-
-\subsubsection{hand wavey definition of double category. Point to shulman for definition}
-\label{sec-2-4-1}
-
-Because the ingredients for our constructions come from a geometric
-morphism, there is an implicit cocartesian structure on the topoi
-involved. This cocartesianness can be lifted up to the double
-categories. For a precise definition of a symmetric monoidal double
-category, we point to Shulman,
-%
-\todo{cite{shulman-constructing}}
-%
-though for the sake of completeness, we provide the key pieces. A
-double category $ \CCC $ consists of a pair of categories
-$ ( \C_0 , \C_1 ) $ with some additional data that binds them
-together. The categories $ \C_0 $ and $ \C_1 $ are assemble together
-into a double category as follows:
-%
-\begin{itemize}
-\item the $ \CCC $-\emph{objects} are exactly $ \C_0 $-the objects,
-\item the $ \CCC $-\emph{vertical arrows} $ c \to d $ between $ \C
-  $-objects are exactly the $ \C_0 $ arrows, 
-\item the $ \CCC $-\emph{horizontal arrows} $ c \horarrow d $
-  between $ \CCC $-objects are the $ \C_1 $-objects together with some
-  structure maps assigning the domain and codomain, and
-\item the \emph{squares} of $ \CCC $ are
->>>>>>> b8bdcd7b84bba3774c15d3a798113637aff9f6b6
 \[
   \begin{tikzpicture}
     \node (1) at (0,2) {\( c \)};
@@ -1612,22 +1250,13 @@ surrounding vertical arrows.
 \end{itemize}
 %
 The vertical arrows compose as they do in $ \C_0 $ and there is a
-<<<<<<< HEAD
 structure map for composing horizontal arrows. The squares can compose
 both horizontally and vertically.
 
-Observe that the horizontal arrows play two roles: as
-=======
-structure map for composing horizontal arrows. The $ 2 $-arrows can
-compose both horizontally and vertically.
+Observe that the horizontal arrows play two roles: as objects in their
+origin category and arrows in the double category. This reflects the
+content of the categories $ \StrCsp_{L} $ and $ \Csp_{L} $.
 
-Observe that the horizontal arrows play a two role, as
->>>>>>> b8bdcd7b84bba3774c15d3a798113637aff9f6b6
-objects in their origin category and arrows in the double
-category. This reflects the content of the categories $ \StrCsp_{L} $
-and $ \Csp_{L} $.
-
-<<<<<<< HEAD
 The first double category that we define is discussed in the related
 work by Baez and Courser \cite[Cor.~3.9]{StrCsp}.  There, they prove
 that it actually is a double category, so we content ourselves to
@@ -1635,33 +1264,12 @@ simply provide the definition.
 
 \begin{definition}
   There is a double category
-=======
-\subsubsection{Define double category SStrCsp:=[ob(A), A-arrows, StrCsps, StrCsp-arrows]}
-\label{sec-2-4-3}
-
-The first double category that we define is discussed in the
-related work by Baez and Courser.
-%
-\todo{CITE COR 3.9 BAEZ COURSER STRCSP}
-%
-There, they prove that it actually is a double category, so we content
-ourselves to simply provide the definition.
-
-\begin{definition}
-
-  There is a cocartesian double category
->>>>>>> b8bdcd7b84bba3774c15d3a798113637aff9f6b6
   $ \SSStrCsp \coloneqq ( \A , \StrCsp_{L} ) $ :
   \begin{itemize}
   \item the objects are all $ \A $-objects
   \item the vertical arrows $ a \to b $ all $ \A $-arrows, 
-<<<<<<< HEAD
   \item the horizontal arrows $ \horarrow{a}{b} $ are cospans
     $ \csp{La}{x}{Lb} $, and
-=======
-  \item the horizontal arrows $ \horarrow{a}{b} $ are
-    $ \StrCsp\ob $-objects, that is cospans $ \csp{La}{x}{Lb} $, and
->>>>>>> b8bdcd7b84bba3774c15d3a798113637aff9f6b6
   \item the squares are commuting diagrams
     %
     \[
@@ -1681,7 +1289,6 @@ ourselves to simply provide the definition.
     \draw [->] (3) to node [left] {\scriptsize{\( Lh \)}} (6);
     \end{tikzpicture}
   \]
-<<<<<<< HEAD
   \end{itemize}
   %  
 \end{definition}
@@ -1691,77 +1298,6 @@ category. Since all involved categories are topoi, we can lift
 their cocartesian structure to serve as a tensor on the double
 category. However, we have no need for this structure, so we say no
 more about it.
-=======
-  %
- \end{itemize}
-
-  The tensor is pointwise application of the coproduct
-  %
-  \[
-    \begin{tikzpicture}[scale=0.75]
-      %
-      \begin{scope}
-      \node (1) at (0,1) {\( La \)};
-      \node (2) at (1,1) {\( x \)};
-      \node (3) at (2,1) {\( Lb \)};
-      \node (4) at (0,0) {\( Lc \)};
-      \node (5) at (1,0) {\( y \)};
-      \node (6) at (2,0) {\( Ld \)};
-      \draw [->] (1) to node [above] {\scriptsize{\(   \)}} (2);
-      \draw [->] (3) to node [left] {\scriptsize{\(  \)}} (2);
-      \draw [->] (4) to node [right] {\scriptsize{\(  \)}} (5);
-      \draw [->] (6) to node [below] {\scriptsize{\(  \)}} (5);
-      \draw [->] (1) to node [below] {\scriptsize{\(  \)}} (4);
-      \draw [->] (2) to node [below] {\scriptsize{\(  \)}} (5);
-      \draw [->] (3) to node [below] {\scriptsize{\(  \)}} (6);   
-      \end{scope}
-      %
-      \begin{scope}[shift={(3,0)}]
-      \node (1) at (0,0.5) {$ + $};  
-      \end{scope}
-      %
-      \begin{scope}[shift={(4,0)}]
-      \node (1) at (0,1) {\( Lw' \)};
-      \node (2) at (1,1) {\( a' \)};
-      \node (3) at (2,1) {\( Lx' \)};
-      \node (4) at (0,0) {\( Ly' \)};
-      \node (5) at (1,0) {\( b' \)};
-      \node (6) at (2,0) {\( Lz' \)};
-      \draw [->] (1) to node [above] {\scriptsize{\(   \)}} (2);
-      \draw [->] (3) to node [left] {\scriptsize{\(  \)}} (2);
-      \draw [->] (4) to node [right] {\scriptsize{\(  \)}} (5);
-      \draw [->] (6) to node [below] {\scriptsize{\(  \)}} (5);
-      \draw [->] (1) to node [below] {\scriptsize{\(  \)}} (4);
-      \draw [->] (2) to node [below] {\scriptsize{\(  \)}} (5);
-      \draw [->] (3) to node [below] {\scriptsize{\(  \)}} (6);   
-      \end{scope}
-      %
-      \begin{scope}[shift={(7,0)}]
-      \node (1) at (0,0.5) {$ \coloneqq $};  
-      \end{scope}
-      %
-      \begin{scope}[shift={(8,0)}]]
-      \node (1) at (0,1) {\( L ( w + w' ) \)};
-      \node (2) at (2,1) {\( a + a' \)};
-      \node (3) at (4,1) {\( L ( x + x' ) \)};
-      \node (4) at (0,0) {\( L ( y + y' ) \)};
-      \node (5) at (2,0) {\( b + b' \)};
-      \node (6) at (4,0) {\( L ( z + z' ) \)};
-      \draw [->] (1) to node [above] {\scriptsize{\(   \)}} (2);
-      \draw [->] (3) to node [left] {\scriptsize{\(  \)}} (2);
-      \draw [->] (4) to node [right] {\scriptsize{\(  \)}} (5);
-      \draw [->] (6) to node [below] {\scriptsize{\(  \)}} (5);
-      \draw [->] (1) to node [below] {\scriptsize{\(  \)}} (4);
-      \draw [->] (2) to node [below] {\scriptsize{\(  \)}} (5);
-      \draw [->] (3) to node [below] {\scriptsize{\(  \)}} (6);   
-      \end{scope}
-    \end{tikzpicture}
-  \]  
-\end{definition}
-
-\subsubsection{This is the most natural structure to capture structured cospans. Bicategories are an alternative, but having the vertical arrows there is nice.}
-\label{sec-2-4-2}
->>>>>>> b8bdcd7b84bba3774c15d3a798113637aff9f6b6
 
 Double categories are a nice way of capturing both the object-ness and
 arrow-ness of structured cospans.  An alternative would be to use
@@ -1773,7 +1309,6 @@ cospans as faithfully as does double categories.
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 \section{Inductive Rewriting of Structured Cospans}
-<<<<<<< HEAD
 \label{sec:inductive-rewriting-structured-cospans}
 
 In this final section, we recall the basics of graph rewriting and the
@@ -1791,72 +1326,16 @@ result.
 
 We start our discussion of graph rewriting with the notion of a
 \defn{production}: a span of graphs
-=======
-\label{sec-3}
-
-\subsubsection{Introduce the section}
-\label{sec-3-1}
-
-\subsubsection{extra conditions on geom. morphism:}
-\label{sec-3-1-1}
-\begin{enumerate}
-\item counit is monic
-\label{sec-3-1-1-1}
-\item in suboject algebra, (k=>LRk) U k = d
-\label{sec-3-1-1-2}
-\end{enumerate}
-
-% ~~~~~~~~~~~~~~~~~~~~~~~~
-% ~~~~~~~~~~~~~~~~~~~~~~~~
-
-\subsection{Graph rewriting}
-\label{sec-3-2}
-
-\subsubsection{production of graphs}
-\label{sec-3-2-1}
-\subsubsection{graph grammars}
-\label{sec-3-2-2}
-\subsubsection{injective matching only}
-\label{sec-3-2-3}
-\subsubsection{pushout complement}
-\label{sec-3-2-4}
-\subsubsection{rewrite relation}
-\label{sec-3-2-5}
-\subsubsection{discrete rewrite relation = rewrite relation}
-\label{sec-3-2-6}
-\subsubsection{Gaducci's contrution and result}
-\label{sec-3-2-7}
-
-Graph rewriting is a well-studied field with many suitable references.
-%
-\todo{cite some shit}
-%
-To be self-contained, we present enough of the topic to facilitate a
-connection with our main result.  
-
-We start with the notion of a \emph{production}: a
-span of graphs
->>>>>>> b8bdcd7b84bba3774c15d3a798113637aff9f6b6
 %
 \[
   \ell \monicgets k \monicto r
 \]
 %
-<<<<<<< HEAD
 with monic legs. Together with a \defn{matching morphism}, that is a
 mono $ \ell \monicto g $, this production behaves by removing from
 $ g $ the copy of $ \ell $ and replacing it with $ r $.  The removal
 of $ \ell $ from $ g $ is formalized as the \defn{pushout complement}.
 This is a graph $ d $ that fits into a pushout diagram
-=======
-with monic legs. This production, or ``rule'', states that whenever
-we identify a copy of $ \ell $ in a graph $ g $, we can remove
-that copy and replace it with $ r $.  By ``identifying a copy of $
-\ell $ in $ g $'', we mean precisely that there is a mono $ m \from
-\ell \to g $ called a \emph{matching morphism}.  The removal of $ \ell
-$ from $ g $ is given by the \emph{pushout complelement} which is a
-graph $ d $ that fits into a pushout diagram
->>>>>>> b8bdcd7b84bba3774c15d3a798113637aff9f6b6
 %
 \[
   \begin{tikzpicture}
@@ -1868,7 +1347,6 @@ graph $ d $ that fits into a pushout diagram
     \draw [->] (1) to node [left] {\scriptsize{$ m $}} (3);
     \draw [->] (3) to node [] {\scriptsize{$  $}} (4);
     \draw [->] (2) to node [] {\scriptsize{$  $}} (4);
-<<<<<<< HEAD
     \node () at (0.5,0.5) {\scriptsize{ p.o. }};
   \end{tikzpicture}
 \]
@@ -1882,20 +1360,6 @@ category $ \RGraph $. This is defined by $ \dderiv{g}{h} $ whenever
 there is a production $ \spn{\ell}{k}{r} $ in $ P $, a match
 $ \ell \to g $, and a pushout complement $ d $ that fit into the
 double pushout diagram
-=======
-  \end{tikzpicture}
-\]
-% 
-It should be said that $ d $ need not exist, but when it does and
-$ k \to \ell $ is monic, then $ d $ is unique up to isomorphism.
-
-If $ P $ is a set of productions, often called a \emph{graph grammar},
-there is an induced relation $ \squigto $ on the objects of the category
-$ \RGraph $. This is defined by $ g \squigto h $ whenever there is a
-production $ k \to \ell \times r $ in $ P $, a match $ \ell \to g $,
-and a pushout complement $ d $ that fit into the double pushout
-diagram
->>>>>>> b8bdcd7b84bba3774c15d3a798113637aff9f6b6
 %
 \[
   \begin{tikzpicture}
@@ -1917,7 +1381,6 @@ diagram
   \end{tikzpicture}
 \]
 %
-<<<<<<< HEAD
 The content of this diagram is an identification of a subgraph of
 shape $ \ell $ inside of $ g $, its removal and subsequent replacement
 in a coherent way with $ r $, finally resulting in the graph $ h $. If
@@ -1934,52 +1397,20 @@ induced rewrite relation.
 In term rewriting, there are two different viewpoints. The
 \emph{operational} viewpoint can be concisely described as performing
 substitution. That is, we rewrite a term by substituting subterms with
-=======
-This content of the diagram is that we have identified a subgraph of
-shape $ \ell $ inside of $ g $, removed this subgraph and replaced it
-in a coherent way with $ r $, resulting in the graph $ h $. If
-$ g \squigto h $, we say that $ h $ is a \emph{direct derivation} of
-$ g $. The term ``direct'' refers to the derivation happening in a
-single step.  In general, $ \squigto $ is not transitive, meaning that
-this relation does not tell us about multi-step derivations. It is
-also not reflexive, which is preferable for a nicer theory.
-Therefore, it is customary to work with the so-called \emph{rewrite
-  relation}, that is the reflexive and transitive closure
-$ \squigto^\ast $. Indeed, each graph grammar $ P $ induces a unique
-rewrite relation.
-
-In term rewriting, there are two different viewpoints. The
-\emph{operational} viewpoint can be concisely described as performing
-substition. That is, we rewrite a term by substituting subterms with
->>>>>>> b8bdcd7b84bba3774c15d3a798113637aff9f6b6
 other terms according to a rule. This is the viewpoint of the graph
 rewriting discussed above.  On the other hand, the \emph{inductive}
 viewpoint consists of building a class of rewritings from a collection
 of basic ones.  This is the viewpoint that Gadducci and Heckel first
-<<<<<<< HEAD
 brought to graph rewriting first in \cite{Gadd_IndGraphTrans}
 and we introduce to adhesive rewriting in Theorem \ref{thm:inductive-rewriting}.
 
 To prove their result, Gadducci and Heckel made use of the following
-=======
-brought to graph rewriting in
-%
-\todo{cite gadd/heckle inductive}
-%
-and we introduce to adhesive rewriting in .
-%
-\todo{reference main theorme}
-%
-
-In proving their result, Gadducci and Heckel made use of the following
->>>>>>> b8bdcd7b84bba3774c15d3a798113637aff9f6b6
 well-known fact: the graph grammars
 %
 $ { k_\alpha \to \ell_\alpha \times r_\alpha } $
 %
 and
 %
-<<<<<<< HEAD
 $ { ( k_\alpha )_{\flat}  \to \ell_\alpha \times r_\alpha } $,
 % 
 where $ ( k_\alpha )_{\flat} $ is the discrete graph underlying
@@ -1991,21 +1422,6 @@ to construct a computad using a graph grammar $ P $. The underlying
 category of this computad is $ \Csp_L $ where $ L $ is the discrete
 graph functor from Example \ref{ex:open-graphs}. We additionally add a
 2-cell
-=======
-$ { ( k_\alpha )_{\textup{disc.}  \to \ell_\alpha \times r_\alpha } $,
-% 
-where $ ( k_\alpha )_{\textup{disc.} $ is the discrete graph underlying $ k_\alpha $, induce the same rewrite relation.
-%
-\todo{cite erhig here}
-%
-Lemma
-%
-\todo{refence generalization lemma}
-%
-generalizes this result into our context.  They leveraged this fact to
-construct a computad associate to a graph grammar $ P $. This computad
-has underlying category $ \Csp_L $ where $ L $ is taken from Example \ref{ex:open-graphs}. We additionally add a 2-cell
->>>>>>> b8bdcd7b84bba3774c15d3a798113637aff9f6b6
 %
 \[
   \begin{tikzpicture}
@@ -2013,7 +1429,6 @@ has underlying category $ \Csp_L $ where $ L $ is taken from Example \ref{ex:ope
     \node (2) at (2,0) {$ Lk $};
     \node (3) at (1,0) {\scriptsize{$ \Downarrow \gamma $}};
     \draw [->, bend left] (1.45) to node [] {\scriptsize{$ \hat{\ell} $}} (2.135);
-<<<<<<< HEAD
     \draw [->, bend right] (1.-45) to node [] {\scriptsize{$ \hat{r} $}} (2.-135);
   \end{tikzpicture}
 \]
@@ -2023,24 +1438,12 @@ $. By $ \hat{\ell} $, we mean the open graph
 %
 \(
   \csp{L \emptyset}{\ell}{Lk}
-=======
-     \draw [->, bend right] (1.-45) to node [] {\scriptsize{$ \hat{r} $}} (2.-135);
-  \end{tikzpicture}
-\]
-% 
-into the computad for every production $ k \to \ell \time r $ in $ P
-$. By $ \hat{\ell} $, we mean the open graph
-%
-\(
-  L \emptyset + Lk \to \ell
->>>>>>> b8bdcd7b84bba3774c15d3a798113637aff9f6b6
 \)
 % 
 and the analogous open graph for $ \hat{r} $.  Note the use of the
 discrete graph underlying $ k $.  Here, we translated Gadducci and
 Heckel's work into the language of structured cospans.  This computad
 then freely generates a 2-category which we call $ \cat{G} $, the
-<<<<<<< HEAD
 1-arrows of which are open graphs. The usual closed graphs are exactly
 the objects of the hom-category
 $ \cat{G}( L \emptyset , L \emptyset ) $. This hom-category captures
@@ -2052,32 +1455,12 @@ the rewriting relation as we state here \cite[Thm.~23]{Gadd_IndGraphTran}.
   %
   \(
     \csp{L \emptyset}{g}{L \emptyset}
-=======
-1-arrows of which are open graphs. Now, the hom-category
-$ \cat{G}( L \emptyset , L \emptyset ) $ has objects the usual graphs
-having no inputs or outputs. This hom-category captures the rewriting
-relation as we state here.
-%
-\todo{cite gadd/heck induct thm 23 on the thm}
-%
-
-\begin{theorem}
-  Let $ P $ be a graph grammar. Then $ g \squigto^\ast h $ if and only
-  if there is a 2-arrow from
-  %
-  \(
-    L \emptyset + L \emptyset \to g 
->>>>>>> b8bdcd7b84bba3774c15d3a798113637aff9f6b6
   \)
   % 
   to
   %
   \(
-<<<<<<< HEAD
     \csp{L \emptyset}{h}{L \emptyset}
-=======
-   L \emptyset + L \emptyset \to h
->>>>>>> b8bdcd7b84bba3774c15d3a798113637aff9f6b6
   \)
   % 
   in $ \cat{G} ( L \emptyset , L \emptyset ) $.  
@@ -2086,7 +1469,6 @@ relation as we state here.
 Having shared a viewpoint on inductive graph rewriting, we now turn
 to apply these ideas to inductive adhesive rewriting using structured cospans.
 
-<<<<<<< HEAD
 % ~~~~~~~~~~~~~~~~~~~~~~~~
 % ~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -2404,57 +1786,11 @@ rewrite relation.
   $ \Lang ( \C , P ) $.  Conversely, any arrow $ g \to h $ in
   $ \Lang ( \C , P ) $ is a composite of generating arrows.
 \end{proof}
-=======
-
-
-
-
-
-
-
-% ~~~~~~~~~~~~~~~~~~~~~~~~
-% ~~~~~~~~~~~~~~~~~~~~~~~~
-
-\subsection{Adhesive rewriting}
-\label{sec-3-3}
-
-\subsubsection{adhesive categories}
-\label{sec-3-3-1}
-\begin{enumerate}
-\item Van Kampen condition
-\label{sec-3-3-1-1}
-\end{enumerate}
-\subsubsection{productions}
-\label{sec-3-3-2}
-\subsubsection{adhesive grammars}
-\label{sec-3-3-3}
-\begin{enumerate}
-\item category Gram
-\label{sec-3-3-3-1}
-\end{enumerate}
-\subsubsection{injective matching}
-\label{sec-3-3-4}
-\subsubsection{pushout complement}
-\label{sec-3-3-5}
-\subsubsection{Derivations is functorial Gram --> Gram}
-\label{sec-3-3-6}
-\begin{enumerate}
-\item idempotent
-\label{sec-3-3-6-1}
-\item identity on Gram is subfunctor of derivation
-\label{sec-3-3-6-2}
-\end{enumerate}
-\subsubsection{Rewrite relation in terms of derivation functor}
-\label{sec-3-3-7}
-\subsubsection{The language functor and its relation to the rewrite relation}
-\label{sec-3-3-8}
->>>>>>> b8bdcd7b84bba3774c15d3a798113637aff9f6b6
 
 % ~~~~~~~~~~~~~~~~~~~~~~~~
 % ~~~~~~~~~~~~~~~~~~~~~~~~
 
 \subsection{Rewriting structured cospans}
-<<<<<<< HEAD
 \label{sec:Rewriting-StrCsp}
 
 Having built up the necessary infrastructure, we now turn to rewriting
@@ -2563,23 +1899,17 @@ structurally richer.
 Following our work in adhesive rewriting, we define a language for the
 structure cospan grammars. However, instead of a category-valued
 semantics, we provide a double category semantics. Specifically, the
-language functor is the composite of two functors: $ D \from
-\StrCspGram \to \StrCspGram $, which is a restriction of the associated
-functor defined in Section \ref{sec:Graph-Rewriting}.
-%
-\todo{ref the proper section}
-%
-and the functor $ S \from \StrCspGram \to \DblCat $.
+language functor is the composite of two functors:
+$ D \from \StrCspGram \to \StrCspGram $, which is a restriction of the
+associated functor defined in Section \ref{sec:Graph-Rewriting} and
+the functor $ S \from \StrCspGram \to \DblCat $.
 
 To define $ S $, we reference the double category $ \MonSpCsp (\C) $
-for a topos $ \C $ introduced in.
-%
-\todo{cite spcsp and spcsptopos}
-%.  
-The objects are from $ \C $, the vertical arrows are spans in $ \C $
-with invertible legs, the horizontal arrows are cospans in $ \C $, and
-the squares are monic legged spans of cospans in $ \C $. The latter
-are diagrams with shape
+for a topos $ \C $ introduced in \cite{CicCour_SpCspTopos}.  The
+objects are from $ \C $, the vertical arrows are spans in $ \C $ with
+invertible legs, the horizontal arrows are cospans in $ \C $, and the
+squares are monic legged spans of cospans in $ \C $. The latter are
+diagrams with shape
 %
 \[
 \begin{tikzpicture}
@@ -2632,6 +1962,13 @@ For the following theorem, we denote by $ ( \C , P_{\flat} ) $ the
 \defn{discrete adhesive grammar} underlying the adhesive grammar $ (
 \C , P ) $. The discrete adhesive grammar consists of productions $
 LRK \to k \to \ell \times r $ for each $ k \to \ell \times r $ in $ P $. 
+
+For the next lemma, we recall that a poset is \textbf{well-founded} if
+every non-empty subset has a minimal element.  Whenever the axiom of
+choice is present, well-foundedness is equivalent to the lack of
+infinite descending chains. For a relevant example, aAs the axiom of
+choice holds in any presheaf, the Heyting algebra $ \Sub ( x ) $ for
+any finite-set valued presheaf $ x $ is well-founded.
 
 \begin{lemma}
 \label{lem:production-same-rewrite-relation-as-discrete}
@@ -3053,35 +2390,6 @@ double category $ \Lang ( \StrCsp_L , P' ) $.
   \ref{thm:rewrite-rel-is-additive}. 
 
 \end{proof}
-=======
-\label{sec-3-4}
-
-\subsubsection{StrCsp(L) < topoi < adhesive to can do rewriting}
-\label{sec-3-4-1}
-\subsubsection{Define the subcategory of Gram of Structured Cospans Grammars StrGram.}
-\label{sec-3-4-2}
-\subsubsection{Define Structured Cospan Language functor StrGram --> DblCat}
-\label{sec-3-4-3}
-\begin{enumerate}
-\item Uses the double category MonRewrite in which to generate sub-double cats.
-\label{sec-3-4-3-1}
-\end{enumerate}
-\subsubsection{thm: production and discrete production have same rewrite relation}
-\label{sec-3-4-4}
-\subsubsection{thm: rewrite relation same as squares from 0 to 0.}
-\label{sec-3-4-5}
-
-
-% ~~~~~~~~~~~~~~~~~~~~~~~~
-% ~~~~~~~~ examples ~~~~~~
-% ~~~~~~~~~~~~~~~~~~~~~~~~
-
-\subsection{Examples}
-\label{sec-3-5}
-\subsubsection{Encoding petri nets into dpo rewrites (see bib folder for Graph Rewriting w Petri Nets)}
-\label{sec-3-5-1}
-
->>>>>>> b8bdcd7b84bba3774c15d3a798113637aff9f6b6
 
 
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -3093,7 +2401,6 @@ double category $ \Lang ( \StrCsp_L , P' ) $.
 \begin{thebibliography}{99}
   % use APA style
   % \bibitem{1st-citation}
-<<<<<<< HEAD
 
 \bibitem{StrCsp} J.~Baez, K.~Courser. Structured cospans. \emph{In preparation}.
 
@@ -3153,32 +2460,6 @@ double category $ \Lang ( \StrCsp_L , P' ) $.
   
 \bibitem{Wraith_ArtinGlue} G.\ Wraith. Artin gluing. \emph{J.\ Pure
     Appl.\ Algebra} \textbf{4}, 345--348. 1974.
-=======
-  
-\bibitem{Cic_SpCsp}
-D.$\backslash$ Cicala. Spans of cospans. \emph{Theory Appl.\ Categ.\} 33, Paper No.$\backslash$ 6, 131--147. 2018.
-
-\bibitem{CicCour_SpCspTopos}
-D.$\backslash$ Cicala and K.$\backslash$ Courser. Spans of cospans in a topos. \emph{Theory Appl.\ Categ.} 33, Paper No.$\backslash$ 1, 1--22. 2018.
-
-\bibitem{DixKiss_OpenGraphs}
-L.$\backslash$ Dixon, and A.$\backslash$ Kissinger. Open-graphs and monoidal theories. \emph{Math.\ Structures Comput.\ Sci.\}, \textbf{23}, no.$\backslash$ 2, 308--359. 2013.
-
-\bibitem{Ehrig_GraphGram}
-H.$\backslash$ Ehrig, M.$\backslash$ Pfender, and H.J.$\backslash$ Schneider. Graph-grammars: An algebraic approach. In \emph{Switching and Automata Theory, 1973. SWAT'08. IEEE Conference Record of 14th Annual Symposium on}, 167--180. IEEE. 1973.
-
-\bibitem{Fong_DecorCsp}
-B.$\backslash$ Fong. Decorated cospans. \emph{Theory Appl.\ Categ.\} 30, Paper No.$\backslash$ 33, 1096--1120. 2015.
-          
-\bibitem{Gadd_IndGraphTrans}
-F.$\backslash$ Gadducci, R.$\backslash$  Heckel. An inductive view of graph transformation. \emph{Recent trends in algebraic development techniques}, 223--237, Lecture Notes in Comput. Sci., 1376, Springer, Berlin. 1998.
-
-\bibitem{LackSobo_Adhesive}
-S.$\backslash$ Lack, and P.$\backslash$ Soboci$\backslash$'\{n\}ski. Adhesive categories. In \emph{International Conference on Foundations of Software Science and Computation Structures}, 273--288. Springer, Berlin, Heidelberg. 2004.
-
-\bibitem{Wraith_ArtinGlue}
-G.$\backslash$ Wraith. Artin glueing. \emph{J.\ Pure Appl.\ Algebra} \textbf{4}, 345--348. 1974.
->>>>>>> b8bdcd7b84bba3774c15d3a798113637aff9f6b6
 
 \end{thebibliography}
 

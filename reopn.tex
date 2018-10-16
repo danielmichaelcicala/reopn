@@ -237,7 +237,7 @@
 }
 
 \author{Daniel Cicala}
-\title{Rewriting Structured Cospans}
+\title{Compositional rewriting with structured cospans}
 
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 % 
@@ -247,6 +247,26 @@
 
 \begin{document}
 \maketitle{}
+
+\begin{abstract}
+  To foster the study of networks on an abstract level, we introduce
+  the formalism of \emph{structured cospans}. A structured cospan is a
+  diagram of the form $ La \to x \gets Lb $ built from a geometric
+  morphism with left exact left adjoint
+  $ L \dashv R \from \X \to \A $.  We show that this construction is
+  functorial and results in a topos with structured cospans as objects.
+  Additionally, structured cospans themselves are
+  compositional. Combining these two perspectives, we define a double
+  category of structured cospans.  We then leverage adhesive
+  categories to create a theory of rewriting for structured cospans. A
+  well-known result of graph rewriting is that a graph grammar induces
+  the same rewrite relation as its underlying graph grammar. We
+  generalize this result to topoi under the assumption that the
+  subobject algebra on each context in the grammar is well-founded.
+  This fact is used to provide a compositional framework for double
+  pushout rewriting in a topos $ \X $ that is the domain of a
+  geometric morphism.  
+\end{abstract}
 
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 % ~~~~~~~~~~~ introduction ~~~~~~~~~~~~~~~
@@ -765,7 +785,7 @@ structured cospans.
 \end{theorem}
 
 \begin{proof}
-  The category $ \StrCsp_L $ constructed using the adjunction
+  The category $ \StrCsp_L $ constructed using the geometric morphism
   $ L \dashv R \from \X \to \A $ is equivalent to the category
   whose objects are cospans of form
   %
@@ -1268,7 +1288,7 @@ simply provide the definition.
   \begin{itemize}
   \item the objects are all $ \A $-objects
   \item the vertical arrows $ a \to b $ all $ \A $-arrows, 
-  \item the horizontal arrows $ \horarrow{a}{b} $ are cospans
+  \item the horizontal arrows $ a \horarrow b $ are cospans
     $ \csp{La}{x}{Lb} $, and
   \item the squares are commuting diagrams
     %
@@ -1286,7 +1306,7 @@ simply provide the definition.
     \draw [->] (6) to node [] {\scriptsize{\(  \)}} (5);
     \draw [->] (1) to node [left] {\scriptsize{\( Lf \)}} (4);
     \draw [->] (2) to node [left] {\scriptsize{\( g \)}} (5);
-    \draw [->] (3) to node [left] {\scriptsize{\( Lh \)}} (6);
+    \draw [->] (3) to node [right] {\scriptsize{\( Lh \)}} (6);
     \end{tikzpicture}
   \]
   \end{itemize}
@@ -1428,8 +1448,8 @@ graph functor from Example \ref{ex:open-graphs}. We additionally add a
     \node (1) at (0,0) {$ L \emptyset $};
     \node (2) at (2,0) {$ Lk $};
     \node (3) at (1,0) {\scriptsize{$ \Downarrow \gamma $}};
-    \draw [->, bend left] (1.45) to node [] {\scriptsize{$ \hat{\ell} $}} (2.135);
-    \draw [->, bend right] (1.-45) to node [] {\scriptsize{$ \hat{r} $}} (2.-135);
+    \draw [->, bend left] (1.45) to node [above] {\scriptsize{$ \hat{\ell} $}} (2.135);
+    \draw [->, bend right] (1.-45) to node [below] {\scriptsize{$ \hat{r} $}} (2.-135);
   \end{tikzpicture}
 \]
 % 
@@ -1447,7 +1467,7 @@ then freely generates a 2-category which we call $ \cat{G} $, the
 1-arrows of which are open graphs. The usual closed graphs are exactly
 the objects of the hom-category
 $ \cat{G}( L \emptyset , L \emptyset ) $. This hom-category captures
-the rewriting relation as we state here \cite[Thm.~23]{Gadd_IndGraphTran}.
+the rewriting relation as we state here \cite[Thm.~23]{Gadd_IndGraphTrans}.
 
 \begin{theorem}
   Let $ P $ be a graph grammar. Then $ \deriv{g}{h} $ if and only
@@ -1537,17 +1557,17 @@ is helpful.
 It is still true that pushout complements, if they exist, over a mono
 are unique up to isomorphism \cite[Lem.~15]{LackSobo_Adhesive}
 
-For improved bookkeeping, we pair a grammar with the adhesive category
-housing the productions. Specifically, a production is a pair $ ( \C ,
-P) $ where $ \C $ is an adhesive category and $ P $ is a set of
-productions in $ \C $. This pairing allows us to define the following category.
+For improved bookkeeping, we define a grammar to be a pair
+$ ( \C , P) $ where $ \C $ is an adhesive category and $ P $ is a set
+of productions in $ \C $. This pairing allows us to define the
+following category.
 
 \begin{definition}
   There is a category $ \Gram $ having
   \begin{itemize}
   \item as object grammars $ ( \C , P ) $, and
   \item as arrows $ ( \C , P ) \to ( \D , Q ) $ functors $ F \from
-    \C \to D $ such that $ FP \subseteq Q $.
+    \C \to \D $ such that $ FP \subseteq Q $.
   \end{itemize}
 \end{definition}
 

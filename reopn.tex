@@ -1464,154 +1464,105 @@ to apply these ideas to inductive adhesive rewriting using structured cospans.
 \subsection{Rewriting topoi}
 \label{sec:Adhesive-Rewriting}
 
-There have been a number attempts at axiomatizing graph
-rewriting. Adhesive categories, introduced by Lack and Soboci\'{n}ski
-\cite{LackSobo_Adhesive}, is a particularly elegant solution and the
-one we use presently. However, we are only interested in topoi.
-Fortunately, topoi are adhesive \cite{LackSobo_ToposIsAdh} and so the
-following discussion on rewriting topoi is true because it is true for
-adhesive categoies.  
+Currently, the most general setting that contains a rich theory of
+rewriting is adhesive categories, introduced by Lack and
+Soboci\'{n}ski \cite{LackSobo_Adhesive}. Topoi are examples of
+adhesive categories \cite{LackSobo_ToposIsAdh}. Therefore, the theory
+we have been developing admits a nice rewriting theory, which we
+exploit for structured cospans.  To introduce the necessary concepts,
+we briefly sketch rewriting on the level of topoi. Of course, these
+concepts hold for adhesive categories in general, but we restrict to
+topoi to avoid a digression into adhesivity. 
 
-Prior to introducing the rewriting of structured cospans, we recall
-the basic facts of rewriting in topoi using the double pushout formalism.
+Fix a topos $ \cat{ E } $. Since rewriting in topoi is abstracted
+from graph rewriting, the archetypal topos for us is $ \RGraph $.
 
-Adhesivity is an exactness condition that ensures certain pushouts
-behave as they do in $ \Set $. This is captured by saying that a
-pushout satisfies the \defn{Van Kampen condition}: given a commuting cube
+Rewriting starts with the notion of a \defn{rewrite rule}, or simply
+\defn{rule}.  This is simply a span
+%
+\[
+  \ell \monicgets k \monicto r
+\]
+% 
+in $ \cat{ E } $ with monic legs. Recall that we denote spans by
+$ \spn{\ell}{k}{r} $, and saying a span is a rule should indicate that
+the legs are monic. The conciept of a rule is that $ \ell $ is being
+replaced by $ r $ with $ k $ a fixed subobject common to both. We can
+then apply this rule to suitable objects having $ \ell $ as a
+subobject.  Formally, this says that for a monic
+$ m \from \ell \monicto g $ then $ g $ is suitable if there exists a
+\defn{pushout complement}, which is an object $ d $ fitting into a
+pushout diagram
 %
 \[
   \begin{tikzpicture}
-    \node (1) at (1,3) {\( \bullet \)};
-    \node (2) at (0,2) {\( \bullet \)};
-    \node (3) at (3,3) {\( \bullet \)};
-    \node (4) at (2,2) {\( \bullet \)};
-    \node (5) at (1,1) {\( \bullet \)};
-    \node (6) at (0,0) {\( \bullet \)};
-    \node (7) at (3,1) {\( \bullet \)};
-    \node (8) at (2,0) {\( \bullet \)};
-    \draw [->] (1) to node [] {\scriptsize{\(  \)}} (5);
-    \draw [->] (1) to node [] {\scriptsize{\(  \)}} (2);
-    \draw [->] (1) to node [] {\scriptsize{\(  \)}} (3);
-    \draw [white, line width=2mm] (2) -- (4);
-    \draw [->] (2) to node [] {\scriptsize{\(  \)}} (4);
-    \draw [->] (3) to node [] {\scriptsize{\(  \)}} (4);
-    \draw [->] (5) to node [] {\scriptsize{\(  \)}} (6);
-    \draw [->] (5) to node [] {\scriptsize{\(  \)}} (7);
-    \draw [->] (6) to node [] {\scriptsize{\(  \)}} (8);
-    \draw [->] (7) to node [] {\scriptsize{\(  \)}} (8);
-    \draw [->] (2) to node [] {\scriptsize{\(  \)}} (6);
-    \draw [->] (3) to node [] {\scriptsize{\(  \)}} (7);
-    \draw [white, line width=2mm] (4) -- (8);
-    \draw [->] (4) to node [] {\scriptsize{\(  \)}} (8);
+    \node (l) at (0,1) {$ \ell $};
+    \node (k) at (1,1) {$ k $};
+    \node (g) at (0,0) {$ g $};
+    \node (d) at (1,0) {$ d $};
+    \draw [->] (k) to node [] {\scriptsize{$  $}} (l);
+    \draw [->] (d) to node [] {\scriptsize{$  $}} (g);
+    \draw [->] (l) to node [left] {\scriptsize{$ m $}} (g);
+    \draw [->] (k) to node [] {\scriptsize{$  $}} (d);
+    \node (0.5,0.5) at () {\scriptsize{p.o}};
   \end{tikzpicture}
 \]
 % 
-whose bottom face is the pushout and back faces are pullbacks, then
-the front faces are pullbacks if and only if the top face is a pushout.
-
-\begin{definition} \label{dfn:adhesive-category} 
-  A category with pullbacks is \defn{adhesive} if pushouts along
-  monics exist and are Van Kampen.
-\end{definition} 
-
-An adhesive category is a place where rewrite systems retain important
-properties of DPO graph rewriting, namely concurrency. The definitions
-above---production, matching morphism, pushout complement, grammar,
-direct derivation, derivation, and rewrite relation---all have their
-adhesive rewriting counterparts.  The primary difference is that they
-occur in a generic adhesive category.
-
-Rewriting in $ \RGraph $ had the benefit of being able to describe a
-production's behavior by referring to edges and nodes. While we lose
-this ability having abstracted to adhesive categories, the intuition
-of removing a subobject and coherently replacing it with another
-is helpful.
-
-It is still true that pushout complements, if they exist, over a mono
-are unique up to isomorphism \cite[Lem.~15]{LackSobo_Adhesive}
-
-For improved bookkeeping, we define a grammar to be a pair
-$ ( \C , P) $ where $ \C $ is an adhesive category and $ P $ is a set
-of productions in $ \C $. This pairing allows us to define the
-following category.
-
-\begin{definition}
-  There is a category $ \Gram $ having
-  \begin{itemize}
-  \item as object grammars $ ( \C , P ) $, and
-  \item as arrows $ ( \C , P ) \to ( \D , Q ) $ functors $ F \from
-    \C \to \D $ such that $ FP \subseteq Q $.
-  \end{itemize}
-\end{definition}
-
-As in graph rewriting, any grammar $ ( \C , P ) $ induces a relation
-on the objects of $ \C $ defined by $ \dderiv{g}{h} $ whenever there
-is a production $ \spn{g}{d}{h} $ fitting into the bottom row of a
-double pushout diagram
+There is no need for a pushout complement to exist, but when it does
+and the map $ k \to \ell $ is monic, then it is unique up to
+isomorphism \cite[Lem.~15]{LackSobo_Adhesive}. Given a rule together
+with a suitable $ g $, we obtain a \defn{derived rule} on the bottom
+row of the \emph{double pushout diagram}
 %
 \[
   \begin{tikzpicture}
-    \node (1) at (0,1) {\( \ell \)};
-    \node (2) at (1,1) {\( k \)};
-    \node (3) at (2,1) {\( r \)};
-    \node (4) at (0,0) {\( g \)};
-    \node (5) at (1,0) {\( d \)};
-    \node (6) at (2,0) {\( h \)};
-    \draw [->] (2) to node [] {\scriptsize{\( \)}} (1);
-    \draw [->] (2) to node [] {\scriptsize{\( \)}} (3);
-    \draw [->] (5) to node [] {\scriptsize{\( \)}} (4);
-    \draw [->] (5) to node [] {\scriptsize{\( \)}} (6);
-    \draw [->] (1) to node [left] {\scriptsize{\( m \)}} (4);
-    \draw [->] (2) to node [] {\scriptsize{\( \)}} (5);
-    \draw [->] (3) to node [] {\scriptsize{\( \)}} (6);
-    \node () at (0.5,0.5) {\scriptsize{ p.o.\ }};
-    \node () at (1.5,0.5) {\scriptsize{ p.o.\ }};
+    \node (1) at (0,1) {$ \ell $};
+    \node (2) at (1,1) {$ k $};
+    \node (3) at (2,1) {$ r $};
+    \node (4) at (0,0) {$ g $};
+    \node (5) at (1,0) {$ d $};
+    \node (6) at (2,0) {$ h $};
+    \draw [>->] (2) to node [] {\scriptsize{$  $}} (1);
+    \draw [>->] (2) to node [] {\scriptsize{$  $}} (3);
+    \draw [->] (5) to node [] {\scriptsize{$  $}} (4);
+    \draw [->] (5) to node [] {\scriptsize{$  $}} (6);
+    \draw [>->] (1) to node [] {\scriptsize{$  $}} (4);
+    \draw [->] (2) to node [] {\scriptsize{$  $}} (5);
+    \draw [->] (3) to node [] {\scriptsize{$  $}} (6);
+    \node () at (0.5,0.5) {\scriptsize{p.o.}};
+    \node () at (1.5,0.5) {\scriptsize{p.o.}};
   \end{tikzpicture}
 \]
-% 
-such that the top row is a production in $ P $ and $ m $ is monic.
+%
+Indeed, the span $ \spn{g}{d}{h} $ is a rule because pushouts preserve
+monics in topoi \cite[Lem.~12]{LackSobo_Adhesive}. The intuition of
+this is that we are replacing an instance of the subobject $ \ell $ in $
+g $, in a coherent manner, with $ r $ resulting in the new object $ h
+$.
 
-% As in the graph rewriting case, we are actually interested in the
-% rewriting relation $ \deriv{}{} $ defined to be the reflexive
-% transitive closure of $ \dderiv{}{} $.  A useful fact that we use in
-% our main result is that the rewriting relation plays well with
-% coproducts.
+A finite set $ P $ of rules $ \{ \spn{\ell_j}{k_j}{r_j} \} $ is called
+a \defn{grammar}.  Every grammar gives rise to a relation defined by
+$ \dderiv{g}{h} $ whenever there exists a rule $ \spn{g}{d}{h} $
+derived from a production in $ P $. However, this relation is not
+exactly what we are interested in.  For one, it is not true in general
+that $ \dderiv{x}{x} $ holds. Also, it doesn't capture multistep
+rewrites. That is, perhaps there is a rule that rewrites $ g $ into
+$ g' $, and another that rewriting $ g' $ into $ g'' $.  Thus, we'd
+like to say that $ g $ can be rewritten to $ g'' $, but
+$ \rightsquigarrow $ isn't necessarily transitive.  Therefore, the
+relation we actually want is the reflexive and transitive closure of
+$ \rightsquigarrow $, which we denote by $ \rightsquigarrow^\ast $.
+This is called the \defn{rewrite relation}.  So in fact, every
+grammar gives rise to a rewrite relation.
 
-
-% We can obtain $ \deriv{}{} $ functorially by viewing the productions
-% as arrows in a span category.
-
-% \begin{lemma}
-%   There is a functor $ S \from \Gram \to \Cat $, defined on objects by
-%   setting $ S ( \C , P ) $ to be the subcategory of $ \Span ( \C ) $
-%   generated by the productions in $ P $ and on arrows by setting
-%   $ SF \from S ( \C , P ) \to S ( \D , Q ) $ to be the functor
-%   given by $ SFc = Fc $ and
-%   %
-%   \[
-%     ( c \xgets{f} d \xto{g} e )
-%     \mapsto
-%     ( Fc \xgets{Ff} Fd \xto{Fg} Fe )
-%   \]
-% \end{lemma}
-
-% For expositional purposes, we will denote the composite functor $ SD $
-% by $ \Lang $ and call $ \Lang ( \C , P ) $ the \defn{language} of
-% $ ( \C , P ) $. The language is another characterization of the
-% rewrite relation.
-
-% \begin{theorem}
-%   $ \deriv{g}{h} $ with respect to a grammar $ ( \C , P ) $ if and
-%   only if there is an arrow $ g \to h $ in $ \Lang ( \C , P ) $.
-% \end{theorem}
-
-% \begin{proof}
-%   If $ \deriv{g}{h} $, then there is a zig-zag from $ g $ to $ h $
-%   comprised of productions in $ D ( \C , P ) $ and identity spans.
-%   This zig-zag gives a sequence of composable arrows in
-%   $ \Lang ( \C , P ) $.  Conversely, any arrow $ g \to h $ in
-%   $ \Lang ( \C , P ) $ is a composite of generating arrows.
-% \end{proof}
+The above is simply a review of well-known facts.  For our convience,
+we place these concepts into a novel categorical framework.  We begin
+by defining a category $ \Gram $. An object in $ \Gram $ is a topos
+paired with a grammar $ ( \cat{ C },P ) $.  An arrow
+$ ( \cat{ C },P ) \to ( \cat{ D } , Q ) $ is an arbitrary functor
+$ F \from \cat{ C } \to \cat{ D } $ such that $ FP \subseteq Q
+$. Instead of further developing this categorical framework now, we do
+so only in the context of rewriting strctured cospans.
 
 % % ~~~~~~~~~~~~~~~~~~~~~~~~
 % % ~~~~~~~~~~~~~~~~~~~~~~~~

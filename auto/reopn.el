@@ -3,12 +3,12 @@
  (lambda ()
    (TeX-add-to-alist 'LaTeX-provided-package-options
                      '(("enumitem" "inline") ("xcolor" "dvipsnames")))
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperref")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperimage")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperbaseurl")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "nolinkurl")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "url")
    (add-to-list 'LaTeX-verbatim-macros-with-braces-local "path")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "url")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "nolinkurl")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperbaseurl")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperimage")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperref")
    (add-to-list 'LaTeX-verbatim-macros-with-delims-local "path")
    (TeX-run-style-hooks
     "latex2e"
@@ -134,7 +134,6 @@
     "sec:inductive-rewriting-structured-cospans"
     "sec:Graph-Rewriting"
     "sec:Adhesive-Rewriting"
-    "dfn:adhesive-category"
     "sec:Rewriting-StrCsp"
     "thm:dpo_category-StrCsp-adhsv"
     "def:linear-grammars"

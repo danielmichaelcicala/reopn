@@ -3,12 +3,12 @@
  (lambda ()
    (TeX-add-to-alist 'LaTeX-provided-package-options
                      '(("enumitem" "inline") ("xcolor" "dvipsnames")))
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperref")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperimage")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperbaseurl")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "nolinkurl")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "url")
    (add-to-list 'LaTeX-verbatim-macros-with-braces-local "path")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "url")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "nolinkurl")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperbaseurl")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperimage")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperref")
    (add-to-list 'LaTeX-verbatim-macros-with-delims-local "path")
    (TeX-run-style-hooks
     "latex2e"
@@ -118,16 +118,14 @@
     "monicgets"
     "tospan"
     "tocospan"
-    "Hom"
-    "id"
-    "im"
-    "Sub"
-    "colim"
     "horarrow")
    (LaTeX-add-labels
     "sec:Introduction"
     "eq:StrCsp-arrows"
     "sec:StrCsp"
+    "sec:StrCsp-as-Arrows"
+    "def:strcsp-arr"
+    "ex:open-graph-as-arrow"
     "sec:StrCspAsObject"
     "df:strcsp"
     "df:morph-of-strcsp"
@@ -135,10 +133,8 @@
     "thm:strcsp-istopos"
     "thm:strcsp-isfunctorial"
     "def:str-csp-functor"
-    "sec:StrCsp-as-Arrows"
-    "def:strcsp-arr"
-    "ex:open-graph-as-arrow"
     "sec:DblCatOfStrCsp"
+    "fig:square"
     "sec:rewriting"
     "sec:Adhesive-Rewriting"
     "sec:gen-result-graph-rewriting"

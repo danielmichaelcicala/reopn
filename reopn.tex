@@ -1,8 +1,6 @@
 \documentclass{amsart}
 
 \linespread{2}
-% \usepackage{fontspec}
-% \setmainfont{Open Dyslexic}
 
 
 % PACKAGES ~~~~~~~~~~~~~~~~~~~~
@@ -145,6 +143,7 @@
 % ENVIRONMENTS & COUNTERS ~~~~~~~~~~~
 
 \newtheorem{theorem}{Theorem}[section]
+\newtheorem*{theorem*}{Theorem}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{corollary}[theorem]{Corollary}
@@ -282,46 +281,119 @@
 \section{Introduction}
 \label{sec:Introduction}
 
-% In such systems, local properties scale up to global
-% properties.  This affords the ability to study local
-% properties. Therefore, to be a reasonable syntax
+This paper fits into a program interested in categorifying the study
+of compositional systems.  Part of the motivation for this program is
+the desire to understand global behavior of systems through analyzing
+local components.  To this end, we are introducing a sytactical
+device, structured cospans, to reason about open systems.
+
+In the study of formal languages, often accompanying a syntax is a
+rewriting system.  This is a set of rules dictating when one may
+replace one syntactical term for another.  Each rewriting system gives
+rise to a rewriting relation, which is useful in situations where
+distinct syntactical terms have the same semantics, or meaning.  An
+example of this arises in electrical circuits when a pair of
+resistors are wired in series. This has the same behavior as a single
+resistor whose resistance is the sum of the two original resistors.
+Syntacitally, these are different components, but we want to treat
+them the same.  So an appropriate rewriting system would want to
+relate (not equate) these two circuits.   In this paper, we introduce
+the theory of rewriting structured cospans.
+
+The theory of rewriting has gone through several epochs, each more
+abstract from the last.  Rewriting was introduced by Chomsky for
+formal languages. Here, the syntactical terms in consideration were
+strings of characters, or letters.  Later, Ehrig,
+et.~al. \cite{graphtrans} used pushouts to introduce rewriting for
+graphs.  Graph rewriting was then axiomatised by Lack and
+Soboci\'{n}ski when they defined adhesive categories
+\cite{LackSobo_Adhesive}.  While we do not need the full generality of
+adhesive categories, we do use rewriting of topoi, which are examples
+of adhesive categries \cite{LackSobo_ToposIsAdh}.
+
+We define a \emph{grammar} to be a topos $ \X $ paired with a
+set of rules $ P $.  Each rule in $ P $ is a span
+$ \ell \monicgets k \monicto r $ in $ \X $ such that each leg is monic.
+The conceipt is that the object $ \ell $ can be replaced by $ r $
+while the common subobject $ k $ is fixed.  The grammar $ ( \X , P ) $
+induces a \emph{derived grammar} $ ( \X , P' ) $ where $ P' $ is
+comprised of any rules appearing on the bottom row of a double pushout
+diagram of form
 %
-% THE ABOVE SHOULD INFORM THE DIRECTION OF THE INTRO, NOT A HISTORY OF REWRITING
+\[
+  \begin{tikzpicture}
+    \node (1) at (0,1) {$ \ell $};
+    \node (2) at (1,1) {$ k $};
+    \node (3) at (2,1) {$ r $};
+    \node (4) at (0,0) {$ g $};
+    \node (5) at (1,0) {$ d $};
+    \node (6) at (2,0) {$ h $};
+    \draw [>->] (2) to node [] {\scriptsize{$  $}} (1);
+    \draw [>->] (2) to node [] {\scriptsize{$  $}} (3);
+    \draw [>->] (5) to node [] {\scriptsize{$  $}} (4);
+    \draw [>->] (5) to node [] {\scriptsize{$  $}} (6);
+    \draw [>->] (1) to node [] {\scriptsize{$  $}} (4);
+    \draw [>->] (2) to node [] {\scriptsize{$  $}} (5);
+    \draw [>->] (3) to node [] {\scriptsize{$  $}} (6);
+    \node () at (0.5,0.5) {\scriptsize{p.o.}};
+    \node () at (1.5,0.5) {\scriptsize{p.o.}};
+  \end{tikzpicture}
+\]
+%
+whose top row belongs to $ P $. The study of the grammar
+$ ( \X , P ) $ is really done by understanding the \emph{rewrite
+  relation} $ \deriv{g}{h} $ defined by, first, relating objects if
+there is a rule in $ P' $ between them, then taking the reflexive and
+transitive closure.
 
-This paper fits into a program of codifying network theory into the
-language of category theory
-\cite{NetMods,PassiveNets,MrkvProc,RxNets,OpenPetri}. An important
-aspect of this program falls within a theme common to many areas of
-mathematics. That is the desire to study global properties using local
-phenominon as illustrated by the advent of sheaf theory. A concept
-related to the local study of systems is \emph{compositionality} which
-occurs when properties of a system are completely determined by
-properties of its sub-systems and the manner in which they are
-connected together. A neccesary requirement of compositionality is the
-existence of a mechanism by which to connect sub-systems together.  A
-recent proposal for such a mechanism given by Baez and Courser
-\cite{StrCsp} is called \emph{structured cospans}. 
+In practice, we take $ \X $ to be a topos which we consider to be
+comprised of systems together with the appropriate morphisms.  Because
+of the important status that graphs play in the field of network
+theory, the archetypal topos for us is the category $ \RGraph $ of
+reflexive graphs.  Given a rewriting system $ ( \X , P ) $, our goal
+is to see how we can rewrite systems $ x $ by somehow decomposing it
+into subsystems, rewriting those, then glueing the results back
+together.  We claim that, using structured cospans, we can do this in
+a way that characterizes the rerwriting relation for $ ( \X , P ) $.
 
-The structured cospans serve as a syntax for systems. A
-desirable feature of syntax is the ability to reflect a particular
-sematics, specifically as it relates to distinct syntactical terms
-with the same semantic representation.  One way to accomplish this is
-using rewriting, which can be thought of as a relation similar to, but
-more finely grained, than equality. The main goal of this paper is to
-introduce a theory of rewriting for structured cospans.
+To accomplish this, we turn to Gadducci and Heckle
+\cite{Gadd_IndGraphTrans} who introduced an inductive perspective for
+graph rewriting.  This is closely related to our present goals so,
+while we work in a more general context and have different
+motivations than they do, we follow the framework set in their
+paper.  In particular, they define so called ``ranked graphs'' which
+are directed graphs with a chosen set of nodes serving as inputs and
+outputs.  Using structured cospans, we are able to provide inputs and
+outputs to a much wider class of objects than graphs. 
 
-To define a structured cospan, we begin with a functor
-$ L \from \A \to \X $ where $ \A $ and $ \X $ have finite colimits and
-$ \L $ preserves them. The objects of the category $ \X $ are your
-systems of interest, for example graphs, Markov processes, Petri nets,
-etc. The objects of $ \A $ are interfaces for the systems in $ \X
-$. Often, this is $ \Set $.  Then $ L $ is the channel allowing the
-interfaces to interact with the systems.  A more formal description
-with that a structured cospan is a cospans of the form
-$ La \to x \gets Lb $, where $ x $ is the system, $ La $ the inputs,
-and $ Lb $ the outputs.  Another open system whose inputs are $ Lb $
-can be connected to this via pushout, which is the familiar
-composition in cospan categories
+To do so, we need addition data besides just $ \X $.  We begin with a
+geometric morphism
+%
+\[
+  ( L \from \A \to \X ) \dashv ( R \from \X \to \A ),
+\]
+% 
+which, recall, is an adjunction between topoi whose left adjoint preserves finite
+limits.  In this setup, $ \X $ still is our topos of systems.  The new
+data consists of $ \A $ which is a topos comprised of ``interface
+types''.  These will serve as the boundaries along which we decompose
+the systems in $ \X $.  The left adjoint $ L $ serves as the channel
+through which we port the interface types into $ \X $ so that they can
+interact with the systems.  The fact that this data comes in the form
+of a geometric morphism is used throughout this paper.
+
+A \emph{structured cospan} is a cospan in $ \X $ of the form
+$ La \to x \gets Lb $. This should be thought of as consisting of a
+system $ x $ with inputs $ a $ and outputs $ b $.
+
+Structured cospans were introduced by Baez and Courser
+\cite{courser-strcsp}, though under weaker hypothesis than we have here.
+We ask for stronger assumptions in order to introduce rewriting, which
+they do not consider.  Their primary focus was on the compositional
+structure, which is captured as follows. A structured cospan
+$ La \to x \gets Lb $ with outputs $ b $ can be connected together
+with a structured cospan $ Lb \to y \gets Lc $ with inputs $ b $ via
+pushout
 %
 \[
   \begin{tikzpicture}
@@ -352,31 +424,24 @@ composition in cospan categories
   \end{tikzpicture}
 \]
 % 
+This gives us a category $ \Csp_L $ whose objects are from $ \A $ and
+whose arrows are the structured cospans. 
 
-In this program, \emph{functorial semantics} is used to describe
-system behavior. That is, the semantics of such systems is captured by
-a functor from our syntax category to a semantics category such as
-$ \Set $, $ \Rel $, or $ \Pos $. The functoriality ensures composition
-preserves properties of the system. There are early examples of applying
-functorial semantics to possive linear networks \cite{PassiveNets},
-Markov processes \cite{MrkvProc}, and chemical reaction networks \cite{ RxNets}.
+Observe that a system $ x $ without inputs and outputs can be encoded
+using the structured cospan $ L0 \to x \gets L0 $.  Studying $ x $
+locally means finding a decomposition
+%
+\[
+  L0 \to x_1 \gets Lb_1 \to x_2 \gets Lb_2 \dotsm Lb_{n-1} \to x_n
+  \gets L0
+\]
+% 
+and individually looking at each factor. This is exactly what we
+intend to do with rewriting.  
 
-In order to introduce rewriting into this structured cospan syntax, we
-appeal to the most general class of objects that admit a rewriting
-theory.  By this, we mean \emph{adhesive categories} whose axioms were
-gathered specifically to encode the behavior of graph rewriting.
-However, instead of working in the full generality of adhesive
-categories, we restrict ourselves to elementary topoi, which are
-examples of adhesive categories. To place ourseves into this context,
-we define structured cospans stronger hypotheses than Baez and
-Courser. Specifically, we begin with a geometric morphism, that is an
-adjunction $ ( L \from \A \to \X ) \dashv ( R \from \X \to \A ) $
-between topoi such that $ L $ preserves finite limits. In the systems
-analogy, $ \A $, $ \X $, and $ L $ continue to serve as the
-interfaces, systems, and interface channel. The compositional
-structure remains and another perspective emerges where structured
-cospans are objects with arrows between them.  The arrows are
-commuting diagrams
+To do so, we need to put forward another perspective of structured
+cospans.  Namely, we view them as objects with arrows of their own.
+These arrows are commuting diagrams
 %
 \begin{equation} \label{eq:StrCsp-arrows}
 \raisebox{-4.5ex}{
@@ -405,60 +470,63 @@ is the subject of our first result.
   $ \StrCsp_L $ is a topos.
 \end{theorem*}
 
-This theorem is neccesary to introduce a theory of rewriting to
-structured cospans.
-
-Thus far, we have referred to rewriting as if it is a single theory,
-however there are actually several variants.  The relevant approach
-for rewriting topoi uses \emph{double pushouts}.  Given a topos
-$ \C $, we start with a finite set of spans in $ \C $
-$ P \coloneqq \{ \ell_j \monicgets k_j \monicto r_j \} $ with monic
-legs. These serve as \emph{rules} whose intution is that the object
-$ \ell_j $ can be replaced by the object $ r_j $ while their common
-subobject $ k_j $ is fixed.  This set of rules induces a set of
-\emph{derived rules} $ P' $ comprised of any rules appearing on the
-bottom row of a double pushout diagram of form
+Because of this theorem, we can introduce rewriting systems into
+structured cospans.  As mentioned above, the rewriting system starts
+with grammars, though we consider a particular type which we call a
+\emph{structured cospan grammar}.  This is a grammar
+$ ( \StrCsp_L , P ) $ where $ P $ consists of rules of the form
 %
-\[
-  \begin{tikzpicture}
-    \node (1) at (0,1) {$ \ell_j $};
-    \node (2) at (1,1) {$ k_j $};
-    \node (3) at (2,1) {$ r_j $};
-    \node (4) at (0,0) {$ g $};
-    \node (5) at (1,0) {$ d $};
-    \node (6) at (2,0) {$ h $};
-    \draw [>->] (2) to node [] {\scriptsize{$  $}} (1);
-    \draw [>->] (2) to node [] {\scriptsize{$  $}} (3);
-    \draw [>->] (5) to node [] {\scriptsize{$  $}} (4);
-    \draw [>->] (5) to node [] {\scriptsize{$  $}} (6);
-    \draw [>->] (1) to node [] {\scriptsize{$  $}} (4);
-    \draw [>->] (2) to node [] {\scriptsize{$  $}} (5);
-    \draw [>->] (3) to node [] {\scriptsize{$  $}} (6);
-    \node () at (0.5,0.5) {\scriptsize{p.o.}};
-    \node () at (1.5,0.5) {\scriptsize{p.o.}};
+ \[
+   \begin{tikzpicture}
+    \begin{scope}
+        \node (1) at (0,2) {\( La \)};
+        \node (2) at (1,2) {\( x \)};
+        \node (3) at (2,2) {\( La' \)};
+        \node (4) at (0,1) {\( Lb \)};
+        \node (5) at (1,1) {\( y \)};
+        \node (6) at (2,1) {\( Lb' \)};
+        \node (7) at (0,0) {\( Lc \)};
+        \node (8) at (1,0) {\( z \)};
+        \node (9) at (2,0) {\( Lc' \)};
+        \draw [->] (1) to node []
+          {\scriptsize{\( \)}} (2);
+        \draw [->] (3) to node []
+          {\scriptsize{\( \)}} (2);
+        \draw [->] (4) to node []
+          {\scriptsize{\( \)}} (5);
+        \draw [->] (6) to node []
+          {\scriptsize{\( \)}} (5);
+        \draw [->] (7) to node []
+          {\scriptsize{\( \)}} (8);
+        \draw [->] (9) to node []
+          {\scriptsize{\( \)}} (8);
+        \draw [->] (4) to node [left]
+          {\scriptsize{\( \iso \)}} (1);
+        \draw [->] (4) to node [left]
+          {\scriptsize{\( \iso \)}} (7);
+        \draw [>->] (5) to node []
+          {\scriptsize{\( \)}} (2);
+        \draw [>->] (5) to node []
+          {\scriptsize{\( \)}} (8);
+        \draw [->] (6) to node [right]
+          {\scriptsize{\( \iso \)}} (3);
+        \draw [->] (6) to node [right]
+          {\scriptsize{\( \iso \)}} (9);
+    \end{scope}
   \end{tikzpicture}
 \]
 %
-whose top row belongs to $ P $. The object of study is the
-\emph{rewrite relation} $ \deriv{g}{h} $ defined by, first, relating
-objects if there is a rule in $ P' $ between them, then taking the
-reflexive and transitive closure.
-
-In this paper, we introduce a double pushout rewriting theory to
-structured cospans. We start with some categorical bookkeeping with
-the goal of encoding the rewrite relation functorially.  The first
-categories we define are comprised of \emph{grammars}, a topos paired
-with a finite set of rules, and a subcategory of the grammars of form
-$ ( \StrCsp_L , P ) $ that run through geometric morphisms
-$ ( L \from \A \to \X ) \dashv ( R \from \X \to \A ) $ and finite sets
-of rules $ P $. There is a functor sending $ ( \StrCsp_L , P ) $ to
-$ ( \StrCsp_L , P' ) $ where $ P' $ consists of rules derived from
-$ P $.  We then apply another functor taking $ ( \StrCsp_L , P' ) $ to
-the double category whose objects are from $ \A $, vertical arrows are
-spans in $ \A $ with invertible legs, horizontal arrows are structured
-cospans in $ \StrCsp_L $, and whose squares are generated by the rules
-in $ P' $. The composite functor $ \Lang $ is called the language
-functor. 
+As before, we associate to $ ( \StrCsp_L , P ) $ the new grammar
+$ ( \StrCsp_L , P' ) $ where $ P' $ is the set of rules derived from
+the rules in $ P $ using the double pushout approach.  In fact, this
+association is functorial.  We then associate, again functorially, a
+double category to $ ( \StrCsp_L , P' ) $ with objects from $ \A $,
+vertical arrows are spans in $ \A $ with invertible legs, horizontal
+arrows are structured cospans in $ \StrCsp_L $, and whose squares are
+generated by the rules in $ P' $. The composite functor $ \Lang $ is
+called the language functor.  As we see below, the language functor is
+used to encode a rewriting relation on $ \X $ inside the double category
+$ \Lang ( \StrCsp_L , P ) $.
 
 Using a double cateogry allows us to combine into a single structure
 the connectability (horizontal composition) and rewritability
@@ -469,149 +537,87 @@ interchange law. This compatability grants us the ability to decompose
 a system into subsystems, rewrite those, then connect the
 results.
 
-What we are able to show is that rewriting the subsystems is
-compatable with the rewrite relation.  To accomplish this, we turn to
-Gadducci and Heckle \cite{Gadd_IndGraphTrans} who introduced an
-inductive perspective for graph rewriting.  This is closely related to
-our present goals so, while we work in a much more general context
-than they, we follow the framework set in their paper.
+At this point, we begin to connect the rewriting relation on a grammar
+$ ( \X , P ) $ with the language of a certain structured cospan
+grammer $ ( \StrCsp_L , \hat{P} ) $.
 
-When Ehrig, et. al.~, introdruced graph rewriting, they classified
-the expressiveness of certain grammars.  One result that is relevant
-here is that a set of rules $ \{ \ell_j \monicgets k_j \monicto
-r_j \} $ has the same rewrite relation as the set of rules $ \{ \ell_j \monicgets k'_j \monicto
-r_j \} $ where $ k'_j $ is the discrete graph underlying $ k_j $
-\cite[Prop.~3.3]{Ehrig_GraphGram}.  Just as this fact was a keystone in
-Gadducci and Heckle's work, we prove a modified version of it in
-Theorem \cite{thm:production-same-rewrite-relation-as-discrete}. To
-understand the following statement, we use the notation $ P_\flat $ to
-refer to the set of rules obtained from $ P = \{ \ell_j \monicgets k_j
-\monicto r_j \} $ by restricting the the span lets along the counit $
-LRk_j \to k_j $ of the comonad $ LR $.
+One result Gadducci and Heckle rely on goes back to the expressiveness
+of certain grammars given by Ehrig, et. al.~when they introdruced graph
+rewriting.  That is, a set of rules
+$ \{ \ell_j \monicgets k_j \monicto r_j \} $ has the same rewrite
+relation as the set of rules
+$ \{ \ell_j \monicgets k'_j \monicto r_j \} $ where $ k'_j $ is the
+discrete graph underlying $ k_j $ \cite[Prop.~3.3]{Ehrig_GraphGram}.
 
-\begin{theorem*}
+Just as this fact was a keystone in Gadducci and Heckle's work, we
+prove a modified version of it. To understand the following statement,
+we use the notation $ P_\flat $ to refer to the set of rules obtained
+from $ P = \{ \ell_j \monicgets k_j \monicto r_j \} $ by restricting
+the the span lets along the counit $ LRk_j \to k_j $ of the comonad
+$ LR $.
+
+\begin{theorem*}[\ref{thm:production-same-rewrite-relation-as-discrete}]
 Fix a geometric morphism $ L \dashv R \from \X \to \A $ with monic
 counit. Let $ ( \X , P ) $ be a grammar such that for every
 $ \X $-object $ x $ in the apex of a production of $ P $, the Heyting
 algebra $ \Sub (x) $ is well-founded.  The rewriting relation for a
 grammar $ ( \X , P ) $ is equal to rewriting relation for the grammar
-$ ( \X , P_{\flat} ) $
+$ ( \X , P_{\flat} ) $.
 \end{theorem*}
 
-To attach this result to our goal of lifting the rewriting of subsystems to
-rewriting systems, recall that in the analogy between structured cospans
-and systems, the topos $ \X $ is where the systems live.  That is, our
-objective is to study the rewriting relation induced by the grammar $
-( \X , P ) $ locally.  This theorem states that we can instead study
-the rewriting relation for the grammar $ ( \X , P_\flat ) $ because it
-is the same.  It is the bridge to encoding the rewrite relation for
-$ ( \X , P ) $ in its language.   
+It follows from this theorem that, instead of working with the
+rewriting relation for $ ( \X , P ) $, we can instead study the
+rewriting relation $ ( \X , P_\flat ) $ because it is the same.
 
-In order to study $ ( \X,P ) $ locally, we need to break it into
-pieces.  This is where structured cospans come into the story.  
-
-
-
-
-
-
-
-
-
-
-
-\ref{sec:StrCsp}\todo{finish the story}
-
-
-The structure of the paper is as follows.  Section \ref{sec:StrCsp}
-defines structured cospans, the main object of study. There are two
-perspectives on structured cospans and we realize this by building two
-separate categories.  The first category $ \StrCsp_L $, mentioned
-above, has structured cospans as objects and commuting diagrams
-\eqref{eq:StrCsp-arrows} as arrows. The first result, and the keystone
-of the paper, is that $ \StrCsp_L $ is a topos.  This grants us access
-to the theory of adhesive rewriting.  The second category, and the one
-introduced by Baez and Courser \cite{StrCsp} views structured cospans
-as arrows.  We then combine these two perspectives into a double
-category.
-
-In Section \ref{sec:inductive-rewriting-structured-cospans}, we sweep
-over the basics of graph rewriting and cover the inductive viewpoint.
-We also recall the theory of adhesive categories before applying it to
-structured cospans in a categorical framework. We start with
-\emph{grammars}. There are two types of grammars we are interested in.
-The first involves pairing an adhesive category $ \C $ with a set of
-productions $ P $ inside $ \C $. These form a category.  There is a
-subcategory we use too, consisting of grammars $ ( \StrCsp_L , P ) $
-where $ P $ is a set of spans in $ \StrCsp_L $ of the form
+Now, to decompose the systems in $ \X $ and the rules in $ P $, we
+associate to $ ( \X , P ) $ the structured cospan grammar
+$ ( \StrCsp_L , \hat{P} ) $ where $ \hat{P} $ contains
 %
 \[
   \begin{tikzpicture}
-    \node (1t) at (0,2) {$ \bullet $};
-    \node (2t) at (1,2) {$ \bullet $};
-    \node (3t) at (2,2) {$ \bullet $};
-    \node (1m) at (0,1) {$ \bullet $};
-    \node (2m) at (1,1) {$ \bullet $};
-    \node (3m) at (2,1) {$ \bullet $};
-    \node (1b) at (0,0) {$ \bullet $};
-    \node (2b) at (1,0) {$ \bullet $};
-    \node (3b) at (2,0) {$ \bullet $};
-    \draw [->] (2t) to node [] {\scriptsize{$  $}} (1t);
-    \draw [->] (2t) to node [] {\scriptsize{$  $}} (3t);
-    \draw [->] (2m) to node [] {\scriptsize{$  $}} (1m);
-    \draw [->] (2m) to node [] {\scriptsize{$  $}} (3m);
-    \draw [->] (2b) to node [] {\scriptsize{$  $}} (1b);
-    \draw [->] (2b) to node [] {\scriptsize{$  $}} (3b);
-    \draw [->] (1m) to node [left] {\scriptsize{$ \iso $}} (1t);
-    \draw [->] (1m) to node [left] {\scriptsize{$ \iso $}} (1b);
-    \draw [>->] (2m) to node [] {\scriptsize{$  $}} (2t);
-    \draw [>->] (2m) to node [] {\scriptsize{$  $}} (2b);
-    \draw [->] (3m) to node [right] {\scriptsize{$ \iso $}} (3t);
-    \draw [->] (3m) to node [right] {\scriptsize{$ \iso $}} (3b);
+    \node (1) at (0,2) {$ L 0 $};
+    \node (2) at (2,2) {$ \ell $};
+    \node (3) at (4,2) {$ LRk $};
+    \node (4) at (0,1) {$ L 0 $};
+    \node (5) at (2,1) {$ LRk $};
+    \node (6) at (4,1) {$ LRk $};
+    \node (7) at (0,0) {$ L 0 $};
+    \node (8) at (2,0) {$ r $};
+    \node (9) at (4,0) {$ LRk $};
+    \draw [->] (1) to node [] {\scriptsize{$  $}} (2);
+    \draw [->] (3) to node [] {\scriptsize{$  $}} (2);
+    \draw [->] (4) to node [] {\scriptsize{$  $}} (5);
+    \draw [->] (6) to node [] {\scriptsize{$  $}} (5);
+    \draw [->] (7) to node [] {\scriptsize{$  $}} (8);
+    \draw [->] (9) to node [] {\scriptsize{$  $}} (8);
+    \draw [->] (4) to node [] {\scriptsize{$  $}} (1);
+    \draw [->] (4) to node [] {\scriptsize{$  $}} (7);
+    \draw [->] (5) to node [] {\scriptsize{$  $}} (2);
+    \draw [->] (5) to node [] {\scriptsize{$  $}} (8);
+    \draw [->] (6) to node [] {\scriptsize{$  $}} (3);
+    \draw [->] (6) to node [] {\scriptsize{$  $}} (9);
   \end{tikzpicture}
 \]
 % 
-and fitting them into a category $ \StrCspGram $.  Given a grammar
-$ ( \C , P ) $, we define the rewriting relation on the objects
-of $ \C $ using double pushouts in a manner similar to that as
-was done for graphs.  However, we provide a functorial characterization
-as well. Namely, the functor $ D \from \Gram \to \Gram $
-that send a grammar $ ( \C , P ) $ to the grammar $ ( \C
-, P') $ where a production $ g \gets d \to h $ belongs to $ P' $ if
-there is a double pushout diagram
-%
-\[
-  \begin{tikzpicture}
-    \node (1t) at (0,1) {$ \ell $};
-    \node (2t) at (1,1) {$ k $};
-    \node (3t) at (2,1) {$ r $};
-    \node (1b) at (0,0) {$ g $};
-    \node (2b) at (1,0) {$ d $};
-    \node (3b) at (2,0) {$ h $};
-    \draw [->] (2t) to node [] {\scriptsize{$  $}} (1t);
-    \draw [->] (2t) to node [] {\scriptsize{$  $}} (3t);
-    \draw [->] (2b) to node [] {\scriptsize{$  $}} (1b);
-    \draw [->] (2b) to node [] {\scriptsize{$  $}} (3b);
-    \draw [->] (1t) to node [] {\scriptsize{$  $}} (1b);
-    \draw [->] (2t) to node [] {\scriptsize{$  $}} (2b);
-    \draw [->] (3t) to node [] {\scriptsize{$  $}} (3b);
-    \node () at (0.5,0.5) {\scriptsize{p.o.}};
-    \node () at (1.5,0.5) {\scriptsize{p.o.}};
-  \end{tikzpicture}
-\]
-% 
-such that the top row is a production in $ P $. We then define a
-semantics functor $ S \from \Gram \to \DblCat $ valued in double
-categories.  These semantics capture the compositionality of the
-structured cospans and also the rewriting.  The \emph{language} of a
-grammar is its image under the composite functor $ SD $. Our main
-result is Theorem \ref{thm:inductive-rewriting}. Given a grammar
-$ ( \X , P ) $ on a topos $ \X $ fitting into a suitable geometric
-morphism $ L \dashv R \from \X \to \A $, then we construct a grammar $
-( \StrCsp_L , Q ) $ such that $ g $ is related to $ h $ from the
-rewriting relation on the grammar $ ( \X , P ) $ exactly when there is
-a square in the double category $ SD ( \StrCsp_L , Q ) $ of the form
-\[
+for every rule $ LRk \to \ell \times r $ of $ P_{\flat} $.
+
+This structured cospan grammar effectively turns all of the systems $ x $
+in $ \X $ into structured cospans $ L0 \to x \gets Lo $ without inputs
+or outputs and turns the rules from $ P $ into what we can think of as
+generaters $ \hat{P} $ for a double category.  The main result of the
+paper is that the process complete encodes the rewriting relation for
+$ ( \X,P ) $ inside of a vertical hom-set of a double category
+generated by structured cospans.
+
+\begin{theorem*}[\ref{thm:inductive-rewriting}]
+  Fix a geometric morphism $ L \dashv R \from \X \to \A $ with monic
+  counit. Let $ ( \X , P ) $ be a grammar such that for every
+  $ \X $-object $ x $ in the apex of a production of $ P $, the
+  Heyting algebra $ \Sub (x) $ is well-founded. Given $ g $,
+  $ h \in \X $, then $ \deriv{g}{h} $ in the rewriting relation for a
+  grammar $ ( \X , P ) $ if and only if there is a square
+  %
+  \[
     \begin{tikzpicture}
       \node (1t) at (0,2) {$ LR 0 $};
       \node (2t) at (1,2) {$ g $};
@@ -635,11 +641,154 @@ a square in the double category $ SD ( \StrCsp_L , Q ) $ of the form
       \draw [->] (3m) to node [] {\scriptsize{$  $}} (3t);
       \draw [->] (3m) to node [] {\scriptsize{$  $}} (3b);
     \end{tikzpicture}
+  \]
+  % 
+  in the double category $ \Lang ( \StrCsp_L , \hat{P} ) $.
+\end{theorem*}
+
+The hypothesis of this theorem are more mild than they seem.  Asking
+for a monic counit is means that the comonad for this adjunction is
+restricting a system, that is object of $ \X $, to the subobject
+consisting of all the system components that can serve as an
+interface.  Asking that the subobject algebra be well-founded is not
+too restrictive given that systems of interest are typically finite
+anyway.
+
+Because this theorem completely characterizes the rewriting relation
+as squares framed by $ 0 $ inside of a double category, given any
+decomposition of a system $ x $ into structured cospans
+%
+\[
+  L0 \to x_1 \gets La_1 \to x_2 \gets La_2 \dotsm La_{n-1} \to x_n
+  \gets L0
 \]
-Simply stated, if $ \X $ contains a type of network, then the
-rewritings on networks of type $ \X $ can be understood by rewriting
-on pieces of the network inside of $ ( \StrCsp , Q ) $ then gluing
-them back together.
+%
+we can rewrite each of these structured cospans independently using
+rewriting rules on these subsystems. This will give a pasting diagram
+of the sort
+%
+\[
+  \begin{tikzpicture}
+    \begin{scope}[shift={(0,4)}]
+      \node (1) at (0,2) {$ L0 $};
+      \node (2) at (1,2) {$ x_1 $};
+      \node (3) at (2,2) {$ La_1 $};
+      \node (4) at (0,1) {$ L0 $};
+      \node (5) at (1,1) {$ x'_1 $};
+      \node (6) at (2,1) {$ La'_1 $};
+      \node (7) at (0,0) {$ L0 $};
+      \node (8) at (1,0) {$ x''_1 $};
+      \node (9) at (2,0) {$ La''_1 $};
+      \draw [->] (1) to node [] {\scriptsize{$  $}} (2);
+      \draw [->] (3) to node [] {\scriptsize{$  $}} (2);
+      \draw [->] (4) to node [] {\scriptsize{$  $}} (5);
+      \draw [->] (6) to node [] {\scriptsize{$  $}} (5);
+      \draw [->] (7) to node [] {\scriptsize{$  $}} (8);
+      \draw [->] (9) to node [] {\scriptsize{$  $}} (8);
+      \draw [->] (4) to node [] {\scriptsize{$ = $}} (1);
+      \draw [->] (4) to node [] {\scriptsize{$ = $}} (7);
+      \draw [>->] (2) to node [] {\scriptsize{$  $}} (5);
+      \draw [->] (2) to node [] {\scriptsize{$  $}} (8);
+      \draw [->] (6) to node [] {\scriptsize{$ \cong  $}} (3);
+      \draw [->] (6) to node [] {\scriptsize{$ \cong $}} (9);
+    \end{scope}
+    %
+    \begin{scope}[shift={(4,4)}]
+      \node (1) at (0,2) {$ La_{n-1} $};
+      \node (2) at (1,2) {$ x_n $};
+      \node (3) at (2,2) {$ L0 $};
+      \node (4) at (0,1) {$ La_{n-1} $};
+      \node (5) at (1,1) {$ x'_n $};
+      \node (6) at (2,1) {$ L0 $};
+      \node (7) at (0,0) {$ La_{n-1} $};
+      \node (8) at (1,0) {$ x''_n $};
+      \node (9) at (2,0) {$ L0 $};
+       \draw [->] (1) to node [] {\scriptsize{$  $}} (2);
+      \draw [->] (3) to node [] {\scriptsize{$  $}} (2);
+      \draw [->] (4) to node [] {\scriptsize{$  $}} (5);
+      \draw [->] (6) to node [] {\scriptsize{$  $}} (5);
+      \draw [->] (7) to node [] {\scriptsize{$  $}} (8);
+      \draw [->] (9) to node [] {\scriptsize{$  $}} (8);
+      \draw [->] (4) to node [] {\scriptsize{$ = $}} (1);
+      \draw [->] (4) to node [] {\scriptsize{$ = $}} (7);
+      \draw [>->] (2) to node [] {\scriptsize{$  $}} (5);
+      \draw [->] (2) to node [] {\scriptsize{$  $}} (8);
+      \draw [->] (6) to node [] {\scriptsize{$ \cong  $}} (3);
+      \draw [->] (6) to node [] {\scriptsize{$ \cong $}} (9);
+    \end{scope}
+    %
+    \begin{scope}
+      \node (1) at (0,2) {$ L0 $};
+      \node (2) at (1,2) {$ y_1 $};
+      \node (3) at (2,2) {$ La_1 $};
+      \node (4) at (0,1) {$ L0 $};
+      \node (5) at (1,1) {$ y'_1 $};
+      \node (6) at (2,1) {$ La_1 $};
+      \node (7) at (0,0) {$ L0 $};
+      \node (8) at (1,0) {$ y''_1 $};
+      \node (9) at (2,0) {$ La_1 $};
+       \draw [->] (1) to node [] {\scriptsize{$  $}} (2);
+      \draw [->] (3) to node [] {\scriptsize{$  $}} (2);
+      \draw [->] (4) to node [] {\scriptsize{$  $}} (5);
+      \draw [->] (6) to node [] {\scriptsize{$  $}} (5);
+      \draw [->] (7) to node [] {\scriptsize{$  $}} (8);
+      \draw [->] (9) to node [] {\scriptsize{$  $}} (8);
+      \draw [->] (4) to node [] {\scriptsize{$ = $}} (1);
+      \draw [->] (4) to node [] {\scriptsize{$ = $}} (7);
+      \draw [>->] (2) to node [] {\scriptsize{$  $}} (5);
+      \draw [->] (2) to node [] {\scriptsize{$  $}} (8);
+      \draw [->] (6) to node [] {\scriptsize{$ \cong  $}} (3);
+      \draw [->] (6) to node [] {\scriptsize{$ \cong $}} (9);
+    \end{scope}
+    %
+    \begin{scope}[shift={(4,0)}]
+      \node (1) at (0,2) {$ La_{n-1} $};
+      \node (2) at (1,2) {$ y_n $};
+      \node (3) at (2,2) {$ L0 $};
+      \node (4) at (0,1) {$ La_{n-1} $};
+      \node (5) at (1,1) {$ y'_n $};
+      \node (6) at (2,1) {$ L0 $};
+      \node (7) at (0,0) {$ La_{n-1} $};
+      \node (8) at (1,0) {$y''_n $};
+      \node (9) at (2,0) {$ L0 $};
+       \draw [->] (1) to node [] {\scriptsize{$  $}} (2);
+      \draw [->] (3) to node [] {\scriptsize{$  $}} (2);
+      \draw [->] (4) to node [] {\scriptsize{$  $}} (5);
+      \draw [->] (6) to node [] {\scriptsize{$  $}} (5);
+      \draw [->] (7) to node [] {\scriptsize{$  $}} (8);
+      \draw [->] (9) to node [] {\scriptsize{$  $}} (8);
+      \draw [->] (4) to node [] {\scriptsize{$ = $}} (1);
+      \draw [->] (4) to node [] {\scriptsize{$ = $}} (7);
+      \draw [>->] (2) to node [] {\scriptsize{$  $}} (5);
+      \draw [->] (2) to node [] {\scriptsize{$  $}} (8);
+      \draw [->] (6) to node [] {\scriptsize{$ \cong  $}} (3);
+      \draw [->] (6) to node [] {\scriptsize{$ \cong $}} (9);
+    \end{scope}
+    %
+    \node () at (3,5) {$ \dotsm $};
+    \node () at (1,3) {$ \vdots $};
+    \node () at (3,1) {$ \dotsm $};
+    \node () at (5,3) {$ \vdots $};
+  \end{tikzpicture}
+\]
+%
+Then we can compose these squares in any order to get a rewriting on
+the original system $ x $ as desired.
+
+The structure of this paper is as follows.  Section \ref{sec:StrCsp}
+defines structured cospans and looks at the perspective of these as
+objects and as arrows.  In particular, the subsection discussing the
+object perspective contains our first main result, Theorem
+\ref{thm:strcsp-istopos} which states that $ \StrCsp_L $ is a topos.
+Section \ref{sec:rewriting} consists of three parts.  The first is a
+brief overview of double pushout rewriting as applied to topoi.  The
+second part contains our second result, Theorm
+\ref{thm:production-same-rewrite-relation-as-discrete} which is that a
+grammar and its associated discrete grammar have the same rewrite
+relation.  By the associated discrete grammar, we mean that for each
+rule in the grammar, we are restricting the apex $ k $ to its maximal
+interface subobject $ LRk $.  The final part of this section contains
+our main result, Theorem \ref{thm:inductive-rewriting}. 
 
 The author would like to thank John Baez and Fabio Gadducci for
 helpful conversations.

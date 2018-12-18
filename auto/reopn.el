@@ -2,7 +2,7 @@
  "reopn"
  (lambda ()
    (TeX-add-to-alist 'LaTeX-provided-package-options
-                     '(("enumitem" "inline") ("xcolor" "dvipsnames")))
+                     '(("enumitem" "inline") ("xcolor" "dvipsnames") ("hyperref" "pagebackref")))
    (add-to-list 'LaTeX-verbatim-macros-with-braces-local "path")
    (add-to-list 'LaTeX-verbatim-macros-with-braces-local "url")
    (add-to-list 'LaTeX-verbatim-macros-with-braces-local "nolinkurl")
@@ -124,12 +124,11 @@
     "eq:StrCsp-arrows"
     "sec:StrCsp"
     "sec:StrCsp-as-Arrows"
+    "df:strcsp"
     "def:strcsp-arr"
     "ex:open-graph-as-arrow"
     "sec:StrCspAsObject"
-    "df:strcsp"
     "df:morph-of-strcsp"
-    "ex:open-graphs"
     "thm:strcsp-istopos"
     "thm:strcsp-isfunctorial"
     "def:str-csp-functor"
@@ -140,11 +139,11 @@
     "sec:gen-result-graph-rewriting"
     "thm:production-same-rewrite-relation-as-discrete"
     "sec:Rewriting-StrCsp"
+    "fig:idempotentD"
     "thm:rewrite-rel-is-additive"
     "thm:inductive-rewriting")
    (LaTeX-add-bibitems
     "StrCsp"
-    "NetMods"
     "PassiveNets"
     "MrkvProc"
     "RxNets"
@@ -156,7 +155,6 @@
     "Ehrig_GraphGram"
     "DecorCsp"
     "Gadd_IndGraphTrans"
-    "DblPushoutRevis"
     "LackSobo_Adhesive"
     "LackSobo_ToposIsAdh"
     "ShulDblCat"
@@ -173,7 +171,8 @@
     "example"
     "definition")
    (LaTeX-add-xcolor-definecolors
-    "editcolour"
-    "hrefcolour"))
+    "myurlcolor"
+    "mycitecolor"
+    "myrefcolor"))
  :latex)
 

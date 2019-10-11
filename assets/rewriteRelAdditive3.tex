@@ -1,0 +1,43 @@
+\begin{center} \begin{tikzpicture}[scale=0.8]
+  \node (1t) at (0,2) {$ \ell_1 $};
+  \node (2t) at (2,2) {$ k_1 $};
+  \node (3t) at (4,2) {$ r1 $};
+  \node () at (5,1) {$ \cdots $};
+  \node (4t) at (6,2) {$ r_n $};
+  \node (5t) at (8,2) {$ \ell'_1 $};
+  \node (6t) at (10,2) {$ k'_1 $};
+  \node (7t) at (12,2) {$ r'_1 $};
+  \node () at (13,1) {$ \cdots $};
+  \node (8t) at (14,2) {$ k'_m $};
+  \node (9t) at (16,2) {$ r'_m $};
+  % 
+  \node (1b) at (0,0) {$ x+x' $};
+  \node (2b) at (2,0) {$ d_1+x' $};
+  \node (3b) at (4,0) {$ w_1+x' $};
+  \node (5b) at (7,0) {$ y+x' $};
+  \node (6b) at (10,0) {$ y+d'_1 $};
+  \node (7b) at (12,0) {$ y+w'_1 $};
+  \node (8b) at (14,0) {$ y+d'_m $};
+  \node (9b) at (16,0) {$ y+y' $};
+  % 
+  \draw [cd]
+    (2t) edge[] (1t)
+    (2t) edge[] (3t)
+    (6t) edge[] (5t)
+    (6t) edge[] (7t)
+    (8t) edge[] (9t) 
+    (2b) edge[] (1b)
+    (2b) edge[] (3b)
+    (6b) edge[] (5b)
+    (6b) edge[] (7b)
+    (8b) edge[] (9b) 
+    (1t) edge[] (1b)
+    (2t) edge[] (2b)
+    (3t) edge[] (3b)
+    (4t) edge[] (5b)
+    (5t) edge[] (5b)
+    (6t) edge[] (6b)
+    (7t) edge[] (7b)
+    (8t) edge[] (8b)
+    (9t) edge[] (9b);      
+  \end{tikzpicture} \end{center}

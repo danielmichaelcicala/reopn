@@ -1,0 +1,33 @@
+%
+  \begin{equation} \label{eq:prod-rewrite-2}
+  \begin{tikzpicture}
+    \node (01) at (0,2) {$ \ell $};
+    \node (11) at (2,2) {$ k $};
+    \node (21) at (4,2) {$ \flat k $};
+    \node (31) at (6,2) {$ k $};
+    \node (41) at (8,2) {$ r $};
+    \node (00) at (0,0) {$ g $};
+    \node (10) at (2,0) {$ d $};
+    \node (20) at (4,0) {$ w $};
+    \node (30) at (6,0) {$ d $};
+    \node (40) at (8,0) {$ h $};
+    %
+    \draw [cd] (11) to node [] {\scriptsize{$  $}} (01);
+    \draw [cd] (21) to node [] {\scriptsize{$  $}} (11);
+    \draw [cd] (21) to node [] {\scriptsize{$  $}} (31);
+    \draw [cd] (31) to node [] {\scriptsize{$  $}} (41);
+    \draw [cd] (10) to node [] {\scriptsize{$  $}} (00);
+    \draw [cd] (20) to node [] {\scriptsize{$  $}} (10);
+    \draw [cd] (20) to node [] {\scriptsize{$  $}} (30);
+    \draw [cd] (30) to node [] {\scriptsize{$  $}} (40);
+    \draw [cd] (01) to node [] {\scriptsize{$  $}} (00);
+    \draw [cd] (11) to node [] {\scriptsize{$  $}} (10);
+    \draw [cd] (21) to node [] {\scriptsize{$  $}} (20);
+    \draw [cd] (31) to node [] {\scriptsize{$  $}} (30);
+    \draw [cd] (41) to node [] {\scriptsize{$  $}} (40);
+    %
+    \draw (0.3,0.4) -- (0.4,0.4) -- (0.4,0.3);
+    \draw (2.3,0.4) -- (2.4,0.4) -- (2.4,0.3);
+    \draw (5.7,0.4) -- (5.6,0.4) -- (5.6,0.3);
+    \draw (7.7,0.4) -- (7.6,0.4) -- (7.6,0.3);
+  \end{tikzpicture}\end{equation}

@@ -1,0 +1,14 @@
+\[
+  \begin{tikzpicture}
+    \node (l) at (0,2) {$ \ell $};
+    \node (k) at (2,2) {$ k $};
+    \node (g) at (0,0) {$ g $};
+    \node (d) at (2,0) {$ d $};
+    \draw [cd]
+       (k) edge node[]{$  $}      (l)
+       (k) edge node[]{$  $}      (d)
+       (l) edge node[left]{$ m $} (g)
+       (d) edge node[]{$  $}      (g); 
+    \draw (0.3,0.4) -- (0.4,0.4) -- (0.4,0.3);
+  \end{tikzpicture}
+\]

@@ -1,0 +1,20 @@
+%
+  \begin{center}\begin{tikzpicture}
+    \node (1t) at (0,2) {$ \ell $};
+    \node (2t) at (2,2) {$ LRk $};
+    \node (3t) at (4,2) {$ r $};
+    \node (1b) at (0,0) {$ g $};
+    \node (2b) at (2,0) {$ d $};
+    \node (3b) at (4,0) {$ h $};
+    \draw [cd] (2t) to (1t);
+    \draw [cd] (2t) to (3t);
+    \draw [cd] (2b) to (1b);
+    \draw [cd] (2b) to (3b);
+    \draw [cd] (1t) to (1b);
+    \draw [cd] (2t) to (2b);
+    \draw [cd] (3t) to (3b);
+    %
+    \draw (0.3,0.4) -- (0.4,0.4) -- (0.4,0.3);
+    \draw (3.7,0.4) -- (3.6,0.4) -- (3.6,0.3);
+  \end{tikzpicture} \end{center}
+  % 

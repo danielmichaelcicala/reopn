@@ -1,0 +1,27 @@
+\[
+    \begin{tikzpicture}
+    \node (a) at (0,4) {$ La $};
+    \node (b) at (2,4) {$ x $};
+    \node (c) at (4,4) {$ Lb $};
+    \node (x) at (0,2) {$ Lc $};
+    \node (y) at (2,2) {$ y $};
+    \node (z) at (4,2) {$ Ld $};
+    \node (d) at (0,0) {$ Le $};
+    \node (e) at (2,0) {$ z$};
+    \node (f) at (4,0) {$ Lf $};
+    %    
+    \draw [>->] (y) to (b);
+    \draw [>->] (e) to (y);
+    \draw[cd]
+    (a) edge[] (b)
+    (x) edge[] (y)
+    (d) edge[] (e)
+    (c) edge[] (b)
+    (z) edge[] (y)
+    (f) edge[] (e)
+    (x) edge[] node[left]{$ \iso $}  (a)
+    (z) edge[] node[right]{$ \iso $} (c)
+    (x) edge[] node[left]{$ \iso $}  (d)
+    (z) edge[] node[right]{$ \iso $} (f) ;
+  \end{tikzpicture}
+  \]

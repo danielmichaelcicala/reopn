@@ -1,0 +1,38 @@
+\begin{center}\begin{tikzpicture}
+    \begin{scope}
+      \node (1) at (-2,1) {\( La \)};
+      \node (2) at (0,1) {\( x \)};
+      \node (3) at (2,1) {\( Lb \)};
+      \node (4) at (-2,0) {\( Lc \)};
+      \node (5) at (0,0) {\( y \)};
+      \node (6) at (2,0) {\( Ld \)};
+      \draw [cd]
+        (1) to node [above] {$ m $}  (2)
+        (3) to node [above] {$ n $}  (2)
+        (4) to node [above] {$ o $}  (5)
+        (6) to node [above] {$ p $}  (5)
+        (1) to node [left]  {$ Lf $} (4)
+        (2) to node [left]  {$ g $}  (5)
+        (3) to node [left]  {$ Lh $} (6);
+    \end{scope}
+    % 
+    \begin{scope}[shift={(3,0)}]
+      \node (1) at (0,0.5) { $ \xmapsto{ \Theta } $ };
+    \end{scope}
+    % 
+    \begin{scope}[shift={(6.5,0)}]
+        \node (1) at (-2,1) {\( L'G'a \)};
+        \node (2) at (0,1) {\( Gx \)};
+        \node (3) at (2,1) {\( L'G'b \)};
+        \node (4) at (-2,0) {\( L'G'c \)};
+        \node (5) at (0,0) {\( Gy \)};
+        \node (6) at (2,0) {\( L'G'd \)};
+        \draw [->] (1) to node [above] {\scriptsize{\( Gm \)}} (2);
+        \draw [->] (3) to node [above] {\scriptsize{\( Gn \)}} (2);
+        \draw [->] (4) to node [above] {\scriptsize{\( Go \)}} (5);
+        \draw [->] (6) to node [above] {\scriptsize{\( Gp \)}} (5);
+        \draw [->] (1) to node [left] {\scriptsize{\( L'G'f \)}} (4);
+        \draw [->] (2) to node [left] {\scriptsize{\( Gg \)}} (5);
+        \draw [->] (3) to node [left] {\scriptsize{\( L'G'h \)}} (6);  
+    \end{scope}
+  \end{tikzpicture}\end{center}

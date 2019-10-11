@@ -1,0 +1,1757 @@
+\chapter{Decomposing systems}
+\label{sec:structural-induction}
+
+The idea of decomposing a whole into parts has long been
+useful. It exists across so many human disciplines, be it
+academic, artistic, or artisanal. A biologist decomposes
+life-forms into genuses and species. A literary critic
+decomposed a play into acts and scenes. A sommelier
+decomposes a wine into color, viscosity, aroma, and
+taste. In this chapter, as do the biologist, critic, and
+sommelier, we decompose. Though for us, we decompose a
+closed system into open sub-systems.
+
+This may seem to conflict with the aim of this thesis, which
+is to advance a theory of open systems. However, we still
+recognize the value of closed systems. We just believe that
+our ideas on open systems are useful for closed systems.
+
+As mathematicians, we must bring rigor to our
+decomposition. In this chapter, we do just that. We start
+by formalizing closed systems as structured cospans with an
+empty interface $ 0 \to x \gets 0 $. Then,
+using the fine rewriting paradigm from Chapter
+\ref{sec:fine-rewriting}, we place structured cospans into
+the double category $ _L \FFFineRewrite $ as horizontal
+1-arrows.  To decompose a closed system
+\[
+  L0 \to x \gets L0
+\]
+is to write an arrow as a composite of arrows
+\[
+  L0 \to x_1 \gets La_1 \to x_2 \gets La_2
+  \dotsm La_{n-1} \to x_n \gets L0
+\]
+We use such decompositions to prove our main result which states that two structured cospans
+\[
+  L0 \to x \gets L0
+  \quad \text{and} \quad
+  L0 \to x' \gets L0
+\]
+are equivalent precisely when there is a square between
+them.  We interpret this result in three ways.
+
+\begin{enumerate}
+\item It shows that the rewriting relation for a closed system
+  is functorial and is characterized using squares in a double
+  category.
+\item A closed system decomposes into open systems, and
+  simplifying each open system simplifies the composite
+  closed system.  
+\item Open systems provide a local perspective on the closed
+  perspective via this decomposition.
+\end{enumerate}
+
+There are two main thrusts to this proof.  The first
+generalizes a classification of formal graph grammars given
+by Ehrig, et.~al. \cite{ehrig_graph-grammars}. This is
+Theorem \ref{thm:production-same-rewrite-relation-as-discrete}.
+Gadducci and Heckel proved this in the case of graphs
+\cite{gadducci_ind-graph-transf}, but our result generalizes
+this to structured cospans. Our proof mirrors theirs.
+
+
+% =====================================================
+\section{Expressiveness of underlying discrete grammars}
+\label{sec:gen-result-graph-rewriting}
+% =====================================================
+
+As mentioned above, we want to decompose closed systems into
+open systems.  We did not yet mention which open systems are
+available to use. This depends on context.  That is,
+whatever type of system one has, there is an appropriate
+grammar stipulated by a theory that describes that
+system. To illustrate, for an electrical system, a
+corresponding grammar would have rules for adding resistors
+in series, or adding the reciprocal of resistors in
+parallel. Therefore, our starting data is a grammar
+$ ( \X , P ) $---a topos $ \X $ and a set of fine rewrite
+rules $ P \bydef \{ \ell_j \gets k_j \to r_j \} $---plus a
+closed system $ x $ in $ \X $.  Eventually entering the
+story is a topos $ \A $ of input types and an adjunction
+between $ \A $ and $ \X $.  For now, however, we focus on the
+set of rewrite rules $ P $.
+
+We can prove the main result of this section, Theorem
+\ref{thm:production-same-rewrite-relation-as-discrete}, by
+controlling the form of the rewrite rules.  In particular,
+we want the intermediary of the rules, the $ k_j $'s, to be
+`discrete'. In what follows, we discuss what we mean by
+`discrete' and show that the grammar obtained by
+discretizing $ ( \X,P ) $ is just as expressive as
+$ ( \X,P ) $, by which we mean that the induced rewriting
+relations are equal. This result generalizes a
+characterization of discrete \emph{graph grammars} given by
+Ehrig, et.~al. \cite[Prop.~3.3]{ehrig_graph-grammars}.
+
+Our concept of `discreteness' is borrowed from the flat
+modality on a local topos. However, we avoid the lengthy
+detour required to discuss the `flat modality' and a `local
+topos'. The background does not add to our story, so we
+point curious readers elsewhere
+\cite[Ch.~C3.6]{johnstone_elephant}. By avoiding that
+detour, we instead require the concept of a comonad, which
+we present in Definition \ref{def:(co)monad}.
+
+To start our discussion on discreteness, we define a
+`discrete comonad'. The definition is straightforward enough,
+but its purpose may seem alien at first. After the
+definition, we explain its role in rewriting structured
+cospans.
+
+\begin{definition}[Discrete comonad]
+  \label{def:discrete-comonad}
+  A comonad on a topos is called \defn{discrete} if its
+  counit is monic. We use $ \flat $ to denote a discrete comonad.  
+\end{definition}
+
+Secretly, we have been working with a discrete comonad all
+along. The adjunction
+\[
+  \adjunction{\Set}{\RGraph}{L}{R}{4}
+\]
+induces the comonad $ LR $ on $ \RGraph $.  Applying $ LR $ to
+a graph $ x $ returns the edgeless graph underlying $
+x $, hence the term `discrete'. For example
+\begin{center}
+  \begin{tikzpicture}
+    \begin{scope}
+      \node (a) at (0,2) {$ \bullet $};
+      \node (b) at (2,1) {$ \bullet $};
+      \node (c) at (0,0) {$ \bullet $};
+      %
+      \draw [graph] 
+        (a) edge[] (b)
+        (a) edge[] (c)
+        (b) edge[] (c);
+      %
+      \draw [rounded corners] (-1,-1) rectangle (3,3);
+    \end{scope}
+    %
+    \begin{scope}[shift={(6,0)}]
+      \node (a) at (0,2) {$ \bullet $};
+      \node (b) at (2,1) {$ \bullet $};
+      \node (c) at (0,0) {$ \bullet $};
+      %
+      \draw [rounded corners] (-1,-1) rectangle (3,3);
+    \end{scope}
+    %
+    \draw [|->] (3.5,1) to node[above]{$ LR $} (4.5,1);
+  \end{tikzpicture}
+\end{center}
+The counit $ \epsilon_x \from LRx \to x $ of the comonad
+$ LR $ includes the underlying edgeless graph $ LRx $ into
+the original graph $ x $. For example
+\begin{center}
+  \begin{tikzpicture}
+    \begin{scope}
+      \node (a) at (0,2) {$ \bullet $};
+      \node (b) at (2,1) {$ \bullet $};
+      \node (c) at (0,0) {$ \bullet $};
+      %
+      \draw [rounded corners] (-1,-1) rectangle (3,3);
+    \end{scope}
+    %
+    \begin{scope}[shift={(6,0)}]
+      \node (a) at (0,2) {$ \bullet $};
+      \node (b) at (2,1) {$ \bullet $};
+      \node (c) at (0,0) {$ \bullet $};
+      %
+      \draw [graph] 
+        (a) edge[] (b)
+        (a) edge[] (c)
+        (b) edge[] (c);
+      %
+      \draw [rounded corners] (-1,-1) rectangle (3,3);
+    \end{scope}
+    %
+    \draw [->]
+      (3.5,1) to node[above]{$ \epsilon $} (4.5,1);
+  \end{tikzpicture}
+\end{center}
+
+Abstractly, this inclusion is why we ask for the counit to be monic. The
+property we capture with a discrete comonad comes from the
+systems interpretation of the adjunctions
+\[
+  \adjunction{\A}{\X}{L}{R}{2}
+\]
+between topoi. That is, $ R $ takes a system $ x $,
+identifies the largest sub-system that can serve as an
+interface and turns that sub-system into an interface type
+$ Rx $. Then $ L $ takes that interface type and turns it
+back into a system $ LRx $. This process effectively strips
+away every part of a system leaving only those parts that
+can connect to the outside world. That means $ LRx $ is a
+part of $ x $ or, in the parlance of category theory,
+$ LRx $ is a subobject of $ x $.  Hence, we ask for a monic
+counit.
+
+How do we plan to use discrete comonads?  We use them to
+control the form of our grammars.  In general, a rewrite
+rule has form
+\[
+  \ell \gets k \to r
+\]
+where there are no restrictions on what $ k $ can be.
+However, recall that $ k $ identifies the part of $ \ell $
+that is fixed throughout the rewrite. It does not direct how
+the rewrite is performed.  Therefore, we can deform it a bit
+without changing the outcome of the applying the rewrite.
+In particular, we can discretize it by replacing $ k $ with
+$ \flat k $.  And because $ \flat $ has a monic counit, we
+can insert $ \flat k $ right into the middle of the
+fine rewrite rule.
+
+\begin{definition}[Discrete grammar]
+  Given a grammar $ ( \X , P ) $, define the set $ P_\flat $
+  as consisting of the rules
+  \[
+    \ell \gets k \gets \flat k \to k \to r
+  \]
+  for each rule $ \ell \gets k \to r $ in $ P $. We call $
+  ( X , P_\flat ) $ the \defn{discrete grammar} underlying $
+  ( \X, P ) $.
+\end{definition}
+
+Discrete grammars are easier to work with than arbitrary
+grammars. So when given an opportunity to work with a
+discrete grammar instead of a non-discrete grammar, we
+should take it. Theorem
+\ref{thm:production-same-rewrite-relation-as-discrete} gives
+a sufficient condition that allows us to swap $ ( \X,P ) $
+for $ ( \X,P_\flat ) $ without consequence. To prove this,
+however, we borrow from lattice theory which requires that
+we make a brief turn to fill in some required background.
+
+\begin{definition}[Lattice]
+  A lattice is a poset $ ( S, \leq ) $ equipped with all
+  finite joins $ \bigvee $ and all finite meets
+  $ \bigwedge $. It follows that there is a minimal element
+  and maximal element, realized as the empty meet and join
+  respectively, which we denote by $ 0 $ and $ 1 $.
+\end{definition}
+
+Joins and meets are also known as suprema and infima. We are
+using the definition of a lattice common in the category
+theory literature. This leaves out objects that some
+mathematicians might consider lattices. Below we give one
+counter-example and several examples of lattices, the last
+one being the most relevant.
+
+\begin{example}[Integer Lattice]
+  The integers with the usual ordering $ \leq $ do not form
+  a lattice because there is no minimal or maximal element.
+\end{example}
+
+\begin{example}[Lattice of power sets]
+  For any set $ S $, its powerset $ \mathcal{P}S $ is a
+  poset via subset inclusion. The powerset becomes a lattice
+  by taking join to be union $ a \vee b \bydef a \cup b $,
+  and meet to be intersection $ a \wedge b \bydef a \cap b
+  $. In general, union and intersection are defined over
+  arbitrary sets, thus realizing arbitrary joins
+  $ \bigvee a_\alpha $ and arbitrary meets
+  $ \bigwedge a_\alpha $. 
+\end{example}
+
+Those few examples provide intuition about lattices, but the
+next example is the most important lattice for us. It is the
+mechanism by which the power set is generalized into topos
+theory. It is called the subobject lattice.
+
+\begin{example}[Subobject lattice]
+  Let $ \T $ be a topos and $ t $ be an object. There is a
+  lattice $ \Sub (t) $ called the subobject lattice of
+  $ t $.  The elements of $ \Sub (t) $ are called subobjects.
+  They are isomorphism classes of monomorphisms into $ t
+  $. Here, two monomorphisms $ f,g $ into $ t $ are isomorphic if
+  there is a commuting diagram
+  \begin{center}
+    \begin{tikzpicture}
+      \node (a) at (-1,2) {$ a $};
+      \node (b) at (1,2) {$ b $};
+      \node (t) at (0,0) {$ t $};
+      \draw [cd] 
+      (a) edge[] node[left]{$ f $} (t)
+      (b) edge[] node[right]{$ g $} (t)
+      (a) edge[] node[above]{$ \iso $} (b); 
+    \end{tikzpicture}
+  \end{center}
+  The order on $ \Sub (t) $ is given by $ f \leq g $ if
+  $ f $ factors through $ g $, meaning there is an arrow
+  $ h \from a \to b $ such that $ f = gh $. Note that $ h $
+  is necessarily monic. The meet operation in $ \Sub (t) $ is given by
+  pullback
+  \begin{center}
+    \begin{tikzpicture}
+      \node (ab) at (0,2) {$ a \vee b $};
+      \node (a)  at (0,0) {$ a $};
+      \node (b)  at (2,2) {$ b $};
+      \node (t)  at (2,0) {$ t $};
+      %
+      \draw [cd] 
+      (ab) edge[] (a)
+      (ab) edge[] (b)
+      (a)  edge[] (t)
+      (b)  edge[] (t);
+      \draw [->,dashed] (ab) edge (t) ;
+      %
+      \draw (0.3,1.6) -- (0.4,1.6) -- (0.4,1.7);
+    \end{tikzpicture}
+  \end{center}
+  and join is given by pushout over the meet
+  \begin{center}
+    \begin{tikzpicture}
+      \node (ab) at (0,2) {$ a \vee b $};
+      \node (a)  at (0,0) {$ a $};
+      \node (b)  at (2,2) {$ b $};
+      \node (t)  at (2,0) {$ a \wedge b $};
+      \node (tt) at (4,-2) {$ t $};
+      %
+      \draw [cd] 
+      (ab) edge[]           (a)
+      (ab) edge[]           (b)
+      (a)  edge[]           (t)
+      (b)  edge[]           (t)
+      (a)  edge[bend right] (tt)
+      (b)  edge[bend left]  (tt);
+      \draw [->,dashed] (t) edge (tt) ;
+      %
+      \draw (1.7,0.4) -- (1.6,0.4) -- (1.6,0.3);
+    \end{tikzpicture}
+  \end{center}
+\end{example}
+
+We use subobject lattices to characterize which grammars are
+as expressive as their underlying discrete grammars. To do
+this, we require subobject lattices with arbitrary meets.  The
+powerset lattice mentioned above has this property, but
+when do subobject lattices have this property?  Here are
+several sufficient conditions, starting with a well-known
+result coming from the domain of order theory.
+
+\begin{proposition} \label{thm:lattice-alljoins-allmeets}
+  Any lattice that has all joins also has all meets.
+\end{proposition}
+
+\begin{proof}
+  Consider a subset $ S $ of a lattice. Define the meet of $
+  S $ to be the join of the set of all lower bounds of $ S $.
+\end{proof}
+
+\begin{proposition} \label{thm:subob-arbitrary-meets}
+  Consider a topos $ \T $ and object $ t $.  The subobject
+  lattice $ \Sub (t) $ has arbitrary meets when the over
+  category $ T \downarrow t $ has all products.
+\end{proposition}
+
+\begin{proof}
+  Because $ T \downarrow t $ is a topos, it has
+  equalizers. Thus giving it all products ensures the
+  existence of all limits, hence meets. 
+\end{proof}
+
+\begin{corollary}
+  Consider a topos $ \T $ and object $ t $.  The subobject
+  lattice $ \Sub (t) $ has arbitrary meets when the over
+  category $ T \downarrow t $ has all coproducts.
+\end{corollary}
+
+\begin{proof}
+  Combine Propositions \ref{thm:lattice-alljoins-allmeets}
+  and \ref{thm:subob-arbitrary-meets}.
+\end{proof}
+
+\begin{corollary}
+  Consider a presheaf category $ \Set^{ \C^{\op} } $ on a
+  small category $ \C $. For any presheaf $ x $,
+  $ \Sub (x) $ has all meets.
+\end{corollary}
+
+\begin{proof}
+  The category $ \Set^{ \C^{\op} } \downarrow x $ of
+  presheaves over $ x $ is again a presheaf category by
+  Theorem \ref{thm:presheaf-slice-is-presheaf} so has all
+  products.
+\end{proof}
+
+At last, we combine the discrete comonad, the discrete
+grammar, and the complete subobject lattice into a result on
+the expressiveness on discrete grammars.
+
+\begin{theorem}
+  \label{thm:production-same-rewrite-relation-as-discrete}  
+  Let $ \T $ be a topos and $ \flat \from \T \to \T $ be a
+  discrete comonad.  Let $ ( \T , P ) $ be a grammar such
+  that for every rule $ \ell \gets k \to r $ in $ P $, the
+  subobject lattice $ \Sub (k) $ has all meets. Then the
+  rewriting relation for $ ( \T , P ) $ equals the
+  rewriting relation for the underlying discrete grammar
+  $ ( \T,P_\flat ) $.
+\end{theorem}
+
+\begin{proof}
+  Suppose that $ ( \T,P ) $ induces $ \dderiv{g}{h} $. That
+  means there exists a rule $ \spn{\ell}{k}{r} $ in $ P $
+  and a derivation
+  \begin{equation} \label{eq:prod-rewrite-1}
+  \begin{tikzpicture}
+    \node (1t) at (0,2) {$ \ell $};
+    \node (2t) at (2,2) {$ k $};
+    \node (3t) at (4,2) {$ r $};
+    \node (1b) at (0,0) {$ g $};
+    \node (2b) at (2,0) {$ d $};
+    \node (3b) at (4,0) {$ h $};
+    \draw [cd]
+      (2t) edge (1t)
+      (2t) edge (3t)
+      (2b) edge (1b)
+      (2b) edge (3b)
+      (1t) edge (1b)
+      (2t) edge (2b)
+      (3t) edge (3b);
+      %
+      \draw (0.3,0.4) -- (0.4,0.4) -- (0.4,0.3);
+      \draw (3.7,0.4) -- (3.6,0.4) -- (3.6,0.3);
+    \end{tikzpicture}
+  \end{equation}
+  we can achieve that same derivation using rules in
+  $ P_\flat $. This requires we build a pushout complement
+  $ w $ of the diagram
+  \begin{center}
+    \begin{tikzpicture}
+      \node (k) at (0,2) {$ k $};
+      \node (bk) at (2,2) {$ \flat k $};
+      \node (d) at (0,0) {$ d $};
+      %
+      \draw [cd]
+        (bk) edge[] node[above]{$ \epsilon $} (k)
+        (k) edge[] (d); 
+    \end{tikzpicture}
+  \end{center}
+  Define
+  \[
+    w \coloneqq
+    \bigwedge \{ z \colon z \vee k = d \} \vee
+    \flat k,
+  \]
+  This comes with inclusions $ \flat k \to w $ and
+  $ w \to d $. This $ w $ exists because $ \Sub (k) $ has
+  all meets.  Note that $ w \vee k = d $ and
+  $ w \wedge k = \flat k $ which means that
+  \begin{center}
+    \begin{tikzpicture}
+      \node (k) at (0,2) {$ k $};
+      \node (bk) at (2,2) {$ \flat k $};
+      \node (d) at (0,0) {$ d $};
+      \node (w) at (2,0) {$ w $};
+      %
+      \draw [cd] 
+      (bk) edge[] (k)
+      (bk) edge[] (w)
+      (k) edge[] (d)
+      (w) edge[] (d);
+      %
+      \draw (0.3,0.4) -- (0.4,0.4) -- (0.4,0.3);
+    \end{tikzpicture}
+  \end{center}
+  is a pushout. It follows that there is a derivation
+  %
+  \begin{equation} \label{eq:prod-rewrite-2}
+  \begin{tikzpicture}
+    \node (01) at (0,2) {$ \ell $};
+    \node (11) at (2,2) {$ k $};
+    \node (21) at (4,2) {$ \flat k $};
+    \node (31) at (6,2) {$ k $};
+    \node (41) at (8,2) {$ r $};
+    \node (00) at (0,0) {$ g $};
+    \node (10) at (2,0) {$ d $};
+    \node (20) at (4,0) {$ w $};
+    \node (30) at (6,0) {$ d $};
+    \node (40) at (8,0) {$ h $};
+    %
+    \draw [cd] (11) to node [] {\scriptsize{$  $}} (01);
+    \draw [cd] (21) to node [] {\scriptsize{$  $}} (11);
+    \draw [cd] (21) to node [] {\scriptsize{$  $}} (31);
+    \draw [cd] (31) to node [] {\scriptsize{$  $}} (41);
+    \draw [cd] (10) to node [] {\scriptsize{$  $}} (00);
+    \draw [cd] (20) to node [] {\scriptsize{$  $}} (10);
+    \draw [cd] (20) to node [] {\scriptsize{$  $}} (30);
+    \draw [cd] (30) to node [] {\scriptsize{$  $}} (40);
+    \draw [cd] (01) to node [] {\scriptsize{$  $}} (00);
+    \draw [cd] (11) to node [] {\scriptsize{$  $}} (10);
+    \draw [cd] (21) to node [] {\scriptsize{$  $}} (20);
+    \draw [cd] (31) to node [] {\scriptsize{$  $}} (30);
+    \draw [cd] (41) to node [] {\scriptsize{$  $}} (40);
+    %
+    \draw (0.3,0.4) -- (0.4,0.4) -- (0.4,0.3);
+    \draw (2.3,0.4) -- (2.4,0.4) -- (2.4,0.3);
+    \draw (5.7,0.4) -- (5.6,0.4) -- (5.6,0.3);
+    \draw (7.7,0.4) -- (7.6,0.4) -- (7.6,0.3);
+  \end{tikzpicture}
+\end{equation}
+with respect to $ P_\flat $ because, the top row is a rule in
+$ P_\flat $.  Therefore, $ \dderiv{g}{h} $ via $ P $ in
+Diagram \eqref{eq:prod-rewrite-1} implies that
+$ \deriv{g}{h} $ via $ P_\flat $ as shown in Diagram
+\eqref{eq:prod-rewrite-2}.
+
+For the other direction, suppose $ \dderiv{g}{h} $ via $
+P_\flat $, giving a derivation
+\begin{equation}
+  \label{eq:prod-rewrite-3}
+  \begin{tikzpicture}
+    \node (1t) at (0,2) {$ \ell $};
+    \node (2t) at (2,2) {$ \flat k $};
+    \node (3t) at (4,2) {$ r $};
+    \node (1b) at (0,0) {$ g $};
+    \node (2b) at (2,0) {$ d $};
+    \node (3b) at (4,0) {$ h $};
+    \draw [cd]
+      (2t) edge                          (1t)
+      (2t) edge                          (3t)
+      (2b) edge node[below]{$ \psi $}    (1b)
+      (2b) edge                          (3b)
+      (1t) edge node[left]{$ m $}        (1b)
+      (2t) edge node[left]{$ \theta $}   (2b)
+      (3t) edge node[right]{$ m' $}      (3b);
+      %
+      \draw (0.3,0.4) -- (0.4,0.4) -- (0.4,0.3);
+      \draw (3.7,0.4) -- (3.6,0.4) -- (3.6,0.3);
+  \end{tikzpicture}
+\end{equation}
+By construction of $ P_\flat $, the rule
+$ \spn{\ell}{\flat k}{r} $ in $ P_\flat $ was induced from a
+rule
+\[
+  \ell \xgets{\tau} k \to r
+\]
+in $ P $, meaning that the map $ \flat k \to \ell $ factors
+through $ \tau $. Next, define $ d' $ to be the pushout of the diagram
+\begin{center}
+  \begin{tikzpicture}
+    \node (flatk) at (0,2) {$ \flat k $};
+    \node (k)     at (2,2) {$ k $};
+    \node (d)     at (0,0) {$ d $};
+    \node (d')    at (2,0) {$ d' $};
+    %
+    \draw [cd] 
+    (flatk) edge[] node[above]{$ \epsilon $}       (k)
+    (flatk) edge[] node[left]{$ \theta $}          (d)
+    (d)     edge[] node[below]{$ \hat{\epsilon} $} (d')
+    (k)     edge[] node[right]{$ \hat{\theta} $}   (d');
+    %
+    \draw (1.7,0.4) -- (1.6,0.4) -- (1.6,0.3);
+  \end{tikzpicture}
+\end{center}
+By invoking the universal property of this pushout with the
+maps
+\[
+  \psi \from d \to g
+  \quad \text{and} \quad
+  m \tau \from k \to \ell \to g,
+\]
+we get a canonical map $ d' \to g $ that we can fit into a
+commuting diagram
+\begin{center}
+  \begin{tikzpicture}
+    \node (l) at (0,2) {$ \ell $};
+    \node (g) at (0,0) {$ g $};
+    \node (k) at (2,2) {$ k $};
+    \node (d') at (2,0) {$ d' $};
+    \node (flatk) at (1,3) {$ \flat k $};
+    \node (d) at (1,1) {$ d $};
+    \draw [cd] 
+      (flatk) edge[] (l)
+      (flatk) edge[] node[right]{$ \epsilon $} (k)
+      (flatk) edge[] node[left,pos=0.7]{$ \theta $} (d)
+      (d) edge[] node[below,pos=0.3]{$ \psi $}     (g)
+      (d) edge[] node[below,pos=0.3]{$ \hat{\epsilon} $} (d')
+      (l) edge[] node[left]{$ m $} (g)
+      (k) edge[] node[right]{$ \hat{\theta} $} (d')
+      (d') edge[] (g);
+    \draw [white,line width=0.5em] (k) -- (l);
+    \draw [cd] (k) to node[above,pos=0.3]{$ \tau $} (l);
+    %
+    \draw (0.2,0.6) -- (0.3,0.7) -- (0.3,0.6);
+    \draw (1.8,0.6) -- (1.7,0.7) -- (1.7,0.6);
+  \end{tikzpicture}
+\end{center}
+whose back faces are pushouts. Using a standard diagram
+chasing argument, we can show that the front face is also a
+pushout.  Similarly, the square
+\begin{center}
+  \begin{tikzpicture}
+    \node (k) at (0,2) {$ k $};
+    \node (r) at (2,2) {$ r $};
+    \node (d') at (0,0) {$ d' $};
+    \node (h) at (2,0) {$ h $};
+    %
+    \draw [cd] 
+    (k) edge[] (r)
+    (k) edge[] (d')
+    (d') edge[] (h)
+    (r) edge[] (h);
+    %
+    \draw (1.7,0.4) -- (1.6,0.4) -- (1.6,0.3);
+  \end{tikzpicture}
+\end{center}
+is a pushout.  Sticking these two pushouts together
+\begin{center}
+  \begin{tikzpicture}
+    \node (1t) at (0,2) {$ \ell $};
+    \node (2t) at (2,2) {$ k $};
+    \node (3t) at (4,2) {$ r $};
+    \node (1b) at (0,0) {$ g $};
+    \node (2b) at (2,0) {$ d' $};
+    \node (3b) at (4,0) {$ h $};
+    \draw [cd]
+      (2t) edge                     (1t)
+      (2t) edge                     (3t)
+      (2b) edge                     (1b)
+      (2b) edge                     (3b)
+      (1t) edge node[left]{$ m $}   (1b)
+      (2t) edge node[left]{$ f $}   (2b)
+      (3t) edge node[right]{$ m' $} (3b);
+      %
+    \draw (0.3,0.4) -- (0.4,0.4) -- (0.4,0.3);
+    \draw (3.7,0.4) -- (3.6,0.4) -- (3.6,0.3);
+  \end{tikzpicture}
+\end{center}
+shows that $ \dderiv{g}{h} $ arises from $ P $.
+
+Because the relation $ \dderiv{}{} $ is the same for
+$ P $ and $ P_\flat $, it follows that $ \deriv{}{} $ is
+also the same as claimed.
+\end{proof}
+
+% ===========================================
+\section{Rewriting structured cospans}
+\label{sec:Rewriting-StrCsp}
+% ===========================================
+
+Equipped with knowledge about when grammars and their
+underlying discrete grammars generate the same rewriting
+relation, we continue towards goal of decomposing closed
+systems. First, we revisit Section \ref{sec:rewriting-topoi}
+to get some facts about grammars. We then obtain the
+language associated to a grammar in a functorial
+way. Finally, we show how to decompose into open subsystems a given system
+equipped with a grammar. 
+
+Recall the category $ \Gram $.  The objects of $ \Gram $ are
+pairs $ ( \T , P ) $ where $ \T $ is a topos and $ P $ is a
+set of rewrite rules in $ \T $.  The arrows
+$ (\T , P) \to ( \T' , P' )$ of $ \Gram $ are
+rule-preserving functors $ \T \to \T' $.  Our interest now lies
+in the full subcategory of structured cospan grammars
+$ \StrCspGram $ whose objects are the grammars of form
+$ ( _L \StrCsp , P ) $ where $ P $ consists of fine rewrites
+of structured cospans, meaning they have the form
+ \begin{center}
+   \begin{tikzpicture}
+    \begin{scope}
+        \node (1) at (0,4) {\( La \)};
+        \node (2) at (2,4) {\( x \)};
+        \node (3) at (4,4) {\( La' \)};
+        \node (4) at (0,2) {\( Lb \)};
+        \node (5) at (2,2) {\( y \)};
+        \node (6) at (4,2) {\( Lb' \)};
+        \node (7) at (0,0) {\( Lc \)};
+        \node (8) at (2,0) {\( z \)};
+        \node (9) at (4,0) {\( Lc' \)};
+        \draw [cd] (1) to (2);
+        \draw [cd] (3) to (2);
+        \draw [cd] (4) to (5);
+        \draw [cd] (6) to (5);
+        \draw [cd] (7) to (8);
+        \draw [cd] (9) to (8);
+        \draw [cd] (4) to node[left]{\( \iso \)} (1);
+        \draw [cd] (4) to node[left]{\( \iso \)} (7);
+        \draw [cd,>->] (5) to (2);
+        \draw [cd,>->] (5) to (8);
+        \draw [cd] (6) to node[right]{\( \iso \)} (3);
+        \draw [cd] (6) to node[right]{\( \iso \)} (9);
+    \end{scope}
+  \end{tikzpicture}
+\end{center}
+and the left adjoint $ L $ has a monic counit.
+
+It is on this category $ \StrCspGram $ that we define a
+functor encoding the rewrite relation to each grammar. We
+denote this functor
+\[
+  \Lang \from \StrCspGram \to \DblCat
+\]
+where $ \Lang $ is short for `language'. This is an
+appropriate term as this functor provides \emph{(i)} the
+terms formed by connecting together open systems (instead
+of, in linguistics, concatenating units of syntax) and
+\emph{(ii)} the rules governing how to interchange open
+systems (instead of parts of speech). To help visualize
+this, we sketch a simple example.
+
+\begin{example}
+
+  Start with the, by now familiar, adjunction
+  \[
+    \adjunction{\Set}{\RGraph}{L}{R}{4}
+  \]
+  For this $ L $, $ _L \StrCsp $ is the category of open
+  graphs.  Make a grammar from $ _L \StrCsp $ by defining a
+  $ P $ to have the single rule
+  \begin{center}
+    \begin{tikzpicture}
+      %
+    \begin{scope}[shift={(0,0)}] % up left
+      \node () at (0,0) {$ \bullet $};
+      %
+      \draw [rounded corners] (-1,-1) rectangle (1,1);
+      \node (00r) at (1.1,0) {};
+      \node (00b) at (0,-1.1) {};  
+    \end{scope}
+    %
+    \begin{scope}[shift={(3,0)}] % up mid
+      \node (a) at (0,0) {$ \bullet $};
+      %
+      \draw [graph]
+        (a) edge[loop above] (a);
+      %  
+      \draw [rounded corners] (-1,-1) rectangle (1,1);
+      \node (01l) at (-1.1,0) {};
+      \node (01r) at (1.1,0)  {};
+      \node (01b) at (0,-1.1) {};  
+    \end{scope}
+    %
+    \begin{scope}[shift={(6,0)}] % up right
+      \node () at (0,0) {$ \bullet $};
+      %
+      \draw [rounded corners] (-1,-1) rectangle (1,1);
+      \node (02l) at (-1.1,0) {};
+      \node (02b) at (0,-1.1) {};
+    \end{scope}
+    % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    \begin{scope}[shift={(0,-3)}] % mid left
+      \node () at (0,0) {$ \bullet $};
+      %
+      \draw [rounded corners] (-1,-1) rectangle (1,1);
+      \node (10t) at (0,1.1)   {};
+      \node (10r) at (1.1,0) {};
+      \node (10b) at (0,-1.1)  {};  
+    \end{scope}
+    %
+    \begin{scope}[shift={(3,-3)}] % mid mid
+      \node (a) at (0,0) {$ \bullet $};
+      %
+      \draw [rounded corners] (-1,-1) rectangle (1,1);
+      \node (11l) at (-1.1,0) {};
+      \node (11r) at (1.1,0)  {};
+      \node (11t) at (0,1.1)  {};
+      \node (11b) at (0,-1.1) {};  
+    \end{scope}
+    %
+    \begin{scope}[shift={(6,-3)}] % mid right
+      \node () at (0,0) {$ \bullet $};
+      %
+      \draw [rounded corners] (-1,-1) rectangle (1,1);
+      \node (12l) at (-1.1,0) {};
+      \node (12t) at (0,1.1)    {};  
+      \node (12b) at (0,-1.1)   {};
+    \end{scope}
+    % ~~~~~~~~~~~~~~~~~~~~~
+    \begin{scope}[shift={(0,-6)}] % down left
+      \node () at (0,0) {$ \bullet $};
+      %
+      \draw [rounded corners] (-1,-1) rectangle (1,1);
+      \node (20t) at (0,1.1)   {};
+      \node (20r) at (1.1,0) {};
+      \node (20b) at (0,-1.1)  {};  
+    \end{scope}
+    %
+    \begin{scope}[shift={(3,-6)}] % down mid
+      \node (a) at (0,0) {$ \bullet $};
+      %
+      \draw [rounded corners] (-1,-1) rectangle (1,1);
+      \node (21l) at (-1.1,0) {};
+      \node (21r) at (1.1,0)  {};
+      \node (21t) at (0,1.1)  {};
+      \node (21b) at (0,-1.1) {};  
+    \end{scope}
+    %
+    \begin{scope}[shift={(6,-6)}] % down right
+      \node () at (0,0) {$ \bullet $};
+      %
+      \draw [rounded corners]
+        (-1,-1) rectangle (1,1);
+      \node (22l) at (-1.1,0) {};
+      \node (22r) at (1.1,0)  {};
+      \node (22t) at (0,1.1)  {};
+      \node (22b) at (0,-1.1) {};
+    \end{scope}
+    % ~~~~~~~~~~~~~~~~~~~
+    \path[cd]
+      (00r) edge (01l)
+      (02l) edge (01r)
+      (10r) edge (11l)
+      (12l) edge (11r)
+      (20r) edge (21l)
+      (22l) edge (21r)
+      (00b) edge (10t)
+      (20t) edge (10b)
+      (01b) edge (11t)
+      (21t) edge (11b)
+      (02b) edge (12t)
+      (22t) edge (12b);
+    \end{tikzpicture}
+  \end{center}
+  The language associated to this grammar consists of all
+  open graphs. The rewrite relation says $ \deriv{g}{h} $ if
+  we obtain $ h $ be removing loops from $ g $. We
+  illustrate this with the following square in the double
+  category $ \Lang ( _L \StrCsp , P ) $.
+  \begin{center}
+    \begin{tikzpicture}
+      %
+    \begin{scope}[shift={(0,0)}] % up left
+      \node (a) at (0,-1) {$ \bullet $};
+      \node (b) at (0,1) {$ \bullet $};
+      %
+      \draw [rounded corners] (-2,-2) rectangle (2,2);
+      \node (00r) at (2.1,0) {};
+      \node (00b) at (0,-2.1) {};  
+    \end{scope}
+    %
+    \begin{scope}[shift={(5,0)}] % up mid
+      \node (a) at (-1,-1) {$ \bullet $};
+      \node (b) at (-1,1) {$ \bullet $};
+      \node (c) at (0,0) {$ \bullet $};
+      \node (d) at (1,0) {$ \bullet $};
+      %
+      \draw [graph]
+        (b) edge[loop above] (b)
+        (c) edge[loop above] (c)
+        (a) edge[] (c)
+        (b) edge[] (c)
+        (c) edge[] (d); 
+      %  
+      \draw [rounded corners] (-2,-2) rectangle (2,2);
+      \node (01l) at (-2.1,0) {};
+      \node (01r) at (2.1,0)  {};
+      \node (01b) at (0,-2.1) {};  
+    \end{scope}
+    %
+    \begin{scope}[shift={(10,0)}] % up right
+      \node () at (0,0) {$ \bullet $};
+      %
+      \draw [rounded corners] (-2,-2) rectangle (2,2);
+      \node (02l) at (-2.1,0) {};
+      \node (02b) at (0,-2.1) {};
+    \end{scope}
+    % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    \begin{scope}[shift={(0,-5)}] % mid left
+      \node () at (0,-1) {$ \bullet $};
+      \node () at (0,1) {$ \bullet $};
+      %
+      \draw [rounded corners] (-2,-2) rectangle (2,2);
+      \node (10t) at (0,2.1)   {};
+      \node (10r) at (2.1,0) {};
+      \node (10b) at (0,-2.1)  {};  
+    \end{scope}
+    %
+    \begin{scope}[shift={(5,-5)}] % mid mid
+      \node (a) at (-1,-1) {$ \bullet $};
+      \node (b) at (-1,1) {$ \bullet $};
+      \node (d) at (1,0) {$ \bullet $};
+      %
+      \draw [rounded corners] (-2,-2) rectangle (2,2);
+      \node (11l) at (-2.1,0) {};
+      \node (11r) at (2.1,0)  {};
+      \node (11t) at (0,2.1)  {};
+      \node (11b) at (0,-2.1) {};  
+    \end{scope}
+    %
+    \begin{scope}[shift={(10,-5)}] % mid right
+      \node () at (0,0) {$ \bullet $};
+      %
+      \draw [rounded corners] (-2,-2) rectangle (2,2);
+      \node (12l) at (-2.1,0) {};
+      \node (12t) at (0,2.1)    {};  
+      \node (12b) at (0,-2.1)   {};
+    \end{scope}
+    % ~~~~~~~~~~~~~~~~~~~~~
+    \begin{scope}[shift={(0,-10)}] % down left
+      \node () at (0,-1) {$ \bullet $};
+      \node () at (0,1) {$ \bullet $};
+      %
+      \draw [rounded corners] (-2,-2) rectangle (2,2);
+      \node (20t) at (0,2.1)   {};
+      \node (20r) at (2.1,0) {};
+      \node (20b) at (0,-2.1)  {};  
+    \end{scope}
+    %
+    \begin{scope}[shift={(5,-10)}] % down mid
+      \node (a) at (-1,-1) {$ \bullet $};
+      \node (b) at (-1,1) {$ \bullet $};
+      \node (c) at (0,0) {$ \bullet $};
+      \node (d) at (1,0) {$ \bullet $};
+      %
+      \draw [graph]
+        (a) edge[] (c)
+        (b) edge[] (c)
+        (c) edge[] (d); 
+      %
+      \draw [rounded corners] (-2,-2) rectangle (2,2);
+      \node (21l) at (-2.1,0) {};
+      \node (21r) at (2.1,0)  {};
+      \node (21t) at (0,2.1)  {};
+      \node (21b) at (0,-2.1) {};  
+    \end{scope}
+    %
+    \begin{scope}[shift={(10,-10)}] % down right
+      \node () at (0,0) {$ \bullet $};
+      %
+      \draw [rounded corners] (-2,-2) rectangle (2,2);
+      \node (22l) at (-2.1,0) {};
+      \node (22r) at (2.1,0)  {};
+      \node (22t) at (0,2.1)  {};
+      \node (22b) at (0,-2.1) {};
+    \end{scope}
+    % ~~~~~~~~~~~~~~~~~~~
+    \path[cd]
+      (00r) edge (01l)
+      (02l) edge (01r)
+      (10r) edge (11l)
+      (12l) edge (11r)
+      (20r) edge (21l)
+      (22l) edge (21r)
+      (00b) edge (10t)
+      (20t) edge (10b)
+      (01b) edge (11t)
+      (21t) edge (11b)
+      (02b) edge (12t)
+      (22t) edge (12b);
+    \end{tikzpicture}
+  \end{center}
+\end{example}
+
+To actually construct $ \Lang $, we use functors
+$ D \from \StrCspGram \to \StrCspGram $ and
+$ S \from \StrCspGram \to \DblCat $. Roughly, $ D $ sends a
+grammar $ ( _L \StrCsp , P ) $ to all of the rewrite rules
+derived from $ P $ and $ S $ generates a double category on
+the squares obtained from the rewrite rules of a grammar
+$ ( _L \StrCsp , P ) $. In this way, we get the language of
+a grammar as a double category where the squares are the
+rewrite rules.  The next lemma defines $ D $ and gives some
+of its properties.
+
+\begin{lemma}
+  There is an idempotent functor
+  $ D \from \StrCspGram \to \StrCspGram $ defined as
+  follows. On objects define $ D ( _{L}\StrCsp , P ) $ to be
+  the grammar $ ( _{L} \StrCsp , P_D) $, where $ P_D $
+  consists of all rules $ \spn{g}{h}{d} $ witnessing the
+  relation $ \dderiv{g}{h} $ with respect to
+  $ ( _{L}\StrCsp , P ) $. On arrows, define
+  $ DF \from D( _{L}\StrCsp , P ) \to D( _{L'}\StrCsp , Q )
+  $ to be $ F $.  Moreover, the identity on $ \StrCspGram $
+  is a subfunctor of $ D $.
+\end{lemma}
+
+\begin{proof}
+  That $ D ( _{L}\StrCsp , P ) $ actually gives a grammar
+  follows from the fact that pushouts respect monics in a
+  topos \cite[Lem.~12]{lack-sobo_adhesive-cats}.
+  
+  To show that $ \D $ is idempotent, we show that for any
+  grammar $ ( _{L}\StrCsp , P ) $, we have
+  $ D ( _{L}\StrCsp , P ) = DD ( _{L}\StrCsp , P ) $.  Rules
+  in $ DD ( _{L}\StrCsp , P ) $ appear in the bottom row of a
+  double pushout diagram whose top row is a rule in
+  $ D ( _{L}\StrCsp , P ) $, which in turn is the bottom row
+  of a double pushout diagram whose top row is in
+  $ ( _{L}\StrCsp , P ) $. Thus, a rule in
+  $ DD ( _{L}\StrCsp , P ) $ is the bottom row of a double
+  pushout diagram whose top row is in
+  $ ( _{L}\StrCsp , P ) $. See Figure \ref{fig:idempotentD}.
+
+  \begin{figure}[h]
+    \centering
+    \fbox{
+    \begin{minipage}{\linewidth}
+    \vspace{2em}    
+    \[
+    \begin{tikzpicture}
+      \node (1) at (0,4) {$ g $};
+      \node (2) at (2,4) {$ d $};
+      \node (3) at (4,4) {$ h $};
+      \node (4) at (0,2) {$ g' $};
+      \node (5) at (2,2) {$ d' $};
+      \node (6) at (4,2) {$ h' $};
+      \node (7) at (0,0) {$ g'' $};
+      \node (8) at (2,0) {$ d'' $};
+      \node (9) at (4,0) {$ h'' $};
+      \draw [cd] (2) to node [] {\scriptsize{$  $}} (1);
+      \draw [cd] (2) to node [] {\scriptsize{$  $}} (3);
+      \draw [cd] (5) to node [] {\scriptsize{$  $}} (4);
+      \draw [cd] (5) to node [] {\scriptsize{$  $}} (6);
+      \draw [cd] (8) to node [] {\scriptsize{$  $}} (7);
+      \draw [cd] (8) to node [] {\scriptsize{$  $}} (9);
+      \draw [cd] (1) to node [] {\scriptsize{$  $}} (4);
+      \draw [cd] (2) to node [] {\scriptsize{$  $}} (5);
+      \draw [cd] (3) to node [] {\scriptsize{$  $}} (6);
+      \draw [cd] (4) to node [] {\scriptsize{$  $}} (7);
+      \draw [cd] (5) to node [] {\scriptsize{$  $}} (8);
+      \draw [cd] (6) to node [] {\scriptsize{$  $}} (9);
+      %
+      \draw (0.3,0.4) -- (0.4,0.4) -- (0.4,0.3);
+      \draw (3.7,0.4) -- (3.6,0.4) -- (3.6,0.3);   
+      \draw (0.3,2.4) -- (0.4,2.4) -- (0.4,2.3);
+      \draw (3.7,2.4) -- (3.6,2.4) -- (3.6,2.3);   
+    \end{tikzpicture}
+    \]
+    \caption{Stacked double pushout diagrams}
+    \label{fig:idempotentD}
+  \end{minipage}
+}
+\end{figure}
+
+    The identity is a subfunctor of $ D $ because
+    $ \dderiv{\ell}{r} $ for any production
+    $ \spn{\ell}{k}{r} $ in $ ( _{L}\StrCsp , P ) $ via a
+    triple of identity arrows. Hence there is a monomorphism
+    \[
+      ( _L \StrCsp , P ) \to
+      D ( _L \StrCsp , P )
+    \]
+    induced from the identity functor on $ _L\StrCsp $.
+\end{proof}
+
+In this lemma, we have created a functor $ D $ that sends a
+grammar to a new grammar consisting of
+all derived rules.  That $ D $ is idempotent means that all
+rules derived from $ P $ can be derived directly; multiple
+applications of $ D $ are unnecessary.  That the identity is
+a subfunctor of $ D $ means that set of the derived rules
+$ P_D $ contains the set of initial rules $ P $.
+
+The next stage in defining $ \Lang $ is to define
+$ S \from \StrCspGram \to \DblCat $. On objects, let
+$ S ( _L \StrCsp , P ) $ be the sub-double category of
+$ _L \SSStrCsp $ generated by the rules in $ P $ considered
+as squares.  On arrows, $ S $ sends
+\[
+  F \from ( _{L}\StrCsp , P ) \to ( _{L'} \StrCsp , P' )
+\]
+to the double functor defined that extends the mapping
+between the generators of $ S ( _{L}\StrCsp , P ) $ and
+$ S ( _{L'}\StrCsp , P' ) $.  This preserves composition because
+$ F $ preserves pullbacks and pushouts. 
+
+\begin{definition}(Language of a grammar)
+  The \defn{language functor} is defined to be
+  $ \Lang \coloneqq SD $. 
+\end{definition}
+
+To witness the rewriting relation on a closed system as a
+square in a double category, we require this next lemma
+that formalizes the analogy between rewriting the disjoint
+union of systems and tensoring squares.
+
+\begin{lemma} \label{thm:rewrite-rel-is-additive}
+  If $ \deriv{x}{y} $ and $ \deriv{x'}{y'} $, then
+  $ \deriv{x+x'}{y+y'} $
+\end{lemma}
+
+\begin{proof}
+  If the derivation $ \deriv{x}{y} $ comes from a string of
+  double pushout diagrams
+  %
+  \begin{center}
+    \begin{tikzpicture}[scale=0.8]
+      \node (1t) at (0,2) {$ \ell_1 $};
+      \node (2t) at (2,2) {$ k_1 $};
+      \node (3t) at (4,2) {$ r_1 $};
+      \node (4t) at (6,2) {$ \ell_2 $};
+      \node (5t) at (8,2) {$ k_2 $};
+      \node (6t) at (10,2) {$ r_2 $};
+      \node (7t) at (11,2) {$ \ell_n $};
+      \node (8t) at (13,2) {$ k_n $};
+      \node (9t) at (15,2) {$ r_n $};
+      \node (1b) at (0,0) {$ x $};
+      \node (2b) at (2,0) {$ d_1 $};
+      \node (3b) at (5,0) {$ w_1 $};
+      \node (4b) at (8,0) {$ d_2 $};
+      \node (5b) at (10,0) {$ w_2 $};
+      \node (6b) at (11,0) {$ w_{n-1} $};
+      \node (7b) at (13,0) {$ d_n $};
+      \node (8b) at (15,0) {$ y $};
+      \draw [cd] (2t) to node [] {\scriptsize{$  $}} (1t);
+      \draw [cd] (2t) to node [] {\scriptsize{$  $}} (3t);
+      \draw [cd] (5t) to node [] {\scriptsize{$  $}} (4t);
+      \draw [cd] (5t) to node [] {\scriptsize{$  $}} (6t);
+      \draw [cd] (8t) to node [] {\scriptsize{$  $}} (7t);
+      \draw [cd] (8t) to node [] {\scriptsize{$  $}} (9t);
+      \draw [cd] (2b) to node [] {\scriptsize{$  $}} (1b);
+      \draw [cd] (2b) to node [] {\scriptsize{$  $}} (3b);
+      \draw [cd] (4b) to node [] {\scriptsize{$  $}} (3b);
+      \draw [cd] (4b) to node [] {\scriptsize{$  $}} (5b);
+      \draw [cd] (7b) to node [] {\scriptsize{$  $}} (6b);
+      \draw [cd] (7b) to node [] {\scriptsize{$  $}} (8b);
+      \draw [cd] (1t) to node [] {\scriptsize{$  $}} (1b);
+      \draw [cd] (2t) to node [] {\scriptsize{$  $}} (2b);
+      \draw [cd] (3t) to node [] {\scriptsize{$  $}} (3b);
+      \draw [cd] (4t) to node [] {\scriptsize{$  $}} (3b);
+      \draw [cd] (5t) to node [] {\scriptsize{$  $}} (4b);
+      \draw [cd] (6t) to node [] {\scriptsize{$  $}} (5b);
+      \draw [cd] (7t) to node [] {\scriptsize{$  $}} (6b);
+      \draw [cd] (8t) to node [] {\scriptsize{$  $}} (7b);
+      \draw [cd] (9t) to node [] {\scriptsize{$  $}} (8b);
+      \node () at (10.5,1) {$ \dotsm $};
+      %
+      \draw (0.3,0.4) -- (0.4,0.4) -- (0.4,0.3);
+      \draw (4.7,0.4) -- (4.6,0.4) -- (4.6,0.3);
+      \draw (5.3,0.4) -- (5.4,0.4) -- (5.4,0.3);
+      \draw (9.7,0.4) -- (9.6,0.4) -- (9.6,0.3);
+      \draw (11.3,0.4) -- (11.4,0.4) -- (11.4,0.3);
+      \draw (14.7,0.4) -- (14.6,0.4) -- (14.6,0.3);
+    \end{tikzpicture}
+  \end{center}
+  %
+  and the derivation $ \deriv{x'}{y'} $ comes from a string
+  of double pushout diagrams
+  %
+    \[
+    \begin{tikzpicture}[scale=0.8]
+      \node (1t) at (0,2) {$ \ell'_1 $};
+      \node (2t) at (2,2) {$ k'_1 $};
+      \node (3t) at (4,2) {$ r'_1 $};
+      \node (4t) at (6,2) {$ \ell'_2 $};
+      \node (5t) at (8,2) {$ k'_2 $};
+      \node (6t) at (10,2) {$ r'_2 $};
+      \node (7t) at (11,2) {$ \ell'_m $};
+      \node (8t) at (13,2) {$ k'_m $};
+      \node (9t) at (15,2) {$ r'_m $};
+      \node (1b) at (0,0) {$ x' $};
+      \node (2b) at (2,0) {$ d'_1 $};
+      \node (3b) at (5,0) {$ w'_1 $};
+      \node (4b) at (8,0) {$ d'_2 $};
+      \node (5b) at (10,0) {$ w'_2 $};
+      \node (6b) at (11,0) {$ w'_{m-1} $};
+      \node (7b) at (13,0) {$ d'_m $};
+      \node (8b) at (15,0) {$ y' $};
+      \draw [cd] (2t) to node [] {\scriptsize{$  $}} (1t);
+      \draw [cd] (2t) to node [] {\scriptsize{$  $}} (3t);
+      \draw [cd] (5t) to node [] {\scriptsize{$  $}} (4t);
+      \draw [cd] (5t) to node [] {\scriptsize{$  $}} (6t);
+      \draw [cd] (8t) to node [] {\scriptsize{$  $}} (7t);
+      \draw [cd] (8t) to node [] {\scriptsize{$  $}} (9t);
+      \draw [cd] (2b) to node [] {\scriptsize{$  $}} (1b);
+      \draw [cd] (2b) to node [] {\scriptsize{$  $}} (3b);
+      \draw [cd] (4b) to node [] {\scriptsize{$  $}} (3b);
+      \draw [cd] (4b) to node [] {\scriptsize{$  $}} (5b);
+      \draw [cd] (7b) to node [] {\scriptsize{$  $}} (6b);
+      \draw [cd] (7b) to node [] {\scriptsize{$  $}} (8b);
+      \draw [cd] (1t) to node [] {\scriptsize{$  $}} (1b);
+      \draw [cd] (2t) to node [] {\scriptsize{$  $}} (2b);
+      \draw [cd] (3t) to node [] {\scriptsize{$  $}} (3b);
+      \draw [cd] (4t) to node [] {\scriptsize{$  $}} (3b);
+      \draw [cd] (5t) to node [] {\scriptsize{$  $}} (4b);
+      \draw [cd] (6t) to node [] {\scriptsize{$  $}} (5b);
+      \draw [cd] (7t) to node [] {\scriptsize{$  $}} (6b);
+      \draw [cd] (8t) to node [] {\scriptsize{$  $}} (7b);
+      \draw [cd] (9t) to node [] {\scriptsize{$  $}} (8b);
+      \node () at (10.5,1) {$ \dotsm $};
+      %
+      \draw (0.3,0.4) -- (0.4,0.4) -- (0.4,0.3);
+      \draw (4.7,0.4) -- (4.6,0.4) -- (4.6,0.3);
+      \draw (5.3,0.4) -- (5.4,0.4) -- (5.4,0.3);
+      \draw (9.7,0.4) -- (9.6,0.4) -- (9.6,0.3);
+      \draw (11.3,0.4) -- (11.4,0.4) -- (11.4,0.3);
+      \draw (14.7,0.4) -- (14.6,0.4) -- (14.6,0.3);
+    \end{tikzpicture}
+  \]
+  % 
+  realize $ \deriv{x+x'}{y+y'} $ by
+  \begin{center}
+    \begin{tikzpicture}[scale=0.8]
+      \node (1t) at (0,2) {$ \ell_1 $};
+      \node (2t) at (2,2) {$ k_1 $};
+      \node (3t) at (4,2) {$ r1 $};
+      \node () at (5,1) {$ \cdots $};
+      \node (4t) at (6,2) {$ r_n $};
+      \node (5t) at (8,2) {$ \ell'_1 $};
+      \node (6t) at (10,2) {$ k'_1 $};
+      \node (7t) at (12,2) {$ r'_1 $};
+      \node () at (13,1) {$ \cdots $};
+      \node (8t) at (14,2) {$ k'_m $};
+      \node (9t) at (16,2) {$ r'_m $};
+      %
+      \node (1b) at (0,0) {$ x+x' $};
+      \node (2b) at (2,0) {$ d_1+x' $};
+      \node (3b) at (4,0) {$ w_1+x' $};
+      \node (5b) at (7,0) {$ y+x' $};
+      \node (6b) at (10,0) {$ y+d'_1 $};
+      \node (7b) at (12,0) {$ y+w'_1 $};
+      \node (8b) at (14,0) {$ y+d'_m $};
+      \node (9b) at (16,0) {$ y+y' $};
+      %
+      \draw [cd]
+      (2t) edge[] (1t)
+      (2t) edge[] (3t)
+      (6t) edge[] (5t)
+      (6t) edge[] (7t)
+      (8t) edge[] (9t) 
+      (2b) edge[] (1b)
+      (2b) edge[] (3b)
+      (6b) edge[] (5b)
+      (6b) edge[] (7b)
+      (8b) edge[] (9b) 
+      (1t) edge[] (1b)
+      (2t) edge[] (2b)
+      (3t) edge[] (3b)
+      (4t) edge[] (5b)
+      (5t) edge[] (5b)
+      (6t) edge[] (6b)
+      (7t) edge[] (7b)
+      (8t) edge[] (8b)
+      (9t) edge[] (9b);      
+    \end{tikzpicture}
+  \end{center}
+\end{proof}
+
+As promised, we can now decompose closed systems into open
+systems. For this, we need a topos of closed systems $ \X $
+equipped with a grammar $ ( \X , P ) $. The closed systems
+need interfaces, meaning we need to introduce an adjunction
+\[
+  \adjunction{\A}{\X}{L}{R}{2}
+\]
+where $ L $ preserves pullbacks and has a monic counit. At
+this point, the material from the previous section
+returns. This adjunction gives a discrete comonad $ \flat
+\bydef LR $ from which we form the discrete
+grammar $ ( \X, P_\flat ) $. Now define the structured cospan
+grammar $ ( _L \StrCsp , \hat{P_\flat} ) $ where $
+\hat{P_\flat} $ contains the rule
+\begin{equation} \label{eq:decomposition-square}
+  \begin{tikzpicture}
+    \node (1) at (0,4) {$ L 0 $};
+    \node (2) at (2,4) {$ \ell $};
+    \node (3) at (4,4) {$ LRk $};
+    \node (4) at (0,2) {$ L 0 $};
+    \node (5) at (2,2) {$ LRk $};
+    \node (6) at (4,2) {$ LRk $};
+    \node (7) at (0,0) {$ L 0 $};
+    \node (8) at (2,0) {$ r $};
+    \node (9) at (4,0) {$ LRk $};
+    \draw [cd] (1) to (2);
+    \draw [cd] (3) to (2);
+    \draw [cd] (4) to (5);
+    \draw [cd] (6) to (5);
+    \draw [cd] (7) to (8);
+    \draw [cd] (9) to (8);
+    \draw [cd] (4) to (1);
+    \draw [cd] (4) to (7);
+    \draw [cd] (5) to (2);
+    \draw [cd] (5) to (8);
+    \draw [cd] (6) to (3);
+    \draw [cd] (6) to (9);
+  \end{tikzpicture}
+\end{equation}
+% 
+for each rule $ \spn{\ell}{LRk}{r} $ of $ P_{\flat} $. We
+use $ ( _L \StrCsp , \hat{P_\flat} ) $ to prove our main
+theorem.
+
+Before stating the theorem, we note that this theorem
+generalizes work by Gadducci and Heckel
+\cite{gadducci_ind-graph-transf} whose domain of
+inquiry was graph rewriting. The arc of our
+proof follows theirs.
+
+\begin{theorem} \label{thm:inductive-rewriting}
+
+  Fix an adjunction $ (L \dashv R) \from \X \lrto \A $ with monic
+  counit. Let $ ( \X , P ) $ be a grammar such that for
+  every $ \X $-object $ x $ in the apex of a production of
+  $ P $, the lattice $ \Sub (x) $ has all meets. Given
+  $ g $, $ h \in \X $, then $ \deriv{g}{h} $ in the
+  rewriting relation for a grammar $ ( \X , P ) $ if and
+  only if there is a square
+  %
+  \[
+    \begin{tikzpicture}
+      \node (1t) at (0,4) {$ LR 0 $};
+      \node (2t) at (2,4) {$ g $};
+      \node (3t) at (4,4) {$ LR 0 $};
+      \node (1m) at (0,2) {$ LR 0 $};
+      \node (2m) at (2,2) {$ d $};
+      \node (3m) at (4,2) {$ LR 0 $};
+      \node (1b) at (0,0) {$ LR 0 $};
+      \node (2b) at (2,0) {$ h $};
+      \node (3b) at (4,0) {$ LR 0 $};
+      %
+      \draw [cd] (1t) to node [] {\scriptsize{$  $}} (2t);
+      \draw [cd] (3t) to node [] {\scriptsize{$  $}} (2t);
+      \draw [cd] (1m) to node [] {\scriptsize{$  $}} (2m);
+      \draw [cd] (3m) to node [] {\scriptsize{$  $}} (2m);
+      \draw [cd] (1b) to node [] {\scriptsize{$  $}} (2b);
+      \draw [cd] (3b) to node [] {\scriptsize{$  $}} (2b);
+      \draw [cd] (1m) to node [] {\scriptsize{$  $}} (1t);
+      \draw [cd] (1m) to node [] {\scriptsize{$  $}} (1b);
+      \draw [cd] (2m) to node [] {\scriptsize{$  $}} (2t);
+      \draw [cd] (2m) to node [] {\scriptsize{$  $}} (2b);
+      \draw [cd] (3m) to node [] {\scriptsize{$  $}} (3t);
+      \draw [cd] (3m) to node [] {\scriptsize{$  $}} (3b);
+    \end{tikzpicture}
+  \]
+  % 
+  in the double category $ \Lang ( _{L}\StrCsp , \hat{P_\flat} ) $.
+\end{theorem}
+
+\begin{proof}
+  We show sufficiency by inducting on the length of the
+  derivation. If $ \deriv{g}{h} $ in a single step, meaning
+  that there is a diagram
+  %
+  \[
+  \begin{tikzpicture}
+    \node (1t) at (0,2) {$ \ell $};
+    \node (2t) at (2,2) {$ LRk $};
+    \node (3t) at (4,2) {$ r $};
+    \node (1b) at (0,0) {$ g $};
+    \node (2b) at (2,0) {$ d $};
+    \node (3b) at (4,0) {$ h $};
+    \draw [cd] (2t) to (1t);
+    \draw [cd] (2t) to (3t);
+    \draw [cd] (2b) to (1b);
+    \draw [cd] (2b) to (3b);
+    \draw [cd] (1t) to (1b);
+    \draw [cd] (2t) to (2b);
+    \draw [cd] (3t) to (3b);
+    %
+    \draw (0.3,0.4) -- (0.4,0.4) -- (0.4,0.3);
+    \draw (3.7,0.4) -- (3.6,0.4) -- (3.6,0.3);
+  \end{tikzpicture}
+  \]
+  % 
+  then the desired square is the horizontal composition of
+  %
+  \[
+    \begin{tikzpicture}
+    \begin{scope}
+      \node (1t) at (0,4) {$ L0 $};
+      \node (2t) at (2,4) {$ \ell $};
+      \node (3t) at (4,4) {$ LRk $};
+      \node (4t) at (6,4) {$ d $};
+      \node (5t) at (8,4) {$ L0 $};
+      \node (1m) at (0,2) {$ L 0 $};
+      \node (2m) at (2,2) {$ LRk $};
+      \node (3m) at (4,2) {$ LRk $};
+      \node (4m) at (6,2) {$ d $};
+      \node (5m) at (8,2) {$ L 0 $};
+      \node (1b) at (0,0) {$ L 0 $};
+      \node (2b) at (2,0) {$ r $};
+      \node (3b) at (4,0) {$ LRk $};
+      \node (4b) at (6,0) {$ d $};
+      \node (5b) at (8,0) {$ L 0 $};
+      \draw [cd] (1t) to node [] {\scriptsize{$  $}} (2t);
+      \draw [cd] (3t) to node [] {\scriptsize{$  $}} (2t);
+      \draw [cd] (3t) to node [] {\scriptsize{$  $}} (4t);
+      \draw [cd] (5t) to node [] {\scriptsize{$  $}} (4t);
+      \draw [cd] (1m) to node [] {\scriptsize{$  $}} (2m);
+      \draw [cd] (3m) to node [] {\scriptsize{$  $}} (2m);
+      \draw [cd] (3m) to node [] {\scriptsize{$  $}} (4m);
+      \draw [cd] (5m) to node [] {\scriptsize{$  $}} (4m);
+      \draw [cd] (1b) to node [] {\scriptsize{$  $}} (2b);
+      \draw [cd] (3b) to node [] {\scriptsize{$  $}} (2b);
+      \draw [cd] (3b) to node [] {\scriptsize{$  $}} (4b);
+      \draw [cd] (5b) to node [] {\scriptsize{$  $}} (4b);
+      \draw [cd] (1m) to node [] {\scriptsize{$  $}} (1t);
+      \draw [cd] (1m) to node [] {\scriptsize{$  $}} (1b);
+      \draw [cd] (2m) to node [] {\scriptsize{$  $}} (2t);
+      \draw [cd] (2m) to node [] {\scriptsize{$  $}} (2b);
+      \draw [cd] (3m) to node [] {\scriptsize{$  $}} (3t);
+      \draw [cd] (3m) to node [] {\scriptsize{$  $}} (3b);
+      \draw [cd] (4m) to node [] {\scriptsize{$  $}} (4t);
+      \draw [cd] (4m) to node [] {\scriptsize{$  $}} (4b);
+      \draw [cd] (5m) to node [] {\scriptsize{$  $}} (5t);
+      \draw [cd] (5m) to node [] {\scriptsize{$  $}} (5b);
+    \end{scope}
+    \end{tikzpicture}
+  \]
+  %
+  The left square is a generator and the right square is the
+  identity on the horizontal arrow $ \csp{LRk}{d}{L0}
+  $. The square for a derivation
+  $ \dderiv{\deriv{g}{h}}{j} $ is the vertical composition
+  of
+  %
+  \[
+    \begin{tikzpicture}
+      \node (1t) at (0,8) {$ L 0 $};
+      \node (2t) at (2,8) {$ g $};
+      \node (3t) at (4,8) {$ L 0 $};
+      \node (1m) at (0,6) {$ L 0 $};
+      \node (2m) at (2,6) {$ d $};
+      \node (3m) at (4,6) {$ L 0 $};
+      \node (1b) at (0,4) {$ L 0 $};
+      \node (2b) at (2,4) {$ h $};
+      \node (3b) at (4,4) {$ L 0 $};
+      \node (1bb) at (0,2) {$ L 0 $};
+      \node (2bb) at (2,2) {$ e $};
+      \node (3bb) at (4,2) {$ L 0 $};
+      \node (1bbb) at (0,0) {$ L 0 $};
+      \node (2bbb) at (2,0) {$ j $};
+      \node (3bbb) at (4,0) {$ L 0 $};
+      \draw [cd] (1t) to node [] {\scriptsize{$  $}} (2t);
+      \draw [cd] (3t) to node [] {\scriptsize{$  $}} (2t);
+      \draw [cd] (1m) to node [] {\scriptsize{$  $}} (2m);
+      \draw [cd] (3m) to node [] {\scriptsize{$  $}} (2m);
+      \draw [cd] (1b) to node [] {\scriptsize{$  $}} (2b);
+      \draw [cd] (3b) to node [] {\scriptsize{$  $}} (2b);
+      \draw [cd] (1m) to node [] {\scriptsize{$  $}} (1t);
+      \draw [cd] (1m) to node [] {\scriptsize{$  $}} (1b);
+      \draw [cd] (2m) to node [] {\scriptsize{$  $}} (2t);
+      \draw [cd] (2m) to node [] {\scriptsize{$  $}} (2b);
+      \draw [cd] (3m) to node [] {\scriptsize{$  $}} (3t);
+      \draw [cd] (3m) to node [] {\scriptsize{$  $}} (3b);
+      \draw [cd] (1bb) to node [] {\scriptsize{$  $}} (2bb);
+      \draw [cd] (3bb) to node [] {\scriptsize{$  $}} (2bb);
+      \draw [cd] (1bbb) to node [] {\scriptsize{$  $}} (2bbb);
+      \draw [cd] (3bbb) to node [] {\scriptsize{$  $}} (2bbb);
+      \draw [cd] (1bb) to node [] {\scriptsize{$  $}} (1b);
+      \draw [cd] (1bb) to node [] {\scriptsize{$  $}} (1bbb);
+      \draw [cd] (2bb) to node [] {\scriptsize{$  $}} (2b);
+      \draw [cd] (2bb) to node [] {\scriptsize{$  $}} (2bbb);
+      \draw [cd] (3bb) to node [] {\scriptsize{$  $}} (3b);
+      \draw [cd] (3bb) to node [] {\scriptsize{$  $}} (3bbb);
+    \end{tikzpicture}
+  \]
+  %
+  The top square is from $ \deriv{g}{h} $ and the second
+  from $ \dderiv{h}{j} $.
+
+  Conversely, proceed by structural induction on the
+  generating squares of
+  $ \Lang ( _{L}\StrCsp , \hat{P_\flat} ) $.  It suffices to
+  show that the rewrite relation is preserved by vertical
+  and horizontal composition by generating squares.  Suppose
+  we have a square
+  %
+  \[
+    \begin{tikzpicture}
+      \node (1t) at (0,4) {$ L 0 $};
+      \node (2t) at (2,4) {$ w $};
+      \node (3t) at (4,4) {$ L 0 $};
+      \node (1m) at (0,2) {$ L 0 $};
+      \node (2m) at (2,2) {$ x $};
+      \node (3m) at (4,2) {$ L 0 $};
+      \node (1b) at (0,0) {$ L 0 $};
+      \node (2b) at (2,0) {$ y $};
+      \node (3b) at (4,0) {$ L 0 $};
+      \draw [cd] (2t) to node [] {\scriptsize{$  $}} (1t);
+      \draw [cd] (2t) to node [] {\scriptsize{$  $}} (3t);
+      \draw [cd] (2m) to node [] {\scriptsize{$  $}} (1m);
+      \draw [cd] (2m) to node [] {\scriptsize{$  $}} (3m);
+      \draw [cd] (2b) to node [] {\scriptsize{$  $}} (1b);
+      \draw [cd] (2b) to node [] {\scriptsize{$  $}} (3b);
+      \draw [cd] (1m) to node [] {\scriptsize{$  $}} (1t);
+      \draw [cd] (2m) to node [] {\scriptsize{$  $}} (2t);
+      \draw [cd] (3m) to node [] {\scriptsize{$  $}} (3t);
+      \draw [cd] (1m) to node [] {\scriptsize{$  $}} (1b);
+      \draw [cd] (2m) to node [] {\scriptsize{$  $}} (2b);
+      \draw [cd] (3m) to node [] {\scriptsize{$  $}} (3b);
+    \end{tikzpicture}
+  \]
+  % 
+  corresponding to a derivation $ \deriv{w}{y} $. Composing
+  this vertically with a generating square, which must have
+  form
+  %
+  \[
+    \begin{tikzpicture}
+      \node (1t) at (0,4) {$ L 0 $};
+      \node (2t) at (2,4) {$ y $};
+      \node (3t) at (4,4) {$ L 0 $};
+      \node (1m) at (0,2) {$ L 0 $};
+      \node (2m) at (2,2) {$ L 0 $};
+      \node (3m) at (4,2) {$ L 0 $};
+      \node (1b) at (0,0) {$ L 0 $};
+      \node (2b) at (2,0) {$ z $};
+      \node (3b) at (4,0) {$ L 0 $};
+      \draw [cd] (2t) to node [] {\scriptsize{$  $}} (1t);
+      \draw [cd] (2t) to node [] {\scriptsize{$  $}} (3t);
+      \draw [cd] (2m) to node [] {\scriptsize{$  $}} (1m);
+      \draw [cd] (2m) to node [] {\scriptsize{$  $}} (3m);
+      \draw [cd] (2b) to node [] {\scriptsize{$  $}} (1b);
+      \draw [cd] (2b) to node [] {\scriptsize{$  $}} (3b);
+      \draw [cd] (1m) to node [] {\scriptsize{$  $}} (1t);
+      \draw [cd] (2m) to node [] {\scriptsize{$  $}} (2t);
+      \draw [cd] (3m) to node [] {\scriptsize{$  $}} (3t);
+      \draw [cd] (1m) to node [] {\scriptsize{$  $}} (1b);
+      \draw [cd] (2m) to node [] {\scriptsize{$  $}} (2b);
+      \draw [cd] (3m) to node [] {\scriptsize{$  $}} (3b);
+    \end{tikzpicture}
+  \]
+  %
+  corresponding to a production $ \spn{y}{L0}{z} $ gives
+  %
+  \[
+    \begin{tikzpicture}
+      \node (1t) at (0,4) {$ L 0 $};
+      \node (2t) at (2,4) {$ w $};
+      \node (3t) at (4,4) {$ L 0 $};
+      \node (1m) at (0,2) {$ L 0 $};
+      \node (2m) at (2,2) {$ L 0 $};
+      \node (3m) at (4,2) {$ L 0 $};
+      \node (1b) at (0,0) {$ L 0 $};
+      \node (2b) at (2,0) {$ z $};
+      \node (3b) at (4,0) {$ L 0 $};
+      \draw [cd] (2t) to node [] {\scriptsize{$  $}} (1t);
+      \draw [cd] (2t) to node [] {\scriptsize{$  $}} (3t);
+      \draw [cd] (2m) to node [] {\scriptsize{$  $}} (1m);
+      \draw [cd] (2m) to node [] {\scriptsize{$  $}} (3m);
+      \draw [cd] (2b) to node [] {\scriptsize{$  $}} (1b);
+      \draw [cd] (2b) to node [] {\scriptsize{$  $}} (3b);
+      \draw [cd] (1m) to node [] {\scriptsize{$  $}} (1t);
+      \draw [cd] (2m) to node [] {\scriptsize{$  $}} (2t);
+      \draw [cd] (3m) to node [] {\scriptsize{$  $}} (3t);
+      \draw [cd] (1m) to node [] {\scriptsize{$  $}} (1b);
+      \draw [cd] (2m) to node [] {\scriptsize{$  $}} (2b);
+      \draw [cd] (3m) to node [] {\scriptsize{$  $}} (3b);
+    \end{tikzpicture}
+  \]
+  %
+  which corresponds to a derivation
+  $ \dderiv{\deriv{w}{y}}{z} $.  Composing horizontally with
+  a generating square
+  %
+  \[
+    \begin{tikzpicture}
+      \node (1t) at (0,4) {$ L 0 $};
+      \node (2t) at (2,4) {$ \ell $};
+      \node (3t) at (4,4) {$ L 0 $};
+      \node (1m) at (0,2) {$ L 0 $};
+      \node (2m) at (2,2) {$ LRk $};
+      \node (3m) at (4,2) {$ L 0 $};
+      \node (1b) at (0,0) {$ L 0 $};
+      \node (2b) at (2,0) {$ r $};
+      \node (3b) at (4,0) {$ L 0 $};
+      \draw [cd] (2t) to node [] {\scriptsize{$  $}} (1t);
+      \draw [cd] (2t) to node [] {\scriptsize{$  $}} (3t);
+      \draw [cd] (2m) to node [] {\scriptsize{$  $}} (1m);
+      \draw [cd] (2m) to node [] {\scriptsize{$  $}} (3m);
+      \draw [cd] (2b) to node [] {\scriptsize{$  $}} (1b);
+      \draw [cd] (2b) to node [] {\scriptsize{$  $}} (3b);
+      \draw [cd] (1m) to node [] {\scriptsize{$  $}} (1t);
+      \draw [cd] (2m) to node [] {\scriptsize{$  $}} (2t);
+      \draw [cd] (3m) to node [] {\scriptsize{$  $}} (3t);
+      \draw [cd] (1m) to node [] {\scriptsize{$  $}} (1b);
+      \draw [cd] (2m) to node [] {\scriptsize{$  $}} (2b);
+      \draw [cd] (3m) to node [] {\scriptsize{$  $}} (3b);
+    \end{tikzpicture}
+  \]
+  %
+  corresponding with a production $ \spn{\ell}{LRk}{r} $
+  results in the square
+  %
+  \[
+    \begin{tikzpicture}
+      \node (1t) at (0,4) {$ L 0 $};
+      \node (2t) at (2,4) {$ w + \ell $};
+      \node (3t) at (4,4) {$ L 0 $};
+      \node (1m) at (0,2) {$ L 0 $};
+      \node (2m) at (2,2) {$ x + LRk $};
+      \node (3m) at (4,2) {$ L 0 $};
+      \node (1b) at (0,0) {$ L 0 $};
+      \node (2b) at (2,0) {$ y + r $};
+      \node (3b) at (4,0) {$ L 0 $};
+      \draw [cd] (2t) to node [] {\scriptsize{$  $}} (1t);
+      \draw [cd] (2t) to node [] {\scriptsize{$  $}} (3t);
+      \draw [cd] (2m) to node [] {\scriptsize{$  $}} (1m);
+      \draw [cd] (2m) to node [] {\scriptsize{$  $}} (3m);
+      \draw [cd] (2b) to node [] {\scriptsize{$  $}} (1b);
+      \draw [cd] (2b) to node [] {\scriptsize{$  $}} (3b);
+      \draw [cd] (1m) to node [] {\scriptsize{$  $}} (1t);
+      \draw [cd] (2m) to node [] {\scriptsize{$  $}} (2t);
+      \draw [cd] (3m) to node [] {\scriptsize{$  $}} (3t);
+      \draw [cd] (1m) to node [] {\scriptsize{$  $}} (1b);
+      \draw [cd] (2m) to node [] {\scriptsize{$  $}} (2b);
+      \draw [cd] (3m) to node [] {\scriptsize{$  $}} (3b);
+    \end{tikzpicture}
+  \]
+  %
+  But $ \deriv{w+\ell}{y+r} $ as seen in Lemma
+  \ref{thm:rewrite-rel-is-additive}. 
+\end{proof}
+
+With this result, we have completely described the rewrite
+relation for a grammar $ ( \X , P ) $ with squares in
+$ \Lang ( _{L}\StrCsp, \hat{P_\flat} ) $ framed by the
+initial object of $ \X $.  These squares are rewrites of a
+closed system in the sense that the interface is empty.  We
+can instead begin with a closed system $ x $ in $ \X $ as
+represented by a horizontal arrow $ \csp{L0}{x}{L0} $ in
+$ \Lang ( _{L}\StrCsp , \hat{P_\flat} ) $ and decompose it
+into a composite of sub-systems, that is a sequence of
+composable horizontal arrows
+\begin{center}
+  \begin{tikzpicture}
+    \node (L0) at (0,0) {$ L0 $};
+    \node (x1) at (1,1) {$ x_1 $};
+    \node (La1) at (2,0) {$ La_1 $};
+    \node (x2) at (3,1) {$ x_2 $};
+    \node (La2) at (4,0) {$ La_2 $};
+    \node () at (5,0) {$ \dotsm $};
+    \node (Lan1) at (6,0) {$ La_{n-1} $};
+    \node (xn) at (7,1) {$ x_n $};
+    \node (L0') at (8,0) {$ L0 $};
+    %
+    \draw [cd] 
+    (L0) edge[] (x1)
+    (La1) edge[] (x1)
+    (La1) edge[] (x2)
+    (La2) edge[] (x2)
+    (Lan1) edge[] (xn)
+    (L0') edge[] (xn);
+  \end{tikzpicture}
+\end{center}
+
+Rewriting can be performed on each of these sub-systems
+%
+\[
+  \begin{tikzpicture}
+    \begin{scope}[shift={(0,6)}]
+      \node (1) at (0,4) {$ L0 $};
+      \node (2) at (2,4) {$ x_1 $};
+      \node (3) at (4,4) {$ La_1 $};
+      \node (4) at (0,2) {$ L0 $};
+      \node (5) at (2,2) {$ x'_1 $};
+      \node (6) at (4,2) {$ La'_1 $};
+      \node (7) at (0,0) {$ L0 $};
+      \node (8) at (2,0) {$ x''_1 $};
+      \node (9) at (4,0) {$ La''_1 $};
+      \draw [cd] (1) to (2);
+      \draw [cd] (3) to (2);
+      \draw [cd] (4) to (5);
+      \draw [cd] (6) to (5);
+      \draw [cd] (7) to (8);
+      \draw [cd] (9) to (8);
+      \draw [cd] (4) to node [left]
+        {\scriptsize{$ \cong $}} (1);
+      \draw [cd] (4) to node [left]
+        {\scriptsize{$ \cong $}} (7);
+      \draw [>->] (5) to (2);
+      \draw [>->] (5) to (8);
+      \draw [cd] (6) to node [right]
+        {\scriptsize{$ \cong  $}} (3);
+      \draw [cd] (6) to node [right]
+        {\scriptsize{$ \cong $}} (9);
+    \end{scope}
+    %
+    \begin{scope}[shift={(6,6)}]
+      \node (1) at (0,4) {$ La_{n-1} $};
+      \node (2) at (2,4) {$ x_n $};
+      \node (3) at (4,4) {$ L0 $};
+      \node (4) at (0,2) {$ La_{n-1} $};
+      \node (5) at (2,2) {$ x'_n $};
+      \node (6) at (4,2) {$ L0 $};
+      \node (7) at (0,0) {$ La_{n-1} $};
+      \node (8) at (2,0) {$ x''_n $};
+      \node (9) at (4,0) {$ L0 $};
+      \draw [cd] (1) to (2);
+      \draw [cd] (3) to (2);
+      \draw [cd] (4) to (5);
+      \draw [cd] (6) to (5);
+      \draw [cd] (7) to (8);
+      \draw [cd] (9) to (8);
+      \draw [cd] (4) to node [left]
+        {\scriptsize{$ \cong $}} (1);
+      \draw [cd] (4) to node [left]
+        {\scriptsize{$ \cong $}} (7);
+      \draw [>->] (5) to (2);
+      \draw [>->] (5) to (8);
+      \draw [cd] (6) to node [right]
+        {\scriptsize{$ \cong  $}} (3);
+      \draw [cd] (6) to node [right]
+        {\scriptsize{$ \cong $}} (9);
+    \end{scope}
+    %
+    \begin{scope}
+      \node (1) at (0,4) {$ L0 $};
+      \node (2) at (2,4) {$ y_1 $};
+      \node (3) at (4,4) {$ La_1 $};
+      \node (4) at (0,2) {$ L0 $};
+      \node (5) at (2,2) {$ y'_1 $};
+      \node (6) at (4,2) {$ La_1 $};
+      \node (7) at (0,0) {$ L0 $};
+      \node (8) at (2,0) {$ y''_1 $};
+      \node (9) at (4,0) {$ La_1 $};
+      \draw [cd] (1) to (2);
+      \draw [cd] (3) to (2);
+      \draw [cd] (4) to (5);
+      \draw [cd] (6) to (5);
+      \draw [cd] (7) to (8);
+      \draw [cd] (9) to (8);
+      \draw [cd] (4) to node [left]
+        {\scriptsize{$ \cong $}} (1);
+      \draw [cd] (4) to node [left]
+        {\scriptsize{$ \cong $}} (7);
+      \draw [>->] (5) to (2);
+      \draw [>->] (5) to (8);
+      \draw [cd] (6) to node [right]
+        {\scriptsize{$ \cong  $}} (3);
+      \draw [cd] (6) to node [right]
+        {\scriptsize{$ \cong $}} (9);
+    \end{scope}
+    %
+    \begin{scope}[shift={(6,0)}]
+      \node (1) at (0,4) {$ La_{n-1} $};
+      \node (2) at (2,4) {$ y_n $};
+      \node (3) at (4,4) {$ L0 $};
+      \node (4) at (0,2) {$ La_{n-1} $};
+      \node (5) at (2,2) {$ y'_n $};
+      \node (6) at (4,2) {$ L0 $};
+      \node (7) at (0,0) {$ La_{n-1} $};
+      \node (8) at (2,0) {$y''_n $};
+      \node (9) at (4,0) {$ L0 $};
+      \draw [cd] (1) to (2);
+      \draw [cd] (3) to (2);
+      \draw [cd] (4) to (5);
+      \draw [cd] (6) to (5);
+      \draw [cd] (7) to (8);
+      \draw [cd] (9) to (8);
+      \draw [cd] (4) to node [left]
+        {\scriptsize{$ \cong $}} (1);
+      \draw [cd] (4) to node [left]
+        {\scriptsize{$ \cong $}} (7);
+      \draw [>->] (5) to (2);
+      \draw [>->] (5) to (8);
+      \draw [cd] (6) to node [right]
+        {\scriptsize{$ \cong  $}} (3);
+      \draw [cd] (6) to node [right]
+        {\scriptsize{$ \cong $}} (9);
+    \end{scope}
+    %
+    \node () at (5,2) {$ \dotsm $};
+    \node () at (2,5) {$ \vdots $};
+    \node () at (5,8) {$ \dotsm $};
+    \node () at (8,5) {$ \vdots $};
+  \end{tikzpicture}
+\]
+%
+The composite of these squares is a rewriting of the
+original system.

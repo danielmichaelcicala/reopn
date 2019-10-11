@@ -1,0 +1,11 @@
+\begin{center}
+\begin{tikzpicture}
+      \node (a) at (-1,2) {$ a $};
+      \node (b) at (1,2) {$ b $};
+      \node (t) at (0,0) {$ t $};
+      \draw [cd] 
+      (a) edge[] node[left]{$ f $} (t)
+      (b) edge[] node[right]{$ g $} (t)
+      (a) edge[] node[above]{$ \iso $} (b); 
+    \end{tikzpicture}
+  \end{center}

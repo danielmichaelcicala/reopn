@@ -1,0 +1,18 @@
+\begin{center}
+\begin{tikzpicture}
+  \node (1) at (-2,1) {\( La \)};
+  \node (2) at (0,1) {\( x \)};
+  \node (3) at (2,1) {\( Lb \)};
+  \node (4) at (-2,0) {\( Lc \)};
+  \node (5) at (0,0) {\( y \)};
+  \node (6) at (2,0) {\( Ld \)};
+  \draw [cd]
+    (1) to node[]{} (2)
+    (3) to node[]{} (2)
+    (4) to node[]{} (5)
+    (6) to node[]{} (5)
+    (1) to node[left]{$Lf$}  (4)
+    (2) to node[left]{$g$}   (5)
+    (3) to node[right]{$Lh$} (6);
+\end{tikzpicture}
+\end{center}

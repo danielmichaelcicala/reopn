@@ -1,0 +1,311 @@
+%
+% This document is a preamble for 'reopn' project
+%
+
+% ==============================
+% Load Packages
+% ==============================
+
+\usepackage{amsfonts}
+\usepackage{amssymb}  
+\usepackage{amsthm} 
+\usepackage{amsmath} 
+\usepackage{caption}
+\usepackage[inline]{enumitem}
+  \setlist{itemsep=0em, topsep=0em, parsep=0em}
+  \setlist[enumerate]{label=(\alph*)}
+\usepackage{etoolbox}
+\usepackage{stmaryrd} 
+\usepackage[dvipsnames]{xcolor}
+  \definecolor{myurlcolor}{rgb}{0.6,0,0}
+  \definecolor{mycitecolor}{rgb}{0,0,0.8}
+  \definecolor{myrefcolor}{rgb}{0,0,0.8}
+\usepackage[pagebackref]{hyperref}
+\usepackage{hyperref}
+\hypersetup{colorlinks,
+	linkcolor=myrefcolor,
+	citecolor=mycitecolor,
+	urlcolor=myurlcolor}
+\usepackage{graphicx}
+  \graphicspath{ {assets/} }
+\usepackage{mathtools}
+\usepackage{tikz}
+  \usetikzlibrary{matrix,
+    arrows,
+    shapes,
+    decorations.markings,
+    decorations.pathreplacing}
+\usepackage{todonotes}
+
+% ====================================
+% New Commands
+% ====================================
+
+\renewcommand*{\backref}[1]{(Referred to on page #1.)}
+
+% symbols ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\renewcommand{\epsilon}{\varepsilon}
+\newcommand{\op}{^{\scriptsize{ \textrm{op} } }}
+\newcommand{\inv}{^{-1}}
+\newcommand{\iso}{\cong}
+\renewcommand{\equiv}{\simeq}
+\newcommand{\bydef}{\coloneqq}
+\newcommand{\hcirc}{\circ_{\textup{h}}}
+\newcommand{\vcirc}{\circ_{\textup{v}}}
+\renewcommand{\hat}{\widehat}
+
+
+% categories ~~~~~~~~~~~~~~~~~~~~~~~~~
+\newcommand{\A}{\cat{A}}
+\newcommand{\B}{\cat{B}}
+\newcommand{\C}{\cat{C}}
+\newcommand{\D}{\cat{D}}
+\newcommand{\E}{\cat{E}}
+\renewcommand{\P}{\cat{P}}
+\newcommand{\Q}{\cat{Q}}
+\newcommand{\R}{\cat{R}}
+\newcommand{\T}{\cat{T}}
+\newcommand{\U}{\cat{U}}
+\newcommand{\V}{\cat{V}}
+\newcommand{\W}{\cat{W}}
+\newcommand{\X}{\cat{X}}
+\newcommand{\Y}{\cat{Y}}
+\newcommand{\Z}{\cat{Z}}
+\renewcommand{\AA}{\bicat{A}}
+\newcommand{\BB}{\bicat{B}}
+\newcommand{\CC}{\bicat{C}}
+\newcommand{\DD}{\bicat{D}}
+\newcommand{\EE}{\bicat{E}}
+\newcommand{\PP}{\bicat{P}}
+\newcommand{\QQ}{\bicat{Q}}
+\newcommand{\RR}{\bicat{R}}
+\newcommand{\TT}{\bicat{T}}
+\newcommand{\UU}{\bicat{U}}
+\newcommand{\VV}{\bicat{V}}
+\newcommand{\WW}{\bicat{W}}
+\newcommand{\XX}{\bicat{X}}
+\newcommand{\YY}{\bicat{Y}}
+\newcommand{\ZZ}{\bicat{Z}}
+\newcommand{\AAA}{\dblcat{A}}
+\newcommand{\BBB}{\dblcat{B}}
+\newcommand{\CCC}{\dblcat{C}}
+\newcommand{\DDD}{\dblcat{D}}
+\newcommand{\EEE}{\dblcat{E}}
+\newcommand{\MMM}{\dblecat{M}}
+\newcommand{\PPP}{\dblcat{P}}
+\newcommand{\QQQ}{\dblcat{Q}}
+\newcommand{\RRR}{\dblcat{R}}
+\newcommand{\SSS}{\dblcat{S}}
+\newcommand{\TTT}{\dblcat{T}}
+\newcommand{\UUU}{\dblcat{U}}
+\newcommand{\VVV}{\dblcat{V}}
+\newcommand{\WWW}{\dblcat{W}}
+\newcommand{\XXX}{\dblcat{X}}
+\newcommand{\YYY}{\dblcat{Y}}
+\newcommand{\ZZZ}{\dblcat{Z}}
+
+% common x-categories
+\newcommand{\FinSet}{\cat{FinSet}}
+\newcommand{\Set}{\cat{Set}}
+\newcommand{\Rel}{\cat{Rel}}
+\newcommand{\RRel}{\bicat{Rel}}
+\newcommand{\FinHilb}{\cat{FinHilb}}
+\newcommand{\Ab}{\cat{Ab}}
+\newcommand{\Vect}{\cat{Vect}}
+\newcommand{\Mod}{\cat{Mod}}
+\newcommand{\Pos}{\cat{Pos}}
+\newcommand{\FinGraph}{\cat{FinGraph}}
+\newcommand{\Graph}{\cat{Graph}}
+\newcommand{\RGraph}{\cat{RGraph}}
+\newcommand{\Top}{\cat{Top}}
+\newcommand{\TTop}{\bicat{Top}}
+\newcommand{\Cat}{\cat{Cat}}
+\newcommand{\CCat}{\bicat{Cat}}
+\newcommand{\Bicat}{\cat{Bicat}}
+\newcommand{\BBicat}{\bicat{Bicat}}
+\newcommand{\DblCat}{\cat{DblCat}}
+\newcommand{\DDblCat}{\bicat{DblCat}}
+\newcommand{\Topos}{\cat{Topos}}
+\newcommand{\TTopos}{\bicat{Topos}}
+\newcommand{\Span}{\cat{Span}}
+\newcommand{\SSpan}{\bicat{Span}}
+\newcommand{\Csp}{\cat{Csp}}
+\newcommand{\CCsp}{\bicat{Csp}}
+\newcommand{\Gram}{\cat{Gram}}
+\newcommand{\StrCsp}{\cat{StrCsp}}
+\newcommand{\SStrCsp}{\bicat{StrCsp}}
+\newcommand{\SSStrCsp}{\dblcat{S} \bicat{trCsp}}
+\newcommand{\StrCspGram}{\cat{StrCspGram}}
+\newcommand{\RRewrite}{\bicat{Rewrite}}
+\newcommand{\RRRewrite}{\dblcat{R}\bicat{ewrite}}
+\newcommand{\ZX}{\cat{ZX}}
+\newcommand{\ZZX}{\bicat{ZX}}
+\newcommand{\ZZZX}{\dblcat{ZX}}
+\newcommand{\FinGraphGamma}{\FinGraph \downarrow \Gamma}
+\newcommand{\AdjTopos}{\cat{AdjTopos}}
+
+% functors ~~~~~~~~~~~~~~~~~~~~~~~~~
+\newcommand{\core}{\mathbf{core}}
+\newcommand{\Lang}{\mathrm{Lang}}
+
+% text formatting ~~~~~~~~~~~~~~~~~~~~~
+\newcommand{\df}[1]{\textbf{#1}}
+\newcommand{\cat}[1]{\mathsf{#1}}
+\newcommand{\bicat}[1]{\mathbf{#1}}
+\newcommand{\dblcat}[1]{\mathbb{#1}}
+\newcommand{\type}[1]{\mathtt{#1}}
+\newcommand{\Daniel}[1]{\textcolor{red}{(#1)}}
+
+% arrows ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\newcommand{\from}{\colon}
+\newcommand{\rel}{\nrightarrow}
+\newcommand{\To}{\Rightarrow}
+\newcommand{\xto}[1]{\xrightarrow{#1}}
+\newcommand{\monicto}{\rightarrowtail}
+\newcommand{\dderiv}[2]{#1 \rightsquigarrow #2}
+\newcommand{\deriv}[2]{#1 \rightsquigarrow^\ast #2}
+\renewcommand{\gets}{\leftarrow}
+\newcommand{\monicgets}{\leftarrowtail}
+\newcommand{\xgets}[1]{\xleftarrow{#1}}
+\newcommand{\spn}[3]{#1 \gets #2 \to #3}
+\newcommand{\xspn}[5]{#1 \xgets{#2} #3 \xto{#4} #5}
+\newcommand{\csp}[3]{#1 \to #2 \gets #3}
+\newcommand{\xcsp}[5]{#1 \xto{#2} #3 \xgets{#4} #5}
+\newcommand{\lrto}{\rightleftarrows}
+
+% math operators ~~~~~~~~~~~~~~~~~~~~~~~~~
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\Sub}{Sub}
+\DeclareMathOperator{\colim}{colim}
+\DeclareMathOperator{\ob}{ob}
+\DeclareMathOperator{\arr}{arr}
+\DeclareMathOperator{\edges}{edges}
+\DeclareMathOperator{\nodes}{nodes}
+\DeclareMathOperator{\decat}{decat}
+
+% delimiters ~~~~~~~~~~~~~~~~~~~~~~~~~
+%\renewcommand{\l(}{\left(}
+%\newcommand{\r)}{\right)}
+
+% =========================================
+% Environments and Counters
+% =========================================
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{notation}[theorem]{Notation}
+
+\theoremstyle{definition}
+\newtheorem{example}[theorem]{Example} 
+\newtheorem{definition}[theorem]{Definition}
+
+\setcounter{tocdepth}{1} % Sets depth for table of contents. 
+
+% ==========================================
+% Tikz Macros
+% ==========================================
+
+% arrows for commuting diagrams
+\tikzset{
+  cd/.style={
+    ->,
+    scale=6,
+    >=angle 90,
+    font=\scriptsize}}
+
+% arrows for graphs
+\tikzset{
+  graph/.style={
+    ->,
+    scale=2,
+    >=triangle 45,
+    font=\scriptsize}}
+
+% arrow head in middle of edge
+\tikzset{->-/.style={decoration={%
+      markings,
+      mark=at position .5 with {\arrow{>}}},
+      postaction={decorate}}}
+
+% arrow head user-positioned
+\tikzset{->-pos/.style={decoration={%
+      markings,
+      mark=at position #1 with {\arrow{>}}},
+      postaction={decorate}}}
+
+% arrow head in middle of edge
+\tikzset{-|->/.style={decoration={%
+      markings,
+      mark=at position .5 with {\arrow{|}},
+      mark=at position 1 with {\arrow{>}}},
+    postaction={decorate}}}
+
+% walking reflexive graph
+\newcommand{\rgraph}[2]{%
+  \begin{tikzpicture}[scale=0.75,baseline=-3pt]
+    \node (a) at (0,0) {$ #1 $};
+    \node (b) at (1,0) {$ #2 $};
+    \draw [->]
+    ([yshift= 4pt]a.east) to ([yshift= 4pt]b.west);
+    \draw [->]
+    ([yshift=-4pt]a.east) to ([yshift=-4pt]b.west);
+    \draw [->]
+    (b.west) to (a.east);
+  \end{tikzpicture}
+}
+
+% walking graph
+\newcommand{\graph}[2]{%
+  \begin{tikzpicture}[scale=0.75,baseline=-3pt]
+    \node (a) at (0,0) {$ #1 $};
+    \node (b) at (1,0) {$ #2 $};
+    \draw [->]
+    ([yshift=4pt]a.east) to ([yshift=4pt]b.west);
+    \draw [->]
+    ([yshift=-4pt]a.east) to ([yshift=-4pt]b.west);
+  \end{tikzpicture}
+}
+
+% open tipped arrow
+\newcommand{\opento}[2]{%
+  \begin{tikzpicture}[scale=0.75,baseline=-3pt]
+    \node (a) at (0,0) {$ #1 $};
+    \node (b) at (1,0) {$ #2 $};
+    \draw [->, open triangle 60]
+    (a.east) to (b.west);
+  \end{tikzpicture}
+}
+
+% inline horizontal arrow
+\newlength\mylen
+\settowidth\mylen{$\to$}
+
+\newcommand{\horarrow}{%
+  \to\kern-0.55\mylen\vline height 1.2ex depth
+  -0.4pt\kern0.55\mylen}
+
+% adjunction
+\newcommand{\adjunction}[4]{%
+  \begin{tikzpicture}[baseline=-3pt]
+    \node (1) at (0,0) {\( #1 \)};
+    \node (2) at (2,0) {\( #4 \)};
+    \draw [->]
+    ([yshift= 4pt]2.west) to
+    node [above] {\scriptsize{ $ #2 $ }}
+    ([yshift= 4pt]1.east);
+    \draw [->]
+    ([yshift= -4pt]1.east) to
+    node [below] {\scriptsize{ $ #3 $ }}
+    node [above,yshift= -1.5pt] {\scriptsize{$ \perp $}}
+    ([yshift= -4pt]2.west);
+  \end{tikzpicture}
+  % 
+}

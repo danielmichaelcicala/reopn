@@ -1,0 +1,26 @@
+\[
+  \begin{tikzpicture}
+    \node (a) at (0,4) {$ La $};
+    \node (b) at (0,2) {$ Lb $};
+    \node (c) at (0,0) {$ Lc $};
+    \node (x) at (2,4) {$ v +_{La'} v' $};
+    \node (y) at (2,2) {$ w +_{Lb'} w' $};
+    \node (z) at (2,0) {$ x +_{Lc'} x' $};
+    \node (d) at (4,4) {$ La'' $};
+    \node (e) at (4,2) {$ Lb'' $};
+    \node (f) at (4,0) {$ Lc'' $};
+    %
+    \draw [cd] (a) to (x);
+    \draw [cd] (b) to (y);
+    \draw [cd] (c) to (z);
+    \draw [cd] (d) to (x);
+    \draw [cd] (e) to (y);
+    \draw [cd] (f) to (z);
+    \draw [cd] (b) to (a);
+    \draw [cd] (y) to (x);
+    \draw [cd] (e) to (d);
+    \draw [cd] (b) to (c);
+    \draw [cd] (y) to (z);
+    \draw [cd] (e) to (f);
+  \end{tikzpicture}
+  \]

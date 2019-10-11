@@ -1,0 +1,14 @@
+\begin{center}\begin{tikzpicture}
+  \node (flatk) at (0,2) {$ \flat k $};
+  \node (k)     at (2,2) {$ k $};
+  \node (d)     at (0,0) {$ d $};
+  \node (d')    at (2,0) {$ d' $};
+  % 
+  \draw [cd] 
+   (flatk) edge[] node[above]{$ \epsilon $}       (k)
+   (flatk) edge[] node[left]{$ \theta $}          (d)
+   (d)     edge[] node[below]{$ \hat{\epsilon} $} (d')
+   (k)     edge[] node[right]{$ \hat{\theta} $}   (d');
+  % 
+  \draw (1.7,0.4) -- (1.6,0.4) -- (1.6,0.3);
+\end{tikzpicture}\end{center}

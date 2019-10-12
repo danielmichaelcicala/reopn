@@ -201,7 +201,7 @@ cospans.
 \end{definition}
 
 Secretly, we have been working with a discrete comonad all
-along. The adjunction $$\adjunction{\Set}{L}{R}{\RGraph}$$
+along. The adjunction $$\adjunction{\RGraph}{L}{R}{\Set}$$
 induces the comonad $ LR $ on $ \RGraph $.  Applying $ LR $ to
 a graph $ x $ returns the edgeless graph underlying $
 x $, hence the term `discrete'. For example \input{assets/discreteComonadExample.tex} 
@@ -213,7 +213,7 @@ the original graph $ x $. For example, \input{includeEdgelessGraphEx.tex}
 Abstractly, this inclusion is why we ask for the counit to
 be monic. The property we capture with a discrete comonad
 comes from the systems interpretation of the
-adjunctions $$\adjunction{\A}{L}{R}{\X}$$ between
+adjunctions $$\adjunction{\X}{L}{R}{\A}$$ between
 topoi. That is, $ R $ takes a system $ x $, identifies the
 largest sub-system that can serve as an interface and turns
 that sub-system into an interface type $ Rx $. Then $ L $
@@ -225,43 +225,29 @@ the parlance of category theory, $ LRx $ is a subobject of
 $ x $.  Hence, we ask for a monic counit.
 
 How do we plan to use discrete comonads?  We use them to
-control the form of our grammars.  In general, a rewrite
-rule has form $$\ell \gets k \to r$$ where there are no
-restrictions on what $ k $ can be.  However, recall that
-$ k $ identifies the part of $ \ell $ that is fixed
-throughout the rewrite. It does not direct how the rewrite
-is performed.  Therefore, we can deform it a bit without
-changing the outcome of the applying the rewrite.  In
-particular, we can discretize it by replacing $ k $ with
-$ \flat k $.  And because $ \flat $ has a monic counit, we
-can insert $ \flat k $ right into the middle of the fine
-rewrite rule.
+control the form of our grammars. In particular, we can \emph{discretize} any rewrite
+rule $$\ell \gets k \to r$$ by replacing $ k $ with
+$ \flat k $.  
 
 \begin{definition}[Discrete grammar]
-  Given a grammar $ ( \X , P ) $, define the set $ P_\flat $
-  as consisting of the rules
+  Given a grammar $ ( \X , P ) $, define $ P_\flat $ as the set
+  consisting of a rule
   \[ \ell \gets k \gets \flat k \to k \to r \]
   for each rule $ \ell \gets k \to r $ in $ P $. We call $
   ( X , P_\flat ) $ the \df{discrete grammar} underlying $
   ( \X, P ) $.
 \end{definition}
 
-Discrete grammars are easier to work with than arbitrary
-grammars. So when given an opportunity to work with a
-discrete grammar instead of a non-discrete grammar, we
-should take it. Theorem
-\ref{thm:production-same-rewrite-relation-as-discrete} gives
+Theorem \ref{thm:production-same-rewrite-relation-as-discrete} gives
 a sufficient condition that allows us to swap $ ( \X,P ) $
-for $ ( \X,P_\flat ) $ without consequence. To prove this,
-however, we borrow from lattice theory which requires that
-we make a brief turn to fill in some required background.
+for $ ( \X,P_\flat ) $ without consequence. The proof of this theorem borrows from lattice theory, so let us digress from rewriting to fill in the requisit background.
 
 \begin{definition}[Lattice]
   A lattice is a poset $ ( S, \leq ) $ equipped with all
   finite joins $ \bigvee $ and all finite meets
-  $ \bigwedge $. It follows that there is a minimal element
-  and maximal element, realized as the empty meet and join
-  respectively, which we denote by $ 0 $ and $ 1 $.
+  $ \bigwedge $. It follows that there is a minimal 0 element
+  and maximal element 1, realized as the empty meet and join,
+  respectively.
 \end{definition}
 
 Joins and meets are also known as suprema and infima. We are
@@ -295,8 +281,8 @@ theory. It is called the subobject lattice.
 \begin{example}[Subobject lattice]
   Let $ \T $ be a topos and $ t $ be an object. There is a
   lattice $ \Sub (t) $ called the subobject lattice of
-  $ t $.  The elements of $ \Sub (t) $ are called
-  subobjects.  They are isomorphism classes of monomorphisms
+  $ t $.  The elements of $ \Sub (t) $, called
+  subobjects, are isomorphism classes of monomorphisms
   into $ t $. Here, two monomorphisms $ f,g $ into $ t $ are
   isomorphic if there is a commuting diagram \include{assets/isoMonics.tex}
   
@@ -309,13 +295,13 @@ theory. It is called the subobject lattice.
   \input{assets/meetPushout.tex}
 \end{example}
 
-We use subobject lattices to characterize which grammars are
-as expressive as their underlying discrete grammars. To do
-this, we require subobject lattices with arbitrary meets.  The
+Subobject lattices provide a way to compare the expressivity of a grammar to its underlying discrete grammar.
+To do
+this, we require a subobject lattice with arbitrary meets.  The
 powerset lattice mentioned above has this property, but
-when do subobject lattices have this property?  Here are
+when does a subobject lattice have this property?  Here are
 several sufficient conditions, starting with a well-known
-result coming from the domain of order theory.
+result from order theory.
 
 \begin{proposition} \label{thm:lattice-alljoins-allmeets}
   Any lattice that has all joins also has all meets.
@@ -327,9 +313,9 @@ result coming from the domain of order theory.
 \end{proof}
 
 \begin{proposition} \label{thm:subob-arbitrary-meets}
-  Consider a topos $ \T $ and object $ t $.  The subobject
-  lattice $ \Sub (t) $ has arbitrary meets when the over
-  category $ T \downarrow t $ has all products.
+  Fix an object $t$ of a topos $ \T $.  The subobject
+  lattice $ \Sub (t) $ has arbitrary meets when the over-category 
+	$ T \downarrow t $ has all products.
 \end{proposition}
 
 \begin{proof}
@@ -339,7 +325,7 @@ result coming from the domain of order theory.
 \end{proof}
 
 \begin{corollary}
-  Consider a topos $ \T $ and object $ t $.  The subobject
+  Fix an object $t$ of a topos $ \T $.  The subobject
   lattice $ \Sub (t) $ has arbitrary meets when the over
   category $ T \downarrow t $ has all coproducts.
 \end{corollary}
@@ -349,18 +335,7 @@ result coming from the domain of order theory.
   and \ref{thm:subob-arbitrary-meets}.
 \end{proof}
 
-\begin{corollary}
-  Consider a presheaf category $ \Set^{ \C^{\op} } $ on a
-  small category $ \C $. For any presheaf $ x $,
-  $ \Sub (x) $ has all meets.
-\end{corollary}
-
-\begin{proof}
-  The category $ \Set^{ \C^{\op} } \downarrow x $ of
-  presheaves over $ x $ is again a presheaf category by
-  Theorem \ref{thm:presheaf-slice-is-presheaf} so has all
-  products.
-\end{proof}
+The case where $\T$ is a presheave category is especially pertinent to us because, often, a system can be encoded as a presheaf. Labelled graphs offer a large cache of examples.
 
 At last, we combine the discrete comonad, the discrete
 grammar, and the complete subobject lattice into a result on
@@ -445,15 +420,6 @@ the expressiveness on discrete grammars.
 \section{The Structure of Structured Cospans}
 \label{sec:StructureOfStrCsp}
 
-\Daniel{ Outline
-  \begin{enumerate}
-  \item Strucutred cospas and their morphisms form a topos
-  \item Structured cospans and their rewrites form a double category
-  \end{enumerate}
-  The first is a new result here and the section comes from
-  my work with Kenny.
-}
-
 This paper fits into a larger program in formal systems
 theory. Structured cospans, introduced by Baez and Courser
 \cite{bc_strCsp}, are a syntax for open systems. The
@@ -477,51 +443,30 @@ characterize a language of a grammar of structured cospans.
 \label{sec:StructureOfStrCsp}
 %% ===========================================
 
-We start this section by recalling and motivating the
-definition of a structured cospan.  As the goal of this
-paper is to introduce a double pushout (DPO) rewriting
-theory of structured cospans, we should ensure that the
-structured cospans have the correct structure to do so. For
-us, the correct structure is an adhesive category, which
-Lack and Soboci\'{n}ski \cite{LackSobo_Adhesive} defined as
-a general space in which the desirable properties of
-rewriting hold. However, our larger goal here is not to
-maximize generality, but rather to maximize familiarity with
-the ingredients and so we construct our structured cospans
-so that they form a topos, which is a special case of an
-adhesive category \cite{LackSobo_TopsIsAdh}.
+Having discussed rewriting in a topos, in order to introduce the rewriting of structured cospans, we better ensure that they form a topos. Indeed, we do this after recalling their definition. 
 
 Baez and Courser introduced structured cospans
-\cite{bc_strCsp} to serve as a syntax for open systems.
-In order to form a topos out of these, we require stronger
-conditions than they gave.
+\cite{bc_strCsp} to serve as a syntax for open systems. We use the term `system' broadly and avoid giving a precise definition.  By `open', we mean that compatible systems can be connected to form a larger system.  For example, a vacuum cleaner can connected to the electrical grid via an electrical socket. Or, a pulley system can connect to a mechanical motor.  
+
+In order to form a topos out of structured cospans, we require stronger conditions than assumed by Baez and Courser.
 
 %% define structured cospans
 \begin{definition}
   Fix an adjunction $$\adjunction{\X}{L}{R}{\A}$$ between
   (elementary) topoi with $ L $ preserving finite
-  limits (that is, a geometric morphism). An \df{$ L $-structured
+  limits. An \df{$ L $-structured
     cospan}, or simply \df{structured cospan}, is any cospan
   in $ \X $ of the form $ La \to x \gets Lb $.    
 \end{definition}
 
-A structured cospan is designed to serve as syntax for a
-system, like a passive linear circuit or Petri net or
-combinatorial graph, with the ability to connect to
-compatible systems.  We call systems like this \emph{open
-  systems}. The apex of the cospan, the $ \X $-object $ x $,
+How does the structured cospan syntax map onto an open system? The apex $x$ of the cospan
 represents the system itself.  The legs of the cospan,
 $ La \to x $ and $ Lb \to x $, select the inputs $ La $ and
-outputs $ Lb $ of $ x $. These provide the structured
-cospans with the compositional property held by those open
-systems for which we designed this syntax. Namely, two
-compatible structured cospans, $ La \to x \gets Lb $ and
-$ Lb \to y \gets Lc $, can be combined to form the \emph{composite}
-structured cospan $ La \to x+_{Lb}y \gets Lc $, where
-$ x+_{Lb}y $ is obtained by glueing $ x $ to $ y $ along
-their common interface $ Lb $. Indeed, we call $ La \to
-x+_{Lb}y \gets Lc $ the composite structured cospan because
-structured cospans are arrows in a category.
+outputs $ Lb $ of $ x $. These legs endow structured cospans with the ability to connect together. Given $ La \to x \gets Lb $ and
+$ Lb \to y \gets Lc $, we form the \emph{composite}
+structured cospan $ La \to x+_{Lb}y \gets Lc $. Interpret the pushout
+$ x+_{Lb}y $ as an object obtained by glueing $ x $ to $ y $ along
+their common interface $ Lb $. The reason we call $La \gets x+_{Lb}y \to Lc$ the `composite' is because a natural way to emphasize this connectability is by defining a category in which structured cospans are the arrows.
 
 %% define category w str cospans as arrows
 \begin{definition}
@@ -820,7 +765,7 @@ enough to warrant its own section.
 \label{thm:rewrite-double-cat}
   Let
   \[
-    \adjunction{\A}{\X}{L}{R}{2}
+    \adjunction{\X}{L}{R}{\A}
   \]
   be a adjunction with $ L $ preserving pullbacks.  There is
   a double category $ _L\FFFineRewrite $ whose objects are
@@ -1003,7 +948,7 @@ this, we sketch a simple example.
 \begin{example}
   Start with the, by now familiar, adjunction
   \[
-    \adjunction{\Set}{\RGraph}{L}{R}{4}
+    \adjunction{\RGraph}{L}{R}{\Set}
   \]
   For this $ L $, $ _L \StrCsp $ is the category of open
   graphs.  Make a grammar from $ _L \StrCsp $ by defining a
@@ -1123,7 +1068,7 @@ systems. For this, we need a topos of closed systems $ \X $
 equipped with a grammar $ ( \X , P ) $. The closed systems
 need interfaces, meaning we need to introduce an adjunction
 \[
-  \adjunction{\A}{\X}{L}{R}{2}
+  \adjunction{\X}{L}{R}{\A}
 \]
 where $ L $ preserves pullbacks and has a monic counit. At
 this point, the material from the previous section
@@ -1469,3 +1414,4 @@ original system.
 
 
 \end{document}
+

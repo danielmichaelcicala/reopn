@@ -1,0 +1,15 @@
+\begin{center}
+  \begin{tikzpicture}
+    \node (X) at (0,2) {$ \X $};
+    \node (A) at (0,0) {$ \A $};
+    \node (X') at (2,2) {$ \X' $};
+    \node (A') at (2,0) {$ \A' $};
+    \draw [cd] 
+    (A) edge[bend left=20] node[left]{$ L $} (X)
+    (X) edge[bend left=20] node[right]{$ R $} (A)
+    (A') edge[bend left=20] node[left]{$ L' $} (X')
+    (X') edge[bend left=20] node[right]{$ R' $} (A')
+    (X) edge[] node[above]{$ F $} (X')
+    (A) edge[] node[below]{$ G $} (A');
+  \end{tikzpicture}
+\end{center}

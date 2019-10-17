@@ -459,14 +459,20 @@ In order to form a topos out of structured cospans, we require stronger conditio
   in $ \X $ of the form $ La \to x \gets Lb $.    
 \end{definition}
 
-How does the structured cospan syntax map onto an open system? The apex $x$ of the cospan
-represents the system itself.  The legs of the cospan,
-$ La \to x $ and $ Lb \to x $, select the inputs $ La $ and
-outputs $ Lb $ of $ x $. These legs endow structured cospans with the ability to connect together. Given $ La \to x \gets Lb $ and
+How does the structured cospan syntax map onto an open
+system? The apex $x$ of the cospan represents the system
+itself.  The legs of the cospan, $ La \to x $ and
+$ Lb \to x $, select the inputs $ La $ and outputs $ Lb $ of
+$ x $. These legs endow structured cospans with the ability
+to connect together. Given $ La \to x \gets Lb $ and
 $ Lb \to y \gets Lc $, we form the \emph{composite}
-structured cospan $ La \to x+_{Lb}y \gets Lc $. Interpret the pushout
-$ x+_{Lb}y $ as an object obtained by glueing $ x $ to $ y $ along
-their common interface $ Lb $. The reason we call $La \gets x+_{Lb}y \to Lc$ the `composite' is because a natural way to emphasize this connectability is by defining a category in which structured cospans are the arrows.
+structured cospan $ La \to x+_{Lb}y \gets Lc $. Interpret
+the pushout $ x+_{Lb}y $ as an object obtained by glueing
+$ x $ to $ y $ along their common interface $ Lb $. The
+reason we call $La \gets x+_{Lb}y \to Lc$ the `composite' is
+because a natural way to emphasize this connectability is by
+defining a category in which structured cospans are the
+arrows.
 
 %% define category w str cospans as arrows
 \begin{definition}
@@ -479,52 +485,41 @@ their common interface $ Lb $. The reason we call $La \gets x+_{Lb}y \to Lc$ the
 
 Of course, $ _L \Csp $ does not require the full strength of
 those conditions to form a category---Baez and Courser do
-not ask this much---but we choose to work under assumptions
-that are sufficiently strong to support rewriting and
-familiar and succint as working with topoi.
+not ask this much---but remember, we are aiming to form a
+topos of structured cospans.
 
 %% example: open graphs
 \begin{example}
   Consider the
   adjunction $$\adjunction{\Graph}{L}{R}{\Set}$$ with $ L $
   the discrete graph functor and $ R $ the functor that
-  forgets the graph edges.  Structured cospans here are open
-  graphs, that is graphs equipped with two subset of nodes,
-  one serves as inputs and another, which is not necessarily
-  disjoint, serves as outputs. \input{assets/openGraph1.tex}
-  Connect these open graphs by gluing like-nodes
-  together. This results in \input{assets/openGraph2.tex}
+  forgets the graph edges.  Structured cospans for this
+  adjunction are open graphs, that is graphs equipped with
+  two subset of nodes, one set interpretted as inputs and
+  the other as outputs. These ``interface'' sets need not be
+  disjoint. For example, the pair of open graphs
+  \input{assets/openGraph1.tex} are composed
+  by glueing like-nodes together
+  \input{assets/openGraph2.tex}
 \end{example}
 
-In Lack and Soboci\'{n}ski axiomatisation of DPO rewriting,
-rewriting is done on the \emph{objects} of a category, not
-the arrows.  Therefore, to rewrite structured cospans, we
-require a category where the structured cospans are
-objects and so we are obliged to define morphisms of
-structured cospans. The expected definition is given.
+Let us pause for a moment to recall that, in Section
+\ref{sec:RewriteTopoi}, we showed that rewriting operates on
+the \emph{objects} of a topos, not the arrows.  To comply
+with this, our immediate tasks become to define a category
+where structured cospans are objects and then show that
+category to be a topos.
 
 % define L-structured cospan morphism
 \begin{definition} \label{df:morph-of-strcsp}
-  A morphism from $ La \to x \gets Lb $ to
-  $ Lc \to y \gets Ld $ is a triple of arrows $ ( f,g,h ) $
+  Let $ L \dashv R $ be an adjunction between topoi where
+  $ L $ preserves finite limits. There is a category
+  $ _L \StrCsp $ whose objects are $ L $-structured cospans
+  and arrows from $ La \to x \gets Lb $ to
+  $ Lc \to y \gets Ld $ are triple of arrows $ ( f,g,h ) $
   fitting into the commuting diagram
-  \input{assets/morphismStrCsp.tex} There is a category,
-  denoted by $ _L \StrCsp $, whose objects are $ L
-  $-structured cospans and whose arrows are their morphisms.
+  \input{assets/morphismStrCsp.tex}
 \end{definition}
-
-At this point, certain readers may have observed that
-structured cospans fit as objects into one category and as
-arrows into another, thus making it likely they fit into a
-double category.  Indeed, they do.  In fact, they fit into a
-symmetric monoidal double category which Baez and Courser
-discuss.  We, however, are uninterested in this for our
-purposes. 
-
-We now come to the first of our main results: that
-$ _{L}\StrCsp $ is a topos. This result is critical for our
-theory because it allows the introduction of rewriting onto
-structured cospans.
 
 %% structured cospans form a topos
 \begin{theorem} \label{thm:strcsp-istopos}
@@ -547,18 +542,13 @@ structured cospans.
   a topos.
 \end{proof}
 
-Knowing that $ _L\StrCsp $ is a topos is enough for us
-introduce rewriting structured cospans, but by pausing for
-a moment, we see that $ _L\StrCsp $ is constructed
-functorially.  
+Not only is $ _L\StrCsp $ a topos, but it is constructed functorially.
 
-\begin{theorem} \label{thm:strcsp-isfunctorial}
-  Denote by $ \Topos $ the category whose objects are topoi
-  and whose arrows from $ \X $ to $ \A $ are adjoint
+\begin{theorem} \label{thm:strcsp-isfunctorial} Denote by
+  $ \Topos $ the category whose objects are topoi and whose
+  arrows from $ \X $ to $ \A $ are adjoint
   pairs $$\adjunction{\X}{L}{R}{\A}$$ where $ L $ preserves
-  finite limits (these arrows are geometric morphisms, a
-  standard morphism between elementary topoi).  There is a
-  functor
+  finite limits. There is a functor
   \[
     _{(-)}\StrCsp_{(-)}
       \from [\bullet \to \bullet, \Topos ]
@@ -603,28 +593,20 @@ functorially.
   and $ F' $ all preserve finite limits.
 \end{proof}
 
-With this theorem, we have brought forth various categories
-of the form $ _L\StrCsp $ where $ L $ runs through finite
-limit preserving left adjoints.  For reference, we refer to
-such categories as structured cospan categories.  This
-leaves us wanting to organize structured cospan categories
-into some kind of structure, say a 2-category.  This is
-easily accomplished using the following as our 1-arrows.
-
-\begin{definition} \label{def:str-csp-functor}
-  A \df{functor of structured cospan categories} is a pair
-  of finitely continuous and cocontinuous functors
-  $ F \from \X \to \X' $ and $ G \from \A \to \A' $ such
-  that $ FL=L'F $ and $ GR = R'F $.
-\end{definition}
-
-Structured cospan categories along with their functors and
-natural transformations form a 2-category $ \SStrCsp
-$. However, we leave this 2-category here and more onwards
-towards our intended goal: rewriting structured cospans.
+With this theorem, we have highlighted categories of the
+form $ _L\StrCsp $ where $ L $ runs through finite limit
+preserving left adjoints. These \df{structured cospan
+  categories} fit into a 2-category $ \SStrCsp $. A 1-arrow
+from $ _L\StrCsp \to _{L'}\StrCsp $ is a pair of finitely
+continuous and cocontinuous functors $ F \from \X \to \X' $
+and $ G \from \A \to \A' $ fitting into the commuting
+diagram
+$$ \input{assets/StrCsp_1Arrow.tex} $$. A 2-arrow from $
+(F,G) \To (F',G') $ is a pair of natural transformations $
+\alpha \from F \To F' $ and $ \beta \from G \to G'$. 
 
 %% =====================================================
-\section{Structured cospan rewrites for a double category}
+\section{A double category of structured cospan rewrites}
 \label{sec:DblCat}
 %% =====================================================
 
@@ -633,56 +615,57 @@ category a la FineRewrite. Uncertain to include: interchange
 law, symmetric monoidal structure. Just point to thesis?
 Dno't call things FineRewrite, just Rewrite.}
 
-In this chapter, we introduce a theory of fine rewriting to
-structured cospans.  Rewriting is \emph{fine}
-when the rewrite rules are spans with monic legs.  Our
-primary goal is to define a double category whose squares
-are fine rewrites of structured cospans.  The rough idea is
+Because $ _L\StrCsp $, the category of structured cospans
+and their morphisms, is a topos, we are ensured that
+rewriting structured cospans have a nice theory of rewriting
+a l\'{a} adhesive categories \cite{LackSobo_Adhesive}.
+The goal of this section is to define a double category whose squares
+are rewrites of structured cospans.  The rough idea is
 that this double category, denoted $ _L\RRRewrite $, has
-interface types for objects, structured cospans for
+``interface'' types for objects, structured cospans for
 horizontal arrows, isomorphisms of interface objects for
-vertical arrows, and fine rewrite rules of structured
+vertical arrows, and rewrite rules of structured
 cospans for squares. We prove in Proposition
 \ref{thm:fine-rewrite-double-cat} that $ _L\RRRewrite $
 actually is a double category. The first step to proving
-this is to ensure the fine rewrite rules are suitable squares for
+this is to ensure the rewrite rules are suitable squares for
 our double category, we define them as follows.
 
-\begin{definition}[Fine rewrite]
-  A \df{fine rewrite of structured cospans} is an
+\begin{definition}[Rewrite]
+  A \df{rewrite rule of structured cospans} is an
   isomorphism class of spans of structured cospans of the
   form \input{assets/spanStrCsp.tex} The marked arrows are
   monic.
 \end{definition}
 
-In a double category, the squares have two composition
-operations.  Horizontal composition uses pushout as is
-typical with cospan categories. The vertical composition
-uses pullback as is typical in span categories.  But because
-there are no higher order arrows traversing the squares in a
-double category, and because pushouts and pullbacks are only
-defined up to isomorphism, we take isomorphism classes of
-structured cospan rewrite rules.  With the squares of
-$ \RRRewrite $ defined, we can introduce the two composition
-operations.
+Working with isomorphism classes is a technical point.  The
+squares of a double category are subject to two composition
+operations. Below, we define horizontal composition using
+pushout, as is standard with cospan categories, and vertical
+composition uses pullback, as is standard in span
+categories.  But pushouts and pullbacks are defined only up
+to isomorphism and there are no higher order arrows
+traversing the squares in a double category. Therefore, we
+must work with isomorphism classes of structured cospan
+rewrite rules.
 
-\begin{definition} \label{def:hor-vert-composition}
-  The \df{horizontal composition} of fine rewrite rules is
-  given by \input{assets/horComposition1.tex} and
-  \input{assets/horComposition.tex}
+The \df{horizontal composition} of rewrite rules is given by
+\input{assets/horComposition1.tex} We interpret this as
+taking composable open systems, each undergoing a rewrite,
+and combining them into a single open system undergoing a
+single rewrite.
 
-  The \df{vertical composition} of fine rewrite rules is
-  \input{vertComposition.tex}
-\end{definition}
+The \df{vertical composition} of rewrite rules is given by
+\input{vertComposition.tex} We interpret this as an open
+system undergoing a two-step rewrite.  
 
-We defined $ \hcirc $ and $ \vcirc $ using representatives
-of isomorphism classes, however this operation is
-well-defined. It is less clear, however, that these
-operations preserve the monic arrows in the fine rewrites of
-structured cospans.  In Proposition
-\ref{thm:comp-preserve-monic}, we show that horizontal and
-vertical composition do preserve these monic arrows. To
-prove this, we require the following lemma.
+Here, we must make two technical points. The first is that
+horizontal and vertical composition are defined on
+representatives of isomorphism classes and one can show that
+operation is well-defined. The second is that we require the
+monic arrows to be preserved, which we show in Proposition
+\ref{thm:comp-preserve-monic} below. To prove this
+proposition, we requires the following lemma.
 
 \begin{lemma}
   \label{thm:quotient-map-monic-pushout}
@@ -736,27 +719,28 @@ prove this, we require the following lemma.
   $ x'+_{y'}z' $.
 \end{proof}
 
-\begin{lemma} \label{thm:comp-preserve-monic}
-  Horizontal and vertical composition of fine
-  rewrites are fine rewrites.
-\end{lemma}
+\begin{proposition} \label{thm:comp-preserve-monic}
+  Horizontal and vertical composition preserve rewrite rules
+  of structured cospans.
+\end{proposition}
 
 \begin{proof}
-  We can see that the span of cospan obtained by horizontal
-  composition of fine rewrites \input{assets/compPreserveMonic1.tex}
-  
-  is again a fine rewrite, that is the arrows
+  For the horizontal composition of
+  rewrites \input{assets/compPreserveMonic1.tex}, the arrows 
   $ w +_{Le} x \to u+_{Lb} v $ and
-  $ w +_{Le} x \to y +_{Lh} z $ are monic, by applying Lemma
-  \ref{thm:quotient-map-monic-pushout} to the diagrams \input{assets/compPreserveMonic2.tex}
+  $ w +_{Le} x \to y +_{Lh} z $ are monic. This is seen by applying
+  Lemma \ref{thm:quotient-map-monic-pushout} to the diagrams
+  \input{assets/compPreserveMonic2.tex}
   
-  The result for vertical composition
-  \input{assets/compPreserveMonic3.tex} holds because
-  pullback preserves monomorphisms.
+  The result for vertical composition holds because pullback
+  preserves monomorphisms.
+
+  % \input{assets/compPreserveMonic3.tex} is the diagram eq
+  % for vert comp.
 \end{proof}
 
 With horizontal and vertical composition in hand, we
-construct the double category $ _L\FFFineRewrite $.
+construct the double category $ _L\RRRewrite $.
 Actually, we delay discussing the interchange law until
 Section \ref{sec:interchange-law} because it is difficult
 enough to warrant its own section.
@@ -768,19 +752,19 @@ enough to warrant its own section.
     \adjunction{\X}{L}{R}{\A}
   \]
   be a adjunction with $ L $ preserving pullbacks.  There is
-  a double category $ _L\FFFineRewrite $ whose objects are
-  the $ \A $-objects, horizontal arrows of type $ a \to b $
-  are structured cospans $ La \to x \gets Lb $, vertical
-  arrows are spans in $ \A $ with invertible arrows, and
+  a double category $ _L\RRRewrite $ whose objects are the
+  $ \A $-objects, horizontal arrows of type $ a \to b $ are
+  structured cospans $ La \to x \gets Lb $, vertical arrows
+  of type $ a \to b $ are isomorphism classes of spans
+  $ a \gets c \to b $ in $ \A $ with invertible arrows, and
   squares are rewrites of structured cospans
   \input{assets/rewriteDoubleCat1.tex}
 \end{proposition}
 
 \begin{proof}
   This proof requires we check the axioms of a double
-  category as laid out in Definition \ref{def:dbl-cat}. For
-  simplicity, we denote $_L\FFFineRewrite$ by $\RRR $ in
-  this proof.
+  category. For simplicity, we denote $_L\Rewrite$ by
+  $\RRR $ in this proof.
 
   The object category $\RRR_0$ is given by objects of $\A$
   and isomorphism classes of spans in $\A$ such that each
@@ -815,17 +799,16 @@ enough to warrant its own section.
   acts on objects by composing cospans with pushouts in the
   usual way.  It acts on morphisms by
   \input{assets/rewriteDoubleCat5.tex}
-  
-  Section \ref{sec:interchange-law} is devoted to proving
-  that $\odot$ is functorial, that is, it preserves
-  composition.  It is straightforward to check that the
+
+  The interchange law holds
+  \cite[Lem.~4.3]{CicCour_SpCspTopos}, therefore $\odot$ is
+  a functor. It is straightforward to check that the
   required equations are satisfied.  The associator and
   unitors are given by natural isomorphisms that arise from
   universal properties.
 \end{proof}
 
-And now, our double category of fine rewrites is defined. It
-remains to prove the interchange law, which we do next.
+And now, our double category of rewrites is defined.
 
 %% ==========================================================
 %% Decompositing Systems

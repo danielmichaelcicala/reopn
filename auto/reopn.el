@@ -1,12 +1,12 @@
 (TeX-add-style-hook
  "reopn"
  (lambda ()
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperref")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperimage")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperbaseurl")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "nolinkurl")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "url")
    (add-to-list 'LaTeX-verbatim-macros-with-braces-local "path")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "url")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "nolinkurl")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperbaseurl")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperimage")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperref")
    (add-to-list 'LaTeX-verbatim-macros-with-delims-local "path")
    (TeX-run-style-hooks
     "latex2e"
@@ -38,9 +38,9 @@
     "assets/functorialStrCsp1"
     "assets/functorialStrCsp2"
     "assets/functorialStrCsp3"
+    "assets/StrCsp_1Arrow"
     "assets/spanStrCsp"
     "assets/horComposition1"
-    "assets/horComposition"
     "vertComposition"
     "assets/quotientMapMonicPushout1"
     "assets/quotientMapMonicPushout2"
@@ -48,7 +48,6 @@
     "assets/quotientMapMonicPushout4"
     "assets/compPreserveMonic1"
     "assets/compPreserveMonic2"
-    "assets/compPreserveMonic3"
     "assets/rewriteDoubleCat1"
     "assets/rewriteDoubleCat2"
     "assets/rewriteDoubleCat3"
@@ -83,9 +82,7 @@
     "df:morph-of-strcsp"
     "thm:strcsp-istopos"
     "thm:strcsp-isfunctorial"
-    "def:str-csp-functor"
     "sec:DblCat"
-    "def:hor-vert-composition"
     "thm:quotient-map-monic-pushout"
     "thm:comp-preserve-monic"
     "thm:rewrite-double-cat"

@@ -25,17 +25,17 @@
   \end{scope}
   % 
   \begin{scope}[shift={(5.5,0)}]
-    \node (1) [inner sep=0.1cm] at (0,0) {\( _{L}\StrCsp \)};
-    \node (2) [inner sep=0.1cm] at (4,0) {\( _{L'}\StrCsp \)};
+    \node (1) [] at (0,0) {\( _{L}\StrCsp \)};
+    \node (2) [] at (4,0) {\( _{L'}\StrCsp \)};
     \node (3) at (2,0) {\scriptsize{ \( \perp \) }};
     \draw [cd]
-      ([yshift= 4pt]1.east) to
+      ([yshift=1pt]1.east) to
       node [above] {$\Theta$}
-      ([yshift= 4pt]2.west);
+      ([yshift= 1pt]2.west);
     \draw [cd]
-    ([yshift= -4pt]2.west) to
+    ([yshift= -1pt]2.west) to
     node [below] {$\Theta'$}
-    ([yshift= -4pt]1.east);  
+    ([yshift= -1pt]1.east);  
   \end{scope}
 \end{tikzpicture}
 \end{center}

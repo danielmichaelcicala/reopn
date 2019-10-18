@@ -1,4 +1,4 @@
-\begin{center}\begin{tikzpicture}
+\begin{center}\begin{tikzpicture}[scale=0.75]
     \begin{scope}[shift={(0,0)}] % up left
       \node () at (0,0) {$ \bullet $};
       % 
@@ -11,7 +11,7 @@
       \node (a) at (0,0) {$ \bullet $};
       %
       \draw [graph]
-        (a) edge[loop above] (a);
+        (a) edge[loop above,looseness=15] (a);
       %  
       \draw [rounded corners] (-1,-1) rectangle (1,1);
       \node (01l) at (-1.1,0) {};
@@ -92,10 +92,10 @@
       (12l) edge (11r)
       (20r) edge (21l)
       (22l) edge (21r)
-      (00b) edge (10t)
-      (20t) edge (10b)
-      (01b) edge (11t)
-      (21t) edge (11b)
-      (02b) edge (12t)
-      (22t) edge (12b);
+      (10t) edge[] (00b) 
+      (10b) edge[] (20t) 
+      (11t) edge[] (01b) 
+      (11b) edge (21t)
+      (12t) edge (02b)
+      (12b) edge (22t);
     \end{tikzpicture}\end{center}

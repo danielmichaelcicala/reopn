@@ -1,4 +1,4 @@
-\begin{center}\begin{tikzpicture}
+\begin{center}\begin{tikzpicture}[scale=0.75]
     \begin{scope}[shift={(0,0)}] % up left
       \node (a) at (0,-1) {$ \bullet $};
       \node (b) at (0,1) {$ \bullet $};
@@ -15,8 +15,8 @@
       \node (d) at (1,0) {$ \bullet $};
       %
       \draw [graph]
-        (b) edge[loop above] (b)
-        (c) edge[loop above] (c)
+        (b) edge[loop above, looseness=15] (b)
+        (c) edge[loop above, looseness=15] (c)
         (a) edge[] (c)
         (b) edge[] (c)
         (c) edge[] (d); 
@@ -111,10 +111,10 @@
       (12l) edge (11r)
       (20r) edge (21l)
       (22l) edge (21r)
-      (00b) edge (10t)
-      (20t) edge (10b)
-      (01b) edge (11t)
-      (21t) edge (11b)
-      (02b) edge (12t)
-      (22t) edge (12b);
+      (10t) edge[] (00b)
+      (10b) edge[] (20t)
+      (11t) edge[] (01b)
+      (11b) edge[] (21t)
+      (12t) edge[] (02b)
+      (12b) edge[] (22t); ;
     \end{tikzpicture}\end{center}

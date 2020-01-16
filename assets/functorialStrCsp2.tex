@@ -1,4 +1,4 @@
-\begin{center}\begin{tikzpicture}
+\[\begin{tikzpicture}
     \begin{scope}
       \node (1) at (-2,1) {\( La \)};
       \node (2) at (0,1) {\( x \)};
@@ -7,13 +7,13 @@
       \node (5) at (0,0) {\( y \)};
       \node (6) at (2,0) {\( Ld \)};
       \draw [cd]
-        (1) to node [above] {$ m $}  (2)
-        (3) to node [above] {$ n $}  (2)
-        (4) to node [above] {$ o $}  (5)
-        (6) to node [above] {$ p $}  (5)
-        (1) to node [left]  {$ Lf $} (4)
-        (2) to node [left]  {$ g $}  (5)
-        (3) to node [left]  {$ Lh $} (6);
+        (1) edge node [above] {$ m $}  (2)
+        (3) edge node [above] {$ n $}  (2)
+        (4) edge node [above] {$ o $}  (5)
+        (6) edge node [above] {$ p $}  (5)
+        (1) edge node [left]  {$ Lf $} (4)
+        (2) edge node [left]  {$ g $}  (5)
+        (3) edge node [left]  {$ Lh $} (6);
     \end{scope}
     % 
     \begin{scope}[shift={(3,0)}]
@@ -35,4 +35,4 @@
         \draw [->] (2) to node [left] {\scriptsize{\( Gg \)}} (5);
         \draw [->] (3) to node [left] {\scriptsize{\( L'G'h \)}} (6);  
     \end{scope}
-  \end{tikzpicture}\end{center}
+  \end{tikzpicture}\]

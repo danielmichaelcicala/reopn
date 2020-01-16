@@ -24,6 +24,7 @@
     "graphicx"
     "mathtools"
     "tikz"
+    "circuitikz"
     "todonotes")
    (TeX-add-symbols
     '("adjunction" 4)
@@ -44,6 +45,7 @@
     '("bicat" 1)
     '("cat" 1)
     '("df" 1)
+    '("MMMonicSpCsp" 1)
     "op"
     "inv"
     "iso"
@@ -150,7 +152,7 @@
     "arr"
     "edges"
     "nodes"
-    "decat"
+    "Sh"
     "horarrow")
    (LaTeX-add-lengths
     "mylen")

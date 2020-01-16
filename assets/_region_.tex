@@ -1,0 +1,20 @@
+\message{ !name(intro_webpage01.tex)}
+\message{ !name(intro_webpage01.tex) !offset(-2) }
+\[\begin{tikzpicture}
+  \node [rectangle] (1) at (0,4) {page 1};
+  \node [rectangle] (2) at (-2,3) {page 2};
+  \node [rectangle] (3) at (2,3) {page 3};
+  \node [rectangle] (4) at (0,2) {page 4};
+  \node [rectangle] (5) at (0,1) {page 5};
+  %
+  \draw [cd]
+  (1) edge[] (2)
+  (1) edge[] (3)
+  (2) edge[] (4)
+  (3) edge[] (4)
+  (4) edge[] (5)
+  (2) edge[] (3)
+  (4) edge[] (1)
+  (5) -- (-3,1.center) -- (-3,4.center) edge[] (1);
+\end{tikzpicture}\]
+\message{ !name(intro_webpage01.tex) !offset(-20) }

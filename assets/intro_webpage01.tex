@@ -1,0 +1,18 @@
+\[\begin{tikzpicture}[scale=0.75]
+    \node[rectangle,draw] (a) at (0,3) {page a};
+    \node[rectangle,draw] (b) at (-2,2) {page b};
+    \node[rectangle,draw] (h) at (2,2) {home};
+    \node[rectangle,draw] (c) at (0,1) {page c};
+    \node[rectangle,draw] (d) at (0,0) {page d};
+    % 
+    \draw [cd]
+    (h) edge[] (a.east)
+    (h) edge[] (b)
+    (h) edge[] (c.north east)
+    (h) edge[] (d.north east)
+    (a) edge[] (b.north east)
+    (a) edge[] (c)
+    (c) edge[] (d);
+    \draw (d.west) -- (-3,0) -- (-3,3);
+    \draw [->] (-3,3) to (a.west); 
+  \end{tikzpicture}\]

@@ -1,5 +1,7 @@
 \[
-    \begin{tikzpicture}
+  \begin{tikzpicture}[
+    baseline=(current bounding box.center),
+    scale=0.75]
     \node (a) at (0,4) {$ La $};
     \node (b) at (2,4) {$ x $};
     \node (c) at (4,4) {$ Lb $};
@@ -11,7 +13,7 @@
     \node (f) at (4,0) {$ Lf $};
     %    
     \draw [>->] (y) to (b);
-    \draw [>->] (e) to (y);
+    \draw [>->] (y) to (e);
     \draw[cd]
     (a) edge[] (b)
     (x) edge[] (y)
@@ -24,4 +26,4 @@
     (x) edge[] node[left]{$ \iso $}  (d)
     (z) edge[] node[right]{$ \iso $} (f) ;
   \end{tikzpicture}
-  \]
+\]

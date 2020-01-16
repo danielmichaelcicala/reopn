@@ -1,24 +1,24 @@
-\begin{center} \begin{tikzpicture}[scale=0.8]
+\begin{center} \begin{tikzpicture}[scale=0.75]
   \node (1t) at (0,2) {$ \ell_1 $};
   \node (2t) at (2,2) {$ k_1 $};
   \node (3t) at (4,2) {$ r1 $};
-  \node () at (5,1) {$ \cdots $};
-  \node (4t) at (6,2) {$ r_n $};
-  \node (5t) at (8,2) {$ \ell'_1 $};
-  \node (6t) at (10,2) {$ k'_1 $};
-  \node (7t) at (12,2) {$ r'_1 $};
-  \node () at (13,1) {$ \cdots $};
-  \node (8t) at (14,2) {$ k'_m $};
-  \node (9t) at (16,2) {$ r'_m $};
+  \node () at (12,1) {$ \cdots $};
+  \node () at (4.5,1) {$ \cdots $};
+  \node (4t) at (5,2) {$ r_n $};
+  \node (5t) at (7,2) {$ \ell'_1 $};
+  \node (6t) at (9,2) {$ k'_1 $};
+  \node (7t) at (11,2) {$ r'_1 $};
+  \node (8t) at (13,2) {$ k'_m $};
+  \node (9t) at (15,2) {$ r'_m $};
   % 
   \node (1b) at (0,0) {$ x+x' $};
   \node (2b) at (2,0) {$ d_1+x' $};
   \node (3b) at (4,0) {$ w_1+x' $};
-  \node (5b) at (7,0) {$ y+x' $};
-  \node (6b) at (10,0) {$ y+d'_1 $};
-  \node (7b) at (12,0) {$ y+w'_1 $};
-  \node (8b) at (14,0) {$ y+d'_m $};
-  \node (9b) at (16,0) {$ y+y' $};
+  \node (5b) at (6,0) {$ y+x' $};
+  \node (6b) at (9,0) {$ y+d'_1 $};
+  \node (7b) at (11,0) {$ y+w'_1 $};
+  \node (8b) at (13,0) {$ y+d'_m $};
+  \node (9b) at (15,0) {$ y+y' $};
   % 
   \draw [cd]
     (2t) edge[] (1t)
@@ -39,5 +39,12 @@
     (6t) edge[] (6b)
     (7t) edge[] (7b)
     (8t) edge[] (8b)
-    (9t) edge[] (9b);      
+    (9t) edge[] (9b);
+    %
+    \draw (0.3,0.4) -- (0.4,0.4) -- (0.4,0.3);
+    \draw (3.7,0.4) -- (3.6,0.4) -- (3.6,0.3);
+    \draw (6.3,0.4) -- (6.4,0.4) -- (6.4,0.3);
+    \draw (10.7,0.4) -- (10.6,0.4) -- (10.6,0.3);
+    % \draw (11.3,0.4) -- (11.4,0.4) -- (11.4,0.3);
+    \draw (14.7,0.4) -- (14.6,0.4) -- (14.6,0.3);
   \end{tikzpicture} \end{center}

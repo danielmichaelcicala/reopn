@@ -13,7 +13,7 @@
 \usepackage{caption}
 \usepackage[inline]{enumitem}
   \setlist{itemsep=0em, topsep=0em, parsep=0em}
-  \setlist[enumerate]{label=(\alph*)}
+  %\setlist[enumerate]{label=(\alph*)}
 \usepackage{etoolbox}
 \usepackage{stmaryrd} 
 \usepackage[dvipsnames]{xcolor}
@@ -35,7 +35,8 @@
     shapes,
     decorations.markings,
     decorations.pathreplacing}
-\usepackage{todonotes}
+\usepackage{circuitikz}
+  \usepackage{todonotes}
 
 % ====================================
 % New Commands
@@ -138,6 +139,7 @@
 \newcommand{\StrCspGram}{\cat{StrCspGram}}
 \newcommand{\RRewrite}{\bicat{Rewrite}}
 \newcommand{\RRRewrite}{\dblcat{R}\bicat{ewrite}}
+\newcommand{\MMMonicSpCsp}[1]{\dblcat{M}\bicat{onicSp(Csp(#1}}
 \newcommand{\ZX}{\cat{ZX}}
 \newcommand{\ZZX}{\bicat{ZX}}
 \newcommand{\ZZZX}{\dblcat{ZX}}
@@ -183,7 +185,7 @@
 \DeclareMathOperator{\arr}{arr}
 \DeclareMathOperator{\edges}{edges}
 \DeclareMathOperator{\nodes}{nodes}
-\DeclareMathOperator{\decat}{decat}
+\DeclareMathOperator{\Sh}{Sh}
 
 % delimiters ~~~~~~~~~~~~~~~~~~~~~~~~~
 %\renewcommand{\l(}{\left(}

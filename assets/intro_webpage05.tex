@@ -1,0 +1,46 @@
+\[\begin{tikzpicture}[scale=0.75]
+    \begin{scope}[shift={(-5.5,0)}]
+      \node[rectangle,draw] (1) at (0,2) {page c};
+      \node[rectangle,draw] (1) at (0,1) {page d};
+      \draw [rounded corners] (-1,-0.5) rectangle (1,3.5);
+      \node (indom) at (1,1.5) {};
+    \end{scope}
+    \begin{scope}
+      \node[rectangle,draw] (a) at (0,3) {page a};
+      \node[rectangle,draw] (b) at (-2,2) {page b};
+      \node[rectangle,draw] (h) at (2,2) {home};
+      \node[rectangle,draw] (c) at (0,1) {page c};
+      \node[rectangle,draw] (d) at (0,0) {page d};
+      \node[rectangle,draw] (a') at (4.5,3) {page $\alpha$};
+      \node[rectangle,draw] (b') at (4.5,0) {page $\beta$};
+      %      
+      \draw [cd]
+      (h) edge[] (a.east)
+      (h) edge[] (b)
+      (h) edge[] (c.north east)
+      (h) edge[] (d.north east)
+      (a) edge[] (b.north east)
+      (a) edge[] (c)
+      (c) edge[] (d);
+      \draw (d.west) -- (-3,0) -- (-3,3);
+      \draw [->] (-3,3) to (a.west);
+      % 
+      \draw [cd]
+      (h) edge[] (a'.south west)
+      (h) edge[] (b'.north west)
+      (a') edge[] (b');
+      %      
+      \draw [rounded corners] (-3.5,-0.5) rectangle (5.5,3.5);
+      \node (incod) at (-3.5,1.5) {};
+      \node (outcod) at (5.5,1.5) {};
+    \end{scope}
+    \begin{scope}[shift={(7.5,0)}]
+      \node [rectangle,draw] (1) at (0,1.5) {page $ \alpha $};
+      \draw [rounded corners] (-1,-0.5) rectangle (1,3.5); 
+      \node (outdom) at (-1,1.5) {};    
+    \end{scope}    
+    %
+    \draw [cd]
+    (indom) edge (incod)
+    (outdom) edge (outcod);
+\end{tikzpicture}\]

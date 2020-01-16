@@ -1,5 +1,7 @@
 \begin{equation} \label{eq:example-dpo-diagram}
- \begin{tikzpicture}
+  \begin{tikzpicture}[
+    baseline=(current  bounding  box.center),
+    scale=0.75]
     \begin{scope} 
       \node (c) at (0,0.5) {$ \bullet $};
       \draw [graph,loop above]
@@ -81,6 +83,4 @@
       (10l) edge (00r)
       (10r) edge (20l);
     \end{tikzpicture}
-  \end{equation}
-
-  
+  \end{equation}  

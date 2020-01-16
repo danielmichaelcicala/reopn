@@ -1,5 +1,5 @@
 \[
-  \begin{tikzpicture}
+  \begin{tikzpicture}[scale=0.75]
     \node (1) at (0,2) {$ \ell $};
     \node (2) at (2,2) {$ k $};
     \node (3) at (4,2) {$ r $};
@@ -11,7 +11,7 @@
     (2) edge (3)
     (5) edge (4)
     (5) edge (6)
-    (1) edge (4)
+    (1) edge node[left]{$ m $} (4)
     (2) edge (5)
     (3) edge (6); 
     \draw (0.3,0.4) -- (0.4,0.4) -- (0.4,0.3);

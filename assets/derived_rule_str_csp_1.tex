@@ -1,0 +1,29 @@
+\begin{center}
+  \begin{tikzpicture}[scale=0.75]
+    \node (La'') at (0,0) {$ La'' $};
+    \node (x'') at (2,0) {$ x'' $};
+    \node (Lb'') at (4,0) {$ Lb'' $};
+    \node (La) at (0,2) {$ La $};
+    \node (x) at (2,2) {$ x $};
+    \node (Lb) at (4,2) {$ Lb $};
+    \node (La') at (0,4) {$ La' $};
+    \node (x') at (2,4) {$ x' $};
+    \node (Lb') at (4,4) {$ Lb' $};
+    %
+    \draw [cd] 
+    (La) edge[] (x)
+    (Lb) edge[] (x)
+    (La') edge[] (x')
+    (Lb') edge[] (x')
+    (La'') edge[] (x'')
+    (Lb'') edge[] (x'')
+    %
+    (La) edge[] node[left]{$\cong$} (La') 
+    (La) edge[] node[left]{$\cong$} (La'')
+    (Lb) edge[] node[right]{$\cong$} (Lb')
+    (Lb) edge[] node[right]{$\cong$} (Lb'');
+    \draw [>->]
+    (x) edge (x')
+    (x) edge (x'');
+  \end{tikzpicture}
+\end{center}

@@ -5,15 +5,22 @@
     \node (2) at (-1,-1) {$\X'$};
     \node (3) at (1,1) {$\A$};
     \node (4) at (1,-1) {$\A'$};
-    \draw [cd]
-      (1.-60)  to node [right] {$G$}  (2.60)
-      (2.120)  to node [left]  {$F$}  (1.-120)
-      (3.150)  to node [above] {$L$}  (1.30)
-      (1.-30)  to node [below] {$R$}  (3.-150)
-      (2.30)   to node [above] {$R'$} (4.150)
-      (4.-150) to node [below] {$L'$} (2.-30)
-      (4.60)   to node [right] {$F'$} (3.-60)
-      (3.-120) to node [left]  {$G'$} (4.120);
+    \draw [transform canvas = {xshift=1ex}, ->]
+    (1) edge node [right] {$G$} (2);
+    \draw [transform canvas = {xshift=-1ex}, ->]    
+    (2)  edge node [left]  {$F$}  (1);
+    \draw [transform canvas = {yshift=1ex}, ->]
+    (3)  edge node [above] {$L$}  (1);
+    \draw [transform canvas = {yshift=-1ex}, ->]   
+    (1)  edge node [below] {$R$}  (3);
+    \draw [transform canvas = {yshift=1ex}, ->]
+    (2)   edge node [above] {$R'$} (4);
+    \draw [transform canvas = {yshift=-1ex}, ->]
+    (4) edge node [below] {$L'$} (2);
+    \draw [transform canvas = {xshift=1ex}, ->]
+    (4)   edge node [right] {$F'$} (3);
+    \draw [transform canvas = {xshift=-1ex}, ->]
+    (3) edge node [left]  {$G'$} (4);
     \node (5) at (0,-1) {\scriptsize{\( \top \)}};
     \node (6) at (0,1) {\scriptsize{\( \perp \)}};
     \node (7) at (-1,0) {\scriptsize{\( \dashv \)}};
@@ -21,7 +28,7 @@
   \end{scope}
   % 
   \begin{scope}[shift={(3,0)}]
-    \node (1) at (0,0) { $\xmapsto{ \StrCsp_{(-)} }$ };
+    \node (1) at (0,0) { $\xmapsto{ _{(-)}\StrCsp }$ };
   \end{scope}
   % 
   \begin{scope}[shift={(5.5,0)}]

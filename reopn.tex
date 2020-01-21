@@ -9,9 +9,6 @@
   \begin{itemize}
   \item systematic use of emph, `' and `` `` and
     bold face
-  \item RGRAPH vs GRAPH? To evangelize the
-    poisitoin of RGRAPHs superiority in CT over
-    GRPH or not?
   \end{itemize}
   }
 
@@ -1160,7 +1157,8 @@ $ \ell \gets k \to r $ with
 $ \ell \gets \flat k \to r $.
 
 \begin{definition}[Discrete grammar]
-  Let $ \flat \from \T to \T $ be a discrete
+  \label{def:DiscreteGrammar}
+  Let $ \flat \from \T \to \T $ be a discrete
   comonad with counit $ \epsilon $.  Given a
   grammar $ ( \T , P ) $, define $ P_\flat $ as
   the set containing
@@ -1291,67 +1289,59 @@ graph grammars \cite[Prop.~3.3]{Ehrig_GraphGram}.
 \section{An inductive view of rewriting in a topos}
 \label{sec:charRewrRelat}
 
-Before graph rewriting, there was formal language
-rewriting and term rewriting. In these cases,
-there are two ways to define the rewrite relation.
-The first way is called the \emph{operational
-  method}, which applies a rule by substituting a
-sub-term for another term.  The second way is
-called the \emph{inductive method}, which
-constructs the rewrite relation using generators
-and closure operations. In classical graph
-rewriting, only the operational method existed,
-where substitution was achieved with the double
-pushout method.  Eventually, Gadducci and Heckel
-introduced an inductive method to construct the
-rewrite relation, opening the way to analyze graph
-grammars through structural induction. In this
-section, we adapt their ideas in order to give an
-inductive definition of the rewrite relation for a
-grammar $ ( \X,P ) $ where $ \X $ is a topos subject
-to several conditions.  In
-the systems interpretation, this section is about
-generating the rewrite relation of closed systems
-using a generating set of open systems.
+Before graph rewriting, there was formal language rewriting
+and term rewriting. In these cases, there are two ways to
+define the rewrite relation.  The first way is called the
+\emph{operational method}, which applies a rule by
+substituting a sub-term for another term.  The second way is
+called the \emph{inductive method}, which constructs the
+rewrite relation using generators and closure operations. In
+classical graph rewriting, only the operational method
+existed, where substitution was achieved with the double
+pushout method.  Eventually, Gadducci and Heckel introduced
+an inductive method to construct the rewrite relation,
+opening the way to analyze graph grammars through structural
+induction. In this section, we adapt their ideas to give an
+inductive definition of the rewrite relation for a grammar
+$ ( \X,P ) $ such that $\X $ fits into a geometric morphism
+$L \dashv R \from \X \to \A $ with a monic counit.
 
-We start by formalizing a closed system as structured cospans
-with an empty interface $ L0 \to x \gets L0 $. To decompose a
-closed system $L0 \to x \gets L0$ is to write it
-as a composite
-\[
-  L0 \to x_1 \gets La_1 \to x_2 \gets La_2 \to
-  \dotsm \gets La_{n-1} \to x_n \gets L0
-\]
-We use such decompositions to prove our main
-result which states that two closed systems are
-equivalent precisely when, in the language double
-category, there is a square between them. This
-result shows two things. First, constructing the
-rewrite relation for a closed system is
-functorial. Second, it justifies the idea that
-open systems provide a local perspective on closed
-systems via this decomposition.
+In the systems perspective, a grammar $( \X,P )$ can be
+thought of as comprising a topos $\X$ of closed systems and
+a set of rules $P$ stating how to simplify the closed
+systems. An important part of our construction involves
+decomposing a closed system $x$ into other systems
+$x_1, \dotsc, x_n$ that are somehow connected. Structured
+cospans provide a way to form these connections, hence why
+we want $\X$ to fit into that geometric morphism. Because
+our construction uses structured cospans, we need a way to
+represent a closed system. We turn a closed system $x$ into
+the structured cospan $L0 \gets x \to L0$ with an empty interface.
 
-To decompose closed systems, considered as objects of a
-topos $X$ into open systems, we need a grammar
-$ ( \X , P ) $. We also need to equip closed systems with
-interfaces, which we do using an adjunction
-\[
-  \adjunction{\X}{L}{R}{\A}
-\]
-where $ L $ preserves pullbacks and has a monic counit. This
-adjunction induces a discrete comonad $ \flat \bydef LR $ so
-we can form the discrete grammar $ ( \X, P_\flat ) $. Now
-define the structured cospan grammar
-$ ( _L \StrCsp , \hat{P_\flat} ) $ where $ \hat{P_\flat} $
-contains the rule \input{assets/decompSquare.tex} for each
-rule $ \spn{\ell}{LRk}{r} $ of $ P_{\flat} $. This grammar
-plays an important role in proving our main theorem. Also
-needed for that proof is the following lemma that formalizes
-the analogy between rewriting the disjoint union of systems
-and tensoring squares.
+The particular decomposition we use are determined by the
+grammar. That is, we start with a grammar $( \X,P )$, then
+fit $\X$ into a geometric morphism
+$L \dashv R \from \X \to \A$ with a monic counit. The
+geometric morphism gives a discrete comonad
+$\flat \bydef LR$ which allows us to form the discrete
+grammar $(\X,P_\flat)$ (see Definition
+\ref{def:DiscreteGrammar}). Finally, we form a structured
+cospan grammar $ ( _L \StrCsp , \hat{P_\flat} ) $ where
+$ \hat{P_\flat} $ contains the rule
+\input{assets/decompSquare.tex} for each rule
+$ \spn{\ell}{LRk}{r} $ of $ P_{\flat} $. The language $\Lang
+( _L \StrCsp , \hat{P_\flat} )$, then, encodes the rewrite
+relation for $( \X,P )$ in its squares which are generated
+by the rules in $\hat{P_\flat}$. This generation is what
+forms the inductive viewpoint of the rewrite relation. 
+
+Prior to proving what the previous paragraph sketched, we
+need the following lemma which formalizes the analogy
+between rewriting the disjoint union of systems and
+tensoring squares.
 
 \begin{lemma} \label{thm:rewrite-rel-is-additive}
+  Let $( \X,P )$ be a grammar with rewrite relation $\deriv{}{}$.
   If $ \deriv{x}{y} $ and $ \deriv{x'}{y'} $, then
   $ \deriv{x+x'}{y+y'} $
 \end{lemma}
@@ -1366,87 +1356,61 @@ and tensoring squares.
   \input{assets/rewriteRelAdditive3.tex}
 \end{proof}
 
-\begin{theorem} \label{thm:inductive-rewriting}
-  Fix an adjunction
-  $ (L \dashv R) \from \X \lrto \A $ with monic
-  counit. Let $ ( \X , P ) $ be a grammar such
-  that for every $ \X $-object $ x $ in the apex
-  of a production of $ P $, the lattice
-  $ \Sub (x) $ has all meets. Given $ g $,
-  $ h \in \X $, then $ \deriv{g}{h} $ in the
-  rewrite relation for a grammar $ ( \X , P ) $ if
-  and only if there is a square
-  \input{assets/inductiveRewriting1.tex} in the
-  double category
-  $ \Lang ( _{L}\StrCsp , \hat{P_\flat} ) $.
+\begin{theorem} \label{thm:inductive-rewriting} Let
+  $ ( \X , P ) $ be a grammar with rewrite relation
+  $\deriv{}{}$. Suppose that for each rule
+  $\ell \gets k \to r$ in $P$, the lattice $ \Sub (k) $ has
+  all meets.  Let $ L \dashv R \from \X \to \A $ be a
+  geomteric morphism with monic counit. Then
+  $ \deriv{g}{h} $ if and only if there is a square
+  \input{assets/inductiveRewriting1.tex} in the double
+  category $ \Lang ( _{L}\StrCsp , \hat{P_\flat} ) $.
 \end{theorem}
 
 \begin{proof}
-  We show sufficiency by inducting on the length
-  of the derivation. If $ \deriv{g}{h} $ in a
-  single step, meaning that there is a diagram
-  \input{assets/inductiveRewriting2.tex} then the
-  desired square is the horizontal composition of
-  \input{assets/inductiveRewriting3.tex}
-  
+  It follows from Theorem
+  \ref{thm:production-same-rewrite-relation-as-discrete}
+  that both $( \X,P )$ and $( \X,P_{LR} )$ have the same
+  rewrite relation.  Thus, we use $\deriv{}{}$ to refer to
+  the rewrite relation on the discrete grammar.
+
+  We show sufficiency by inducting on the length of the
+  derivation. If $ \deriv{g}{h} $ in a single step, meaning
+  that there is a diagram
+  \input{assets/inductiveRewriting2.tex} then the desired
+  square is the horizontal composition of
+  \input{assets/inductiveRewriting3.tex}  
   The left square is a generator and the right
   square is the identity on the horizontal arrow
   $ \csp{LRk}{d}{L0} $. The square for a
   derivation $ \dderiv{\deriv{g}{h}}{j} $ is the
   vertical composition of
-  \input{assets/inductiveRewriting4.tex}
-  
+  \input{assets/inductiveRewriting4.tex}  
   The top square is from $ \deriv{g}{h} $ and the second
   from $ \dderiv{h}{j} $.
 
-  Conversely, proceed by structural induction on
-  the generating squares of
-  $ \Lang ( _{L}\StrCsp , \hat{P_\flat} ) $.  It
-  suffices to show that the rewrite relation is
-  preserved by vertical and horizontal composition
-  by generating squares.  Suppose we have a square
-  \input{assets/inductiveRewriting5.tex}
-  corresponding to a derivation $ \deriv{w}{y}
-  $. Composing this vertically with a generating
-  square, which must have form
-  \input{assets/inductiveRewriting6.tex}
-  corresponding to a rule $ \spn{y}{L0}{z} $ gives
-  \input{assets/inductiveRewriting7.tex} which
-  corresponds to a derivation
-  $ \dderiv{\deriv{w}{y}}{z} $.  Composing
+  Conversely, proceed by structural induction on the
+  generating squares of
+  $ \Lang ( _{L}\StrCsp , \hat{P_\flat} ) $.  It suffices to
+  show that the rewrite relation is preserved by vertical
+  and horizontal composition by generating squares.  Suppose
+  we have a square \input{assets/inductiveRewriting5.tex}
+  corresponding to a derivation $ \deriv{w}{y} $. Composing
+  this vertically with a generating square, which must have
+  form \input{assets/inductiveRewriting6.tex} corresponding
+  to a rule $ \spn{y}{L0}{z} $ gives
+  \input{assets/inductiveRewriting7.tex} which corresponds
+  to a derivation $ \dderiv{\deriv{w}{y}}{z} $.  Composing
   horizontally with a generating square
-  \input{assets/inductiveRewriting8.tex}
-  corresponding with a rule $ \spn{\ell}{LRk}{r} $
-  results in the square
+  \input{assets/inductiveRewriting8.tex} corresponding with
+  a rule $ \spn{\ell}{LRk}{r} $ results in the square
   \input{assets/inductiveRewriting9.tex} But
   $ \deriv{w+\ell}{y+r} $ as seen in Lemma
   \ref{thm:rewrite-rel-is-additive}.
 \end{proof}
 
-With this result, we have completely described the
-rewrite relation for a grammar $ ( \X , P ) $ with
-squares in
-$ \Lang ( _{L}\StrCsp, \hat{P_\flat} ) $ framed by
-the initial object of $ \X $.  These squares are
-rewrites of a closed system in the sense that the
-interface is empty.  We can instead begin with a
-closed system $ x $ in $ \X $ as represented by a
-horizontal arrow $ \csp{L0}{x}{L0} $ in
-$ \Lang ( _{L}\StrCsp , \hat{P_\flat} ) $ and
-decompose it into a composite of sub-systems, that
-is a sequence of composable horizontal arrows
-\input{assets/inductiveRewriting10.tex}
-
-Rewriting can be performed on each of these sub-systems
-\input{assets/inductiveRewriting11.tex} The composite of
-these squares is a rewriting of the original system.
-
-
-
-
-
-
-
+Because of this result, we can study rewrite relation for a
+wide class of topoi using structural induction.
 
 \bibliographystyle{plain}
 \bibliography{assets/biblio}

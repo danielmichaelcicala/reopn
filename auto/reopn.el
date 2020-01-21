@@ -1,12 +1,12 @@
 (TeX-add-style-hook
  "reopn"
  (lambda ()
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "path")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "url")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "nolinkurl")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperbaseurl")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperimage")
    (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperref")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperimage")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperbaseurl")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "nolinkurl")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "url")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "path")
    (add-to-list 'LaTeX-verbatim-macros-with-delims-local "path")
    (TeX-run-style-hooks
     "latex2e"
@@ -73,8 +73,6 @@
     "assets/inductiveRewriting7"
     "assets/inductiveRewriting8"
     "assets/inductiveRewriting9"
-    "assets/inductiveRewriting10"
-    "assets/inductiveRewriting11"
     "amsart"
     "amsart10")
    (LaTeX-add-labels
@@ -102,6 +100,7 @@
     "thm:StrCspLang_Encodes_RewrRel"
     "sec:gen-result-graph-rewriting"
     "def:discrete-comonad"
+    "def:DiscreteGrammar"
     "thm:subob-arbitrary-meets"
     "thm:production-same-rewrite-relation-as-discrete"
     "eq:expressivityProof10"

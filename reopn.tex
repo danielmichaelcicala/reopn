@@ -5,12 +5,6 @@
 \input{assets/frontMatter.tex}
 
 
-\Daniel{
-  \begin{itemize}
-  \item systematic use of emph, `' and `` `` and
-    bold face
-  \end{itemize}
-  }
 
 %% ===================================
 %% Introduction
@@ -48,47 +42,41 @@ cospans offer a way to equip closed systems with
 the mechanisms through which these interactions
 can occur.
 
-The following toy example suggests a way to fit a
-system into its larger context. Suppose we want to
-analyze the structure of Professor Smith's
-academic website, which contains a home page and
-two sections. The section devoted to research
-comprises, say, five pages connected by several
+The following toy example suggests a way to fit a system
+into its larger context. Suppose we want to analyze the
+structure of Professor Smith's academic website, which
+contains a home page and two sections. The section devoted
+to research comprises, say, five pages connected by several
 links as modelled by the graph
-\input{assets/intro_webpage01.tex} The section
-devoted to teaching comprises, say, three pages
-connected by several links as modelled by the
-graph \input{assets/intro_webpage02.tex} These
-graphical models are amenable to analysis using
-tools from network theory. However, such graphical
-models fail to capture that Professor Smith's
-website is part of the larger internet, rather,
-that it is an open system. This leads to us
-replacing each graph in our model with an
-\emph{open graph}, meaning a graph equipped with
-two sets of nodes interpretted as `inputs' and
-`outputs' (terms not meant to imply causality). We
-can promote a graph to an open graph by equipping
-it with a pair of functions from discrete graphs
-that effectively select the inputs and
-outputs. For instance
-\input{assets/intro_webpage03.tex} gives the graph
-inputs `page b' and `page c' and outputs
-`home'. Likewise
-\input{assets/intro_webpage04.tex} gives the graph
-inputs `home' and outputs `page $ \alpha $'.
-These cospans provide a mechanism to connect
-compatible systems together, thus allowing us to
-see how a system fits into its
-surroundings. Observe that the outputs of
+\input{assets/intro_webpage01.tex} The section devoted to
+teaching comprises, say, three pages connected by several
+links as modelled by the graph
+\input{assets/intro_webpage02.tex} These graphical models
+are amenable to analysis using tools from network
+theory. However, such graphical models fail to capture that
+Professor Smith's website is part of the larger internet,
+rather, that it is an open system. This leads to us
+replacing each graph in our model with an \emph{open graph},
+meaning a graph equipped with two sets of nodes interpretted
+as `inputs' and `outputs' (terms not meant to imply
+causality). We can promote a graph to an open graph by
+equipping it with a pair of functions from discrete graphs
+that effectively select the inputs and outputs. For instance
+\input{assets/intro_webpage03.tex} endows the graph with
+input nodes \texttt{page b} and \texttt{page c} and output
+nodes \texttt{home}. Likewise
+\input{assets/intro_webpage04.tex} endows the graph with
+input nodes \texttt{home} and output nodes \texttt{page\_e}.
+These cospans provide a mechanism to connect compatible
+systems together, thus allowing us to see how a system fits
+into its surroundings. Observe that the outputs of
 \eqref{eq:Intro_OpenGraph1} match the inputs of
-\eqref{eq:Intro_OpenGraph2}. This indicates that
-the two sections of the website share a page,
-namely the home page.  It also means that we can
-model the entire website by connecting the two graphs
-along that common node
-\input{assets/intro_webpage05.tex} This example
-can be formalized using structured cospans.
+\eqref{eq:Intro_OpenGraph2}. This indicates that the two
+sections of the website share a page, namely the home page.
+It also means that we can model the entire website by
+connecting the two graphs along that common node
+\input{assets/intro_webpage05.tex} This example can be
+formalized using structured cospans.
 
 Baez and Courser introduced structured cospans as
 an abstract framework to model open systems
@@ -119,7 +107,7 @@ structured cospans the tool of double pushout
 (DPO) rewriting, an algorithmic technique for
 creating a new object from an old object according
 to some given set of rules. One application of
-rewriting is to ``simplify'' objects. For example,
+rewriting is to `simplify' objects. For example,
 in the case of electrical circuits, rewriting
 provides a method to replace an instance of
 \input{assets/intro_circuit01.tex} in a circuit
@@ -299,18 +287,17 @@ inclusion, interface $ LRx $ of each object $ x
 $. The monic counit $ LRx \to x $ simply includes
 that interface.
 
-Another pillar in the construction of the
-inductive definition is the equivalence between
-two classes of rewrite relations.  In the context
-of graph rewriting, this result states that the
-rewrite relation for a graph grammar
-$$(\Graph , \{ \ell_j \gets k_j \to r_j\})$$ is the same as for the `discrete' graph
-grammar
+Another pillar in the construction of the inductive
+definition is the equivalence between two classes of rewrite
+relations.  In the context of graph rewriting, this result
+states that the rewrite relation for a graph grammar
+$$(\Graph , \{ \ell_j \gets k_j \to r_j\})$$ is the same as for the `discrete graph
+grammar'
 $$( \Graph , \{ \ell_j \gets k'_j \to r_j\})$$ where $ k'_j $ is the discrete graph
 underlying $ k_j $.  To extend this to rewriting
 in a topos, we again use a comonad $ LR $ induced
 from a geometric morphism with a monic counit. It
-allows us to access the ``discrete'' objects
+allows us to access the `discrete' objects
 $ LRx $ underlying an arbitrary object $ x $.  In
 the generalized setting, the rewrite relation for
 the grammar
@@ -323,7 +310,7 @@ $ \Sub (k_j) $ have all meets (Theorem
 We now have the ability to equip the objects of a
 topos with an interface using structured cospans
 and we have established that a grammar and its
-``discretized'' version induce the same rewrite relation.
+`discretized' version induce the same rewrite relation.
 Next, we can provide an inductive definition for
 the language. Fix a grammar
 $ (\X, \{ \ell_j \gets k_j \to r_j\}) $
@@ -503,7 +490,7 @@ to suitable objects of $ \Graph $.  For instance, given a
 graph $g$ with a self-loop, we can apply our rule to $ g $
 and produce a new graph: $ g $ with the loop removed.
 
-What, precisely, do we mean when we say ``apply''?
+What, precisely, do we mean by ``apply''?
 In general, we can \emph{apply} a rule
 $ \ell \gets k \to r $ to an object $ \ell' $
 using any arrow $ m \from \ell \to \ell' $ for
@@ -842,8 +829,8 @@ cospan in the top row of the diagram replaces the
 structured cospan in the bottom row. This is
 similar to a typical rewrite rule except that we
 are now orienting our diagrams as
-``top-replaces-bottom'' instead of
-``left-replaces-right''.  A non-superficial
+`top-replaces-bottom' instead of
+`left-replaces-right'.  A non-superficial
 difference is that this diagram is not merely a
 span in $ _L\StrCsp $ with monic legs.  We force
 the spans between the inputs and outputs to have
@@ -917,7 +904,7 @@ pushouts $La'+_{La}La''$ and $Lb'+_{La}Lb''$. This
 same universal property ensures that the bottom
 and right faces of Diagram
 \eqref{eq:str_csp_pushout} commute. Moreover, this
-span \emph{is} an $L$-structured cospan because as
+span is an $L$-structured cospan because as
 a left adjoint $L$ preserves pushouts so is
 isomorphic to
 $ L(a'+_aa'') \gets x'+_xx'' \to L(b'+_bb'') $.
@@ -1093,7 +1080,7 @@ In general, for any rewrite rule
 $ \ell \gets k \to r $, there is only one
 constraint on the value of $ k $: it must be a
 subobject of $ \ell $ and $ r $.  But requiring
-that $ k $ also be \emph{discrete} can simplify
+that $ k $ also be discrete can simplify
 any anaylsis involving that rule. This leads us
 question whether we can learn about a grammar
 $ ( \T,P ) $ by instead studying the grammar
@@ -1118,7 +1105,7 @@ benefit our story (curious readers can find this
 information elsewhere
 \cite[Ch.~3.6]{Johnstone_Sketches}). Instead, we
 offer a more direct, if less subtle, approach by
-defining a \emph{discrete comonad} in a way to fit
+defining a discrete comonad in a way to fit
 our needs.
 
 \begin{definition}[Discrete comonad]
@@ -1409,8 +1396,7 @@ tensoring squares.
   \ref{thm:rewrite-rel-is-additive}.
 \end{proof}
 
-Because of this result, we can study rewrite relation for a
-wide class of topoi using structural induction.
+
 
 \bibliographystyle{plain}
 \bibliography{assets/biblio}

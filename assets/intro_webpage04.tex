@@ -3,14 +3,14 @@
     scale=0.75,
     baseline=(current bounding box.center)]
     \begin{scope}[shift={(-5.5,0)}]
-      \node [rectangle,draw] (1) at (0,1.5) {home};
+      \node [rectangle,draw] (1) at (0,1.5) {$\mathtt{home}$};
       \draw [rounded corners] (-1,-0.5) rectangle (1,3.5); 
       \node (indom) at (1,1.5) {};
     \end{scope}
     \begin{scope}
-      \node[rectangle,draw] (h) at (-1.5,1.5) {home};
-      \node[rectangle,draw] (a) at (1,3) {page $\alpha$};
-      \node[rectangle,draw] (b) at (1,0) {page $\beta$};
+      \node[rectangle,draw] (h) at (-1.5,1.5) {$\mathtt{home}$};
+      \node[rectangle,draw] (a) at (1,3) {$\mathtt{page\_e}$};
+      \node[rectangle,draw] (b) at (1,0) {$\mathtt{page\_f}$};
       % 
       \draw [cd]
       (h) edge[] (a.south west)
@@ -21,7 +21,7 @@
       \node (outcod) at (3,1.5) {};
     \end{scope}  
     \begin{scope}[shift={(5,0)}]
-      \node [rectangle,draw] (1) at (0,1.5) {page $\alpha$};
+      \node [rectangle,draw] (1) at (0,1.5) {$\mathtt{page\_e}$};
       \draw [rounded corners] (-1,-0.5) rectangle (1,3.5);
       \node (outdom) at (-1,1.5) {};
     \end{scope}

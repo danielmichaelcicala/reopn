@@ -1,0 +1,26 @@
+Referee: 2
+
+Comments to the Corresponding Author
+The author develops some properties of double pushout (DPO) rewriting over a certain class of structured cospans. Structured cospans have been recently introduced by Baez and Courser and, typically, they concern situations where one has a left adjoint A -> X and wants to consider a category of cospans where "the objects are in A" and "the cospans are in X". This is actually a very common situation in applications and the structured cospans framework is, in my opinion, an elegant mathematical setting that captures many important examples.
+
+The author considers a more constrained situation in which A and X are both toposes and the left ajoint is a part of a geometric morphism. The author then considers the (non-standard) category where the cospans are the *objects* and, using the standard Artin glueing technique, shows that this category is a topos. The author considers certain restricted DPO systems on this category which, roughly speaking, "leave the boundaries unchanged". This seems quite strange, since the end result seems to be essentially the same as if one considered a rewriting system on X. There are also some minor results that examine the expressive power of "discretising" the context of the rule, which is connected to the inductive approach.
+
+The author connects the story with the inductive approach by Gadducci and Heckel, but ignores many more recent papers where rewriting on cospans has been considered and the inductive and "operational" approaches were connected. I would urge the author to, e.g., look at "Deriving bisimulation congruences in the DPO approach to graph rewriting with borrowed contexts" by Ehrig and König (and much subsequent work by König on this subject), the PhD thesis of Sobocinski, or the more recent "Rewriting modulo symmetric monoidal structure" by Bonchi et al. In my opinion, the treatment of related work is woefully incomplete. This is a topic that has received a lot of attention by many different authors over the last 30+ years.
+
+I did not find the presentation very convincing either: the author promises in the introduction to consider various levels of abstraction, including concrete examples, but these are never provided. There are some mysterious statements: some proofs are extremely verbose while some (sometimes more dubious) statements are given in a throw away manner.
+
+I do not think that the paper is ready for publication and recommend a resubmission. Concretely, I would like the author to address the following points:
+
+1. Explain how his notion of rewriting cospans differs from DPO rewriting with interfaces as considered by the aforementioned papers by Ehrig and König, and Bonchi et al.
+
+2. Improve the coherence of the presentation. Either change the introduction, or include concrete examples.
+
+3. Include a related work section that discusses how this contribution fits into the extensive existing scholarship.
+
+Minor comments:
+pg 5: an topos -> a topos
+pg 14: Definition 2.1. - why do you require pullback preservation?
+pg 17: Corollary 2.3 seems is a truism and doesn't require a proof
+pg 21: Topos typeset with wrong font on the last line
+pg 35: I don't see how any of this is connected to the Chomsky hierarchy
+pg 35: the definition of w could be done in more detail -- "it follows that (diagram) is a pushout" - follows from what?

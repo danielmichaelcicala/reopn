@@ -1,0 +1,12 @@
+
+23-Aug-2020
+
+Dear Daniel,
+
+Thanks again for your submission to MSCS. Unfortunately, after receiving reports from the referees and reading through the paper myself, I find myself in agreement with the second referee that more work will be required to get this into a suitable form for publication. I'd be very happy to handle a new version taking into account the points raised. The second referee suggests three major changes -- understanding the relation to the work of Ehrig & K"onig and of Bonchi et al; inclusion of concrete examples and improving coherence of presentation; and discussion of relation to the existing literature. I think all of these changes are important and would improve the paper significantly. The first referee makes a number of more detailed suggestions which I think pick up on the points where the second referee thought the proofs seemed "dubious".
+
+Again, if you wish to submit a new version taking these points into account, I'd be happy to handle it again.
+
+Best regards,
+
+Richard Garner

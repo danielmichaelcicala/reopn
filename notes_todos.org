@@ -1,3 +1,64 @@
-* TODO reorg folder,
+Most important things to focus on according to R Garner Related work
+section, Concrete Example, coherehce of the presentation, fix the
+dubious statements
+
+* DONE reorg folder,
   combine git and pcloud use git only
-* TODO reread review and place tasks into here
+* DONE reread review and place tasks into here
+* TODO Dubious Statements to clarify
+** TODO THM 5.2
+  I’m unable to follow lines 7 and 8 of the proof of Theorem 5.6 on page 36. Since we want to use the hypothesis that Sub(k) has all meets, my guess is that we’re working in the poset Sub(k). However, since all we know about d is that there’s a morphism k — > d, I don’t understand how we can work with d as an element of Sub(k). Perhaps we insteadwant to be working in Sub(d)? In this case, I’m not sure why w is well-defined, and indeed how best to understand k and \flat k as elements of Sub(d), nor why w \wedge k = \flat k.
+** TODO THM 6.2
+   Third, while I’m sympathetic to the idea behind the converse argument on pages 41-42 in the proof of Theorem 6.2, I would like to see more detail. To proceed by structural induction, my understanding is that we should have some recursive way to construct all squares of the form specified by the theorem. We then want to prove the property holds for the base cases, and is preserved by the recursive steps. In this proof, the author implicitly suggests that all such squares arise in essentially two ways, which seems believable, but I would like to see an explicit justification.
+* TODO Related Work Section
+** Explain how his notion of rewriting cospans differs from DPO rewriting with interfaces as considered by the aforementioned papers by Ehrig and König, and Bonchi et al.
+** "Deriving bisimulation congruences in the DPO approach to graph rewriting with borrowed contexts" by Ehrig and König
+** "Rewriting modulo symmetric monoidal structure" by Bonchi et al
+* TODO Improve Coherence of Presentation
+  Improve the coherence of the presentation.  Either change the introduction, or include concrete examples.
+* TODO Concrete Example
+** Finally, it would be nice to see an indication of the utility of the generalizations given in Theorems 5.6 and 6.2, if only by listing some examples of toposes with discrete comonads and whose subobject lattices have all meets, in which rewriting systems have an interesting application or interpretation. (The ZX-calculus is briefly mentioned as an example, but it would be nice to hear of another.)
+* TODO Referee 2 Comment
+  First, what are some examples of morphisms of grammars and structured cospan grammars? While Sections 2 and 4 develop categories of grammars, I'm left unsure exactly what motivates this or how to understand the choice of morphisms.
+* TODO Referee 2 Comment
+  Moreover, while an analogy is built between these sections, it’s not fully clear how Theorem 4.5 relates to Theorem 2.2: the relationship between the two different constructions of language categories is not discussed.
+* TODO Referee 2 Comment
+  Compounding this, I'm not clear on what problem the language double category is designed to solve. The morphisms of the language category of Theorem 2.2 are in one-to-one correspondence with rewrites inside a double pushout formalism: they are a sequence of derived rules leading from the domain to the codomain. The 2-cells of the language double category of Theorem 4.5 are vertical and horizontal composites of derived rules and identity 2-cells within a certain double category; and so, subject to this composition rule, two different ways of rewriting one structured cospan to another may be represented by the same morphism. As such, it lies between a free language category in the (“fully operational”) style of Theorem 2.2, and the (“fully denotational”) rewriting relation. As far as I can tell, the vertical composition of 2-cells (open rewrite rules) by pullback has limited interpretation in terms of the rewriting system. Why not again use a similar free construction?
+* TODO Referee 2 Comment
+  Relatedly, on page 32 the author writes “we argue that the rewrite relation is not the morally correct semantics to study in the case of structured cospans”. What is? Is the author suggesting that the double category provides the correct semantics, presumably because it allows the composition of open systems/structured cospans as well? Notions of what is ‘morally correct’ aside, for what purpose should we be interested in the construction of Theorem 4.5? If the main point is to provide a setting for Theorem 6.2, that’s certainly acceptable, but if the ambition is more general it would be nice to hear about it.
+* TODO Minor Comments
+** pg 5: an topos -> a topos
+** pg 14: Definition 2.1. - why do you require pullback preservation?
+** pg 17: Corollary 2.3 seems is a truism and doesn't require a proof
+** pg 21: Topos typeset with wrong font on the last line
+** pg 35: I don't see how any of this is connected to the Chomsky hierarchy
+** pg 35: the definition of w could be done in more detail -- "it follows that (diagram) is a pushout" - follows from what?
+** Abstract, line 5: “structure cospans” —> “structured cospans”
+** page 6, line -10: I think it’s easier to parse at this point if the comma category is written with parenthesis around the first argument, as in: “(A x A) \downarrow \Delta R”
+** p.11, l.10: I think it would be helpful to quickly note that 0 is the chosen notation for initial object.
+** P.14, Definition 2.1: Is this definition novel here? What informs the definition of morphism of grammar? I see for Theorem 2.2 we need morphisms to preserve pushouts, but what is the importance of preserving pullbacks?
+** p.17, Theorem 2.2: Last sentence in theorem statement is missing a period. Moreover, I think a brief remark on the proof would be good, even just to acknowledge that it’s quite straightforward.
+** p.19, first paragraph: most arrows in this paragraph appear to be reversed, drawing spans rather than cospans
+** p.19, Definition 3.2: What is an isomorphism of structured cospans? If the concern is that it’s not important for the main narrative of the paper, then at least a reference would be nice. That said,enough for the definition seems to later be given in Definition 3.4. It might be useful to combine both definitions by speaking about the double category of structured cospans directly, and then specialising to these two cases.
+** p.19, Example 3.3: “A graph is open when equipped with two subsets of nodes…” — even if it feels morally true, this seems misleadingly imprecise to me, since a structured cospan over the Graph-Set adjunction consists of a pair of functions from a set into the underlying set of a graph. This is not the same thing as a pair of subsets of the nodes.
+** p.21, Definition 3.4: See remarks about Definition 3.2.
+**  p.21, l.12 (displayed math): I think it would be more consistent with earlier notation (and less confusing) to call the feet of the cospans “a,b,c…” and the apexes “Rx, Ry”, since the feet are in A and the apexes in X.
+** p.21, l.-1: The last word “Topos” on this page should be in sans serif, rather than italics.
+** p.22, l.2: I suggest writing F, F’ for the adjunction between X and X’ , and G, G’ for the adjunction between A, A’, since this sets up the notation for Definition 3.7 nicely. I think I would have found it easier to read that way.
+** p.22, l.9: “L-structured cospans” —> “L-structured cospan”.
+** p.22, lines 14,15 (displayed math): I think the Fs should be Gs in these lines, and vice versa.
+** p.23, l.4: There is an unwanted space between {}_{L’} and StrCsp.
+** p.23, Definition 3.7 (l.8): I think it’d be nice to briefly say why this is the right notion of morphism. (Similarly for 2-morphism — does this 2-category become useful for something?)
+** p.23, l.-5: “G \rightarrow G’” —> “G \Rightarrow G’”
+** p.23, l.-2: “therefore, support a” —> “therefore, supports a”
+** p.25, last paragraph: this sentence claims that structured company grammars and their morphisms form a subcategory of Gram. Further to my comment on Definition 3.7, I think it’d be nice to briefly say somewhere why this is a subcategory (ie. why the induced morphisms between the toposes preserve pushouts and pullbacks).
+** p.26, l.-4: “legs of the span” —> “legs of the cospan”
+** p.26, l.-3: this should be a cospan not a span.
+** p.27, l.1,2: similar issues regarding spans/cospans.p.28, l.-3: “Rule 7” —> “Rule (7)” seems more in line with your convention on labelling displayed math, and also hints better to the reader to look for displayed math (7), and not some list of 7 rules somewhere.
+** p.30, ll.-3, -1: The apostrophes are not well placed in these two lines of displayed math, two are misplaced, one is missing, one is not necessary.
+** p.32, ll.13, 14: The notation $\flat P$ here should be replaced by $P_\flat$.
+** p.35, Proposition 5.4 and proof: Many $T$s here should be sans serif.In the first line of the proof, $T \downarrow t$ should be $T \downarrow k$. In the second sentence of the proof, “hence meets” would be more precise if it specified “hence meets in Sub(k)”; the “it” that is the subject of the sentence until this point is the slice topos. More materially, the last sentence is not precise. Any join in Sub(k) is not a coproduct in the slice category. For example, working in Set, the join of the top element with itself in Sub(1) is not the coproduct of 1 with itself in Set. Nonetheless, if the slice topos over k has coproducts, then a join can be constructed by factorizing the map from the coproduct to k.
+** p.36, l.-4: I think the second “g ~> h” should not have the *.
+** p.38, l.-4: Again, I think it would be helpful here to remark 0 is the chosen notation for the initial object.
+** p.38, l.-3: “decomposition we use are” —> “decomposition we use is”/“decompositions… are”.
+** p.40, l.1: “r1” —> “r_1”. Also, while it’s ultimately clear what this construction should be, I think this diagram could be improved. It seems a little too abbreviated to me, so the pattern the ellipses are meant to continue is not really established. I understand there are space constraints though

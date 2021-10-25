@@ -6,7 +6,7 @@ dubious statements
   combine git and pcloud use git only
 * DONE reread review and place tasks into here
 * TODO Dubious Statements to clarify
-** TODO THM 5.2
+** TODO THM 5.6
   I’m unable to follow lines 7 and 8 of the proof of Theorem 5.6 on page 36. Since we want to use the hypothesis that Sub(k) has all meets, my guess is that we’re working in the poset Sub(k). However, since all we know about d is that there’s a morphism k — > d, I don’t understand how we can work with d as an element of Sub(k). Perhaps we insteadwant to be working in Sub(d)? In this case, I’m not sure why w is well-defined, and indeed how best to understand k and \flat k as elements of Sub(d), nor why w \wedge k = \flat k.
 ** TODO THM 6.2
    Third, while I’m sympathetic to the idea behind the converse argument on pages 41-42 in the proof of Theorem 6.2, I would like to see more detail. To proceed by structural induction, my understanding is that we should have some recursive way to construct all squares of the form specified by the theorem. We then want to prove the property holds for the base cases, and is preserved by the recursive steps. In this proof, the author implicitly suggests that all such squares arise in essentially two ways, which seems believable, but I would like to see an explicit justification.

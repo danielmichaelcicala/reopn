@@ -1,0 +1,24 @@
+\begin{center}
+\begin{tikzpicture}[scale=0.75]
+  \node (1) at (0,0) {{$ _a \bullet $}};
+  \node (2) at (0,2) {{$ _b \bullet $}};
+  \node (3) at (2,2) {{$ \bullet_{d} $}};
+  \node (4) at (2,0) {{$ \bullet_{e} $}};
+  \node (5) at (1,4) {{$ \bullet_c $}};
+  \node (6) at (4,1) {{$ \bullet_f$}};
+  % 
+  \draw [graph]
+    (1) edge[] (2)
+    (2) edge[] (3)
+    (3) edge[] (1)
+    (3) edge[bend left=15] (4)
+    (3) edge[] (5)
+    (5) edge[] (2)
+    (4) edge[bend left=15] (3)
+    (4) edge[] (6)
+    (6) edge[] (3); 
+  % 
+  \node () at (6,3) {$ a,c,d \in \type{inputs} $};
+  \node () at (6,1) {$ e,f \in \type{outputs}$};
+\end{tikzpicture}  
+\end{center}

@@ -1,0 +1,22 @@
+\begin{equation} \label{eq:Intro_DpoDiagram}
+  \begin{tikzpicture}[
+    baseline=(current bounding box.center)]
+    scale=0.75]
+    \node (1) at (0,2) {$ \ell $};
+    \node (2) at (2,2) {$ k $};
+    \node (3) at (4,2) {$ r $};
+    \node (4) at (0,0) {$ \ell' $};
+    \node (5) at (2,0) {$ k' $};
+    \node (6) at (4,0) {$ r' $};
+    \draw [cd]
+    (2) edge (1)
+    (2) edge (3)
+    (5) edge (4)
+    (5) edge (6)
+    (1) edge node[left]{$ m $} (4)
+    (2) edge (5)
+    (3) edge (6); 
+    \draw (0.3,0.4) -- (0.4,0.4) -- (0.4,0.3);
+    \draw (3.7,0.4) -- (3.6,0.4) -- (3.6,0.3);
+  \end{tikzpicture}
+\end{equation}

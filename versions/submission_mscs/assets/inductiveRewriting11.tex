@@ -1,0 +1,112 @@
+% 
+\begin{center}\begin{tikzpicture}[scale=0.75]
+\begin{scope}[shift={(0,6)}]
+  \node (1) at (0,4) {$ L0 $};
+  \node (2) at (2,4) {$ x_1 $};
+  \node (3) at (4,4) {$ La_1 $};
+  \node (4) at (0,2) {$ L0 $};
+  \node (5) at (2,2) {$ x'_1 $};
+  \node (6) at (4,2) {$ La'_1 $};
+  \node (7) at (0,0) {$ L0 $};
+  \node (8) at (2,0) {$ x''_1 $};
+  \node (9) at (4,0) {$ La''_1 $};
+  \draw [cd] (1) to (2);
+  \draw [cd] (3) to (2);
+  \draw [cd] (4) to (5);
+  \draw [cd] (6) to (5);
+  \draw [cd] (7) to (8);
+  \draw [cd] (9) to (8);
+  \draw [cd] (4) to node [left]
+    {\scriptsize{$ \cong $}} (1);
+  \draw [cd] (4) to node [left]
+    {\scriptsize{$ \cong $}} (7);
+  \draw [>->] (5) to (2);
+  \draw [>->] (5) to (8);
+  \draw [cd] (6) to node [right]
+    {\scriptsize{$ \cong  $}} (3);
+  \draw [cd] (6) to node [right]
+    {\scriptsize{$ \cong $}} (9);
+\end{scope}
+% 
+\begin{scope}[shift={(6,6)}]
+  \node (1) at (0,4) {$ La_{n-1} $};
+  \node (2) at (2,4) {$ x_n $};
+  \node (3) at (4,4) {$ L0 $};
+  \node (4) at (0,2) {$ La_{n-1} $};
+  \node (5) at (2,2) {$ x'_n $};
+  \node (6) at (4,2) {$ L0 $};
+  \node (7) at (0,0) {$ La_{n-1} $};
+  \node (8) at (2,0) {$ x''_n $};
+  \node (9) at (4,0) {$ L0 $};
+  \draw [cd] (1) to (2);
+  \draw [cd] (3) to (2);
+  \draw [cd] (4) to (5);
+  \draw [cd] (6) to (5);
+  \draw [cd] (7) to (8);
+  \draw [cd] (9) to (8);
+  \draw [cd] (4) to node [left]
+    {\scriptsize{$ \cong $}} (1);
+  \draw [cd] (4) to node [left]
+    {\scriptsize{$ \cong $}} (7);
+  \draw [>->] (5) to (2);
+  \draw [>->] (5) to (8);
+  \draw [cd] (6) to node [right]
+    {\scriptsize{$ \cong  $}} (3);
+  \draw [cd] (6) to node [right]
+    {\scriptsize{$ \cong $}} (9);
+\end{scope}
+% 
+\begin{scope}
+  \node (1) at (0,4) {$ L0 $};
+  \node (2) at (2,4) {$ y_1 $};
+  \node (3) at (4,4) {$ La_1 $};
+  \node (4) at (0,2) {$ L0 $};
+  \node (5) at (2,2) {$ y'_1 $};
+  \node (6) at (4,2) {$ La_1 $};
+  \node (7) at (0,0) {$ L0 $};
+  \node (8) at (2,0) {$ y''_1 $};
+  \node (9) at (4,0) {$ La_1 $};
+  \draw [cd] (1) to (2);
+  \draw [cd] (3) to (2);
+  \draw [cd] (4) to (5);
+  \draw [cd] (6) to (5);
+  \draw [cd] (7) to (8);
+  \draw [cd] (9) to (8);
+  \draw [cd] (4) to node[left]{$\cong$} (1);
+  \draw [cd] (4) to node[left]{$\cong$} (7);
+  \draw [>->] (5) to (2);
+  \draw [>->] (5) to (8);
+  \draw [cd] (6) to node[right]{$\cong$} (3);
+  \draw [cd] (6) to node[right]{$\cong$} (9);
+\end{scope}
+% 
+\begin{scope}[shift={(6,0)}]
+  \node (1) at (0,4) {$ La_{n-1} $};
+  \node (2) at (2,4) {$ y_n $};
+  \node (3) at (4,4) {$ L0 $};
+  \node (4) at (0,2) {$ La_{n-1} $};
+  \node (5) at (2,2) {$ y'_n $};
+  \node (6) at (4,2) {$ L0 $};
+  \node (7) at (0,0) {$ La_{n-1} $};
+  \node (8) at (2,0) {$y''_n $};
+  \node (9) at (4,0) {$ L0 $};
+  \draw [cd] (1) to (2);
+  \draw [cd] (3) to (2);
+  \draw [cd] (4) to (5);
+  \draw [cd] (6) to (5);
+  \draw [cd] (7) to (8);
+  \draw [cd] (9) to (8);
+  \draw [cd] (4) to node [left] {$\cong$} (1);
+  \draw [cd] (4) to node [left] {$\cong$} (7);
+  \draw [>->] (5) to (2);
+  \draw [>->] (5) to (8);
+  \draw [cd] (6) to node [right] {$\cong$} (3);
+  \draw [cd] (6) to node [right] {$\cong$} (9);
+\end{scope}
+% 
+\node () at (5,2) {$ \dotsm $};
+\node () at (2,5) {$ \vdots $};
+\node () at (5,8) {$ \dotsm $};
+\node () at (8,5) {$ \vdots $};
+\end{tikzpicture}\end{center}
+%

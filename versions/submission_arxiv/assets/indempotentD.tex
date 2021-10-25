@@ -1,0 +1,40 @@
+\begin{figure}[h]
+    \centering
+    \fbox{
+    \begin{minipage}{\linewidth}
+    \vspace{2em}    
+    \[
+    \begin{tikzpicture}
+      \node (1) at (0,4) {$ g $};
+      \node (2) at (2,4) {$ d $};
+      \node (3) at (4,4) {$ h $};
+      \node (4) at (0,2) {$ g' $};
+      \node (5) at (2,2) {$ d' $};
+      \node (6) at (4,2) {$ h' $};
+      \node (7) at (0,0) {$ g'' $};
+      \node (8) at (2,0) {$ d'' $};
+      \node (9) at (4,0) {$ h'' $};
+      \draw [cd] (2) to node [] {\scriptsize{$  $}} (1);
+      \draw [cd] (2) to node [] {\scriptsize{$  $}} (3);
+      \draw [cd] (5) to node [] {\scriptsize{$  $}} (4);
+      \draw [cd] (5) to node [] {\scriptsize{$  $}} (6);
+      \draw [cd] (8) to node [] {\scriptsize{$  $}} (7);
+      \draw [cd] (8) to node [] {\scriptsize{$  $}} (9);
+      \draw [cd] (1) to node [] {\scriptsize{$  $}} (4);
+      \draw [cd] (2) to node [] {\scriptsize{$  $}} (5);
+      \draw [cd] (3) to node [] {\scriptsize{$  $}} (6);
+      \draw [cd] (4) to node [] {\scriptsize{$  $}} (7);
+      \draw [cd] (5) to node [] {\scriptsize{$  $}} (8);
+      \draw [cd] (6) to node [] {\scriptsize{$  $}} (9);
+      %
+      \draw (0.3,0.4) -- (0.4,0.4) -- (0.4,0.3);
+      \draw (3.7,0.4) -- (3.6,0.4) -- (3.6,0.3);   
+      \draw (0.3,2.4) -- (0.4,2.4) -- (0.4,2.3);
+      \draw (3.7,2.4) -- (3.6,2.4) -- (3.6,2.3);   
+    \end{tikzpicture}
+    \]
+    \caption{Stacked double pushout diagrams}
+    \label{fig:idempotentD}
+  \end{minipage}
+}
+\end{figure}

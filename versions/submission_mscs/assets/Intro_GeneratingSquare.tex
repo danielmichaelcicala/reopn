@@ -1,0 +1,26 @@
+%
+\begin{center} \begin{tikzpicture}[scale=0.75]
+  \begin{scope}
+    \node (1t) at (0,4) {$ L0 $};
+    \node (2t) at (3,4) {$ \ell_j $};
+    \node (3t) at (6,4) {$ LRk_j $};
+    \node (1m) at (0,2) {$ L 0 $};
+    \node (2m) at (3,2) {$ LRk_j $};
+    \node (3m) at (6,2) {$ LRk_j $};
+    \node (1b) at (0,0) {$ L0 $};
+    \node (2b) at (3,0) {$ r_j $};
+    \node (3b) at (6,0) {$ LRk_j $};
+    \draw [cd] (1t) edge (2t);
+    \draw [cd] (3t) edge (2t);
+    \draw [cd] (1m) edge (2m);
+    \draw [cd] (3m) edge (2m);
+    \draw [cd] (1b) edge (2b);
+    \draw [cd] (3b) edge (2b);
+    \draw [cd] (1m) edge (1t);
+    \draw [cd] (1m) edge (1b);
+    \draw [cd] (2m) edge (2t);
+    \draw [cd] (2m) edge (2b);
+    \draw [cd] (3m) edge (3t);
+    \draw [cd] (3m) edge (3b);
+  \end{scope}
+\end{tikzpicture}\end{center}

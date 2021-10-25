@@ -1,0 +1,51 @@
+\[\begin{tikzpicture}
+    \begin{scope}
+      \node (1) at (-2,1) {\( L'a' \)};
+      \node (2) at (0,1) {\( x' \)};
+      \node (3) at (2,1) {\( L'b' \)};
+      \node (4) at (-2,0) {\( L'c' \)};
+      \node (5) at (0,0) {\( y' \)};
+      \node (6) at (2,0) {\( L'd' \)};
+      \draw [->]
+      (1) edge node [above] {\scriptsize{\( m' \)}} (2);
+      \draw [->]
+      (3) edge  node [above] {\scriptsize{\( n' \)}} (2);
+      \draw [->]
+      (4) edge node [above] {\scriptsize{\( o' \)}} (5);
+      \draw [->]
+      (6) edge node [above] {\scriptsize{\( p' \)}} (5);
+      \draw [->]
+      (1) edge node [left] {\scriptsize{\( L'f' \)}} (4);
+      \draw [->]
+      (2) edge node [left] {\scriptsize{\( g' \)}} (5);
+      \draw [->]
+      (3) edge node [left] {\scriptsize{\( L'h' \)}} (6);
+    \end{scope}
+    %
+    \begin{scope}[shift={(3,0)}]
+      \node (1) at (0,0.5) { $ \xmapsto{ \Theta' } $ };
+    \end{scope}
+    % 
+    \begin{scope}[shift={(6.5,0)}]
+        \node (1) at (-2,1) {\( LF'a' \)};
+        \node (2) at (0,1) {\( Fx' \)};
+        \node (3) at (2,1) {\( LF'b' \)};
+        \node (4) at (-2,0) {\( LF'c' \)};
+        \node (5) at (0,0) {\( Fy' \)};
+        \node (6) at (2,0) {\( LF'd' \)};
+        \draw [->]
+        (1) edge node [above] {\scriptsize{\( Fm' \)}} (2);
+        \draw [->]
+        (3) edge node [above] {\scriptsize{\( Fn' \)}} (2);
+        \draw [->]
+        (4) edge node [above] {\scriptsize{\( Fo' \)}} (5);
+        \draw [->]
+        (6) edge node [above] {\scriptsize{\( Fp' \)}} (5);
+        \draw [->]
+        (1) edge node [left] {\scriptsize{\( LF'f' \)}} (4);
+        \draw [->]
+        (2) edge node [left] {\scriptsize{\( Fg' \)}} (5);
+        \draw [->]
+        (3) edge node [left] {\scriptsize{\( LF'h' \)}} (6);  
+    \end{scope}
+  \end{tikzpicture}\]

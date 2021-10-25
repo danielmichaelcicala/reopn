@@ -1,0 +1,17 @@
+\begin{center}
+\begin{tikzpicture}
+  \node (1) at (-2,1) {\( w \)};
+  \node (2) at (0,1) {\( Ra \)};
+  \node (3) at (2,1) {\( x \)};
+  \node (4) at (-2,0) {\( y \)};
+  \node (5) at (0,0) {\( Rb \)};
+  \node (6) at (2,0) {\( z \)};
+  \draw [cd] (1) to  node [] {} (2);
+  \draw [cd] (3) to node [] {} (2);
+  \draw [cd] (4) to node [] {} (5);
+  \draw [cd] (6) to node [] {} (5);
+  \draw [cd] (1) to node [left] {$f$} (4);
+  \draw [cd] (2) to node [left] {$Rg$} (5);
+  \draw [cd] (3) to node [left] {$h$} (6); 
+\end{tikzpicture}
+\end{center}

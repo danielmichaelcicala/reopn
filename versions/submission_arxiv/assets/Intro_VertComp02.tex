@@ -1,0 +1,28 @@
+\[
+  \begin{tikzpicture}[scale=0.75]
+    \node (a) at (0,4) {$ La $};
+    \node (b) at (3,4) {$ x $};
+    \node (c) at (6,4) {$ Lb $};
+    \node (x) at (0,2) {$ Lc \times_{Le} Lc'  $};
+    \node (y) at (3,2) {$ y \times_{z} y' $};
+    \node (z) at (6,2) {$ Ld \times_{Lf} Ld' $};
+    \node (d) at (0,0) {$ La' $};
+    \node (e) at (3,0) {$ x'$};
+    \node (f) at (6,0) {$ Lb' $};
+    %    
+    \draw [>->] (y) to (b);
+    \draw [>->] (y) to (e);
+    \draw[cd]
+    (a) edge[] (b)
+    (x) edge[] (y)
+    (d) edge[] (e)
+    (c) edge[] (b)
+    (z) edge[] (y)
+    (f) edge[] (e)
+    (x) edge[] node[left]{$ \iso $}  (a)
+    (z) edge[] node[right]{$ \iso $} (c)
+    (x) edge[] node[left]{$ \iso $}  (d)
+    (z) edge[] node[right]{$ \iso $} (f) ;
+    %
+  \end{tikzpicture}
+  \]

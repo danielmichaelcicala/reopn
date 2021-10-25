@@ -1,0 +1,29 @@
+\[
+    \begin{tikzpicture}
+      \node (A) at (0,4) {$La$};
+      \node (A') at (0,2) {$Lb$};
+      \node (A'') at (0,0) {$Lc$};
+      \node (B) at (2,4) {$La$};
+      \node (B') at (2,2) {$Lb$};
+      \node (B'') at (2,0) {$Lc$};
+      \node (C) at (4,4) {$La$};
+      \node (C') at (4,2) {$Lb$};
+      \node (C'') at (4,0) {$Lc$};
+      % 
+      \path[cd,font=\scriptsize,>=angle 90]
+      % horizontal arrows
+      (A) edge node{} (B)
+      (A') edge node{} (B')
+      (A'') edge node{} (B'')
+      (C) edge node{} (B)
+      (C') edge node{} (B')
+      (C'') edge node{} (B'')
+      % vertical arrows
+      (A') edge node{} (A)
+      (A') edge node{} (A'')
+      (B') edge node{} (B)
+      (B') edge node{} (B'')
+      (C') edge node{} (C)
+      (C') edge node{} (C'');
+    \end{tikzpicture}
+  \]

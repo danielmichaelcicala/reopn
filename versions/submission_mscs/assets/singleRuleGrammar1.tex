@@ -1,0 +1,105 @@
+\begin{equation} \label{eq:single_rule_grammar_1}
+  \begin{tikzpicture}[
+    baseline=(current  bounding  box.center),
+    scale=0.75]
+    \begin{scope}[shift={(0,0)}] % up left
+      \node () at (0,0) {$ \bullet $};
+      % 
+      \draw [rounded corners] (-1,-1) rectangle (1,1);
+      \node (00r) at (1.1,0) {};
+      \node (00b) at (0,-1.1) {};  
+    \end{scope}
+    % 
+    \begin{scope}[shift={(3,0)}] % up mid
+      \node (a) at (0,0) {$ \bullet $};
+      %
+      \draw [graph]
+        (a) edge[loop above,looseness=15] (a);
+      %  
+      \draw [rounded corners] (-1,-1) rectangle (1,1);
+      \node (01l) at (-1.1,0) {};
+      \node (01r) at (1.1,0)  {};
+      \node (01b) at (0,-1.1) {};  
+    \end{scope}
+    %
+    \begin{scope}[shift={(6,0)}] % up right
+      \node () at (0,0) {$ \bullet $};
+      %
+      \draw [rounded corners] (-1,-1) rectangle (1,1);
+      \node (02l) at (-1.1,0) {};
+      \node (02b) at (0,-1.1) {};
+    \end{scope}
+    % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    \begin{scope}[shift={(0,-3)}] % mid left
+      \node () at (0,0) {$ \bullet $};
+      %
+      \draw [rounded corners] (-1,-1) rectangle (1,1);
+      \node (10t) at (0,1.1)   {};
+      \node (10r) at (1.1,0) {};
+      \node (10b) at (0,-1.1)  {};  
+    \end{scope}
+    %
+    \begin{scope}[shift={(3,-3)}] % mid mid
+      \node (a) at (0,0) {$ \bullet $};
+      %
+      \draw [rounded corners] (-1,-1) rectangle (1,1);
+      \node (11l) at (-1.1,0) {};
+      \node (11r) at (1.1,0)  {};
+      \node (11t) at (0,1.1)  {};
+      \node (11b) at (0,-1.1) {};  
+    \end{scope}
+    %
+    \begin{scope}[shift={(6,-3)}] % mid right
+      \node () at (0,0) {$ \bullet $};
+      %
+      \draw [rounded corners] (-1,-1) rectangle (1,1);
+      \node (12l) at (-1.1,0) {};
+      \node (12t) at (0,1.1)    {};  
+      \node (12b) at (0,-1.1)   {};
+    \end{scope}
+    % ~~~~~~~~~~~~~~~~~~~~~
+    \begin{scope}[shift={(0,-6)}] % down left
+      \node () at (0,0) {$ \bullet $};
+      %
+      \draw [rounded corners] (-1,-1) rectangle (1,1);
+      \node (20t) at (0,1.1)   {};
+      \node (20r) at (1.1,0) {};
+      \node (20b) at (0,-1.1)  {};  
+    \end{scope}
+    %
+    \begin{scope}[shift={(3,-6)}] % down mid
+      \node (a) at (0,0) {$ \bullet $};
+      %
+      \draw [rounded corners] (-1,-1) rectangle (1,1);
+      \node (21l) at (-1.1,0) {};
+      \node (21r) at (1.1,0)  {};
+      \node (21t) at (0,1.1)  {};
+      \node (21b) at (0,-1.1) {};  
+    \end{scope}
+    %
+    \begin{scope}[shift={(6,-6)}] % down right
+      \node () at (0,0) {$ \bullet $};
+      %
+      \draw [rounded corners]
+        (-1,-1) rectangle (1,1);
+      \node (22l) at (-1.1,0) {};
+      \node (22r) at (1.1,0)  {};
+      \node (22t) at (0,1.1)  {};
+      \node (22b) at (0,-1.1) {};
+    \end{scope}
+    % ~~~~~~~~~~~~~~~~~~~
+    \path[cd]
+      (00r) edge (01l)
+      (02l) edge (01r)
+      (10r) edge (11l)
+      (12l) edge (11r)
+      (20r) edge (21l)
+      (22l) edge (21r)
+      (10t) edge[] (00b) 
+      (10b) edge[] (20t) 
+      (11t) edge[] (01b) 
+      (11b) edge (21t)
+      (12t) edge (02b)
+      (12b) edge (22t);
+    \end{tikzpicture}
+  \end{equation}

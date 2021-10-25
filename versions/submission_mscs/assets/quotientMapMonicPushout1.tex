@@ -1,0 +1,19 @@
+  \begin{equation} \label{eq:qmmp-1}
+    \begin{tikzpicture}
+      \node (x) at  (0,2) {$ x $};
+      \node (y) at  (2,2) {$ y $};
+      \node (z) at  (4,2) {$ z $};
+      \node (x') at (0,0) {$ x' $};
+      \node (y') at (2,0) {$ y' $};
+      \node (z') at (4,0) {$ z' $};
+      %
+      \draw [cd]  (y) edge (x);
+      \draw [cd]  (y) edge (z);
+      \draw [cd]  (y') edge (x');
+      \draw [cd]  (y') edge (z');
+      \draw [>->] (x) edge (x');
+      \draw [cd]  (y) edge node[left]{$ \iso $} (y');
+      \draw [>->] (z) edge (z');
+    \end{tikzpicture}
+  \end{equation}
+  %

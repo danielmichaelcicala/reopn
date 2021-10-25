@@ -1,0 +1,18 @@
+\begin{center}\begin{tikzpicture}
+      \node (ab) at (0,2) {$ a \vee b $};
+      \node (a)  at (0,0) {$ a $};
+      \node (b)  at (2,2) {$ b $};
+      \node (t)  at (2,0) {$ a \wedge b $};
+      \node (tt) at (4,-2) {$ t $};
+      %
+      \draw [cd] 
+      (ab) edge[]           (a)
+      (ab) edge[]           (b)
+      (a)  edge[]           (t)
+      (b)  edge[]           (t)
+      (a)  edge[bend right] (tt)
+      (b)  edge[bend left]  (tt);
+      \draw [->,dashed] (t) edge (tt) ;
+      %
+      \draw (1.7,0.4) -- (1.6,0.4) -- (1.6,0.3);
+  \end{tikzpicture}\end{center}

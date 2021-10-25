@@ -1,0 +1,3 @@
+* TODO reorg folder,
+  combine git and pcloud use git only
+* TODO reread review and place tasks into here

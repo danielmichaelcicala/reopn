@@ -1,0 +1,29 @@
+\[
+    \begin{tikzpicture}
+    \node (La)   at (0,4) {$ La $};
+    \node (x)    at (2,4) {$ x $};
+    \node (Lb)   at (4,4) {$ La' $};
+    \node (La')  at (0,2) {$ Lb $};
+    \node (x')   at (2,2) {$ y $};
+    \node (Lb')  at (4,2) {$ Lb' $};
+    \node (La'') at (0,0) {$ Lc $};
+    \node (x'')  at (2,0) {$ z $};
+    \node (Lb'') at (4,0) {$ Lc' $};
+    \draw [cd] (La)   to (x);
+    \draw [cd] (Lb)   to (x);
+    \draw [cd] (La')  to (x');
+    \draw [cd] (Lb')  to (x');
+    \draw [cd] (La'') to (x'');
+    \draw [cd] (Lb'') to (x'');
+    \draw [cd] (La')  to
+      node [left] {$ \iso $} (La);
+    \draw [>->] (x') to (x);
+    \draw [cd] (Lb') to
+      node [right] {$ \iso $} (Lb);
+    \draw [cd] (La') to
+      node [left] {$ \iso $} (La'');
+    \draw [>->] (x') to (x'');
+    \draw [cd] (Lb') to
+      node [right] {$ \iso $} (Lb'');
+    \end{tikzpicture}
+  \]

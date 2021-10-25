@@ -1,0 +1,22 @@
+%
+  \[
+    \begin{tikzpicture}
+      \node (x) at (0,4) {$ x $};
+      \node (x') at (0,2) {$ x' $};
+      \node (x+z) at (2,4) {$ x+z $};
+      \node (x'+z) at (2,2) {$ x'+z $};
+      \node (x'+z') at (2,0) {$ x'+z' $};
+      \node (z) at (4,2) {$ z $};
+      \node (z') at (4,0) {$ z' $};
+      %
+      \draw [>->] (x) to node[above]{$ \iota_x $}  (x+z);
+      \draw [>->] (x') to node[below]{$ \iota_{x'} $} (x'+z);
+      \draw [>->] (z) to node[above]{$ \iota_z  $} (x'+z);
+      \draw [>->] (z') to node[below]{$ \iota_{z'} $} (x'+z');
+      \draw [>->] (x) to (x');
+      \draw [cd] (x+z) to (x'+z);
+      \draw [cd] (x'+z) to (x'+z');
+      \draw [>->] (z) to (z');
+    \end{tikzpicture}
+  \]
+  %

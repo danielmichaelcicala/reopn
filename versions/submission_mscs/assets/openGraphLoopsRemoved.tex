@@ -1,0 +1,43 @@
+\begin{center}\begin{tikzpicture}[scale=0.75]
+    \begin{scope}[shift={(0,-10)}] % down left
+      \node () at (0,-1) {$ \bullet $};
+      \node () at (0,1) {$ \bullet $};
+      %
+      \draw [rounded corners] (-2,-2) rectangle (2,2);
+      \node (20t) at (0,2.1)   {};
+      \node (20r) at (2.1,0) {};
+      \node (20b) at (0,-2.1)  {};  
+    \end{scope}
+    %
+    \begin{scope}[shift={(5,-10)}] % down mid
+      \node (a) at (-1,-1) {$ \bullet $};
+      \node (b) at (-1,1) {$ \bullet $};
+      \node (c) at (0,0) {$ \bullet $};
+      \node (d) at (1,0) {$ \bullet $};
+      %
+      \draw [graph]
+        (a) edge[] (c)
+        (b) edge[] (c)
+        (c) edge[] (d); 
+      %
+      \draw [rounded corners] (-2,-2) rectangle (2,2);
+      \node (21l) at (-2.1,0) {};
+      \node (21r) at (2.1,0)  {};
+      \node (21t) at (0,2.1)  {};
+      \node (21b) at (0,-2.1) {};  
+    \end{scope}
+    %
+    \begin{scope}[shift={(10,-10)}] % down right
+      \node () at (0,0) {$ \bullet $};
+      %
+      \draw [rounded corners] (-2,-2) rectangle (2,2);
+      \node (22l) at (-2.1,0) {};
+      \node (22r) at (2.1,0)  {};
+      \node (22t) at (0,2.1)  {};
+      \node (22b) at (0,-2.1) {};
+    \end{scope}
+    % ~~~~~~~~~~~~~~~~~~~
+    \path[cd]
+      (20r) edge (21l)
+      (22l) edge (21r);
+    \end{tikzpicture}\end{center}

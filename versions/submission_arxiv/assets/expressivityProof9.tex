@@ -1,0 +1,18 @@
+\begin{center}\begin{tikzpicture}[scale=0.75]
+  \node (1t) at (0,2) {$ \ell $};
+  \node (2t) at (2,2) {$ k $};
+  \node (3t) at (4,2) {$ r $};
+  \node (1b) at (0,0) {$ g $};
+  \node (2b) at (2,0) {$ d' $};
+  \node (3b) at (4,0) {$ h $};
+  \draw [cd]
+    (2t) edge                     (1t)
+    (2t) edge                     (3t)
+    (2b) edge                     (1b)
+    (2b) edge                     (3b)
+    (1t) edge node[left]{$ m $}   (1b)
+    (2t) edge node[left]{$ \hat{\theta} $}   (2b)
+    (3t) edge node[right]{$ m' $} (3b);
+  \draw (0.3,0.4) -- (0.4,0.4) -- (0.4,0.3);
+  \draw (3.7,0.4) -- (3.6,0.4) -- (3.6,0.3);
+\end{tikzpicture}\end{center}

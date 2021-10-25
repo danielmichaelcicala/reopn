@@ -1,0 +1,25 @@
+\begin{center}\begin{tikzpicture}
+  \begin{scope}
+    \node (1) at (0,4) {\( La \)};
+    \node (2) at (2,4) {\( x \)};
+    \node (3) at (4,4) {\( La' \)};
+    \node (4) at (0,2) {\( Lb \)};
+    \node (5) at (2,2) {\( y \)};
+    \node (6) at (4,2) {\( Lb' \)};
+    \node (7) at (0,0) {\( Lc \)};
+    \node (8) at (2,0) {\( z \)};
+    \node (9) at (4,0) {\( Lc' \)};
+    \draw [cd] (1) to (2);
+    \draw [cd] (3) to (2);
+    \draw [cd] (4) to (5);
+    \draw [cd] (6) to (5);
+    \draw [cd] (7) to (8);
+    \draw [cd] (9) to (8);
+    \draw [cd] (4) to node[left]{\( \iso \)} (1);
+    \draw [cd] (4) to node[left]{\( \iso \)} (7);
+    \draw [cd,>->] (5) to (2);
+    \draw [cd,>->] (5) to (8);
+    \draw [cd] (6) to node[right]{\( \iso \)} (3);
+    \draw [cd] (6) to node[right]{\( \iso \)} (9);
+  \end{scope}
+\end{tikzpicture}\end{center}

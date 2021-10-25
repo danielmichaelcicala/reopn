@@ -1,0 +1,23 @@
+\begin{equation} \label{eq:edge-identity-rule}
+\begin{tikzpicture}
+    \draw [rounded corners] (-1,-1) rectangle (1,2);
+    \node (a)  at (0,0)     {$ \bullet $};
+    \node (a') at (0,1)     {$ \bullet $};
+    \node (lr) at (1.1,0.5) {$  $};
+    \draw [graph] (a) to (a');
+    %
+    \draw [rounded corners] (2,-1) rectangle (4,2);
+    \node (b)  at (3,0)     {$ \bullet $};
+    \node (b') at (3,1)     {$ \bullet $};
+    \node (ml) at (1.9,0.5) {$  $};
+    \node (mr) at (4.1,0.5) {$  $};
+    %
+    \draw [rounded corners] (5,-1) rectangle (7,2);
+    \node (c)  at (6,0.5)   {$ \bullet $};
+    \node (rl) at (4.9,0.5) {$  $};
+    %
+    \draw [cd]
+      (ml) edge (lr)
+      (mr) edge (rl); 
+    \end{tikzpicture}
+    \end{equation}

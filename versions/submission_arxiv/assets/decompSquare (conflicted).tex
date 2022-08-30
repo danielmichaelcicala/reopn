@@ -1,0 +1,27 @@
+\begin{equation} \label{eq:decomposition-square}
+  \begin{tikzpicture}[scale=0.75,
+    baseline=(current  bounding  box.center)]
+    \node (1) at (0,4) {$ L 0 $};
+    \node (2) at (2,4) {$ \ell $};
+    \node (3) at (4,4) {$ LRk $};
+    \node (4) at (0,2) {$ L 0 $};
+    \node (5) at (2,2) {$ LRk $};
+    \node (6) at (4,2) {$ LRk $};
+    \node (7) at (0,0) {$ L 0 $};
+    \node (8) at (2,0) {$ r $};
+    \node (9) at (4,0) {$ LRk $};
+    \draw [cd] (1) to (2);
+    \draw [cd] (3) to (2);
+    \draw [cd] (4) to (5);
+    \draw [cd] (6) to (5);
+    \draw [cd] (7) to (8);
+    \draw [cd] (9) to (8);
+    \draw [cd] (4) to (1);
+    \draw [cd] (4) to (7);
+    \draw [cd] (5) to (2);
+    \draw [cd] (5) to (8);
+    \draw [cd] (6) to (3);
+    \draw [cd] (6) to (9);
+  \end{tikzpicture}
+\end{equation}
+% 

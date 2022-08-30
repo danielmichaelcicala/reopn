@@ -1,0 +1,86 @@
+\begin{equation} \label{eq:example-dpo-diagram}
+  \begin{tikzpicture}[
+    baseline=(current  bounding  box.center),
+    scale=0.75]
+    \begin{scope} 
+      \node (c) at (0,0.5) {$ \bullet $};
+      \draw [graph,loop above]
+        (c) edge (c);
+      \draw [rounded corners]
+        (-1,-1) rectangle (1,2);
+      \node (01r) at (1.1,0)  {};
+      \node (01b) at (0,-1.1) {};  
+    \end{scope}
+    %
+    \begin{scope}[shift={(4,0)}]
+      \node (c) at (0,0.5) {$ \bullet $};
+      \draw [rounded corners]
+        (-1,-1) rectangle (1,2);
+      \node (11l) at (-1.1,0) {};
+      \node (11r) at (1.1,0)  {};
+      \node (11b) at (0,-1.1) {};
+    \end{scope}
+    %
+    \begin{scope}[shift={(8,0)}]
+      \node (c) at (0,0.5) {$ \bullet $};
+      %
+      \draw [rounded corners]
+        (-1,-1) rectangle (1,2);
+      \node (21l) at (-1.1,0) {};
+      \node (21b) at (0,-1.1) {};
+    \end{scope}
+    %
+    \begin{scope}[shift={(0,-5)}]
+      \node (a) at (-0.5,-0.5) {$ \bullet $};
+      \node (b) at (0.5,-0.5)  {$ \bullet $};
+      \node (c) at (0,0.5)     {$ \bullet $};
+      \draw [graph]
+      (a) edge              (c)
+      (b) edge              (c)
+      (c) edge [loop above] (c);
+      %
+      \draw [rounded corners]
+        (-1,-1) rectangle (1,2);
+      \node (00t) at (0,2.1)   {};
+      \node (00r) at (1.1,0.5) {};  
+    \end{scope}
+    %
+    \begin{scope}[shift={(4,-5)}]
+      \node (a) at (-0.5,-0.5) {$ \bullet $};
+      \node (b) at (0.5,-0.5) {$ \bullet $};
+      \node (c) at (0,1) {$ \bullet $};
+      \draw [graph]
+        (a) edge (c)
+        (b) edge (c);
+      %
+      \draw [rounded corners]
+        (-1,-1) rectangle (1,2);
+      \node (10t) at (0,2.1)    {};
+      \node (10r) at (1.1,0.5)  {};
+      \node (10l) at (-1.1,0.5) {};
+    \end{scope}
+    %
+    \begin{scope}[shift={(8,-5)}]
+      \node (a) at (-0.5,-0.5) {$ \bullet $};
+      \node (b) at (0.5,-0.5)  {$ \bullet $};
+      \node (c) at (0,1)    {$ \bullet $};
+      \draw [graph]
+      (a) edge              (c)
+      (b) edge              (c);
+      %
+      \draw [rounded corners]
+        (-1,-1) rectangle (1,2);
+      \node (20t) at (0,2.1)    {};
+      \node (20l) at (-1.1,0.5) {};
+      \end{scope}
+      % 
+      \draw [cd]
+      (01b) edge node[left]{$ m $} (00t)
+      (11b) edge (10t)
+      (21b) edge (20t)
+      (11l) edge (01r)
+      (11r) edge (21l)
+      (10l) edge (00r)
+      (10r) edge (20l);
+    \end{tikzpicture}
+  \end{equation}  

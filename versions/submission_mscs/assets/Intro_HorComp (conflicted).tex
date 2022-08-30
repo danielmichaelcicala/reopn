@@ -1,0 +1,46 @@
+\[
+    \begin{tikzpicture}[scale=0.75]
+    \node (a) at (0,4) {$ La $};
+    \node (b) at (2,4) {$ x $};
+    \node (c) at (4,4) {$ Lb $};
+    \node (x) at (0,2) {$ Lc $};
+    \node (y) at (2,2) {$ y $};
+    \node (z) at (4,2) {$ Ld $};
+    \node (d) at (0,0) {$ Le $};
+    \node (e) at (2,0) {$ z$};
+    \node (f) at (4,0) {$ Lf $};
+    %
+    \node (x') at (6,4) {$ x' $};
+    \node (y') at (6,2) {$ y' $};
+    \node (z') at (6,0) {$ z' $};
+    \node (a') at (8,4) {$ La' $};
+    \node (c') at (8,2) {$ Lc' $};
+    \node (e') at (8,0) {$ Le' $};
+    %    
+    \draw [>->] (y) to (b);
+    \draw [>->] (y) to (e);
+    \draw[cd]
+    (a) edge[] (b)
+    (x) edge[] (y)
+    (d) edge[] (e)
+    (c) edge[] (b)
+    (z) edge[] (y)
+    (f) edge[] (e)
+    (x) edge[] node[left]{$ \iso $}  (a)
+    (z) edge[] node[right]{$ \iso $} (c)
+    (x) edge[] node[left]{$ \iso $}  (d)
+    (z) edge[] node[right]{$ \iso $} (f) ;
+    %
+    \draw [cd]
+    (c) edge node[]{$  $} (x')
+    (z) edge node[]{$  $} (y')
+    (f) edge node[]{$  $} (z')
+    (a') edge node[]{$  $} (x')
+    (c') edge node[]{$  $} (y')
+    (e') edge node[]{$  $} (z')
+    (c') edge node[right]{$ \iso $} (a')
+    (c') edge node[right]{$ \iso  $} (e');
+    \draw [>->] (y') to (x');
+    \draw [>->] (y') to (z');
+  \end{tikzpicture}
+  \]

@@ -1,0 +1,46 @@
+\[
+\begin{tikzpicture}[scale=0.75]
+  \begin{scope}
+    \node () at (0,1) {$ \bullet_a $};
+    \node () at (0,2) {$ \bullet_c $};
+    \node () at (0,3) {$ \bullet_d $};
+    \draw [rounded corners]
+    (-0.5,-0.5) rectangle (0.5,4.5);
+    \node (InDom) at (0.5,2) {};
+  \end{scope}
+  \begin{scope}[shift={(2,0)}]
+  \node (1) at (0,0) {{$ _a \bullet $}};
+  \node (2) at (0,2) {{$ _b \bullet $}};
+  \node (3) at (2,2) {{$ \bullet_{d} $}};
+  \node (4) at (2,0) {{$ \bullet_{e} $}};
+  \node (5) at (1,4) {{$ \bullet_c $}};
+  \node (6) at (4,1) {{$ \bullet_f$}};
+  % 
+  \draw [graph]
+    (1) edge[] (2)
+    (2) edge[] (3)
+    (3) edge[] (1)
+    (3) edge[bend left=15] (4)
+    (3) edge[] (5)
+    (5) edge[] (2)
+    (4) edge[bend left=15] (3)
+    (4) edge[] (6)
+    (6) edge[] (3);  
+    %
+    \draw [rounded corners]
+    (-0.5,-0.5) rectangle (4.5,4.5);
+    \node (InCod) at (-0.5,2) {};
+    \node (OutCod) at (4.5,2) {};
+  \end{scope}
+  \begin{scope}[shift={(8,0)}]
+    \node () at (0,1) {$ \bullet_e $};
+    \node () at (0,3) {$ \bullet_f $};
+    \draw [rounded corners]
+    (-0.5,-0.5) rectangle (0.5,4.5);
+    \node (OutDom) at (-0.5,2) {};
+  \end{scope}
+  \draw [cd]
+  (InDom) edge[] (InCod)
+  (OutDom) edge[] (OutCod);
+\end{tikzpicture}
+\]

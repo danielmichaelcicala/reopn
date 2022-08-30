@@ -1,0 +1,18 @@
+\begin{equation}
+    \label{eq:qmmp-3}
+    \begin{tikzpicture}
+      \node (x+z) at (0,4) {$ x+z $};
+      \node (x'+z') at (0,2) {$ x'+z' $};
+      \node (x+_yz) at (4,4) {$ x +_y z $};
+      \node (x'+_y'z') at (4,2) {$ x' +_{y'} z' $};
+      \node (c) at (6,0) {$ c $};
+      %
+      \draw[cd]
+      (x+z) edge node[above]{$\rho$} (x+_yz)
+      (x'+z') edge node[above]{$\rho'$} (x'+_y'z')
+      (x+z) edge node[left]{$\gamma$} (x'+z')
+      (x+_yz) edge node[right]{$\gamma'$} (x'+_y'z')
+      (x'+z') edge[bend right] node[below]{$\psi'$} (c)
+      (x+_yz) edge[bend left] node[right]{$\psi$} (c);
+    \end{tikzpicture}
+  \end{equation}

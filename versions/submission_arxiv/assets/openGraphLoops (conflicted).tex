@@ -1,0 +1,41 @@
+\begin{center}\begin{tikzpicture}[scale=0.75]
+    \begin{scope}[shift={(0,0)}] % up left
+      \node (a) at (0,-1) {$ \bullet $};
+      \node (b) at (0,1) {$ \bullet $};
+      %
+      \draw [rounded corners] (-2,-2) rectangle (2,2);
+      \node (00r) at (2.1,0) {};
+      \node (00b) at (0,-2.1) {};  
+    \end{scope}
+    %
+    \begin{scope}[shift={(5,0)}] % up mid
+      \node (a) at (-1,-1) {$ \bullet $};
+      \node (b) at (-1,1) {$ \bullet $};
+      \node (c) at (0,0) {$ \bullet $};
+      \node (d) at (1,0) {$ \bullet $};
+      %
+      \draw [graph]
+        (b) edge[loop above, looseness=15] (b)
+        (c) edge[loop above, looseness=15] (c)
+        (a) edge[] (c)
+        (b) edge[] (c)
+        (c) edge[] (d); 
+      %  
+      \draw [rounded corners] (-2,-2) rectangle (2,2);
+      \node (01l) at (-2.1,0) {};
+      \node (01r) at (2.1,0)  {};
+      \node (01b) at (0,-2.1) {};  
+    \end{scope}
+    %
+    \begin{scope}[shift={(10,0)}] % up right
+      \node () at (0,0) {$ \bullet $};
+      %
+      \draw [rounded corners] (-2,-2) rectangle (2,2);
+      \node (02l) at (-2.1,0) {};
+      \node (02b) at (0,-2.1) {};
+    \end{scope}
+    %
+    \path[cd]
+      (00r) edge (01l)
+      (02l) edge (01r);
+    \end{tikzpicture}\end{center}

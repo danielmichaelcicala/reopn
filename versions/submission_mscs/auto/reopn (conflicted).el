@@ -1,12 +1,14 @@
 (TeX-add-style-hook
  "reopn"
  (lambda ()
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperref")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperimage")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperbaseurl")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "nolinkurl")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "url")
+   (TeX-add-to-alist 'LaTeX-provided-class-options
+                     '(("amsart" "oneside")))
    (add-to-list 'LaTeX-verbatim-macros-with-braces-local "path")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "url")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "nolinkurl")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperbaseurl")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperimage")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperref")
    (add-to-list 'LaTeX-verbatim-macros-with-delims-local "path")
    (TeX-run-style-hooks
     "latex2e"
@@ -106,8 +108,6 @@
     "eq:expressivityProof10"
     "sec:charRewrRelat"
     "thm:rewrite-rel-is-additive"
-    "thm:inductive-rewriting")
-   (LaTeX-add-bibliographies
-    "assets/biblio"))
+    "thm:inductive-rewriting"))
  :latex)
 

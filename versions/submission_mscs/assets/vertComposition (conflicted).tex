@@ -1,0 +1,86 @@
+%
+  \[
+  \begin{tikzpicture}
+    \begin{scope}
+    \node (a) at (0,4) {$ La $};
+    \node (b) at (0,2) {$ Lb $};
+    \node (c) at (0,0) {$ Lc $};
+    \node (x) at (2,4) {$ v $};
+    \node (y) at (2,2) {$ w $};
+    \node (z) at (2,0) {$ x $};
+    \node (d) at (4,4) {$ La' $};
+    \node (e) at (4,2) {$ Lb' $};
+    \node (f) at (4,0) {$ Lc' $};
+    %
+    \draw [cd] (a) to node [] {\scriptsize{$  $}} (x);
+    \draw [cd] (b) to node [] {\scriptsize{$  $}} (y);
+    \draw [cd] (c) to node [] {\scriptsize{$  $}} (z);
+    \draw [cd] (d) to node [] {\scriptsize{$  $}} (x);
+    \draw [cd] (e) to node [] {\scriptsize{$  $}} (y);
+    \draw [cd] (f) to node [] {\scriptsize{$  $}} (z);
+    \draw [cd] (b) to node [] {\scriptsize{$  $}} (a);
+    \draw [>->] (y) to node [] {\scriptsize{$  $}} (x);
+    \draw [cd] (e) to node [] {\scriptsize{$  $}} (d);
+    \draw [cd] (b) to node [] {\scriptsize{$  $}} (c);
+    \draw [>->] (y) to node [] {\scriptsize{$  $}} (z);
+    \draw [cd] (e) to node [] {\scriptsize{$  $}} (f);
+    \end{scope}
+    %
+    \begin{scope}[shift={(6,0)}]
+    \node (a) at (0,4) {$ Lc $};
+    \node (b) at (0,2) {$ Ld $};
+    \node (c) at (0,0) {$ Le $};
+    \node (x) at (2,4) {$ x $};
+    \node (y) at (2,2) {$ y $};
+    \node (z) at (2,0) {$ z $};
+    \node (d) at (4,4) {$ Lc' $};
+    \node (e) at (4,2) {$ Ld' $};
+    \node (f) at (4,0) {$ Le' $};
+    %
+    \draw [cd] (a) to node [] {\scriptsize{$  $}} (x);
+    \draw [cd] (b) to node [] {\scriptsize{$  $}} (y);
+    \draw [cd] (c) to node [] {\scriptsize{$  $}} (z);
+    \draw [cd] (d) to node [] {\scriptsize{$  $}} (x);
+    \draw [cd] (e) to node [] {\scriptsize{$  $}} (y);
+    \draw [cd] (f) to node [] {\scriptsize{$  $}} (z);
+    \draw [cd] (b) to node [] {\scriptsize{$  $}} (a);
+    \draw [>->] (y) to node [] {\scriptsize{$  $}} (x);
+    \draw [cd] (e) to node [] {\scriptsize{$  $}} (d);
+    \draw [cd] (b) to node [] {\scriptsize{$  $}} (c);
+    \draw [>->] (y) to node [] {\scriptsize{$  $}} (z);
+    \draw [cd] (e) to node [] {\scriptsize{$  $}} (f);
+  \end{scope}
+  % 
+  \node () at (5,2) {$ \vcirc $};
+  \node () at (11,2) {$ \bydef  $};
+\end{tikzpicture}
+\]
+\[
+  \begin{tikzpicture}   
+    \begin{scope}[shift={(0,0)}]
+    \node (a) at (0,4) {$ La $};
+    \node (b) at (0,2) {$ L(b \times_c d) $};
+    \node (c) at (0,0) {$ Le $};
+    \node (x) at (2,4) {$ v $};
+    \node (y) at (2,2) {$ w \times_x y $};
+    \node (z) at (2,0) {$ z $};
+    \node (d) at (4,4) {$ La' $};
+    \node (e) at (4,2) {$ L(b' \times_{c'} d') $};
+    \node (f) at (4,0) {$ Le' $};
+    %
+    \draw [cd] (a) to node [] {\scriptsize{$  $}} (x);
+    \draw [cd] (b) to node [] {\scriptsize{$  $}} (y);
+    \draw [cd] (c) to node [] {\scriptsize{$  $}} (z);
+    \draw [cd] (d) to node [] {\scriptsize{$  $}} (x);
+    \draw [cd] (e) to node [] {\scriptsize{$  $}} (y);
+    \draw [cd] (f) to node [] {\scriptsize{$  $}} (z);
+    \draw [cd] (b) to node [] {\scriptsize{$  $}} (a);
+    \draw [>->] (y) to node [] {\scriptsize{$  $}} (x);
+    \draw [cd] (e) to node [] {\scriptsize{$  $}} (d);
+    \draw [cd] (b) to node [] {\scriptsize{$  $}} (c);
+    \draw [>->] (y) to node [] {\scriptsize{$  $}} (z);
+    \draw [cd] (e) to node [] {\scriptsize{$  $}} (f);
+    \end{scope}
+    %
+  \end{tikzpicture}
+  \]

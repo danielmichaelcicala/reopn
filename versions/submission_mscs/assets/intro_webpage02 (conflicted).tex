@@ -1,0 +1,12 @@
+\[
+\begin{tikzpicture}[scale=0.75]  
+  \node[rectangle,draw] (h) at (-0.5,1.5) {$\texttt{home}$};
+  \node[rectangle,draw] (a) at (2,3) {$\texttt{page\_e}$};
+  \node[rectangle,draw] (b) at (2,0) {$\texttt{page\_f}$};
+  %
+  \draw [cd]
+  (h) edge[] (a.south west)
+  (h) edge[] (b.north west)
+  (a) edge[] (b);  
+\end{tikzpicture}
+\]

@@ -1,0 +1,86 @@
+%\begin{equation} \label{eq:str_csp_pushout3}
+\[  \begin{tikzpicture}[
+    scale=0.75,
+    baseline=(current  bounding  box.center)]
+    \node (La') at (-3,3) {$ La' $};
+    \node (x')  at (-2,4) {$ x' $};
+    \node (Lb') at (-1,5) {$ Lb' $};
+    % 
+    \node (Lc') at (-3,0) {$ Lc' $};
+    \node (y')  at (-2,1) {$ y' $};
+    \node (Ld') at (-1,2) {$ Ld' $};
+    %
+    \node (La) at (0,3) {$ La $};
+    \node (x)  at (1,4) {$ x $};
+    \node (Lb) at (2,5) {$ Lb $};
+    %
+    \node (Lc) at (0,0) {$ Lc $};
+    \node (y)  at (1,1) {$ y $};
+    \node (Ld) at (2,2) {$ Ld $};
+    %
+    \node (La'') at (3,3) {$ La'' $};
+    \node (x'')  at (4,4) {$ x'' $};
+    \node (Lb'') at (5,5) {$ Lb'' $};
+    % 
+    \node (Lc'') at (3,0) {$ Lc'' $};
+    \node (y'')  at (4,1) {$ y'' $};
+    \node (Ld'') at (5,2) {$ Ld'' $};
+    %
+    \draw [cd]
+    (Lb)   edge[] (Lb')
+    (Lb)   edge[] (Lb'') 
+    (Lb')  edge[] (Ld')
+    (Lb)   edge[] (Ld)
+    (Lb'') edge[] (Ld'')
+    (Ld)   edge[] (Ld')
+    (Ld)   edge[] (Ld''); 
+    %
+    \draw [white,line width=2mm]
+      (x)   -- (x')
+      (x)   -- (x'') 
+      (x')  -- (y')
+      (x)   -- (y)
+      (x'') -- (y'')
+      (y)   -- (y')
+      (y)   -- (y'');
+    \draw [cd]
+     (x)   edge[] (x')
+     (x)   edge[] (x'') 
+     (x')  edge[] (y')
+     (x)   edge[] (y)
+     (x'') edge[] (y'')
+     (y)   edge[] (y')
+     (y)   edge[] (y''); 
+    %
+    \draw [white,line width=1mm]
+      (La)   -- (La')
+      (La)   -- (La'') 
+      (La')  -- (Lc')
+      (La)   -- (Lc)
+      (La'') -- (Lc'')
+      (Lc)   -- (Lc')
+      (Lc)   -- (Lc'');
+    \draw [cd]
+     (La)   edge[] (La')
+     (La)   edge[] (La'') 
+     (La')  edge[] (Lc')
+     (La)   edge[] (Lc)
+     (La'') edge[] (Lc'')
+     (Lc)   edge[] (Lc')
+     (Lc)   edge[] (Lc'');  
+     % 
+   \draw [cd]
+   (Lb')  edge[] (x')
+   (Lb)   edge[] (x)
+   (Lb'') edge[] (x'')
+   (La')  edge[] (x')
+   (La)   edge[] (x)
+   (La'') edge[] (x'')
+   (Ld')  edge[] (y')
+   (Ld)   edge[] (y)
+   (Ld'') edge[] (y'')
+   (Lc')  edge[] (y')
+   (Lc)   edge[] (y)
+   (Lc'') edge[] (y'');
+\end{tikzpicture}\]
+%\end{equation}

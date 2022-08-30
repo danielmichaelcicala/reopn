@@ -1,0 +1,41 @@
+%
+  \[
+    \begin{tikzpicture}
+      \begin{scope}
+        \node (x) at (0,2) {$ v $};
+        \node (y) at (0,0) {$ w $};
+        \node (d) at (2,2) {$ La' $};
+        \node (e) at (2,0) {$ Lb' $};
+        \node (x') at (4,2) {$ v' $};
+        \node (y') at (4,0) {$ w' $};
+        % 
+        \draw [cd] (d) to (x);
+        \draw [cd] (d) to (x');
+        \draw [cd] (e) to (y);
+        \draw [cd] (e) to (y');
+        \draw [>->] (y) to (x);
+        \draw [cd] (e) to node [right] {$ \iso $} (d);
+        \draw [>->] (y') to (x');
+      \end{scope}
+      %
+      \node at (6,1) {and};
+      % 
+      \begin{scope}[shift={(8,0)}]
+        \node (y)  at (0,2) {$ w $};
+        \node (z)  at (0,0) {$ x $};
+        \node (e)  at (2,2) {$ Lb' $};
+        \node (f)  at (2,0) {$ Lc' $};
+        \node (y') at (4,2) {$ w' $};
+        \node (z') at (4,0) {$ x' $};
+        % 
+        \draw [cd] (e) to (y);
+        \draw [cd] (e) to (y');
+        \draw [cd] (f) to (z);
+        \draw [cd] (f) to (z');
+        \draw [>->] (y) to (z);
+        \draw [cd] (e) to node[right]{$ \iso $} (f);
+        \draw [>->] (y') to  (z');
+      \end{scope}
+    \end{tikzpicture}
+  \]
+  % 

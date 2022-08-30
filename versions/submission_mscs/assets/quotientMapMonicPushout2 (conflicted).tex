@@ -1,0 +1,15 @@
+%
+  \begin{equation} \label{eq:qmmp-2}
+    \begin{tikzpicture}
+      \node (x+z)      at (0,2) {$ x + z $};
+      \node (x+_yz)    at (4,2) {$ x +_y z $};
+      \node (x'+z')    at (0,0) {$ x' + z'  $};
+      \node (x'+_y'z') at (4,0) {$ x' +_{y'} z $};
+      %
+      \draw [cd] (x+z)   to node[above]{$ \rho $} (x+_yz);
+      \draw [cd] (x'+z') to node[below]{$ \rho' $} (x'+_y'z');
+      \draw [cd] (x+z)   to node[left]{$ \gamma $} (x'+z');
+      \draw [cd] (x+_yz) to node[right]{$ \gamma' $} (x'+_y'z');
+    \end{tikzpicture}
+  \end{equation}
+  %

@@ -1,0 +1,19 @@
+\begin{center}
+  \begin{tikzpicture}[scale=0.75]
+    \node (Lc') at (0,0) {$ Lc' $};
+    \node (y') at (2,0) {$ y' $};
+    \node (Ld') at (4,0) {$ Ld' $};
+    \node (La') at (0,2) {$ La' $};
+    \node (x') at (2,2) {$ x' $};
+    \node (Lb') at (4,2) {$ Lb' $};
+    %
+    \draw [cd] 
+    (La') edge[] (x')
+    (Lb') edge[] (x')
+    (Lc') edge[] (y')
+    (Ld') edge[] (y')
+    (La') edge[] (Lc')
+    (x') edge[] (y')
+    (Lb') edge[] (Ld');
+  \end{tikzpicture}
+\end{center}

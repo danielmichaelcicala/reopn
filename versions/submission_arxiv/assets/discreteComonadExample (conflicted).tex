@@ -1,0 +1,24 @@
+\[\begin{tikzpicture}[scale=0.75]
+    \begin{scope}
+      \node (a) at (0,2) {$ \bullet $};
+      \node (b) at (2,1) {$ \bullet $};
+      \node (c) at (0,0) {$ \bullet $};
+      %
+      \draw [graph] 
+        (a) edge[] (b)
+        (a) edge[] (c)
+        (b) edge[] (c);
+      %
+      \draw [rounded corners] (-1,-1) rectangle (3,3);
+    \end{scope}
+    %
+    \begin{scope}[shift={(6,0)}]
+      \node (a) at (0,2) {$ \bullet $};
+      \node (b) at (2,1) {$ \bullet $};
+      \node (c) at (0,0) {$ \bullet $};
+      %
+      \draw [rounded corners] (-1,-1) rectangle (3,3);
+    \end{scope}
+    %
+    \draw [|->] (3.5,1) to node[above]{$ LR $} (4.5,1);
+\end{tikzpicture}\]

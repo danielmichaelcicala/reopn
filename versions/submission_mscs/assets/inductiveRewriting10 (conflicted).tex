@@ -1,0 +1,19 @@
+\begin{center}\begin{tikzpicture}[scale=0.75]
+  \node (L0) at (0,0) {$ L0 $};
+  \node (x1) at (2,2) {$ x_1 $};
+  \node (La1) at (4,0) {$ La_1 $};
+  \node (x2) at (6,2) {$ x_2 $};
+  \node (La2) at (8,0) {$ La_2 $};
+  \node () at (9,1) {$ \dotsm $};
+  \node (Lan1) at (10,0) {$ La_{n-1} $};
+  \node (xn) at (12,2) {$ x_n $};
+  \node (L0') at (14,0) {$ L0 $};
+  % 
+  \draw [cd] 
+    (L0) edge (x1)
+    (La1) edge (x1)
+    (La1) edge (x2)
+    (La2) edge (x2)
+    (Lan1) edge (xn)
+    (L0') edge (xn);
+\end{tikzpicture}\end{center}

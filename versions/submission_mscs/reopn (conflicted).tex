@@ -1,5 +1,5 @@
-\documentclass{amsart}
-%\linespread{2}
+\documentclass[oneside]{amsart}
+\linespread{2}
 \input{assets/preamble.tex}
 \begin{document}
 \input{assets/frontMatter.tex}
@@ -80,7 +80,7 @@ formalized using structured cospans.
 
 Baez and Courser introduced structured cospans as
 an abstract framework to model open systems
-\cite{bc_strCsp}. A structured cospan is a diagram
+\parencite{bc_strCsp}. A structured cospan is a diagram
 of the form
 \begin{equation}\label{eq:Intro_StrCspForm}
   La \to x \gets Lb
@@ -114,9 +114,9 @@ provides a method to replace an instance of
 diagram with \input{assets/intro_circuit02.tex}
 
 Rewriting works nicely in any adhesive category
-\cite{LackSobo_Adhesive}. However, we restrict our
+\parencite{LackSobo_Adhesive}. However, we restrict our
 attention to a specific type to adhesive category
-called a topos \cite{LackSobo_TopsIsAdh}. The
+called a topos \parencite{LackSobo_TopsIsAdh}. The
 reasons for this are both technical (we eventually
 required Cartesian closedness) and promotional
 (topoi are more widely known and are more easily
@@ -190,7 +190,7 @@ discrete graph functor $ L \from \Set \to \Graph $
 mentioned above. More examples come by using slice
 categories $ \Graph / g $ for some graph $ g $
 chosen to endow nodes and arrows with types as was
-done to model the ZX-calculus \cite{ZX}.
+done to model the ZX-calculus \parencite{ZX}.
 
 Because $ _L\StrCsp $ is a topos, it supports a
 rich theory of rewriting. An analysis begins with
@@ -265,7 +265,7 @@ graphs in the 1970's, only the operational
 definition prevailed.  Then in the 1990's, Gadducci
 and Heckel introduced an inductive definition to
 graph rewriting
-\cite{Gadd_IndGraphTrans}, thus allowing for
+\parencite{Gadd_IndGraphTrans}, thus allowing for
 analyses using structural induction. With the new
 technology of structured cospans, we can use their
 ideas to bring the inductive viewpoint to
@@ -367,7 +367,7 @@ cospan grammar using double categories (Theorems
 In their foundational paper on graph rewriting,
 Ehrig, Pfender, and Schneider classify the expressiveness of
 several types of grammars
-\cite[Prop.~3.3]{Ehrig_GraphGram}. We generalize
+\parencite[Prop.~3.3]{Ehrig_GraphGram}. We generalize
 this result to certain grammars on topoi in
 Section \ref{sec:gen-result-graph-rewriting}
 (Theorem
@@ -432,15 +432,15 @@ Double pushout rewriting has an established
 literature, so we use the current section to cover
 the fundamentals and to establish our conventions.
 The interested reader can see Ehrig, et.\ al.\
-\cite{Ehrig_GraphGram} to learn about graph
+\parencite{Ehrig_GraphGram} to learn about graph
 rewriting or Lack and Soboci\'{n}ski
-\cite{LackSobo_Adhesive} for an axiomatic approach
+\parencite{LackSobo_Adhesive} for an axiomatic approach
 based on \emph{adhesive categories}. Here, instead
 of working with the full generality offered by
 adhesiveness, we work inside of a
 topos. This allows us to reap the benefits from a
 rich rewriting theory because topoi are
-adhesive \cite{LackSobo_TopsIsAdh}, while
+adhesive \parencite{LackSobo_TopsIsAdh}, while
 retaining the technical requirements for our
 constructions to work. Henceforth, every category
 is a topos.
@@ -497,7 +497,7 @@ an object $ k' $ fitting into a pushout diagram
 \input{assets/pushoutComplement} A pushout
 complement need not exist, but if it does and the
 map $ k \to \ell $ is monic, then it is unique up to isomorphism
-\cite[Lem.~15]{LackSobo_Adhesive}.
+\parencite[Lem.~15]{LackSobo_Adhesive}.
 
 Every application of a rule begets a new rule. Applying
 $ \ell \gets k \to r $ to $\ell'$ along
@@ -612,7 +612,7 @@ to structured cospans. And so, in this section, we
 reintroduce the notion of structured cospans and
 find sufficient conditions for them to form a topos.
 
-Baez and Courser \cite{bc_strCsp} introduced
+Baez and Courser \parencite{bc_strCsp} introduced
 structured cospans as a framework to study open
 systems.  A system is \df{open} when
 equipped with a mechanism by which it can connect
@@ -730,7 +730,7 @@ topos.
   diagonal functor, a right adjoint. Because
   $ \Delta R $ is a right adjoint,
   $ ( \A \times \A \downarrow \Delta R ) $ is an
-  Artin glueing \cite{Wraith_ArtinGlue}, therefore
+  Artin glueing \parencite{Wraith_ArtinGlue}, therefore
   a topos.
 \end{proof}
 
@@ -977,11 +977,11 @@ Showing that $_L\SSStrCsp$ is a double category
 largely involves checking the requisite list of
 axioms. The non-trivial part of this is showing
 the interchange law which has been shown in
-previous work \cite[Lem.~4.2,
+previous work \parencite[Lem.~4.2,
 Lem.~4.3]{CicCour_SpCspTopos}. We should note that
 $ _L\SSStrCsp $ is actually a symmetric monoidal
 double category via pointwise addition
-\cite[Lem.~4.4]{CicCour_SpCspTopos} (this uses the
+\parencite[Lem.~4.4]{CicCour_SpCspTopos} (this uses the
 fact that $ L $ preserves coproducts), however,
 this structure plays no role in this work, so we
 do not mention it again.
@@ -1092,7 +1092,7 @@ $ ( \T, P_\flat  ) $ have the same rewrite relation
 under certain conditions.  This result generalizes
 a characterization of discrete graph grammars
 given by Ehrig,
-et.~al. \cite[Prop.~3.3]{Ehrig_GraphGram}.
+et.~al. \parencite[Prop.~3.3]{Ehrig_GraphGram}.
 
 Experts in topos theory know that discreteness
 comes from the flat modality on a local
@@ -1101,7 +1101,7 @@ required to unpack the meaning of ``the flat
 modality on a local topos'' because it does not
 benefit our story (curious readers can find this
 information elsewhere
-\cite[Ch.~3.6]{Johnstone_Sketches}). Instead, we
+\parencite[Ch.~3.6]{Johnstone_Sketches}). Instead, we
 offer a more direct, if less subtle, approach by
 defining a discrete comonad in a way to fit
 our needs.
@@ -1166,7 +1166,7 @@ property. For instance, this class includes any grammar
 built on a presheaf category.  This is especially
 pertinent because many systems can be formalized
 using labeled graphs, which are presheaves. The
-ZX-calculus \cite{ZX} serves as one example.
+ZX-calculus \parencite{ZX} serves as one example.
 
 \begin{proposition}
   \label{thm:subob-arbitrary-meets}
@@ -1200,8 +1200,8 @@ ZX-calculus \cite{ZX} serves as one example.
 
 At last, we reach our main result of this section.
 This result mirrors Chomsky's hierarchy of
-grammars \cite{Chomsky} and the classification of
-graph grammars \cite[Prop.~3.3]{Ehrig_GraphGram}.
+grammars \parencite{Chomsky} and the classification of
+graph grammars \parencite[Prop.~3.3]{Ehrig_GraphGram}.
 
 \begin{theorem}
   \label{thm:production-same-rewrite-relation-as-discrete}  
@@ -1395,9 +1395,9 @@ tensoring squares.
 \end{proof}
 
 
-
-\bibliographystyle{plain}
-\bibliography{assets/biblio}
+\printbibliography
+% \bibliographystyle{plain}
+% \bibliography{assets/reopn}
 
 
 

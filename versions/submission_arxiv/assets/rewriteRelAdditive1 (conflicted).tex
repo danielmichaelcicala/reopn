@@ -1,0 +1,49 @@
+\begin{center}\begin{tikzpicture}[scale=0.75]
+    \node (1t) at (0,2) {$ \ell_1 $};
+    \node (2t) at (2,2) {$ k_1 $};
+    \node (3t) at (4,2) {$ r_1 $};
+    \node (4t) at (6,2) {$ \ell_2 $};
+    \node (5t) at (8,2) {$ k_2 $};
+    \node (6t) at (10,2) {$ r_2 $};
+%    \node (7t) at (11,2) {$ \ell_n $};
+    \node (8t) at (11,2) {$ k_n $};
+    \node (9t) at (13,2) {$ r_n $};
+    \node (1b) at (0,0) {$ x $};
+    \node (2b) at (2,0) {$ d_1 $};
+    \node (3b) at (5,0) {$ w_1 $};
+    \node (4b) at (8,0) {$ d_2 $};
+    \node (5b) at (10,0) {$ w_2 $};
+%    \node (6b) at (11,0) {$ w_{n-1} $};
+    \node (7b) at (11,0) {$ d_n $};
+    \node (8b) at (13,0) {$ y $};
+    \draw [cd] (2t) to node [] {\scriptsize{$  $}} (1t);
+    \draw [cd] (2t) to node [] {\scriptsize{$  $}} (3t);
+    \draw [cd] (5t) to node [] {\scriptsize{$  $}} (4t);
+    \draw [cd] (5t) to node [] {\scriptsize{$  $}} (6t);
+%    \draw [cd] (8t) to node [] {\scriptsize{$  $}} (7t);
+    \draw [cd] (8t) to node [] {\scriptsize{$  $}} (9t);
+    \draw [cd] (2b) to node [] {\scriptsize{$  $}} (1b);
+    \draw [cd] (2b) to node [] {\scriptsize{$  $}} (3b);
+    \draw [cd] (4b) to node [] {\scriptsize{$  $}} (3b);
+    \draw [cd] (4b) to node [] {\scriptsize{$  $}} (5b);
+%    \draw [cd] (7b) to node [] {\scriptsize{$  $}} (6b);
+    \draw [cd] (7b) to node [] {\scriptsize{$  $}} (8b);
+    \draw [cd] (1t) to node [] {\scriptsize{$  $}} (1b);
+    \draw [cd] (2t) to node [] {\scriptsize{$  $}} (2b);
+    \draw [cd] (3t) to node [] {\scriptsize{$  $}} (3b);
+    \draw [cd] (4t) to node [] {\scriptsize{$  $}} (3b);
+    \draw [cd] (5t) to node [] {\scriptsize{$  $}} (4b);
+    \draw [cd] (6t) to node [] {\scriptsize{$  $}} (5b);
+ %   \draw [cd] (7t) to node [] {\scriptsize{$  $}} (6b);
+    \draw [cd] (8t) to node [] {\scriptsize{$  $}} (7b);
+    \draw [cd] (9t) to node [] {\scriptsize{$  $}} (8b);
+    \node () at (10.5,1) {$ \dotsm $};
+    % 
+    \draw (0.3,0.4) -- (0.4,0.4) -- (0.4,0.3);
+    \draw (4.7,0.4) -- (4.6,0.4) -- (4.6,0.3);
+    \draw (5.3,0.4) -- (5.4,0.4) -- (5.4,0.3);
+    \draw (9.7,0.4) -- (9.6,0.4) -- (9.6,0.3);
+ %   \draw (11.3,0.4) -- (11.4,0.4) -- (11.4,0.3);
+    \draw (12.7,0.4) -- (12.6,0.4) -- (12.6,0.3);
+  \end{tikzpicture}\end{center}
+% 

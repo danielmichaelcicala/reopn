@@ -1,0 +1,14 @@
+\begin{center}\begin{tikzpicture}[scale=0.75]
+  \node (k) at (0,2) {$ k $};
+  \node (r) at (2,2) {$ r $};
+  \node (d') at (0,0) {$ d' $};
+  \node (h) at (2,0) {$ h $};
+  % 
+  \draw [cd] 
+    (k) edge[] (r)
+    (k) edge[] (d')
+    (d') edge[] (h)
+    (r) edge[] (h);
+  % 
+  \draw (1.7,0.4) -- (1.6,0.4) -- (1.6,0.3);
+\end{tikzpicture}\end{center}
